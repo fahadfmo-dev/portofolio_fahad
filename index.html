@@ -3,844 +3,1047 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Fahad - Portfolio</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Mohammed Fahad - Portfolio BTS SIO</title>
+    
+    <!-- External CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ================================ */
+        /* CSS VARIABLES */
+        /* ================================ */
         :root {
-            --primary-color: #3a6ea5;
-            --secondary-color: #004e98;
-            --accent-color: #ff6b6b;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-color: #6c63ff;
+            --dark-bg: #0f0f23;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glow-color: rgba(108, 99, 255, 0.6);
         }
-        
+
+        /* ================================ */
+        /* RESET & BASE STYLES */
+        /* ================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--dark-bg);
+            overflow-x: hidden;
+            position: relative;
         }
-        
-        /* Navigation */
-        .navbar {
-            padding: 1rem 2rem;
+
+        /* ================================ */
+        /* CUSTOM CURSOR */
+        /* ================================ */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
             transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transform: translate(-50%, -50%);
         }
-        
+
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(0.7);
+            background: var(--accent-color);
+        }
+
+        .cursor-follower.active {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        a, button, input, textarea, .clickable {
+            cursor: none;
+        }
+
+        /* ================================ */
+        /* PARTICLE BACKGROUND */
+        /* ================================ */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ================================ */
+        /* SCROLLBAR */
+        /* ================================ */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5a52ff;
+        }
+
+        /* ================================ */
+        /* NAVIGATION */
+        /* ================================ */
+        .navbar {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(15, 15, 35, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
         .navbar-brand {
             font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.3s ease;
         }
-        
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
         .nav-link {
+            color: var(--text-light) !important;
             font-weight: 500;
             margin: 0 0.5rem;
-            color: var(--dark-color);
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        
+
         .nav-link:hover {
-            color: var(--primary-color);
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
         }
-        
-        /* Hero Section */
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ================================ */
+        /* HERO SECTION */
+        /* ================================ */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 8rem 0 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--dark-bg);
             position: relative;
             overflow: hidden;
         }
-        
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+            animation: blob 7s infinite;
+            top: -20%;
+            left: -10%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #764ba2 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+            animation: blob 7s infinite 2s;
+            bottom: -20%;
+            right: -10%;
+        }
+
+        @keyframes blob {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            50% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+            75% {
+                transform: translate(50px, 20px) scale(1.05);
+            }
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
+            animation: slideInLeft 1s ease;
         }
-        
-        .hero-title {
-            font-size: 3.5rem;
+
+        .hero h1 {
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(108, 99, 255, 0.3);
+            animation: glow 3s ease-in-out infinite;
         }
-        
-        .hero-subtitle {
+
+        @keyframes glow {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.2);
+            }
+        }
+
+        .hero .lead {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            color: var(--text-muted);
+            animation: fadeInUp 1s ease 0.5s both;
         }
-        
-        .profile-img {
-            width: 250px;
-            height: 250px;
+
+        .hero-image {
+            animation: slideInRight 1s ease;
+        }
+
+        .hero-image .avatar {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-gradient);
             border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 0 50px var(--glow-color);
+            animation: float 4s ease-in-out infinite;
+            position: relative;
         }
-        
-        .hero-bg {
+
+        .hero-image .avatar::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.1;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+            z-index: -1;
         }
-        
-        /* Section Styling */
-        section {
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* ================================ */
+        /* SECTIONS */
+        /* ================================ */
+        .section {
             padding: 5rem 0;
-        }
-        
-        .section-title {
             position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 3rem;
             text-align: center;
+            position: relative;
+            color: var(--text-light);
+            animation: fadeInDown 1s ease;
         }
-        
-        .section-title:after {
+
+        .section-title::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
             width: 60px;
             height: 4px;
-            background: var(--primary-color);
-            margin: 15px auto;
+            background: var(--accent-color);
+            transform: translateX(-50%);
             border-radius: 2px;
+            box-shadow: 0 0 20px var(--glow-color);
+            animation: expandWidth 1s ease;
         }
-        
-        /* About Section */
-        .about-content {
-            position: relative;
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+
+        /* ================================ */
+        /* CARDS */
+        /* ================================ */
+        .modern-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
             padding: 2rem;
-            border-radius: 10px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .about-content:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* Skills Section */
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            position: relative;
             overflow: hidden;
         }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            border-radius: 4px;
-            transition: width 1s ease-in-out;
-        }
-        
-        /* Experience & Education */
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-        
-        .timeline:before {
+
+        .modern-card::before {
             content: '';
             position: absolute;
-            left: 7px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: var(--primary-color);
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--primary-gradient);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
+
+        .modern-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: transparent;
+            box-shadow: 0 20px 40px rgba(108, 99, 255, 0.3);
         }
-        
-        .timeline-item:last-child {
-            margin-bottom: 0;
+
+        .modern-card:hover::before {
+            opacity: 1;
         }
-        
-        .timeline-dot {
-            position: absolute;
-            left: -3rem;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--primary-color);
-        }
-        
-        .timeline-date {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .timeline-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .timeline-text {
-            color: #6c757d;
-        }
-        
-        /* Projects Section */
-        .project-card {
+
+        /* ================================ */
+        /* BUTTONS */
+        /* ================================ */
+        .btn-primary {
+            background: var(--accent-color);
             border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            background: #5a52ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
             height: 100%;
+            background: var(--accent-color);
+            transition: left 0.3s ease;
+            z-index: -1;
         }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+
+        .btn-outline:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
         }
-        
-        .project-img {
-            height: 200px;
-            object-fit: cover;
+
+        .btn-outline:hover::before {
+            left: 0;
         }
-        
-        .project-overlay {
+
+        /* ================================ */
+        /* SKILLS */
+        /* ================================ */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
+            height: 0;
+            background: linear-gradient(180deg, var(--accent-color), transparent);
+            opacity: 0.1;
+            transition: height 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.2);
+        }
+
+        .skill-item:hover::before {
             height: 100%;
-            background: rgba(58, 110, 165, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover .skill-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Progress bars with animation */
+        .progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: var(--accent-color);
+            position: relative;
+            animation: progressAnimation 2s ease;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        @keyframes progressAnimation {
+            from {
+                width: 0;
+            }
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* ================================ */
+        /* TIMELINE */
+        /* ================================ */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
             opacity: 0;
-            transition: all 0.3s ease;
+            animation: fadeInLeft 0.8s ease forwards;
         }
-        
-        .project-card:hover .project-overlay {
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            box-shadow: 0 0 20px var(--glow-color);
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% {
+                box-shadow: 0 0 20px var(--glow-color);
+            }
+            50% {
+                box-shadow: 0 0 30px var(--glow-color), 0 0 50px var(--glow-color);
+            }
+        }
+
+        /* ================================ */
+        /* TEACHER CARDS */
+        /* ================================ */
+        .teacher-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(108, 99, 255, 0.4);
+        }
+
+        .pdfs-section {
+            overflow: hidden;
+            transition: all 0.4s ease;
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .pdfs-section.open {
+            max-height: 500px;
             opacity: 1;
+            margin-top: 2rem;
+            animation: slideDown 0.5s ease;
         }
-        
-        /* Languages Section */
-        .language-item {
-            text-align: center;
-            padding: 1.5rem;
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* ================================ */
+        /* FORMS */
+        /* ================================ */
+        .form-control {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 10px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            width: 100%;
             transition: all 0.3s ease;
         }
-        
-        .language-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .language-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        /* Contact Section */
-        .contact-info {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .form-control {
-            border-radius: 10px;
-            padding: 0.8rem 1.2rem;
-            border: 1px solid #ced4da;
-            margin-bottom: 1.5rem;
-        }
-        
+
         .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(58, 110, 165, 0.25);
+            background: var(--card-bg);
+            border-color: var(--accent-color);
+            color: var(--text-light);
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1), 0 0 20px rgba(108, 99, 255, 0.2);
+            outline: none;
+            transform: translateY(-2px);
         }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 3rem 0 1.5rem;
+
+        .form-control::placeholder {
+            color: var(--text-muted);
         }
-        
-        .social-links {
-            margin-bottom: 2rem;
+
+        .contact-form-container {
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .social-link {
+
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--accent-color), transparent 30%);
+            animation: rotate 4s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ================================ */
+        /* FOOTER */
+        /* ================================ */
+        .footer {
+            background: rgba(15, 15, 35, 0.95);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: var(--text-light);
             margin: 0 0.5rem;
             transition: all 0.3s ease;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .social-link:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-color);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-links a:hover {
             color: white;
+            transform: translateY(-5px) rotate(360deg);
+            border-color: transparent;
         }
-        
-        /* Back to Top Button */
-        .back-to-top {
+
+        .social-links a:hover::before {
+            transform: scale(1);
+        }
+
+        /* ================================ */
+        /* ANIMATIONS */
+        /* ================================ */
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-10px) rotate(2deg); 
+            }
+            75% { 
+                transform: translateY(10px) rotate(-2deg); 
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Back to top button */
+        #backToTop {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            background: var(--primary-color);
+            background: var(--accent-color);
             color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
+            cursor: none;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 999;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
         }
-        
-        .back-to-top.show {
+
+        #backToTop:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.6);
+        }
+
+        #backToTop.show {
             opacity: 1;
             visibility: visible;
         }
-        
-        .back-to-top:hover {
-            background: var(--secondary-color);
-            color: white;
-        }
-        
-        /* PDF Preview */
-        .pdf-preview {
-            height: 200px;
-            background-color: #f8f9fa;
+
+        /* ================================ */
+        /* LOADING ANIMATION */
+        /* ================================ */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
             display: flex;
-            align-items: center;
             justify-content: center;
-            border-radius: 10px 10px 0 0;
-            overflow: hidden;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
         }
-        
-        .pdf-icon {
-            font-size: 4rem;
-            color: #e74c3c;
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
-        
-        /* Responsive Adjustments */
+
+        .loader-inner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ================================ */
+        /* RESPONSIVE */
+        /* ================================ */
         @media (max-width: 768px) {
-            .hero-title {
+            .cursor, .cursor-follower {
+                display: none;
+            }
+
+            * {
+                cursor: auto !important;
+            }
+
+            .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .hero-subtitle {
+            .hero .lead {
                 font-size: 1.2rem;
             }
             
-            section {
+            .section {
                 padding: 3rem 0;
             }
             
-            .profile-img {
+            .skill-grid {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 1rem;
+            }
+
+            .hero-image .avatar {
                 width: 200px;
                 height: 200px;
+                font-size: 3rem;
             }
-            
-            .navbar {
-                padding: 0.5rem 1rem;
+
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+
+            .contact-form-container .row .col-md-6:first-child,
+            .contact-form-container .row .col-md-6:last-child {
+                padding-left: 0;
+                padding-right: 0;
+                margin-bottom: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-inner"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ================================ -->
+    <!-- NAVIGATION -->
+    <!-- ================================ -->
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#home">Mohammed Fahad</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">À propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Compétences</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">Expérience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#languages">Langues</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Comptes Rendus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#languages">Langues</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ================================ -->
+    <!-- HERO SECTION -->
+    <!-- ================================ -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-8 mx-auto text-center hero-content">
-                    <h1 class="hero-title">Mohammed Fahad</h1>
-                    <p class="hero-subtitle">Étudiant en BTS SIO - Spécialiste en Systèmes Numériques</p>
-                    <div class="mt-4">
-                        <a href="#contact" class="btn btn-light btn-lg me-3">Me contacter</a>
-                        <a href="CV_MOHAMMED_fahad.pdf" class="btn btn-outline-light btn-lg" download="CV_Mohammed_Fahad.pdf">Télécharger mon CV</a>
+                <div class="col-lg-6 hero-content">
+                    <h1 class="fade-in">Salut, moi c'est Mohammed Fahad 👋</h1>
+                    <p class="lead fade-in">Étudiant en BTS SIO - Spécialiste en Systèmes Numériques 💻</p>
+                    <p class="fade-in">Je suis actuellement étudiant en BTS SIO depuis septembre 2024 après avoir obtenu un BAC PRO Systèmes Numériques option RISC en juillet 2024. Passionné par l'informatique et les nouvelles technologies, je possède une solide expérience professionnelle en maintenance, dépannage, réparation et configuration de systèmes informatiques acquise à travers plusieurs stages et emplois.</p>
+                    <div class="mt-4 fade-in">
+                        <a href="#contact" class="btn btn-primary me-3">Me contacter</a>
+                        <a href="CV_MOHAMMED_fahad.pdf" class="btn-outline" download="CV_Mohammed_Fahad.pdf">Télécharger mon CV <i class="fas fa-download ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image fade-in">
+                        <div class="avatar">👨‍💻</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="bg-light">
+    <!-- ================================ -->
+    <!-- ABOUT SECTION -->
+    <!-- ================================ -->
+    <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
+            <h2 class="section-title fade-in">À Propos 🗨️</h2>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="about-content">
-                        <h3 class="mb-4">Développeur & Technicien Informatique</h3>
-                        <p class="lead">Je suis actuellement étudiant en BTS SIO après avoir obtenu un BAC PRO Systèmes Numériques option RISC. Passionné par l'informatique et les nouvelles technologies, je possède une solide expérience en maintenance, dépannage et configuration de systèmes informatiques.</p>
-                        <p>Mes compétences s'étendent de la réparation matérielle à l'installation de systèmes d'exploitation, en passant par la virtualisation et la sécurité des données. Polyglotte, je parle couramment le français, l'anglais, le bengali, l'hindi et l'ourdou, avec des notions d'arabe.</p>
-                        <div class="row mt-5">
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><strong>Nom :</strong> Mohammed Fahad</li>
-                                    <li class="mb-2"><strong>Téléphone :</strong> (+33) 06 04 45 99 34</li>
-                                    <li class="mb-2"><strong>Ville :</strong> Gap, France</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><strong>Email :</strong> mohammed.fahad@jpmendesfrance.com</li>
-                                    <li class="mb-2"><strong>Disponibilité :</strong> Stage/Alternance</li>
-                                    <li class="mb-2"><strong>Intérêts :</strong> Sport, Jeux vidéo</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Mes compétences</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <h5>Maintenance Informatique</h5>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <h5>Installation OS (Windows/Linux)</h5>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <h5>Virtualisation (VirtualBox, Proxmox)</h5>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <h5>Réparation Matérielle</h5>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <h5>Sécurité & Chiffrement</h5>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <h5>Relation Client</h5>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Education Section -->
-    <section id="experience" class="bg-light">
-        <div class="container">
-            <h2 class="section-title">Expérience & Formation</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3 class="mb-4">Formation</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-date">2024 - En cours</div>
-                            <div class="timeline-title">BTS SIO</div>
-                            <div class="timeline-text">Services Informatiques aux Organisations - Lycée Jean-Pierre Mendès France, Gap</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-date">2021 - 2024</div>
-                            <div class="timeline-title">BAC PRO Systèmes Numériques</div>
-                            <div class="timeline-text">Option RISC (Réseaux Informatiques et Systèmes Communicants) - Formation spécialisée en systèmes numériques</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-4">Compétences Techniques</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-title">Maintenance & Réparation</div>
-                            <div class="timeline-text">Diagnostic, réparation matérielle, maintenance préventive et curative des systèmes informatiques</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-title">Virtualisation & Systèmes</div>
-                            <div class="timeline-text">Installation et configuration Windows/Linux, VirtualBox, Proxmox, gestion des environnements virtuels</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-title">Sécurité Informatique</div>
-                            <div class="timeline-text">Chiffrement des données, sécurisation des systèmes, protection contre les menaces</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Mes projets</h2>
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP HTML</h5>
-                            <p class="card-text">Travaux pratiques sur le développement web avec HTML et CSS, incluant la création de pages responsives et modernes.</p>
-                            <a href="TP_HTML.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP Java</h5>
-                            <p class="card-text">Travaux pratiques en programmation Java, incluant les concepts de base et les applications orientées objet.</p>
-                            <a href="TP_Java.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP Logiciels de Diagnostic</h5>
-                            <p class="card-text">Utilisation et maîtrise des logiciels de diagnostic informatique pour la maintenance et la réparation système.</p>
-                            <a href="TP_logiciels_de_diagnostic.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP Portfolio</h5>
-                            <p class="card-text">Création et développement d'un portfolio personnel professionnel avec des technologies web modernes.</p>
-                            <a href="TP_Portofolio.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP Réseau</h5>
-                            <p class="card-text">Travaux pratiques sur les réseaux informatiques, configuration et administration système.</p>
-                            <a href="TP_Reseau.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP Studio Code</h5>
-                            <p class="card-text">Guide d'utilisation et configuration de Visual Studio Code pour le développement informatique.</p>
-                            <a href="TP_studio.code.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 7 - NOUVEAU -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP Java 3</h5>
-                            <p class="card-text">Travaux pratiques avancés en programmation Java, approfondissement des concepts orientés objet et développement d'applications complexes.</p>
-                            <a href="TP_java3.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 8 - NOUVEAU -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="pdf-preview">
-                            <i class="fas fa-file-pdf pdf-icon"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">TP CSS</h5>
-                            <p class="card-text">Travaux pratiques sur les feuilles de style CSS, techniques avancées de mise en forme et design responsive.</p>
-                            <a href="TP_CSS.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download me-2"></i>Télécharger PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Languages Section -->
-    <section id="languages" class="bg-light">
-        <div class="container">
-            <h2 class="section-title">Langues</h2>
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="language-item">
-                        <div class="language-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <h5>Français</h5>
-                        <p class="text-muted">Courant</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="language-item">
-                        <div class="language-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <h5>Anglais</h5>
-                        <p class="text-muted">Courant</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="language-item">
-                        <div class="language-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <h5>Bengali</h5>
-                        <p class="text-muted">Courant</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="language-item">
-                        <div class="language-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <h5>Hindi</h5>
-                        <p class="text-muted">Courant</p>
-                    </div>
-                     </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="language-item">
-                        <div class="language-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <h5>Ourdou</h5>
-                        <p class="text-muted">Courant</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="language-item">
-                        <div class="language-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <h5>Arabe</h5>
-                        <p class="text-muted">Notions</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Me contacter</h2>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="row">
-                        <div class="col-md-4 mb-4">
-                            <div class="contact-info">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <h5>Téléphone</h5>
-                                <p>(+33) 06 04 45 99 34</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="contact-info">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <h5>Email</h5>
-                                <p>mohammed.fahad.fmo@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="contact-info">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <h5>Localisation</h5>
-                                <p>Gap, France</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row mt-5">
-                        <div class="col-lg-12">
-                            <form>
+                    <div class="modern-card fade-in">
+                        <h3 class="mb-4" style="color: #ffffff;">Développeur & Technicien Informatique</h3>
+                        <p style="color: #ffffff;">Je suis actuellement étudiant en BTS SIO depuis septembre 2024 après avoir obtenu un BAC PRO Systèmes Numériques option RISC en juillet 2024. Passionné par l'informatique et les nouvelles technologies, je possède une solide expérience professionnelle en maintenance, dépannage, réparation et configuration de systèmes informatiques.</p>
+                        
+                        <p style="color: #ffffff;">Mes compétences s'étendent de la réparation matérielle à l'installation de systèmes d'exploitation, en passant par la virtualisation avec VirtualBox et Proxmox, ainsi que la sécurité des données avec des outils de chiffrement. Polyglotte, je parle couramment le français, l'anglais, le bengali, l'hindi et l'ourdou, avec un niveau intermédiaire en arabe.</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <h5 style="color: #ffffff;">Contact & Informations</h5>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Votre nom" required>
+                                        <p style="color: #ffffff;"><strong>Email :</strong> mohammed.fahad@lpmendesfrance.com</p>
+                                        <p style="color: #ffffff;"><strong>Téléphone :</strong> (+33) 06 04 45 99 34</p>
+                                        <p style="color: #ffffff;"><strong>Adresse :</strong> 1 Rue de Super Gap, 05000 Gap</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="email" class="form-control" placeholder="Votre email" required>
+                                        <p style="color: #ffffff;"><strong>Centres d'intérêt :</strong> Sport, Jeux vidéo</p>
+                                        <p style="color: #ffffff;"><strong>Disponibilité :</strong> Stage/Alternance</p>
+                                        <p style="color: #ffffff;"><strong>Statut :</strong> Étudiant BTS SIO</p>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Sujet" required>
-                                <textarea class="form-control" rows="6" placeholder="Votre message" required></textarea>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">
-                                        <i class="fas fa-paper-plane me-2"></i>Envoyer le message
-                                    </button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -848,51 +1051,637 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- ================================ -->
+    <!-- SKILLS SECTION -->
+    <!-- ================================ -->
+    <section id="skills" class="section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+            <h2 class="section-title fade-in">Mes compétences 💻</h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6 mb-4">
+                    <div class="modern-card fade-in">
+                        <h4 class="mb-4" style="color: #ffffff;">Compétences Techniques</h4>
+                        
+                        <!-- Installation et Configuration -->
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span style="color: #ffffff;">Installation et Configuration</span>
+                                <span style="color: #ffffff;">90%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 90%;"></div>
+                            </div>
+                            <small style="color: #ffffff;">Installation et configuration de systèmes d'exploitation : Windows, Linux. Clonage de disques durs et migration de données.</small>
+                        </div>
+                        
+                        <!-- Dépannage et Maintenance -->
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span style="color: #ffffff;">Dépannage et Maintenance</span>
+                                <span style="color: #ffffff;">90%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 90%;"></div>
+                            </div>
+                            <small style="color: #ffffff;">Diagnostic et résolution de pannes matérielles et logicielles. Remplacement de composants.</small>
+                        </div>
+                        
+                        <!-- Virtualisation -->
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span style="color: #ffffff;">Virtualisation</span>
+                                <span style="color: #ffffff;">85%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;"></div>
+                            </div>
+                            <small style="color: #ffffff;">Utilisation de VirtualBox et Proxmox pour créer et gérer des machines virtuelles.</small>
+                        </div>
+                        
+                        <!-- Sécurité et Chiffrement -->
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span style="color: #ffffff;">Sécurité et Chiffrement</span>
+                                <span style="color: #ffffff;">75%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 75%;"></div>
+                            </div>
+                            <small style="color: #ffffff;">Utilisation d'outils de chiffrement : Nitrokey, Kleopatra, Thunderbird.</small>
+                        </div>
+                        
+                        <!-- Relation Client -->
+                        <div class="skill-item">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span style="color: #ffffff;">Relation Client et Vente</span>
+                                <span style="color: #ffffff;">85%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;"></div>
+                            </div>
+                            <small style="color: #ffffff;">Accueil, conseil et orientation des clients. Vente de produits et services informatiques.</small>
+                        </div>
                     </div>
-                    <p class="mb-0">&copy; 2024 Mohammed Fahad. Tous droits réservés.</p>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="modern-card fade-in">
+                        <h4 class="mb-4" style="color: #ffffff;">Technologies & Outils</h4>
+                        <div class="skill-grid">
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                                <h6 style="color: #ffffff;">HTML</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                                <h6 style="color: #ffffff;">CSS</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                                <h6 style="color: #ffffff;">JavaScript</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fab fa-java"></i></div>
+                                <h6 style="color: #ffffff;">Java</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fab fa-windows"></i></div>
+                                <h6 style="color: #ffffff;">Windows</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fab fa-linux"></i></div>
+                                <h6 style="color: #ffffff;">Linux</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                                <h6 style="color: #ffffff;">Cisco</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                                <h6 style="color: #ffffff;">Switch</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fas fa-cube"></i></div>
+                                <h6 style="color: #ffffff;">Proxmox</h6>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><i class="fab fa-apple"></i></div>
+                                <h6 style="color: #ffffff;">Apple</h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ================================ -->
+    <!-- EXPERIENCE SECTION -->
+    <!-- ================================ -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Expérience & Formation 🎓</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="modern-card fade-in">
+                        <div class="row">
+                            <!-- Formation -->
+                            <div class="col-md-6">
+                                <h4 class="mb-4" style="color: #ffffff;">Formation</h4>
+                                
+                                <!-- BTS SIO -->
+                                <div class="timeline-item mb-4">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">Depuis septembre 2024</small>
+                                    <h6 style="color: #ffffff;">BTS SIO</h6>
+                                    <p class="small" style="color: #ffffff;">Lycée Dominique Villars Place Verdun, 05000 Gap</p>
+                                </div>
+                                
+                                <!-- BAC PRO -->
+                                <div class="timeline-item mb-4">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">Septembre 2022 - Juillet 2024</small>
+                                    <h6 style="color: #ffffff;">BAC PRO Systèmes Numériques option RISC</h6>
+                                    <p class="small" style="color: #ffffff;">Lycée Professionnel Pierre Mendès France, Veynes</p>
+                                </div>
+                                
+                                <!-- Brevet -->
+                                <div class="timeline-item mb-4">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">2019 - 2022</small>
+                                    <h6 style="color: #ffffff;">Brevet</h6>
+                                    <p class="small" style="color: #ffffff;">Collège Achille Mauzan, Gap</p>
+                                </div>
+                                
+                                <!-- PSC -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">2012 - 2018</small>
+                                    <h6 style="color: #ffffff;">Primary School Certificate (PSC)</h6>
+                                    <p class="small" style="color: #ffffff;">Bangladesh International School and College</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Expériences Professionnelles -->
+                            <div class="col-md-6">
+                                <h4 class="mb-4" style="color: #ffffff;">Expériences Professionnelles</h4>
+                                
+                                <!-- O'tacos -->
+                                <div class="timeline-item mb-4">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">2024</small>
+                                    <h6 style="color: #ffffff;">Travailleur Étudiant - Restauration</h6>
+                                    <p class="small" style="color: #ffffff;">O'tacos Gap</p>
+                                </div>
+                                
+                                <!-- Sun Valley Systems -->
+                                <div class="timeline-item mb-4">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">Janvier - Novembre 2023</small>
+                                    <h6 style="color: #ffffff;">Stage Informatique</h6>
+                                    <p class="small" style="color: #ffffff;">Sun Valley Systems, Porte Colombe - Réparation d'ordinateurs, accueil clients, chiffrement de données</p>
+                                </div>
+                                
+                                <!-- La Petite Ourse -->
+                                <div class="timeline-item mb-4">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">Mai - Juin 2023</small>
+                                    <h6 style="color: #ffffff;">Stage Électronique et Informatique</h6>
+                                    <p class="small" style="color: #ffffff;">La Petite Ourse Gap - Réparation d'imprimantes, vidéoprojecteurs, installations Windows</p>
+                                </div>
+                                
+                                <!-- Certification -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <small style="color: #ffffff;">Mars 2023</small>
+                                    <h6 style="color: #ffffff;">Certification Digital Marketing</h6>
+                                    <p class="small" style="color: #ffffff;">acesads Malta - Réparation robot, Digital marketing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================ -->
+    <!-- PROJECTS SECTION -->
+    <!-- ================================ -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Comptes Rendus</h2>
+            
+            <div class="row justify-content-center">
+                <!-- Mme. Beauvallet Card -->
+                <div class="col-lg-6 mb-4">
+                    <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('beauvallet')">
+                        <i class="fas fa-chalkboard-teacher fa-3x mb-3" style="color: var(--accent-color);"></i>
+                        <h4 style="color: #ffffff; margin-bottom: 1rem;">Mme. Beauvallet</h4>
+                        <p style="color: #b0b0b0; margin-bottom: 1rem;">Développement & Programmation</p>
+                        <i class="fas fa-chevron-down" id="arrow-beauvallet" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                        
+                        <!-- Hidden PDFs Section -->
+                        <div id="pdfs-beauvallet" class="pdfs-section">
+                            <div class="row">
+                                <!-- TP HTML -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fab fa-html5 fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP HTML</h6>
+                                        <a href="TP_HTML.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Java -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fab fa-java fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP Java</h6>
+                                        <a href="TP_Java.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Java 3 -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fab fa-java fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP Java 3</h6>
+                                        <a href="TP_java3.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP CSS -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fab fa-css3-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP CSS</h6>
+                                        <a href="TP_CSS.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M. Sotoca Card -->
+                <div class="col-lg-6 mb-4">
+                    <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('sotoca')">
+                        <i class="fas fa-user-tie fa-3x mb-3" style="color: var(--accent-color);"></i>
+                        <h4 style="color: #ffffff; margin-bottom: 1rem;">M. Sotoca</h4>
+                        <p style="color: #b0b0b0; margin-bottom: 1rem;">Réseaux & Systèmes</p>
+                        <i class="fas fa-chevron-down" id="arrow-sotoca" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                        
+                        <!-- Hidden PDFs Section -->
+                        <div id="pdfs-sotoca" class="pdfs-section">
+                            <div class="row">
+                                <!-- TP Portfolio -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fas fa-briefcase fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP Portfolio</h6>
+                                        <a href="TP_Portofolio.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Réseau -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fas fa-network-wired fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP Réseau</h6>
+                                        <a href="TP_Reseau.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Diagnostic -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fas fa-tools fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP Diagnostic</h6>
+                                        <a href="TP_logiciels_de_diagnostic.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Studio Code -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-2" style="background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <i class="fas fa-code fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem;">TP Studio Code</h6>
+                                        <a href="TP_studio.code.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================ -->
+    <!-- LANGUAGES SECTION -->
+    <!-- ================================ -->
+    <section id="languages" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Langues</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="modern-card text-center fade-in">
+                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
+                        <h6 style="color: #ffffff;">Bengali/Bangla</h6>
+                        <p style="color: #ffffff; font-size: 0.8rem;">Langue maternelle</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="modern-card text-center fade-in">
+                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
+                        <h6 style="color: #ffffff;">Français</h6>
+                        <p style="color: #ffffff; font-size: 0.8rem;">Couramment</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="modern-card text-center fade-in">
+                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
+                        <h6 style="color: #ffffff;">Anglais</h6>
+                        <p style="color: #ffffff; font-size: 0.8rem;">Couramment</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="modern-card text-center fade-in">
+                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
+                        <h6 style="color: #ffffff;">Hindi</h6>
+                        <p style="color: #ffffff; font-size: 0.8rem;">Couramment</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="modern-card text-center fade-in">
+                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
+                        <h6 style="color: #ffffff;">Ourdou</h6>
+                        <p style="color: #ffffff; font-size: 0.8rem;">Couramment</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="modern-card text-center fade-in">
+                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
+                        <h6 style="color: #ffffff;">Arabe</h6>
+                        <p style="color: #ffffff; font-size: 0.8rem;">Niveau intermédiaire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================ -->
+    <!-- CONTACT SECTION -->
+    <!-- ================================ -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Contact Info Cards -->
+                    <div class="row mb-5">
+                        <div class="col-md-4 mb-3">
+                            <div class="text-center modern-card fade-in">
+                                <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--accent-color);"></i>
+                                <h5 style="color: #ffffff;">Localisation</h5>
+                                <p style="color: #ffffff;">Gap, France</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="text-center modern-card fade-in" style="padding: 2rem 1rem;">
+                                <i class="fas fa-envelope fa-2x mb-3" style="color: var(--accent-color);"></i>
+                                <h5 style="color: #ffffff; margin-bottom: 1rem;">Email</h5>
+                                <p style="color: #ffffff; font-size: 0.8rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">mohammed.fahad.fmo@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="text-center modern-card fade-in">
+                                <i class="fas fa-phone fa-2x mb-3" style="color: var(--accent-color);"></i>
+                                <h5 style="color: #ffffff;">Téléphone</h5>
+                                <p style="color: #ffffff;">(+33) 06 04 45 99 34</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container fade-in">
+                        <h4 class="mb-4 text-center" style="color: #ffffff;">Envoyez-moi un message</h4>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Votre nom" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Votre email" required>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Sujet" required>
+                            <textarea class="form-control" rows="5" placeholder="Votre message" required style="resize: vertical;"></textarea>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-2"></i>Envoyer le message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================ -->
+    <!-- FOOTER -->
+    <!-- ================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links mb-4">
+                <a href="https://github.com/fahadfmo-dev" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p>&copy; 2024 Mohammed Fahad. Tous droits réservés.</p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#home" class="back-to-top">
+    <div id="backToTop">
         <i class="fas fa-chevron-up"></i>
-    </a>
+    </div>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- ================================ -->
+    <!-- SCRIPTS -->
+    <!-- ================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Back to top button functionality
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
+        // ================================
+        // LOADING SCREEN
+        // ================================
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
         });
 
-        // Smooth scrolling for navigation links
+        // ================================
+        // CUSTOM CURSOR
+        // ================================
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+        const links = document.querySelectorAll('a, button, input, textarea, .clickable');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+                follower.classList.add('active');
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+                follower.classList.remove('active');
+            });
+        });
+
+        // ================================
+        // PARTICLE BACKGROUND
+        // ================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(108, 99, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(108, 99, 255, ${0.1 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            initParticles();
+        });
+
+        initParticles();
+        animateParticles();
+
+        // ================================
+        // TEACHER CARDS TOGGLE
+        // ================================
+        function toggleTeacher(selectedTeacher) {
+            const teachers = ['beauvallet', 'sotoca'];
+            
+            teachers.forEach(teacher => {
+                const pdfsSection = document.getElementById('pdfs-' + teacher);
+                const arrow = document.getElementById('arrow-' + teacher);
+                const card = document.querySelector('[onclick="toggleTeacher(\'' + teacher + '\')"]');
+                
+                if (teacher === selectedTeacher) {
+                    if (pdfsSection.classList.contains('open')) {
+                        pdfsSection.classList.remove('open');
+                        arrow.classList.remove('fa-chevron-up');
+                        arrow.classList.add('fa-chevron-down');
+                        card.style.minHeight = '200px';
+                    } else {
+                        pdfsSection.classList.add('open');
+                        arrow.classList.remove('fa-chevron-down');
+                        arrow.classList.add('fa-chevron-up');
+                        card.style.minHeight = 'auto';
+                    }
+                } else {
+                    pdfsSection.classList.remove('open');
+                    arrow.classList.remove('fa-chevron-up');
+                    arrow.classList.add('fa-chevron-down');
+                    card.style.minHeight = '200px';
+                }
+            });
+        }
+
+        // ================================
+        // SMOOTH SCROLLING
+        // ================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -906,44 +1695,100 @@
             });
         });
 
-        // Navbar background change on scroll
+        // ================================
+        // SCROLL ANIMATIONS
+        // ================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ================================
+        // NAVBAR SCROLL EFFECT
+        // ================================
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
-            if (window.pageYOffset > 100) {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                backToTop.classList.add('show');
             } else {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.classList.remove('scrolled');
+                backToTop.classList.remove('show');
             }
         });
 
-        // Skill bars animation
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 500);
-            });
-        }
-
-        // Animate skill bars when skills section is in view
-        const skillsSection = document.querySelector('#skills');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
-                }
+        // ================================
+        // BACK TO TOP
+        // ================================
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
-        observer.observe(skillsSection);
 
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // ================================
+        // FORM SUBMISSION
+        // ================================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Merci pour votre message ! Je vous répondrai bientôt.');
-            this.reset();
+            
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check me-2"></i>Message envoyé !';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // ================================
+        // TYPING ANIMATION
+        // ================================
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero h1');
+                if (heroTitle) {
+                    const originalText = heroTitle.textContent;
+                    typeWriter(heroTitle, originalText, 80);
+                }
+            }, 1500);
         });
     </script>
 </body>

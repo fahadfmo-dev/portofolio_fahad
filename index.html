@@ -1189,89 +1189,6 @@
             z-index: 1;
         }
 
-        @keyframes githubPulse {
-            0%, 100% {
-                box-shadow: 
-                    0 15px 30px rgba(0, 245, 255, 0.8),
-                    0 0 40px rgba(0, 245, 255, 0.6),
-                    0 0 60px rgba(0, 245, 255, 0.4);
-            }
-            50% {
-                box-shadow: 
-                    0 20px 40px rgba(0, 245, 255, 1),
-                    0 0 60px rgba(0, 245, 255, 0.8),
-                    0 0 80px rgba(0, 245, 255, 0.6);
-            }
-        }
-
-        @keyframes rippleEffect {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(2);
-                opacity: 0;
-            }
-        }
-
-        /* Matrix rain effect for footer */
-        .footer-matrix {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .matrix-char {
-            position: absolute;
-            color: var(--accent-color);
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            opacity: 0;
-            animation: matrixFall 3s linear infinite;
-        }
-
-        @keyframes matrixFall {
-            0% {
-                top: -20px;
-                opacity: 1;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
-        }
-
-        /* Hexagon pattern background */
-        .footer-hex-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 25% 25%, var(--accent-color) 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, var(--accent-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            opacity: 0.05;
-            animation: hexMove 10s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes hexMove {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-            100% {
-                transform: translateX(40px) translateY(40px);
-            }
-        }
-
         /* ================================ */
         /* BACK TO TOP BUTTON */
         /* ================================ */
@@ -1910,6 +1827,28 @@
                                         </a>
                                     </div>
                                 </div>
+
+                                <!-- TP Portfolio (déplacé de M. Sotoca) -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-briefcase fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Portfolio</h6>
+                                        <a href="TP_Portofolio.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Studio Code (déplacé de M. Sotoca) -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-code fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Studio Code</h6>
+                                        <a href="TP_studio.code.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1926,17 +1865,6 @@
                         <!-- Hidden PDFs Section -->
                         <div id="pdfs-sotoca" class="pdfs-section">
                             <div class="row">
-                                <!-- TP Portfolio -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-briefcase fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Portfolio</h6>
-                                        <a href="TP_Portofolio.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
                                 <!-- TP Réseau -->
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
@@ -1952,19 +1880,8 @@
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
                                         <i class="fas fa-tools fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Diagnostic</h6>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Logiciels Diagnostic</h6>
                                         <a href="TP_logiciels_de_diagnostic.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Studio Code -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-code fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Studio Code</h6>
-                                        <a href="TP_studio.code.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
                                             <i class="fas fa-download"></i>
                                         </a>
                                     </div>
@@ -2505,12 +2422,10 @@
                 return;
             }
             
-            // Vérifier que le lien fonctionne
             console.log('GitHub link found:', githubLink.href);
             
             githubLink.addEventListener('mouseenter', function(e) {
                 console.log('Hover sur GitHub link');
-                // Créer des particules autour du lien GitHub
                 for(let i = 0; i < 4; i++) {
                     setTimeout(() => {
                         createGithubParticle(e.target);
@@ -2518,7 +2433,6 @@
                 }
             });
 
-            // S'assurer que le lien s'ouvre
             githubLink.addEventListener('click', function(e) {
                 console.log('Click sur GitHub link');
             });
@@ -2577,6 +2491,10 @@
             
             requestAnimationFrame(animateParticle);
         }
+
+        // ================================
+        // INITIALIZATION
+        // ================================
         window.addEventListener('load', function() {
             setTimeout(() => {
                 const heroTitle = document.querySelector('.hero h1');
@@ -2586,6 +2504,8 @@
                 }
                 
                 createFloatingElements();
+                createMatrixEffect();
+                initializeGithubEffects();
                 
                 document.querySelectorAll('.fade-in').forEach((el, index) => {
                     setTimeout(() => {
@@ -2648,6 +2568,20 @@
                 0% { background-position: 0% 50%; }
                 50% { background-position: 100% 50%; }
                 100% { background-position: 0% 50%; }
+            }
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+                25% {
+                    transform: translateY(-20px) rotate(90deg);
+                }
+                50% {
+                    transform: translateY(-40px) rotate(180deg);
+                }
+                75% {
+                    transform: translateY(-20px) rotate(270deg);
+                }
             }
         `;
         document.head.appendChild(style);

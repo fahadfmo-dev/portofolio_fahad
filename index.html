@@ -998,7 +998,7 @@
         }
 
         /* ================================ */
-        /* FOOTER */
+        /* FOOTER - CORRIGÉ */
         /* ================================ */
         .footer {
             background: var(--darker-bg);
@@ -1033,6 +1033,47 @@
             height: 2px;
             background: var(--accent-gradient);
             animation: footerScan 3s ease-in-out infinite;
+        }
+
+        /* MATRIX EFFECT - STYLES CORRIGÉS */
+        .footer-matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .matrix-char {
+            position: absolute;
+            color: var(--accent-color);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 0.7;
+            animation: matrixFall linear forwards;
+            text-shadow: 0 0 5px currentColor;
+            pointer-events: none;
+        }
+
+        @keyframes matrixFall {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
 
         @keyframes footerGlow {
@@ -1379,6 +1420,30 @@
             }
         }
 
+        /* ================================ */
+        /* FLOATING ANIMATIONS */
+        /* ================================ */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(-40px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-20px) rotate(270deg);
+            }
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(40px);
@@ -1445,6 +1510,10 @@
                 padding: 0.8rem 2rem;
                 font-size: 1rem;
             }
+
+            .matrix-char {
+                font-size: 12px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1464,6 +1533,10 @@
                 width: 200px;
                 height: 200px;
                 font-size: 3rem;
+            }
+
+            .matrix-char {
+                font-size: 10px;
             }
         }
     </style>
@@ -1880,7 +1953,7 @@
                                     </div>
                                 </div>
 
-                                <!-- TP Portfolio (déplacé de M. Sotoca) -->
+                                <!-- TP Portfolio -->
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
                                         <i class="fas fa-briefcase fa-2x mb-2" style="color: var(--accent-color);"></i>
@@ -1891,7 +1964,7 @@
                                     </div>
                                 </div>
 
-                                <!-- TP Studio Code (déplacé de M. Sotoca) -->
+                                <!-- TP Studio Code -->
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
                                         <i class="fas fa-code fa-2x mb-2" style="color: var(--accent-color);"></i>
@@ -1932,7 +2005,7 @@
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
                                         <i class="fas fa-tools fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Logiciels Diagnostic</h6>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Diagnostic</h6>
                                         <a href="TP_logiciels_de_diagnostic.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
                                             <i class="fas fa-download"></i>
                                         </a>
@@ -2062,7 +2135,6 @@
     <!-- FOOTER -->
     <!-- ================================ -->
     <footer class="footer">
-        <div class="footer-hex-pattern"></div>
         <div class="footer-matrix" id="footerMatrix"></div>
         <div class="container">
             <div class="social-links mb-4">
@@ -2436,7 +2508,7 @@
         });
 
         // ================================
-        // FOOTER MATRIX EFFECT
+        // FOOTER MATRIX EFFECT - CORRIGÉ
         // ================================
         function createMatrixEffect() {
             const footerMatrix = document.getElementById('footerMatrix');
@@ -2470,23 +2542,15 @@
         function initializeGithubEffects() {
             const githubLink = document.querySelector('.github-link');
             if (!githubLink) {
-                console.log('GitHub link not found');
                 return;
             }
             
-            console.log('GitHub link found:', githubLink.href);
-            
             githubLink.addEventListener('mouseenter', function(e) {
-                console.log('Hover sur GitHub link');
                 for(let i = 0; i < 4; i++) {
                     setTimeout(() => {
                         createGithubParticle(e.target);
                     }, i * 100);
                 }
-            });
-
-            githubLink.addEventListener('click', function(e) {
-                console.log('Click sur GitHub link');
             });
         }
 
@@ -2613,30 +2677,6 @@
                 konamiIndex = 0;
             }
         });
-
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rainbowShift {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-            }
-            @keyframes float {
-                0%, 100% {
-                    transform: translateY(0px) rotate(0deg);
-                }
-                25% {
-                    transform: translateY(-20px) rotate(90deg);
-                }
-                50% {
-                    transform: translateY(-40px) rotate(180deg);
-                }
-                75% {
-                    transform: translateY(-20px) rotate(270deg);
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>

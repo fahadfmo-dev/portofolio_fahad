@@ -658,6 +658,38 @@
         }
 
         /* ================================ */
+        /* ZIP BUTTON ANIMATION */
+        /* ================================ */
+        .zip-button-animation {
+            animation: zipPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes zipPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(40, 167, 69, 0.5);
+            }
+        }
+
+        .zip-button-animation:hover {
+            animation: zipBounce 0.6s ease-in-out infinite;
+            background: linear-gradient(135deg, #218838, #17a2b8) !important;
+        }
+
+        @keyframes zipBounce {
+            0%, 100% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* ================================ */
         /* SKILLS SECTION */
         /* ================================ */
         .skill-grid {
@@ -1817,14 +1849,34 @@
                                     </div>
                                 </div>
 
-                                <!-- TP CSS -->
+                                <!-- TP CSS avec deux options -->
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
                                         <i class="fab fa-css3-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP CSS</h6>
-                                        <a href="TP_CSS.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
+                                        <h6 style="color: #ffffff; margin: 0 0 15px 0; font-size: 0.9rem; font-weight: 600;">TP CSS</h6>
+                                        
+                                        <div class="d-flex gap-2 w-100 justify-content-center">
+                                            <!-- Option PDF -->
+                                            <div class="text-center">
+                                                <div class="mb-2">
+                                                    <i class="fas fa-file-pdf fa-2x" style="color: var(--accent-color);"></i>
+                                                </div>
+                                                <a href="TP_CSS.pdf" class="btn btn-sm btn-primary" download onclick="event.stopPropagation();" style="font-size: 0.7rem; padding: 0.25rem 0.5rem;">
+                                                    <i class="fas fa-download me-1"></i>PDF
+                                                </a>
+                                            </div>
+                                            
+                                            <!-- Option ZIP -->
+                                            <div class="text-center">
+                                                <div class="mb-2">
+                                                    <i class="fas fa-file-archive fa-2x" style="color: var(--accent-color);"></i>
+                                                </div>
+                                                <a href="site_css.zip" class="btn btn-sm zip-button-animation" download onclick="event.stopPropagation();" 
+                                                   style="font-size: 0.7rem; padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; transition: all 0.3s ease;">
+                                                    <i class="fas fa-download me-1"></i>ZIP
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -1880,7 +1932,7 @@
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
                                         <i class="fas fa-tools fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Logiciels Diagnostic</h6>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Diagnostic</h6>
                                         <a href="TP_logiciels_de_diagnostic.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
                                             <i class="fas fa-download"></i>
                                         </a>

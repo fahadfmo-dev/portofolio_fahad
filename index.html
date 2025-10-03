@@ -914,7 +914,7 @@
         }
 
         .pdfs-section.open {
-            max-height: 600px;
+            max-height: 800px;
             opacity: 1;
             margin-top: 2rem;
             animation: sectionExpand 0.6s ease;
@@ -998,7 +998,7 @@
         }
 
         /* ================================ */
-        /* FOOTER - CORRIGÉ */
+        /* FOOTER */
         /* ================================ */
         .footer {
             background: var(--darker-bg);
@@ -1035,7 +1035,6 @@
             animation: footerScan 3s ease-in-out infinite;
         }
 
-        /* MATRIX EFFECT - STYLES CORRIGÉS */
         .footer-matrix {
             position: absolute;
             top: 0;
@@ -1974,6 +1973,28 @@
                                         </a>
                                     </div>
                                 </div>
+
+                                <!-- TP Shifumi -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-hand-rock fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Shifumi</h6>
+                                        <a href="TP_Shifumi.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP CSS Avancé -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fab fa-css3-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP CSS Avancé</h6>
+                                        <a href="TP_CSS_Avancé.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2508,7 +2529,7 @@
         });
 
         // ================================
-        // FOOTER MATRIX EFFECT - CORRIGÉ
+        // FOOTER MATRIX EFFECT
         // ================================
         function createMatrixEffect() {
             const footerMatrix = document.getElementById('footerMatrix');

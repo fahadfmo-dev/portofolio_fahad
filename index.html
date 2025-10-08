@@ -690,6 +690,38 @@
         }
 
         /* ================================ */
+        /* ODT BUTTON ANIMATION */
+        /* ================================ */
+        .odt-button-animation {
+            animation: odtPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes odtPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(33, 150, 243, 0.5);
+            }
+        }
+
+        .odt-button-animation:hover {
+            animation: odtBounce 0.6s ease-in-out infinite;
+            background: linear-gradient(135deg, #1976D2, #1565C0) !important;
+        }
+
+        @keyframes odtBounce {
+            0%, 100% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* ================================ */
         /* SKILLS SECTION */
         /* ================================ */
         .skill-grid {
@@ -2063,6 +2095,37 @@
                                         <a href="tp_commandes_dos.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
                                             <i class="fas fa-download"></i>
                                         </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Tech avec deux options -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-laptop-code fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0 0 15px 0; font-size: 0.9rem; font-weight: 600;">TP Tech</h6>
+                                        
+                                        <div class="d-flex gap-2 w-100 justify-content-center">
+                                            <!-- Option PDF -->
+                                            <div class="text-center">
+                                                <div class="mb-2">
+                                                    <i class="fas fa-file-pdf fa-2x" style="color: var(--accent-color);"></i>
+                                                </div>
+                                                <a href="TP_TechCorp.pdf" class="btn btn-sm btn-primary" download onclick="event.stopPropagation();" style="font-size: 0.7rem; padding: 0.25rem 0.5rem;">
+                                                    <i class="fas fa-download me-1"></i>PDF
+                                                </a>
+                                            </div>
+                                            
+                                            <!-- Option ODT -->
+                                            <div class="text-center">
+                                                <div class="mb-2">
+                                                    <i class="fas fa-file-word fa-2x" style="color: var(--accent-color);"></i>
+                                                </div>
+                                                <a href="TP_tech.odt" class="btn btn-sm odt-button-animation" download onclick="event.stopPropagation();" 
+                                                   style="font-size: 0.7rem; padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #2196F3, #1976D2); color: white; border: none; transition: all 0.3s ease;">
+                                                    <i class="fas fa-download me-1"></i>ODT
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

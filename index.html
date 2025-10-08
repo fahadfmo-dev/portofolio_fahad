@@ -987,19 +987,28 @@
             z-index: 11;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            filter: blur(0px);
         }
 
         .pdfs-section.open.has-scroll .scroll-indicator {
             opacity: 1;
+            filter: blur(0px);
+            transform: translateX(-50%) translateY(0) scale(1);
         }
 
+        .pdfs-section.open.scrolled-once .scroll-indicator,
         .pdfs-section.open.scrolled-bottom .scroll-indicator {
-            opacity: 0;
+            opacity: 0 !important;
+            filter: blur(15px) !important;
+            transform: translateX(-50%) translateY(30px) scale(0.7) !important;
+            transition: opacity 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                        filter 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                        transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
         }
 
         .scroll-indicator-line {
@@ -2734,7 +2743,39 @@
             const pdfSections = document.querySelectorAll('.pdfs-section');
             
             pdfSections.forEach(section => {
+                let lastScrollTop = 0;
+                let hideTimeout;
+                
                 section.addEventListener('scroll', function() {
+                    const scrollTop = this.scrollTop;
+                    const isScrollingUp = scrollTop < lastScrollTop;
+                    
+                    // Clear le timeout précédent
+                    clearTimeout(hideTimeout);
+                    
+                    // Si on scroll vers le bas, disparaître immédiatement
+                    if (!isScrollingUp && scrollTop > 10) {
+                        this.classList.add('scrolled-once');
+                    }
+                    // Si on scroll vers le haut, réapparaître
+                    else if (isScrollingUp) {
+                        this.classList.remove('scrolled-once');
+                        
+                        // Disparaître à nouveau après 2 secondes d'inactivité
+                        hideTimeout = setTimeout(() => {
+                            if (this.scrollTop > 10) {
+                                this.classList.add('scrolled-once');
+                            }
+                        }, 2000);
+                    }
+                    // Si on est tout en haut, toujours afficher
+                    else if (scrollTop <= 10) {
+                        this.classList.remove('scrolled-once');
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                    
+                    // Vérifier si scrollable
                     checkScrollable(this);
                 });
             });

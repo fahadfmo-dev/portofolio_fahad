@@ -43,7 +43,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
         }
 
         body {
@@ -82,12 +81,6 @@
             }
         }
 
-        @keyframes rainbowShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         /* ================================ */
         /* SCROLLBAR */
         /* ================================ */
@@ -112,49 +105,14 @@
         }
 
         /* ================================ */
-        /* CUSTOM CURSOR */
+        /* CUSTOM CURSOR - DISABLED FOR PERFORMANCE */
         /* ================================ */
         .cursor {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-            backdrop-filter: blur(2px);
+            display: none;
         }
 
         .cursor-follower {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform: translate(-50%, -50%);
-            opacity: 0.3;
-            filter: blur(2px);
-        }
-
-        .cursor.active {
-            transform: translate(-50%, -50%) scale(0.5);
-            background: var(--accent-color);
-            box-shadow: 0 0 20px var(--glow-strong);
-        }
-
-        .cursor-follower.active {
-            transform: translate(-50%, -50%) scale(2);
-            opacity: 0.6;
-        }
-
-        a, button, input, textarea, .clickable {
-            cursor: none;
+            display: none;
         }
 
         /* ================================ */
@@ -442,23 +400,6 @@
             }
             50% {
                 transform: scale(1.1);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.3;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(50px) rotate(360deg);
-                opacity: 0;
             }
         }
 
@@ -1727,14 +1668,6 @@
         /* RESPONSIVE */
         /* ================================ */
         @media (max-width: 768px) {
-            .cursor, .cursor-follower {
-                display: none;
-            }
-
-            * {
-                cursor: auto !important;
-            }
-
             .hero h1 {
                 font-size: 3rem;
             }
@@ -1814,10 +1747,6 @@
     <div class="loader" id="loader">
         <div class="loader-inner"></div>
     </div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
     <!-- Particle Background Canvas -->
     <canvas id="particles-canvas"></canvas>
@@ -2329,7 +2258,7 @@
                                 <!-- TP Formulaires -->
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-edit fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <i class="fas fa-wpforms fa-2x mb-2" style="color: var(--accent-color);"></i>
                                         <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Formulaires</h6>
                                         <a href="Mme_Beauvallet/TP_formulaires.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
                                             <i class="fas fa-download"></i>
@@ -2337,12 +2266,23 @@
                                     </div>
                                 </div>
 
-                                <!-- TP PIA 2 -->
+                                <!-- TP Responsive Design -->
                                 <div class="col-6 mb-3">
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-lock fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP PIA 2</h6>
-                                        <a href="Mme_Beauvallet/TP_PIA2.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                        <i class="fas fa-mobile-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Responsive Design</h6>
+                                        <a href="Mme_Beauvallet/TP_responsive_design.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP B3 Laboratoire Informatique -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-flask fa-2x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP B3 Laboratoire</h6>
+                                        <a href="Mme_Beauvallet/TP_B3_laboratoire_informatique.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
                                             <i class="fas fa-download"></i>
                                         </a>
                                     </div>
@@ -2373,7 +2313,7 @@
                                     <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
                                         <i class="fas fa-file-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
                                         <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Création Documentation</h6>
-                                        <a href="M_Sotoca/TP_Création_d’une_documentation.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                        <a href="M_Sotoca/TP_Création%20d'une%20documentation.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
                                             <i class="fas fa-download"></i>
                                         </a>
                                     </div>
@@ -2629,50 +2569,9 @@
         });
 
         // ================================
-        // ENHANCED CURSOR
+        // CUSTOM CURSOR - DISABLED FOR PERFORMANCE
         // ================================
-        const cursor = document.querySelector('.cursor');
-        const follower = document.querySelector('.cursor-follower');
-        const links = document.querySelectorAll('a, button, input, textarea, .clickable');
-
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        let followerX = 0, followerY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function updateCursor() {
-            cursorX += (mouseX - cursorX) * 0.8;
-            cursorY += (mouseY - cursorY) * 0.8;
-            
-            followerX += (mouseX - followerX) * 0.15;
-            followerY += (mouseY - followerY) * 0.15;
-            
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            
-            follower.style.left = followerX + 'px';
-            follower.style.top = followerY + 'px';
-            
-            requestAnimationFrame(updateCursor);
-        }
-
-        updateCursor();
-
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                cursor.classList.add('active');
-                follower.classList.add('active');
-            });
-            
-            link.addEventListener('mouseleave', () => {
-                cursor.classList.remove('active');
-                follower.classList.remove('active');
-            });
-        });
+        // Cursor effect disabled to improve performance on lower-end devices
 
         // ================================
         // ENHANCED PARTICLE SYSTEM

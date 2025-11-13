@@ -53,6 +53,7 @@
             overflow-x: hidden;
             position: relative;
             font-weight: 400;
+            cursor: default;
         }
 
         body::before {
@@ -113,6 +114,19 @@
 
         .cursor-follower {
             display: none;
+        }
+
+        /* Curseurs par défaut pour les éléments interactifs */
+        a, button, input[type="submit"], input[type="button"], .btn, .clickable {
+            cursor: pointer !important;
+        }
+
+        input, textarea, select {
+            cursor: text !important;
+        }
+
+        .navbar-toggler {
+            cursor: pointer !important;
         }
 
         /* ================================ */
@@ -488,6 +502,7 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(20px);
+            cursor: default;
         }
 
         .modern-card::before {
@@ -705,6 +720,7 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(15px);
+            cursor: default;
         }
 
         .skill-item::before {
@@ -891,6 +907,11 @@
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transform-style: preserve-3d;
             perspective: 1000px;
+            cursor: pointer !important;
+        }
+
+        .teacher-card * {
+            cursor: pointer !important;
         }
 
         .teacher-card:hover {
@@ -1170,6 +1191,11 @@
         .pdfs-section .d-flex {
             height: 100%;
             min-height: 140px;
+            cursor: pointer !important;
+        }
+
+        .pdfs-section .d-flex * {
+            cursor: pointer !important;
         }
 
         .pdfs-section .d-flex h6 {
@@ -1413,6 +1439,11 @@
             font-size: 1.5rem;
             backdrop-filter: blur(15px);
             z-index: 1000;
+            cursor: pointer !important;
+        }
+
+        .social-links a * {
+            cursor: pointer !important;
         }
 
         .social-links a::before {
@@ -1486,13 +1517,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: none;
+            cursor: pointer !important;
             opacity: 0;
             visibility: hidden;
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 1000;
             box-shadow: 0 8px 25px rgba(0, 245, 255, 0.4);
             backdrop-filter: blur(15px);
+        }
+
+        #backToTop * {
+            cursor: pointer !important;
         }
 
         #backToTop:hover {

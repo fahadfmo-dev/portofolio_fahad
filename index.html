@@ -1854,7 +1854,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="contact-info-item mb-3" style="padding: 1rem; background: rgba(0,245,255,0.05); border-radius: 10px; border-left: 4px solid var(--accent-color);">
-                                            <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Email :</strong> mohammed.fahad.fmo@gmail.com</p>
+                                            <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Email :</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d5052555c50505859135b5c555c59135b50527d5a505c5451135e5250">[email&#160;protected]</a></p>
                                         </div>
                                         <div class="contact-info-item mb-3" style="padding: 1rem; background: rgba(0,245,255,0.05); border-radius: 10px; border-left: 4px solid var(--accent-color);">
                                             <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Téléphone :</strong> (+33) 06 04 45 99 34</p>
@@ -2110,9 +2110,46 @@
         <div class="container">
             <h2 class="section-title fade-in">Comptes Rendus</h2>
             
+            <!-- Barre de recherche -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="search-container" style="position: relative;">
+                        <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--accent-color); font-size: 1.2rem;"></i>
+                        <input 
+                            type="text" 
+                            id="searchTP" 
+                            placeholder="Rechercher un TP (ex: Java, CSS, Réseau, Linux...)"
+                            style="
+                                width: 100%;
+                                padding: 18px 20px 18px 55px;
+                                background: var(--glass-bg);
+                                border: 2px solid var(--glass-border);
+                                border-radius: 50px;
+                                color: var(--text-light);
+                                font-size: 1rem;
+                                font-weight: 500;
+                                transition: all 0.3s ease;
+                                outline: none;
+                            "
+                            onkeyup="searchTPs()"
+                            onfocus="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 0 20px rgba(0, 245, 255, 0.3)';"
+                            onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';"
+                        />
+                        <div id="searchResults" style="
+                            margin-top: 15px;
+                            text-align: center;
+                            color: var(--text-muted);
+                            font-size: 0.95rem;
+                            font-weight: 500;
+                            display: none;
+                        "></div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="row justify-content-center">
                 <!-- Mme. Beauvallet Card -->
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('beauvallet')">
                         <i class="fas fa-chalkboard-teacher fa-3x mb-3" style="color: var(--accent-color);"></i>
                         <h4 style="color: #ffffff; margin-bottom: 1rem; font-weight: 700;">Mme. Beauvallet</h4>
@@ -2409,7 +2446,7 @@
                 </div>
 
                 <!-- M. Sotoca Card -->
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('sotoca')">
                         <i class="fas fa-user-tie fa-3x mb-3" style="color: var(--accent-color);"></i>
                         <h4 style="color: #ffffff; margin-bottom: 1rem; font-weight: 700;">M. Sotoca</h4>
@@ -2529,6 +2566,114 @@
         </a>
     </div>
 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Atelier Card -->
+                <div class="col-lg-4 mb-4">
+                    <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('atelier')">
+                        <i class="fas fa-tools fa-3x mb-3" style="color: var(--accent-color);"></i>
+                        <h4 style="color: #ffffff; margin-bottom: 1rem; font-weight: 700;">Atelier</h4>
+                        <p style="color: var(--text-accent); margin-bottom: 1rem; font-weight: 500;">Travaux Pratiques & Projets</p>
+                        <i class="fas fa-chevron-down" id="arrow-atelier" style="color: var(--accent-color); font-size: 1.2rem; transition: transform 0.3s ease;"></i>
+                        
+                        <!-- Hidden PDFs Section -->
+                        <div id="pdfs-atelier" class="pdfs-section">
+                            <div class="scroll-indicator">
+                                <div class="scroll-indicator-line"></div>
+                                <div class="scroll-indicator-text">Scroll</div>
+                                <div class="scroll-indicator-arrow"></div>
+                            </div>
+                            <div class="row">
+                                <!-- TP Installation Poste -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-desktop fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Installation Poste</h6>
+                                        <a href="Atelier/TP_Installation_Poste.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Assemblage PC -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-cogs fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Assemblage PC</h6>
+                                        <a href="Atelier/TP_Assemblage_PC.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Maintenance -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-wrench fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Maintenance</h6>
+                                        <a href="Atelier/TP_Maintenance.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Câblage Réseau -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-ethernet fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Câblage Réseau</h6>
+                                        <a href="Atelier/TP_Cablage_Reseau.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Virtualisation -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-server fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Virtualisation</h6>
+                                        <a href="Atelier/TP_Virtualisation.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Configuration Switch -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-network-wired fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Config Switch</h6>
+                                        <a href="Atelier/TP_Config_Switch.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Dépannage -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-screwdriver fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Dépannage</h6>
+                                        <a href="Atelier/TP_Depannage.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- TP Sécurité Physique -->
+                                <div class="col-6 mb-3">
+                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
+                                        <i class="fas fa-lock fa-1x mb-2" style="color: var(--accent-color);"></i>
+                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Sécurité Physique</h6>
+                                        <a href="Atelier/TP_Securite_Physique.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -3053,7 +3198,7 @@
                             <div class="text-center modern-card fade-in" style="padding: 2rem 1rem;">
                                 <i class="fas fa-envelope fa-2x mb-3" style="color: var(--accent-color);"></i>
                                 <h5 style="color: #ffffff; margin-bottom: 1rem; font-weight: 600;">Email</h5>
-                                <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">mohammed.fahad.fmo@gmail.com</p>
+                                <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="35585a5d54585850511b53545d54511b53585a755258545c591b565a58">[email&#160;protected]</a></p>
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -3092,7 +3237,7 @@
     <!-- ================================ -->
     <!-- SCRIPTS -->
     <!-- ================================ -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // ================================
         // LOADING SCREEN
@@ -3203,7 +3348,7 @@
         // TEACHER CARDS TOGGLE
         // ================================
         function toggleTeacher(selectedTeacher) {
-            const teachers = ['beauvallet', 'sotoca'];
+            const teachers = ['beauvallet', 'sotoca', 'atelier'];
             
             teachers.forEach(teacher => {
                 const pdfsSection = document.getElementById('pdfs-' + teacher);
@@ -3610,9 +3755,8 @@
                     document.body.style.animation = 'rainbowShift 3s ease infinite';
                     
                     setTimeout(() => {
-                        document.body.style.background = 'var(--dark-bg)';
-                        document.body.style.animation = 'none';
-                    }, 5000);
+                        alert('🎮 Konami Code Activé ! Mode Arc-en-ciel ! 🌈');
+                    }, 500);
                     
                     konamiIndex = 0;
                 }
@@ -3621,5 +3765,8 @@
             }
         });
     </script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

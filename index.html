@@ -130,6 +130,19 @@
         }
 
         /* ================================ */
+        /* SEARCH INPUT STYLES */
+        /* ================================ */
+        #searchTP::placeholder {
+            color: var(--text-muted);
+            opacity: 0.7;
+            font-weight: 400;
+        }
+
+        #searchTP:focus::placeholder {
+            opacity: 0.5;
+        }
+
+        /* ================================ */
         /* PARTICLE BACKGROUND */
         /* ================================ */
         #particles-canvas {
@@ -3695,6 +3708,100 @@
             
             requestAnimationFrame(animateParticle);
         }
+
+        // ================================
+        // TP SEARCH FUNCTIONALITY
+        // ================================
+        
+        // Fonction pour normaliser le texte (enlever accents, minuscules, trim)
+        function normalizeText(text) {
+            return text
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .trim();
+        }
+        
+        function searchTPs() {
+            const searchInput = document.getElementById('searchTP');
+            const searchTerm = normalizeText(searchInput.value);
+            const searchResults = document.getElementById('searchResults');
+            
+            // Récupérer tous les TPs (cartes PDF)
+            const allTPCards = document.querySelectorAll('.pdfs-section .col-6');
+            let visibleCount = 0;
+            let totalCount = allTPCards.length;
+            
+            // Si la recherche est vide, tout afficher
+            if (searchTerm === '') {
+                allTPCards.forEach(card => {
+                    card.style.display = '';
+                    card.style.animation = 'none';
+                });
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            // Ouvrir toutes les sections pour la recherche
+            const teachers = ['beauvallet', 'sotoca', 'atelier'];
+            teachers.forEach(teacher => {
+                const pdfsSection = document.getElementById('pdfs-' + teacher);
+                const arrow = document.getElementById('arrow-' + teacher);
+                const card = document.querySelector('[onclick="toggleTeacher(\'' + teacher + '\')"]');
+                
+                if (pdfsSection && !pdfsSection.classList.contains('open')) {
+                    pdfsSection.classList.add('open');
+                    if (arrow) {
+                        arrow.classList.remove('fa-chevron-down');
+                        arrow.classList.add('fa-chevron-up');
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                    if (card) {
+                        card.style.minHeight = 'auto';
+                    }
+                }
+            });
+            
+            // Filtrer les TPs
+            allTPCards.forEach(card => {
+                const tpTitle = card.querySelector('h6');
+                if (tpTitle) {
+                    const normalizedTitle = normalizeText(tpTitle.textContent);
+                    
+                    if (normalizedTitle.includes(searchTerm)) {
+                        card.style.display = '';
+                        card.style.animation = 'fadeInUp 0.5s ease forwards';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Afficher le résultat de la recherche
+            searchResults.style.display = 'block';
+            if (visibleCount === 0) {
+                searchResults.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Aucun TP trouvé pour "' + searchInput.value + '"';
+                searchResults.style.color = '#ff6b6b';
+            } else if (visibleCount === 1) {
+                searchResults.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + visibleCount + ' TP trouvé';
+                searchResults.style.color = 'var(--accent-color)';
+            } else {
+                searchResults.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + visibleCount + ' TPs trouvés';
+                searchResults.style.color = 'var(--accent-color)';
+            }
+        }
+        
+        // Réinitialiser la recherche quand on clique sur une carte enseignant
+        const originalToggleTeacher = toggleTeacher;
+        window.toggleTeacherWithReset = function(teacher) {
+            const searchInput = document.getElementById('searchTP');
+            if (searchInput && searchInput.value !== '') {
+                searchInput.value = '';
+                searchTPs();
+            }
+            originalToggleTeacher(teacher);
+        };
 
         // ================================
         // INITIALIZATION

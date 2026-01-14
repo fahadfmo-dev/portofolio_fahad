@@ -2127,7 +2127,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8">
                     <div class="search-container" style="position: relative;">
-                        <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--accent-color); font-size: 1.2rem;"></i>
+                        <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--accent-color); font-size: 1.2rem; z-index: 2;"></i>
                         <input 
                             type="text" 
                             id="searchTP" 
@@ -2148,14 +2148,27 @@
                             onfocus="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 0 20px rgba(0, 245, 255, 0.3)';"
                             onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';"
                         />
-                        <div id="searchResults" style="
-                            margin-top: 15px;
-                            text-align: center;
-                            color: var(--text-muted);
-                            font-size: 0.95rem;
-                            font-weight: 500;
+                        
+                        <!-- Zone de résultats de recherche -->
+                        <div id="searchResultsContainer" style="
                             display: none;
-                        "></div>
+                            margin-top: 20px;
+                            background: var(--card-bg);
+                            border: 1px solid var(--card-border);
+                            border-radius: 20px;
+                            padding: 25px;
+                            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.2);
+                        ">
+                            <div id="searchResultsHeader" style="
+                                text-align: center;
+                                color: var(--text-muted);
+                                font-size: 0.95rem;
+                                font-weight: 600;
+                                margin-bottom: 20px;
+                            "></div>
+                            
+                            <div id="searchResultsList" class="row"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3668,85 +3681,66 @@
         function searchTPs() {
             const searchInput = document.getElementById('searchTP');
             const searchTerm = normalizeText(searchInput.value);
-            const searchResults = document.getElementById('searchResults');
+            const searchResultsContainer = document.getElementById('searchResultsContainer');
+            const searchResultsHeader = document.getElementById('searchResultsHeader');
+            const searchResultsList = document.getElementById('searchResultsList');
             
-            // Récupérer tous les TPs (cartes PDF)
-            const allTPCards = document.querySelectorAll('.pdfs-section .col-6');
-            let visibleCount = 0;
-            let totalCount = allTPCards.length;
-            
-            // Si la recherche est vide, tout réinitialiser
+            // Si la recherche est vide, cacher les résultats
             if (searchTerm === '') {
-                allTPCards.forEach(card => {
-                    card.style.display = '';
-                    card.style.animation = 'none';
-                });
-                searchResults.style.display = 'none';
-                
-                // Réinitialiser les sections
-                const teachers = ['beauvallet', 'sotoca', 'atelier'];
-                teachers.forEach(teacher => {
-                    const pdfsSection = document.getElementById('pdfs-' + teacher);
-                    if (pdfsSection) {
-                        pdfsSection.style.maxHeight = '';
-                    }
-                });
+                searchResultsContainer.style.display = 'none';
                 return;
             }
             
-            // Ouvrir toutes les sections pour la recherche
-            const teachers = ['beauvallet', 'sotoca', 'atelier'];
-            teachers.forEach(teacher => {
-                const pdfsSection = document.getElementById('pdfs-' + teacher);
-                const arrow = document.getElementById('arrow-' + teacher);
-                const card = document.querySelector('[onclick="toggleTeacher(\'' + teacher + '\')"]');
-                
-                if (pdfsSection && !pdfsSection.classList.contains('open')) {
-                    pdfsSection.classList.add('open');
-                    // Forcer une max-height très grande pour la recherche
-                    pdfsSection.style.maxHeight = '3000px';
-                    
-                    if (arrow) {
-                        arrow.classList.remove('fa-chevron-down');
-                        arrow.classList.add('fa-chevron-up');
-                        arrow.style.transform = 'rotate(180deg)';
-                    }
-                    if (card) {
-                        card.style.minHeight = 'auto';
-                    }
-                } else if (pdfsSection) {
-                    // Si déjà ouverte, forcer quand même une max-height grande
-                    pdfsSection.style.maxHeight = '3000px';
-                }
-            });
+            // Récupérer tous les TPs
+            const allTPCards = document.querySelectorAll('.pdfs-section .col-6');
+            let foundTPs = [];
             
-            // Filtrer les TPs
+            // Chercher les TPs qui correspondent
             allTPCards.forEach(card => {
                 const tpTitle = card.querySelector('h6');
                 if (tpTitle) {
                     const normalizedTitle = normalizeText(tpTitle.textContent);
                     
                     if (normalizedTitle.includes(searchTerm)) {
-                        card.style.display = '';
-                        card.style.animation = 'fadeInUp 0.5s ease forwards';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
+                        // Cloner la carte pour l'afficher dans les résultats
+                        foundTPs.push(card.cloneNode(true));
                     }
                 }
             });
             
-            // Afficher le résultat de la recherche
-            searchResults.style.display = 'block';
-            if (visibleCount === 0) {
-                searchResults.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Aucun TP trouvé pour "' + searchInput.value + '"';
-                searchResults.style.color = '#ff6b6b';
-            } else if (visibleCount === 1) {
-                searchResults.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + visibleCount + ' TP trouvé';
-                searchResults.style.color = 'var(--accent-color)';
+            // Vider la liste des résultats
+            searchResultsList.innerHTML = '';
+            
+            // Afficher les résultats
+            if (foundTPs.length === 0) {
+                searchResultsHeader.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Aucun TP trouvé pour "' + searchInput.value + '"';
+                searchResultsHeader.style.color = '#ff6b6b';
+                searchResultsContainer.style.display = 'block';
             } else {
-                searchResults.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + visibleCount + ' TPs trouvés';
-                searchResults.style.color = 'var(--accent-color)';
+                // Afficher le nombre de résultats
+                if (foundTPs.length === 1) {
+                    searchResultsHeader.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + foundTPs.length + ' TP trouvé';
+                } else {
+                    searchResultsHeader.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + foundTPs.length + ' TPs trouvés';
+                }
+                searchResultsHeader.style.color = 'var(--accent-color)';
+                
+                // Ajouter les cartes trouvées
+                foundTPs.forEach((card, index) => {
+                    // Animation d'apparition
+                    card.style.animation = 'fadeInUp 0.5s ease forwards';
+                    card.style.animationDelay = (index * 0.1) + 's';
+                    card.style.opacity = '0';
+                    
+                    searchResultsList.appendChild(card);
+                    
+                    // Forcer l'animation
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, index * 100);
+                });
+                
+                searchResultsContainer.style.display = 'block';
             }
         }
         

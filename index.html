@@ -106,31 +106,481 @@
         }
 
         /* ================================ */
-        /* CUSTOM CURSOR - DISABLED FOR PERFORMANCE */
         /* ================================ */
-        .cursor {
-            display: none;
-        }
-
-        .cursor-follower {
-            display: none;
-        }
-
-        /* Curseurs par défaut pour les éléments interactifs */
-        a, button, input[type="submit"], input[type="button"], .btn, .clickable {
-            cursor: pointer !important;
-        }
-
-        input, textarea, select {
-            cursor: text !important;
-        }
-
-        .navbar-toggler {
-            cursor: pointer !important;
-        }
-
         /* ================================ */
-        /* SEARCH INPUT STYLES */
+        /* ================================ */
+        /* ================================ */
+        /* ================================ */
+        /* BIBLIOTHÈQUE - DESIGN COMPACT EN GRILLE */
+        /* ================================ */
+        
+        /* Titre de la bibliothèque */
+        .library-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .library-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #64c8ff, transparent);
+            border-radius: 2px;
+        }
+        
+        .library-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 25px;
+        }
+        
+        /* Barre de recherche compacte */
+        .library-search-container {
+            position: relative;
+            background: rgba(15, 30, 50, 0.5);
+            border: 1.5px solid rgba(100, 200, 255, 0.2);
+            border-radius: 50px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .library-search-container:focus-within {
+            border-color: rgba(100, 200, 255, 0.5);
+            box-shadow: 0 0 25px rgba(100, 200, 255, 0.15);
+        }
+        
+        .library-search-icon {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: #64c8ff;
+            z-index: 2;
+        }
+        
+        .library-search-input {
+            width: 100%;
+            padding: 16px 22px 16px 55px;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 400;
+            outline: none;
+        }
+        
+        .library-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+        
+        /* Conteneur des filtres */
+        .library-filters-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 45px;
+        }
+        
+        /* Boutons de filtre compacts */
+        .library-filter-btn {
+            position: relative;
+            padding: 12px 28px;
+            background: rgba(20, 35, 55, 0.6);
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .library-filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.12), rgba(70, 180, 255, 0.12));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .library-filter-btn:hover {
+            border-color: rgba(100, 200, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .library-filter-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .library-filter-btn.active {
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.85), rgba(70, 180, 255, 0.85));
+            border-color: rgba(100, 200, 255, 0.4);
+            color: #0a1929;
+            font-weight: 700;
+            box-shadow: 0 4px 18px rgba(100, 200, 255, 0.25);
+        }
+        
+        .library-filter-btn.active::before {
+            opacity: 0;
+        }
+        
+        .library-filter-btn i {
+            font-size: 0.95rem;
+            margin-right: 6px;
+            transition: transform 0.3s ease;
+        }
+        
+        .library-filter-btn:hover i,
+        .library-filter-btn.active i {
+            transform: scale(1.08);
+        }
+        
+        /* Message d'instruction */
+        .library-instruction {
+            text-align: center;
+            padding: 50px 20px;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .library-instruction i {
+            font-size: 1.2rem;
+            color: #64c8ff;
+            margin-right: 8px;
+        }
+        
+        /* Conteneur de catégorie */
+        .library-category {
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        .library-category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding: 18px 25px;
+            background: linear-gradient(135deg, rgba(20, 40, 65, 0.6), rgba(15, 30, 50, 0.7));
+            border-radius: 15px;
+            border: 1px solid rgba(100, 200, 255, 0.15);
+        }
+        
+        .library-category-header i {
+            font-size: 1.5rem;
+            color: #64c8ff;
+        }
+        
+        .library-category-header span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            flex: 1;
+        }
+        
+        .library-category-badge {
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            color: #64c8ff !important;
+            background: rgba(100, 200, 255, 0.12);
+            padding: 5px 14px;
+            border-radius: 18px;
+            border: 1px solid rgba(100, 200, 255, 0.25);
+        }
+        
+        /* Grille de documents COMPACTE */
+        .library-documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 18px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        /* Carte de document COMPACTE */
+        .library-doc-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 22px 20px;
+            background: linear-gradient(135deg, rgba(20, 40, 65, 0.5), rgba(15, 30, 50, 0.6));
+            border: 1.5px solid rgba(100, 200, 255, 0.12);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            min-height: 140px;
+        }
+        
+        .library-doc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.06), rgba(70, 180, 255, 0.06));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .library-doc-card:hover {
+            border-color: rgba(100, 200, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(100, 200, 255, 0.18);
+        }
+        
+        .library-doc-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Header avec icône et flèche */
+        .library-doc-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Icône du document compacte */
+        .library-doc-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.12), rgba(70, 180, 255, 0.15));
+            border-radius: 12px;
+            border: 1px solid rgba(100, 200, 255, 0.25);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .library-doc-icon i {
+            font-size: 1.4rem;
+            color: #64c8ff;
+            transition: all 0.3s ease;
+        }
+        
+        .library-doc-card:hover .library-doc-icon {
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.2), rgba(70, 180, 255, 0.25));
+            border-color: rgba(100, 200, 255, 0.4);
+            transform: scale(1.08) rotate(3deg);
+        }
+        
+        .library-doc-card:hover .library-doc-icon i {
+            transform: scale(1.05);
+        }
+        
+        /* Flèche d'action compacte */
+        .library-doc-arrow {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(100, 200, 255, 0.1);
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .library-doc-arrow i {
+            font-size: 1rem;
+            color: #64c8ff;
+            transition: transform 0.3s ease;
+        }
+        
+        .library-doc-card:hover .library-doc-arrow {
+            background: #64c8ff;
+        }
+        
+        .library-doc-card:hover .library-doc-arrow i {
+            color: #0a1929;
+            transform: translateX(3px);
+        }
+        
+        /* Contenu du document */
+        .library-doc-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .library-doc-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+        
+        .library-doc-card:hover .library-doc-title {
+            color: #64c8ff;
+        }
+        
+        .library-doc-subtitle {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.45);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        
+        /* Tags du document */
+        .library-doc-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        
+        .library-doc-tag {
+            padding: 4px 10px;
+            background: rgba(100, 200, 255, 0.1);
+            border: 1px solid rgba(100, 200, 255, 0.2);
+            border-radius: 12px;
+            font-size: 0.7rem;
+            color: #64c8ff;
+            font-weight: 600;
+        }
+        
+        /* Zone de résultats de recherche */
+        .library-results-container {
+            margin-top: 40px;
+        }
+        
+        .library-results-header {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #64c8ff;
+            margin-bottom: 25px;
+        }
+        
+        /* Multi-format buttons compacts */
+        .library-doc-actions {
+            display: flex;
+            gap: 6px;
+            position: relative;
+            z-index: 1;
+            margin-top: 8px;
+        }
+        
+        .library-doc-btn {
+            flex: 1;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #64c8ff, #46b4ff);
+            border: none;
+            border-radius: 18px;
+            color: #0a1929;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .library-doc-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(100, 200, 255, 0.35);
+            color: #0a1929;
+        }
+        
+        .library-doc-btn i {
+            font-size: 0.85rem;
+        }
+        
+        .library-doc-btn.btn-zip {
+            background: linear-gradient(135deg, #9b7dff, #8060ff);
+        }
+        
+        .library-doc-btn.btn-odt {
+            background: linear-gradient(135deg, #ff9d64, #ff8046);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .library-documents-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 16px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .library-title {
+                font-size: 2.2rem;
+            }
+            
+            .library-filters-container {
+                gap: 10px;
+            }
+            
+            .library-filter-btn {
+                padding: 10px 22px;
+                font-size: 0.85rem;
+            }
+            
+            .library-documents-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            
+            .library-doc-card {
+                min-height: 130px;
+            }
+        }
+        
+        @media (min-width: 1400px) {
+            .library-documents-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+        
+
+/* SEARCH INPUT STYLES */
         /* ================================ */
         #searchTP::placeholder {
             color: var(--text-muted);
@@ -2119,563 +2569,112 @@
     <!-- ================================ -->
     <!-- PROJECTS SECTION -->
     <!-- ================================ -->
-    <section id="projects" class="section">
+    <!-- PROJECTS SECTION -->
+    <!-- ================================ -->
+    <!-- PROJECTS SECTION -->
+    <!-- ================================ -->
+    <section id="projects" class="section" style="min-height: 100vh; display: flex; align-items: center;">
         <div class="container">
-            <h2 class="section-title fade-in">Comptes Rendus</h2>
-            
-            <!-- Barre de recherche -->
+            <!-- Header avec titre -->
+            <div class="text-center mb-5 fade-in">
+                <h2 class="library-title">
+                    <i class="fas fa-book-open me-3"></i>
+                    Bibliothèque de TPs
+                </h2>
+                <div class="library-subtitle">
+                    Tous mes travaux pratiques et projets
+                </div>
+            </div>
+
+            <!-- Barre de recherche élégante -->
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8">
-                    <div class="search-container" style="position: relative;">
-                        <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--accent-color); font-size: 1.2rem; z-index: 2;"></i>
+                    <div class="library-search-container">
+                        <i class="fas fa-search library-search-icon"></i>
                         <input 
                             type="text" 
                             id="searchTP" 
-                            placeholder="Rechercher un TP (ex: Java, CSS, Réseau, Linux...)"
-                            style="
-                                width: 100%;
-                                padding: 18px 20px 18px 55px;
-                                background: var(--glass-bg);
-                                border: 2px solid var(--glass-border);
-                                border-radius: 50px;
-                                color: var(--text-light);
-                                font-size: 1rem;
-                                font-weight: 500;
-                                transition: all 0.3s ease;
-                                outline: none;
-                            "
+                            class="library-search-input"
+                            placeholder="Rechercher un document..."
                             onkeyup="searchTPs()"
-                            onfocus="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 0 20px rgba(0, 245, 255, 0.3)';"
-                            onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';"
                         />
-                        
-                        <!-- Zone de résultats de recherche -->
-                        <div id="searchResultsContainer" style="
-                            display: none;
-                            margin-top: 20px;
-                            background: var(--card-bg);
-                            border: 1px solid var(--card-border);
-                            border-radius: 20px;
-                            padding: 25px;
-                            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.2);
-                        ">
-                            <div id="searchResultsHeader" style="
-                                text-align: center;
-                                color: var(--text-muted);
-                                font-size: 0.95rem;
-                                font-weight: 600;
-                                margin-bottom: 20px;
-                            "></div>
-                            
-                            <div id="searchResultsList" class="row"></div>
-                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="row justify-content-center">
-                <!-- Mme. Beauvallet Card -->
-                <div class="col-lg-4 mb-4">
-                    <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('beauvallet')">
-                        <i class="fas fa-chalkboard-teacher fa-3x mb-3" style="color: var(--accent-color);"></i>
-                        <h4 style="color: #ffffff; margin-bottom: 1rem; font-weight: 700;">Mme. Beauvallet</h4>
-                        <p style="color: var(--text-accent); margin-bottom: 1rem; font-weight: 500;">Développement & Programmation</p>
-                        <i class="fas fa-chevron-down" id="arrow-beauvallet" style="color: var(--accent-color); font-size: 1.2rem; transition: transform 0.3s ease;"></i>
-                        
-                        <!-- Hidden PDFs Section -->
-                        <div id="pdfs-beauvallet" class="pdfs-section">
-                            <div class="scroll-indicator">
-                                <div class="scroll-indicator-line"></div>
-                                <div class="scroll-indicator-text">Scroll</div>
-                                <div class="scroll-indicator-arrow"></div>
-                            </div>
-                            <div class="row">
-                                <!-- TP HTML -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fab fa-html5 fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP HTML</h6>
-                                        <a href="Mme_Beauvallet/TP_HTML.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
 
-                                <!-- TP Java -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fab fa-java fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Java</h6>
-                                        <a href="Mme_Beauvallet/TP_Java.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
+            <!-- Boutons de filtres horizontaux -->
+            <div class="library-filters-container fade-in">
+                <button class="library-filter-btn active" data-category="all" onclick="filterLibraryCategory('all')">
+                    <i class="fas fa-th-large me-2"></i>Tous
+                </button>
+                <button class="library-filter-btn" data-category="beauvallet" onclick="filterLibraryCategory('beauvallet')">
+                    <i class="fas fa-code me-2"></i>Mme Beauvallet
+                </button>
+                <button class="library-filter-btn" data-category="sotoca" onclick="filterLibraryCategory('sotoca')">
+                    <i class="fas fa-network-wired me-2"></i>M. Sotoca
+                </button>
+                <button class="library-filter-btn" data-category="atelier" onclick="filterLibraryCategory('atelier')">
+                    <i class="fas fa-tools me-2"></i>Atelier
+                </button>
+            </div>
 
-                                <!-- TP Java 3 -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fab fa-java fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Java 3</h6>
-                                        <a href="Mme_Beauvallet/TP_java3.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
+            <!-- Message d'instruction -->
+            <div class="library-instruction" id="library-instruction">
+                <i class="fas fa-hand-pointer me-2"></i>
+                Sélectionnez une catégorie pour afficher les documents
+            </div>
 
-                                <!-- TP CSS avec deux options -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fab fa-css3-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0 0 15px 0; font-size: 0.9rem; font-weight: 600;">TP CSS</h6>
-                                        
-                                        <div class="d-flex gap-2 w-100 justify-content-center">
-                                            <!-- Option PDF -->
-                                            <div class="text-center">
-                                                <div class="mb-2">
-                                                    <i class="fas fa-file-pdf fa-2x" style="color: var(--accent-color);"></i>
-                                                </div>
-                                                <a href="Mme_Beauvallet/TP_CSS.pdf" class="btn btn-sm btn-primary" download onclick="event.stopPropagation();" style="font-size: 0.7rem; padding: 0.25rem 0.5rem;">
-                                                    <i class="fas fa-download me-1"></i>PDF
-                                                </a>
-                                            </div>
-                                            
-                                            <!-- Option ZIP -->
-                                            <div class="text-center">
-                                                <div class="mb-2">
-                                                    <i class="fas fa-file-archive fa-2x" style="color: var(--accent-color);"></i>
-                                                </div>
-                                                <a href="Mme_Beauvallet/site_css.zip" class="btn btn-sm zip-button-animation" download onclick="event.stopPropagation();" 
-                                                   style="font-size: 0.7rem; padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; transition: all 0.3s ease;">
-                                                    <i class="fas fa-download me-1"></i>ZIP
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <!-- Zone de résultats de recherche -->
+            <div id="searchResultsContainer" class="library-results-container" style="display: none;">
+                <div class="library-results-header" id="searchResultsHeader"></div>
+                <div id="searchResultsList" class="library-documents-grid"></div>
+            </div>
 
-                                <!-- TP Portfolio -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-briefcase fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Portfolio</h6>
-                                        <a href="Mme_Beauvallet/TP_Portofolio.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Studio Code -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-code fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Studio Code</h6>
-                                        <a href="Mme_Beauvallet/TP_studio.code.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Shifumi -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-hand-rock fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Shifumi</h6>
-                                        <a href="Mme_Beauvallet/TP_Shifumi.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP CSS Avancé -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fab fa-css3-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP CSS Avancé</h6>
-                                        <a href="Mme_Beauvallet/TP_CSS_Avancé.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TD3 CSS Avancé -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fab fa-css3-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TD3 CSS Avancé</h6>
-                                        <a href="Mme_Beauvallet/TD3_CSSAvance.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Java Exercice -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fab fa-java fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Java Exercice</h6>
-                                        <a href="Mme_Beauvallet/TP5_javaexo.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Cyb -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-shield-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Cybersécurité</h6>
-                                        <a href="Mme_Beauvallet/tp_cyb.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP PIA -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-lock fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP PIA</h6>
-                                        <a href="Mme_Beauvallet/TP_PIA.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Fonction et Procédure -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-code-branch fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Fonction et Procédure</h6>
-                                        <a href="Mme_Beauvallet/TP_foction_et_procedure.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Formulaires -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-wpforms fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Formulaires</h6>
-                                        <a href="Mme_Beauvallet/TP_formulaires.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Responsive Design -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-mobile-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Responsive Design</h6>
-                                        <a href="Mme_Beauvallet/TP_responsive_design.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP B3 Laboratoire Informatique -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-flask fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP B3 Laboratoire</h6>
-                                        <a href="Mme_Beauvallet/TP_B3_laboratoire_informatique.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Bataille -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-gamepad fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Bataille</h6>
-                                        <a href="Mme_Beauvallet/TP_bataille.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                                                <!-- TP POO -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-gamepad fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP POO</h6>
-                                        <a href="Mme_Beauvallet/TP_Classes_et_banque.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                               
-                                </div>
-                                    <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-gamepad fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP AnalysePSI</h6>
-                                        <a href="Mme_Beauvallet/TP_AnalyseSI.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP PIA2 -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-shield-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP PIA2</h6>
-                                        <a href="Mme_Beauvallet/TP_PIA2.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-3">
-    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-        <i class="fab fa-php fa-2x mb-2" style="color: var(--accent-color);"></i>
-        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP PHP SkiPlus</h6>
-        <a href="Mme_Beauvallet/TP_PHP.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-            <i class="fas fa-download"></i>
-        </a>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-        <i class="fas fa-project-diagram fa-2x mb-2" style="color: var(--accent-color);"></i>
-        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">Analyse SI Leclerc</h6>
-        <a href="Mme_Beauvallet/TP_AnalyseSI.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-            <i class="fas fa-download"></i>
-        </a>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-        <i class="fas fa-database fa-2x mb-2" style="color: var(--accent-color);"></i>
-        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP BDD SQL Exo</h6>
-        <a href="Mme_Beauvallet/TP_BDD_EXO.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-            <i class="fas fa-download"></i>
-        </a>
-    </div>
-</div>
-                                <div class="col-6 mb-3">
-    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-        <i class="fas fa-database fa-2x mb-2" style="color: var(--accent-color);"></i>
-        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP ZOO</h6>
-        <a href="Mme_Beauvallet/TP ZOO.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-            <i class="fas fa-download"></i>
-        </a>
-    </div>
-</div>
-
-                                <!-- TP Audit de sécurité -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-shield-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Audit Sécurité Mots de Passe</h6>
-                                        <a href="Mme_Beauvallet/TP_B3_TH1_Audit_de_sécurité_des_mots_de_passe.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Veille informationnelle -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-search fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Veille Mises à Jour Windows</h6>
-                                        <a href="Mme_Beauvallet/TP_B3_ch4_TD2_Veille_informationnelle_sur_les_mises_à_jour_Windows.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Conteneur des documents par catégorie -->
+            <div class="library-categories-container">
+                <!-- Mme. Beauvallet -->
+                <div class="library-category" data-category="beauvallet" style="display: none;">
+                    <div class="library-category-header">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Mme. Beauvallet</span>
+                        <span class="library-category-badge">22 documents</span>
                     </div>
+                    <div class="library-documents-grid" id="beauvallet-docs"></div>
                 </div>
 
-                <!-- M. Sotoca Card -->
-                <div class="col-lg-4 mb-4">
-                    <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('sotoca')">
-                        <i class="fas fa-user-tie fa-3x mb-3" style="color: var(--accent-color);"></i>
-                        <h4 style="color: #ffffff; margin-bottom: 1rem; font-weight: 700;">M. Sotoca</h4>
-                        <p style="color: var(--text-accent); margin-bottom: 1rem; font-weight: 500;">Réseaux & Systèmes</p>
-                        <i class="fas fa-chevron-down" id="arrow-sotoca" style="color: var(--accent-color); font-size: 1.2rem; transition: transform 0.3s ease;"></i>
-                        
-                        <!-- Hidden PDFs Section -->
-                        <div id="pdfs-sotoca" class="pdfs-section">
-                            <div class="scroll-indicator">
-                                <div class="scroll-indicator-line"></div>
-                                <div class="scroll-indicator-text">Scroll</div>
-                                <div class="scroll-indicator-arrow"></div>
-                            </div>
-                            <div class="row">
-                                <!-- TP Création d'une documentation -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-file-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Création Documentation</h6>
-                                        <a href="M_Sotoca/TP_Création%20d'une%20documentation.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Réseau -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-network-wired fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Réseau</h6>
-                                        <a href="M_Sotoca/TP_Reseau.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Diagnostic -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-tools fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Logiciels Diagnostic</h6>
-                                        <a href="M_Sotoca/TP_logiciels_de_diagnostic.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Commandes DOS -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-terminal fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Commandes DOS</h6>
-                                        <a href="M_Sotoca/tp_commandes_dos.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Tech avec deux options -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-laptop-code fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0 0 15px 0; font-size: 0.9rem; font-weight: 600;">TP Tech</h6>
-                                        
-                                        <div class="d-flex gap-2 w-100 justify-content-center">
-                                            <!-- Option PDF -->
-                                            <div class="text-center">
-                                                <div class="mb-2">
-                                                    <i class="fas fa-file-pdf fa-2x" style="color: var(--accent-color);"></i>
-                                                </div>
-                                                <a href="M_Sotoca/TP_TechCorp.pdf" class="btn btn-sm btn-primary" download onclick="event.stopPropagation();" style="font-size: 0.7rem; padding: 0.25rem 0.5rem;">
-                                                    <i class="fas fa-download me-1"></i>PDF
-                                                </a>
-                                            </div>
-                                            
-                                            <!-- Option ODT -->
-                                            <div class="text-center">
-                                                <div class="mb-2">
-                                                    <i class="fas fa-file-word fa-2x" style="color: var(--accent-color);"></i>
-                                                </div>
-                                                <a href="M_Sotoca/TP_tech.odt" class="btn btn-sm odt-button-animation" download onclick="event.stopPropagation();" 
-                                                   style="font-size: 0.7rem; padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #2196F3, #1976D2); color: white; border: none; transition: all 0.3s ease;">
-                                                    <i class="fas fa-download me-1"></i>ODT
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- TP Serveur NAS -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-hdd fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Serveur NAS</h6>
-                                        <a href="M_Sotoca/tp_serveurNAS.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- TP Cyber -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-shield-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Cyber</h6>
-                                        <a href="M_Sotoca/TP_cyber.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-                                            <i class="fas fa-download"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-3">
-    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-        <i class="fab fa-linux fa-2x mb-2" style="color: var(--accent-color);"></i>
-        <h6 style="color: #ffffff; margin: 0; font-size: 0.9rem; font-weight: 600;">TP Scénario Linux</h6>
-        <a href="M_Sotoca/B1 TP21 Création d'un scénario Linux.pdf" class="btn btn-sm btn-primary mt-2" download onclick="event.stopPropagation();">
-            <i class="fas fa-download"></i>
-        </a>
-    </div>
-</div>
-                            </div>
-                        </div>
+                <!-- M. Sotoca -->
+                <div class="library-category" data-category="sotoca" style="display: none;">
+                    <div class="library-category-header">
+                        <i class="fas fa-user-tie"></i>
+                        <span>M. Sotoca</span>
+                        <span class="library-category-badge">14 documents</span>
                     </div>
+                    <div class="library-documents-grid" id="sotoca-docs"></div>
                 </div>
 
-                <!-- Atelier Card -->
-                <div class="col-lg-4 mb-4">
-                    <div class="modern-card fade-in text-center teacher-card" style="min-height: 200px; cursor: none;" onclick="toggleTeacher('atelier')">
-                        <i class="fas fa-tools fa-3x mb-3" style="color: var(--accent-color);"></i>
-                        <h4 style="color: #ffffff; margin-bottom: 1rem; font-weight: 700;">Atelier</h4>
-                        <p style="color: var(--text-accent); margin-bottom: 1rem; font-weight: 500;">Travaux Pratiques & Projets</p>
-                        <i class="fas fa-chevron-down" id="arrow-atelier" style="color: var(--accent-color); font-size: 1.2rem; transition: transform 0.3s ease;"></i>
-                        
-                        <!-- Hidden PDFs Section -->
-                        <div id="pdfs-atelier" class="pdfs-section">
-                            <div class="scroll-indicator">
-                                <div class="scroll-indicator-line"></div>
-                                <div class="scroll-indicator-text">Scroll</div>
-                                <div class="scroll-indicator-arrow"></div>
-                            </div>
-                            <div class="row">
-                                <!-- Atelier 1 - Le site vitrine -->
-                                <div class="col-6 mb-3">
-                                    <div class="d-flex flex-column align-items-center p-3" style="background: var(--glass-bg); border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.3s ease;">
-                                        <i class="fas fa-globe fa-1x mb-2" style="color: var(--accent-color);"></i>
-                                        <h6 style="color: #ffffff; margin: 0 0 15px 0; font-size: 0.9rem; font-weight: 600;">Atelier 1 - Le site vitrine</h6>
-                                        
-                                        <div class="d-flex gap-2 w-100 justify-content-center">
-                                            <!-- Option PDF -->
-                                            <div class="text-center">
-                                                <div class="mb-2">
-                                                    <i class="fas fa-file-pdf fa-1x" style="color: var(--accent-color);"></i>
-                                                </div>
-                                                <a href="Atelier/Atelier_1___Le_site_vitrine.pdf" class="btn btn-sm btn-primary" download onclick="event.stopPropagation();" style="font-size: 0.7rem; padding: 0.25rem 0.5rem;">
-                                                    <i class="fas fa-download me-1"></i>PDF
-                                                </a>
-                                            </div>
-                                            
-                                            <!-- Option ZIP -->
-                                            <div class="text-center">
-                                                <div class="mb-2">
-                                                    <i class="fas fa-file-archive fa-1x" style="color: var(--accent-color);"></i>
-                                                </div>
-                                                <a href="Atelier/Atelier_1_site_vitrine.zip" class="btn btn-sm zip-button-animation" download onclick="event.stopPropagation();" 
-                                                   style="font-size: 0.7rem; padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; transition: all 0.3s ease;">
-                                                    <i class="fas fa-download me-1"></i>ZIP
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Atelier -->
+                <div class="library-category" data-category="atelier" style="display: none;">
+                    <div class="library-category-header">
+                        <i class="fas fa-tools"></i>
+                        <span>Atelier Professionnel</span>
+                        <span class="library-category-badge">3 documents</span>
                     </div>
+                    <div class="library-documents-grid" id="atelier-docs"></div>
+                </div>
+
+                <!-- Tous les documents -->
+                <div class="library-category" data-category="all" style="display: none;">
+                    <div class="library-category-header">
+                        <i class="fas fa-th-large"></i>
+                        <span>Tous les documents</span>
+                        <span class="library-category-badge">36 documents</span>
+                    </div>
+                    <div class="library-documents-grid" id="all-docs"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- VEILLE SECTION -->
-    <!-- ================================ -->
     <section id="veille" class="section">
         <div class="container">
             <h2 class="section-title fade-in">Veille Technologique : Intelligence Artificielle 🔍</h2>
@@ -3338,64 +3337,10 @@
         // ================================
         // TEACHER CARDS TOGGLE
         // ================================
-        function toggleTeacher(selectedTeacher) {
-            const teachers = ['beauvallet', 'sotoca', 'atelier'];
-            
-            teachers.forEach(teacher => {
-                const pdfsSection = document.getElementById('pdfs-' + teacher);
-                const arrow = document.getElementById('arrow-' + teacher);
-                const card = document.querySelector('[onclick="toggleTeacher(\'' + teacher + '\')"]');
-                
-                if (teacher === selectedTeacher) {
-                    if (pdfsSection.classList.contains('open')) {
-                        pdfsSection.classList.remove('open');
-                        arrow.classList.remove('fa-chevron-up');
-                        arrow.classList.add('fa-chevron-down');
-                        arrow.style.transform = 'rotate(0deg)';
-                        card.style.minHeight = '200px';
-                    } else {
-                        pdfsSection.classList.add('open');
-                        arrow.classList.remove('fa-chevron-down');
-                        arrow.classList.add('fa-chevron-up');
-                        arrow.style.transform = 'rotate(180deg)';
-                        card.style.minHeight = 'auto';
-                        
-                        // Vérifier si le contenu est scrollable après l'ouverture
-                        setTimeout(() => {
-                            checkScrollable(pdfsSection);
-                        }, 100);
-                    }
-                } else {
-                    pdfsSection.classList.remove('open');
-                    arrow.classList.remove('fa-chevron-up');
-                    arrow.classList.add('fa-chevron-down');
-                    arrow.style.transform = 'rotate(0deg)';
-                    card.style.minHeight = '200px';
-                }
-            });
-        }
 
         // ================================
         // CHECK SCROLLABLE SECTIONS
         // ================================
-        function checkScrollable(section) {
-            if (!section) return;
-            
-            const isScrollable = section.scrollHeight > section.clientHeight;
-            const isAtBottom = section.scrollHeight - section.scrollTop <= section.clientHeight + 5;
-            
-            if (isScrollable) {
-                section.classList.add('has-scroll');
-            } else {
-                section.classList.remove('has-scroll');
-            }
-            
-            if (isAtBottom) {
-                section.classList.add('scrolled-bottom');
-            } else {
-                section.classList.remove('scrolled-bottom');
-            }
-        }
 
         // Ajouter des écouteurs de scroll pour les sections PDF
         document.addEventListener('DOMContentLoaded', function() {
@@ -3688,10 +3633,178 @@
         }
 
         // ================================
-        // TP SEARCH FUNCTIONALITY
+        // ================================
+        // ================================
+        // ================================
+        // DONNÉES DES TPs
         // ================================
         
-        // Fonction pour normaliser le texte (enlever accents, minuscules, trim)
+        const tpsData = {
+            beauvallet: [
+                { title: "TP HTML", icon: "fab fa-html5", tags: ["HTML", "Web"], file: "Mme_Beauvallet/TP_HTML.pdf", description: "Initiation HTML5" },
+                { title: "TP Java", icon: "fab fa-java", tags: ["Java", "POO"], file: "Mme_Beauvallet/TP_Java.pdf", description: "Programmation objet" },
+                { title: "TP Java 3", icon: "fab fa-java", tags: ["Java"], file: "Mme_Beauvallet/TP_java3.pdf", description: "Java avancé" },
+                { title: "TP CSS", icon: "fab fa-css3-alt", tags: ["CSS"], file: "Mme_Beauvallet/TP_CSS.pdf", description: "Mise en forme web", hasZip: true, zipFile: "Mme_Beauvallet/site_css.zip" },
+                { title: "TP Portfolio", icon: "fas fa-briefcase", tags: ["HTML", "CSS"], file: "Mme_Beauvallet/TP_Portofolio.pdf", description: "Portfolio web" },
+                { title: "TP VS Code", icon: "fas fa-code", tags: ["IDE"], file: "Mme_Beauvallet/TP_studio.code.pdf", description: "Prise en main IDE" },
+                { title: "TP Shifumi", icon: "fas fa-hand-rock", tags: ["Java"], file: "Mme_Beauvallet/TP_Shifumi.pdf", description: "Jeu en Java" },
+                { title: "TP CSS Avancé", icon: "fab fa-css3", tags: ["CSS"], file: "Mme_Beauvallet/TP_CSS_Avancé.pdf", description: "CSS avancé" },
+                { title: "TD3 CSS", icon: "fab fa-css3", tags: ["CSS"], file: "Mme_Beauvallet/TD3_CSSAvance.pdf", description: "Travaux dirigés" },
+                { title: "TP5 Java", icon: "fab fa-java", tags: ["Java"], file: "Mme_Beauvallet/TP5_javaexo.pdf", description: "Exercices Java" },
+                { title: "TP Cybersécurité", icon: "fas fa-shield-alt", tags: ["Sécurité"], file: "Mme_Beauvallet/tp_cyb.pdf", description: "Cybersécurité" },
+                { title: "TP PIA", icon: "fas fa-file-contract", tags: ["RGPD"], file: "Mme_Beauvallet/TP_PIA.pdf", description: "Analyse RGPD" },
+                { title: "TP Fonctions", icon: "fas fa-code-branch", tags: ["Java"], file: "Mme_Beauvallet/TP_foction_et_procedure.pdf", description: "Fonctions Java" },
+                { title: "TP Formulaires", icon: "fas fa-wpforms", tags: ["HTML"], file: "Mme_Beauvallet/TP_formulaires.pdf", description: "Formulaires web" },
+                { title: "TP Responsive", icon: "fas fa-mobile-alt", tags: ["CSS"], file: "Mme_Beauvallet/TP_responsive_design.pdf", description: "Design adaptatif" },
+                { title: "TP Labo Info", icon: "fas fa-flask", tags: ["Projet"], file: "Mme_Beauvallet/TP_B3_laboratoire_informatique.pdf", description: "Projet labo" },
+                { title: "TP Bataille", icon: "fas fa-gamepad", tags: ["Java"], file: "Mme_Beauvallet/TP_bataille.pdf", description: "Jeu de cartes" },
+                { title: "TP Classes", icon: "fab fa-java", tags: ["Java"], file: "Mme_Beauvallet/TP_Classes_et_banque.pdf", description: "POO appliquée" },
+                { title: "TP BDD", icon: "fas fa-database", tags: ["SQL"], file: "Mme_Beauvallet/TP_BDD_EXO.pdf", description: "Bases de données" },
+                { title: "TP PHP", icon: "fab fa-php", tags: ["PHP"], file: "Mme_Beauvallet/TP_PHP.pdf", description: "Programmation PHP" },
+                { title: "TP Analyse SI", icon: "fas fa-chart-line", tags: ["Analyse"], file: "Mme_Beauvallet/TP_AnalyseSI.pdf", description: "Analyse systèmes" },
+                { title: "TP PIA 2", icon: "fas fa-file-contract", tags: ["RGPD"], file: "Mme_Beauvallet/TP_PIA2.pdf", description: "PIA niveau 2" }
+            ],
+            sotoca: [
+                { title: "Initiation Réseau", icon: "fas fa-network-wired", tags: ["Réseau"], file: "M_Sotoca/TP_Reseau.pdf", description: "TP3" },
+                { title: "Diagnostic", icon: "fas fa-tools", tags: ["Outils"], file: "M_Sotoca/TP_logiciels_de_diagnostic.pdf", description: "TP4" },
+                { title: "CMD", icon: "fas fa-terminal", tags: ["DOS"], file: "M_Sotoca/tp_commandes_dos.pdf", description: "Terminal" },
+                { title: "TP TechCorp", icon: "fas fa-building", tags: ["Réseau"], file: "M_Sotoca/TP_TechCorp.pdf", description: "Projet", hasOdt: true, odtFile: "M_Sotoca/TP_tech.odt" },
+                { title: "Serveur NAS", icon: "fas fa-hdd", tags: ["Serveur"], file: "M_Sotoca/tp_serveurNAS.pdf", description: "Configuration NAS" },
+                { title: "Cybersécurité", icon: "fas fa-shield-alt", tags: ["Sécurité"], file: "M_Sotoca/TP_cyber.pdf", description: "Sécurité avancée" },
+                { title: "TP21 Linux", icon: "fab fa-linux", tags: ["Linux"], file: "M_Sotoca/B1 TP21 Création d'un scénario Linux.pdf", description: "Admin système" },
+                { title: "Contrôle Distance", icon: "fas fa-desktop", tags: ["Remote"], file: "M_Sotoca/TP01 - prise de controle.pdf", description: "Audit / RDP" },
+                { title: "Doc Utilisateur", icon: "fas fa-book-open", tags: ["Doc"], file: "M_Sotoca/TP1 - Guide Utilisateur.pdf", description: "Guide assistance" },
+                { title: "Doc Technicien", icon: "fas fa-user-cog", tags: ["Doc"], file: "M_Sotoca/TP01-Guide Technicien.pdf", description: "Installation" },
+                { title: "Documentation", icon: "fas fa-file-alt", tags: ["Doc"], file: "M_Sotoca/TP_Création%20d'une%20documentation.pdf", description: "Création doc tech" }
+            ,
+        { title: "TP01 Prise Contrôle", icon: "fas fa-desktop", tags: ["Remote", "AnyDesk"], file: "M_Sotoca/TP01_-_prise_de_controle.pdf", description: "Contrôle à distance" },
+        { title: "Guide Utilisateur", icon: "fas fa-user", tags: ["Doc", "Guide"], file: "M_Sotoca/TP1_-_Guide_Utilisateur.pdf", description: "Assistance AnyDesk" },
+        { title: "Guide Technicien", icon: "fas fa-user-cog", tags: ["Doc", "Admin"], file: "M_Sotoca/TP01-Guide_Technicien.pdf", description: "Installation AnyDesk" }
+    ],
+            atelier: [
+                { title: "Veille Windows", icon: "fab fa-windows", tags: ["Veille"], file: "Atelier/TP_B3_ch4_TD2_Veille_informationnelle_sur_les_mises_à_jour_Windows.pdf", description: "Veille technologique" },
+                { title: "Audit Sécurité", icon: "fas fa-key", tags: ["Sécurité"], file: "Atelier/TP_B3_TH1_Audit_de_sécurité_des_mots_de_passe.pdf", description: "Audit mots de passe" },
+                { title: "TP ZOO", icon: "fas fa-paw", tags: ["Java"], file: "Atelier/TP ZOO.pdf", description: "Gestion zoo Java" }
+            ]
+        };
+        
+        // ================================
+        // GÉNÉRATION DES CARTES COMPACTES
+        // ================================
+        
+        function generateLibraryDocCard(tp, category) {
+            let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
+            
+            let actionsHTML = '';
+            if (tp.hasZip || tp.hasOdt) {
+                actionsHTML = `
+                    <div class="library-doc-actions">
+                        <a href="${tp.file}" class="library-doc-btn" download onclick="event.stopPropagation();">
+                            <i class="fas fa-file-pdf"></i>PDF
+                        </a>
+                        ${tp.hasZip ? `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i>ZIP</a>` : ''}
+                        ${tp.hasOdt ? `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i>ODT</a>` : ''}
+                    </div>
+                `;
+            } else {
+                actionsHTML = '';
+            }
+            
+            return `
+                <div class="library-doc-card" data-category="${category}">
+                    <div class="library-doc-header">
+                        <div class="library-doc-icon">
+                            <i class="${tp.icon}"></i>
+                        </div>
+                        <a href="${tp.file}" class="library-doc-arrow" download onclick="event.stopPropagation();">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="library-doc-content">
+                        <div class="library-doc-title">${tp.title}</div>
+                        <div class="library-doc-subtitle">${tp.description}</div>
+                        <div class="library-doc-tags">${tagsHTML}</div>
+                    </div>
+                    ${actionsHTML}
+                </div>
+            `;
+        }
+        
+        function loadAllLibraryDocs() {
+            // Charger docs Beauvallet
+            const beauvalletContainer = document.getElementById('beauvallet-docs');
+            if (beauvalletContainer) {
+                beauvalletContainer.innerHTML = tpsData.beauvallet.map(tp => generateLibraryDocCard(tp, 'beauvallet')).join('');
+            }
+            
+            // Charger docs Sotoca
+            const sotocaContainer = document.getElementById('sotoca-docs');
+            if (sotocaContainer) {
+                sotocaContainer.innerHTML = tpsData.sotoca.map(tp => generateLibraryDocCard(tp, 'sotoca')).join('');
+            }
+            
+            // Charger docs Atelier
+            const atelierContainer = document.getElementById('atelier-docs');
+            if (atelierContainer) {
+                atelierContainer.innerHTML = tpsData.atelier.map(tp => generateLibraryDocCard(tp, 'atelier')).join('');
+            }
+            
+            // Charger tous les docs
+            const allContainer = document.getElementById('all-docs');
+            if (allContainer) {
+                let allDocs = [];
+                Object.keys(tpsData).forEach(category => {
+                    allDocs = allDocs.concat(tpsData[category].map(tp => generateLibraryDocCard(tp, category)));
+                });
+                allContainer.innerHTML = allDocs.join('');
+            }
+        }
+        
+        // ================================
+        // FILTRAGE PAR CATÉGORIE
+        // ================================
+        
+        function filterLibraryCategory(category) {
+            // Mettre à jour les boutons
+            document.querySelectorAll('.library-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Cacher le message d'instruction
+            const instruction = document.getElementById('library-instruction');
+            if (instruction) {
+                instruction.style.display = 'none';
+            }
+            
+            // Cacher les résultats de recherche
+            const searchResults = document.getElementById('searchResultsContainer');
+            if (searchResults) {
+                searchResults.style.display = 'none';
+            }
+            
+            // Réinitialiser la recherche
+            const searchInput = document.getElementById('searchTP');
+            if (searchInput) {
+                searchInput.value = '';
+            }
+            
+            // Afficher la catégorie sélectionnée
+            document.querySelectorAll('.library-category').forEach(cat => {
+                if (cat.dataset.category === category) {
+                    cat.style.display = 'block';
+                } else {
+                    cat.style.display = 'none';
+                }
+            });
+        }
+        
+        // ================================
+        // RECHERCHE
+        // ================================
+        
         function normalizeText(text) {
             return text
                 .toLowerCase()
@@ -3706,76 +3819,75 @@
             const searchResultsContainer = document.getElementById('searchResultsContainer');
             const searchResultsHeader = document.getElementById('searchResultsHeader');
             const searchResultsList = document.getElementById('searchResultsList');
+            const instruction = document.getElementById('library-instruction');
             
-            // Si la recherche est vide, cacher les résultats
+            // Si vide, réinitialiser
             if (searchTerm === '') {
                 searchResultsContainer.style.display = 'none';
+                document.querySelectorAll('.library-category').forEach(cat => {
+                    cat.style.display = 'none';
+                });
+                if (instruction) {
+                    instruction.style.display = 'block';
+                }
+                // Réinitialiser les boutons
+                document.querySelectorAll('.library-filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.category === 'all') {
+                        btn.classList.add('active');
+                    }
+                });
                 return;
             }
             
-            // Récupérer tous les TPs
-            const allTPCards = document.querySelectorAll('.pdfs-section .col-6');
-            let foundTPs = [];
-            
-            // Chercher les TPs qui correspondent
-            allTPCards.forEach(card => {
-                const tpTitle = card.querySelector('h6');
-                if (tpTitle) {
-                    const normalizedTitle = normalizeText(tpTitle.textContent);
-                    
-                    if (normalizedTitle.includes(searchTerm)) {
-                        // Cloner la carte pour l'afficher dans les résultats
-                        foundTPs.push(card.cloneNode(true));
-                    }
-                }
+            // Cacher tout le reste
+            if (instruction) {
+                instruction.style.display = 'none';
+            }
+            document.querySelectorAll('.library-category').forEach(cat => {
+                cat.style.display = 'none';
             });
             
-            // Vider la liste des résultats
+            // Rechercher
+            let foundTPs = [];
+            Object.keys(tpsData).forEach(category => {
+                tpsData[category].forEach(tp => {
+                    const normalizedTitle = normalizeText(tp.title);
+                    const normalizedDescription = normalizeText(tp.description);
+                    const normalizedTags = tp.tags.map(tag => normalizeText(tag)).join(' ');
+                    
+                    if (normalizedTitle.includes(searchTerm) || 
+                        normalizedDescription.includes(searchTerm) || 
+                        normalizedTags.includes(searchTerm)) {
+                        foundTPs.push({ ...tp, category: category });
+                    }
+                });
+            });
+            
+            // Afficher résultats
             searchResultsList.innerHTML = '';
             
-            // Afficher les résultats
             if (foundTPs.length === 0) {
-                searchResultsHeader.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Aucun TP trouvé pour "' + searchInput.value + '"';
+                searchResultsHeader.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Aucun document trouvé';
                 searchResultsHeader.style.color = '#ff6b6b';
-                searchResultsContainer.style.display = 'block';
             } else {
-                // Afficher le nombre de résultats
-                if (foundTPs.length === 1) {
-                    searchResultsHeader.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + foundTPs.length + ' TP trouvé';
-                } else {
-                    searchResultsHeader.innerHTML = '<i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>' + foundTPs.length + ' TPs trouvés';
-                }
-                searchResultsHeader.style.color = 'var(--accent-color)';
+                searchResultsHeader.innerHTML = '<i class="fas fa-check-circle me-2"></i>' + foundTPs.length + ' document' + (foundTPs.length > 1 ? 's' : '') + ' trouvé' + (foundTPs.length > 1 ? 's' : '');
+                searchResultsHeader.style.color = '#64c8ff';
                 
-                // Ajouter les cartes trouvées
-                foundTPs.forEach((card, index) => {
-                    // Animation d'apparition
-                    card.style.animation = 'fadeInUp 0.5s ease forwards';
-                    card.style.animationDelay = (index * 0.1) + 's';
-                    card.style.opacity = '0';
-                    
-                    searchResultsList.appendChild(card);
-                    
-                    // Forcer l'animation
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                    }, index * 100);
-                });
-                
-                searchResultsContainer.style.display = 'block';
+                searchResultsList.innerHTML = foundTPs.map(tp => generateLibraryDocCard(tp, tp.category)).join('');
             }
+            
+            searchResultsContainer.style.display = 'block';
         }
         
-        // Réinitialiser la recherche quand on clique sur une carte enseignant
-        const originalToggleTeacher = toggleTeacher;
-        window.toggleTeacherWithReset = function(teacher) {
-            const searchInput = document.getElementById('searchTP');
-            if (searchInput && searchInput.value !== '') {
-                searchInput.value = '';
-                searchTPs();
-            }
-            originalToggleTeacher(teacher);
-        };
+        // ================================
+        // INITIALISATION
+        // ================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllLibraryDocs();
+        });
+        
 
         // ================================
         // INITIALIZATION

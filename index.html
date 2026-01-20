@@ -111,7 +111,8 @@
         /* ================================ */
         /* ================================ */
         /* ================================ */
-        /* BIBLIOTHÈQUE - DESIGN COMPACT EN GRILLE */
+        /* ================================ */
+        /* BIBLIOTHÈQUE - DESIGN AVEC BOUTONS PDF/ZIP */
         /* ================================ */
         
         /* Titre de la bibliothèque */
@@ -311,26 +312,25 @@
         /* Grille de documents COMPACTE */
         .library-documents-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
             animation: fadeInUp 0.5s ease-out;
         }
         
-        /* Carte de document COMPACTE */
+        /* Carte de document NOUVEAU DESIGN */
         .library-doc-card {
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            padding: 22px 20px;
+            padding: 28px 24px;
             background: linear-gradient(135deg, rgba(20, 40, 65, 0.5), rgba(15, 30, 50, 0.6));
             border: 1.5px solid rgba(100, 200, 255, 0.12);
-            border-radius: 16px;
+            border-radius: 18px;
             cursor: pointer;
             transition: all 0.3s ease;
             overflow: hidden;
             backdrop-filter: blur(8px);
-            min-height: 140px;
+            min-height: 280px;
         }
         
         .library-doc-card::before {
@@ -355,71 +355,36 @@
             opacity: 1;
         }
         
-        /* Header avec icône et flèche */
-        .library-doc-header {
+        /* Icône du document GRANDE */
+        .library-doc-icon {
+            width: 80px;
+            height: 80px;
             display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.15), rgba(70, 180, 255, 0.2));
+            border-radius: 18px;
+            border: 2px solid rgba(100, 200, 255, 0.3);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
             position: relative;
             z-index: 1;
         }
         
-        /* Icône du document compacte */
-        .library-doc-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(100, 200, 255, 0.12), rgba(70, 180, 255, 0.15));
-            border-radius: 12px;
-            border: 1px solid rgba(100, 200, 255, 0.25);
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-        
         .library-doc-icon i {
-            font-size: 1.4rem;
+            font-size: 2.2rem;
             color: #64c8ff;
             transition: all 0.3s ease;
         }
         
         .library-doc-card:hover .library-doc-icon {
-            background: linear-gradient(135deg, rgba(100, 200, 255, 0.2), rgba(70, 180, 255, 0.25));
-            border-color: rgba(100, 200, 255, 0.4);
-            transform: scale(1.08) rotate(3deg);
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.25), rgba(70, 180, 255, 0.3));
+            border-color: rgba(100, 200, 255, 0.5);
+            transform: scale(1.05) rotate(3deg);
         }
         
         .library-doc-card:hover .library-doc-icon i {
-            transform: scale(1.05);
-        }
-        
-        /* Flèche d'action compacte */
-        .library-doc-arrow {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(100, 200, 255, 0.1);
-            border-radius: 50%;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .library-doc-arrow i {
-            font-size: 1rem;
-            color: #64c8ff;
-            transition: transform 0.3s ease;
-        }
-        
-        .library-doc-card:hover .library-doc-arrow {
-            background: #64c8ff;
-        }
-        
-        .library-doc-card:hover .library-doc-arrow i {
-            color: #0a1929;
-            transform: translateX(3px);
+            transform: scale(1.1);
         }
         
         /* Contenu du document */
@@ -427,13 +392,14 @@
             flex: 1;
             position: relative;
             z-index: 1;
+            margin-bottom: 20px;
         }
         
         .library-doc-title {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             line-height: 1.3;
             transition: color 0.3s ease;
         }
@@ -443,10 +409,11 @@
         }
         
         .library-doc-subtitle {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.5);
             font-weight: 400;
             line-height: 1.4;
+            margin-bottom: 12px;
         }
         
         /* Tags du document */
@@ -454,17 +421,83 @@
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
-            margin-top: 8px;
         }
         
         .library-doc-tag {
-            padding: 4px 10px;
-            background: rgba(100, 200, 255, 0.1);
-            border: 1px solid rgba(100, 200, 255, 0.2);
-            border-radius: 12px;
-            font-size: 0.7rem;
+            padding: 5px 12px;
+            background: rgba(100, 200, 255, 0.12);
+            border: 1px solid rgba(100, 200, 255, 0.25);
+            border-radius: 14px;
+            font-size: 0.72rem;
             color: #64c8ff;
             font-weight: 600;
+        }
+        
+        /* Boutons PDF/ZIP EN BAS */
+        .library-doc-actions {
+            display: flex;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+        }
+        
+        .library-doc-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .library-doc-btn.btn-pdf {
+            background: linear-gradient(135deg, #64c8ff, #46b4ff);
+            color: #0a1929;
+            box-shadow: 0 4px 15px rgba(100, 200, 255, 0.3);
+        }
+        
+        .library-doc-btn.btn-pdf:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 22px rgba(100, 200, 255, 0.45);
+            color: #0a1929;
+        }
+        
+        .library-doc-btn.btn-zip {
+            background: linear-gradient(135deg, #9b7dff, #8060ff);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(155, 125, 255, 0.3);
+        }
+        
+        .library-doc-btn.btn-zip:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 22px rgba(155, 125, 255, 0.45);
+            color: #ffffff;
+        }
+        
+        .library-doc-btn.btn-odt {
+            background: linear-gradient(135deg, #ff9d64, #ff8046);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 157, 100, 0.3);
+        }
+        
+        .library-doc-btn.btn-odt:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 22px rgba(255, 157, 100, 0.45);
+            color: #ffffff;
+        }
+        
+        .library-doc-btn i {
+            font-size: 0.95rem;
         }
         
         /* Zone de résultats de recherche */
@@ -478,51 +511,6 @@
             font-weight: 700;
             color: #64c8ff;
             margin-bottom: 25px;
-        }
-        
-        /* Multi-format buttons compacts */
-        .library-doc-actions {
-            display: flex;
-            gap: 6px;
-            position: relative;
-            z-index: 1;
-            margin-top: 8px;
-        }
-        
-        .library-doc-btn {
-            flex: 1;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #64c8ff, #46b4ff);
-            border: none;
-            border-radius: 18px;
-            color: #0a1929;
-            font-size: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        
-        .library-doc-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(100, 200, 255, 0.35);
-            color: #0a1929;
-        }
-        
-        .library-doc-btn i {
-            font-size: 0.85rem;
-        }
-        
-        .library-doc-btn.btn-zip {
-            background: linear-gradient(135deg, #9b7dff, #8060ff);
-        }
-        
-        .library-doc-btn.btn-odt {
-            background: linear-gradient(135deg, #ff9d64, #ff8046);
         }
         
         /* Animations */
@@ -542,10 +530,26 @@
         }
         
         /* Responsive */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Responsive */
         @media (max-width: 1200px) {
             .library-documents-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 16px;
+                gap: 18px;
             }
         }
         
@@ -565,17 +569,27 @@
             
             .library-documents-grid {
                 grid-template-columns: 1fr;
-                gap: 14px;
+                gap: 16px;
             }
             
             .library-doc-card {
-                min-height: 130px;
+                min-height: 260px;
+                padding: 24px 20px;
+            }
+            
+            .library-doc-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .library-doc-icon i {
+                font-size: 2rem;
             }
         }
         
         @media (min-width: 1400px) {
             .library-documents-grid {
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             }
         }
         
@@ -2647,7 +2661,7 @@
                     <div class="library-category-header">
                         <i class="fas fa-user-tie"></i>
                         <span>M. Sotoca</span>
-                        <span class="library-category-badge">14 documents</span>
+                        <span class="library-category-badge">15 documents</span>
                     </div>
                     <div class="library-documents-grid" id="sotoca-docs"></div>
                 </div>
@@ -3636,6 +3650,7 @@
         // ================================
         // ================================
         // ================================
+        // ================================
         // DONNÉES DES TPs
         // ================================
         
@@ -3665,22 +3680,19 @@
                 { title: "TP PIA 2", icon: "fas fa-file-contract", tags: ["RGPD"], file: "Mme_Beauvallet/TP_PIA2.pdf", description: "PIA niveau 2" }
             ],
             sotoca: [
-                { title: "Initiation Réseau", icon: "fas fa-network-wired", tags: ["Réseau"], file: "M_Sotoca/TP_Reseau.pdf", description: "TP3" },
-                { title: "Diagnostic", icon: "fas fa-tools", tags: ["Outils"], file: "M_Sotoca/TP_logiciels_de_diagnostic.pdf", description: "TP4" },
-                { title: "CMD", icon: "fas fa-terminal", tags: ["DOS"], file: "M_Sotoca/tp_commandes_dos.pdf", description: "Terminal" },
-                { title: "TP TechCorp", icon: "fas fa-building", tags: ["Réseau"], file: "M_Sotoca/TP_TechCorp.pdf", description: "Projet", hasOdt: true, odtFile: "M_Sotoca/TP_tech.odt" },
+                { title: "Initiation Réseau", icon: "fas fa-network-wired", tags: ["Réseau"], file: "M_Sotoca/TP_Reseau.pdf", description: "Configuration réseau" },
+                { title: "Diagnostic", icon: "fas fa-tools", tags: ["Outils"], file: "M_Sotoca/TP_logiciels_de_diagnostic.pdf", description: "Outils diagnostic" },
+                { title: "CMD", icon: "fas fa-terminal", tags: ["DOS"], file: "M_Sotoca/tp_commandes_dos.pdf", description: "Commandes Terminal" },
+                { title: "TP TechCorp", icon: "fas fa-building", tags: ["Réseau"], file: "M_Sotoca/TP_TechCorp.pdf", description: "Projet entreprise", hasOdt: true, odtFile: "M_Sotoca/TP_tech.odt" },
                 { title: "Serveur NAS", icon: "fas fa-hdd", tags: ["Serveur"], file: "M_Sotoca/tp_serveurNAS.pdf", description: "Configuration NAS" },
                 { title: "Cybersécurité", icon: "fas fa-shield-alt", tags: ["Sécurité"], file: "M_Sotoca/TP_cyber.pdf", description: "Sécurité avancée" },
-                { title: "TP21 Linux", icon: "fab fa-linux", tags: ["Linux"], file: "M_Sotoca/B1 TP21 Création d'un scénario Linux.pdf", description: "Admin système" },
-                { title: "Contrôle Distance", icon: "fas fa-desktop", tags: ["Remote"], file: "M_Sotoca/TP01 - prise de controle.pdf", description: "Audit / RDP" },
-                { title: "Doc Utilisateur", icon: "fas fa-book-open", tags: ["Doc"], file: "M_Sotoca/TP1 - Guide Utilisateur.pdf", description: "Guide assistance" },
-                { title: "Doc Technicien", icon: "fas fa-user-cog", tags: ["Doc"], file: "M_Sotoca/TP01-Guide Technicien.pdf", description: "Installation" },
-                { title: "Documentation", icon: "fas fa-file-alt", tags: ["Doc"], file: "M_Sotoca/TP_Création%20d'une%20documentation.pdf", description: "Création doc tech" }
-            ,
-        { title: "TP01 Prise Contrôle", icon: "fas fa-desktop", tags: ["Remote", "AnyDesk"], file: "M_Sotoca/TP01_-_prise_de_controle.pdf", description: "Contrôle à distance" },
-        { title: "Guide Utilisateur", icon: "fas fa-user", tags: ["Doc", "Guide"], file: "M_Sotoca/TP1_-_Guide_Utilisateur.pdf", description: "Assistance AnyDesk" },
-        { title: "Guide Technicien", icon: "fas fa-user-cog", tags: ["Doc", "Admin"], file: "M_Sotoca/TP01-Guide_Technicien.pdf", description: "Installation AnyDesk" }
-    ],
+                { title: "TP21 Linux", icon: "fab fa-linux", tags: ["Linux"], file: "M_Sotoca/B1 TP21 Création d'un scénario Linux.pdf", description: "Administration système" },
+                { title: "TP01 Prise Contrôle", icon: "fas fa-desktop", tags: ["Remote", "AnyDesk"], file: "M_Sotoca/TP01_-_prise_de_controle.pdf", description: "Contrôle à distance" },
+                { title: "Guide Utilisateur", icon: "fas fa-user", tags: ["Doc", "Guide"], file: "M_Sotoca/TP1_-_Guide_Utilisateur.pdf", description: "Assistance AnyDesk" },
+                { title: "Guide Technicien", icon: "fas fa-user-cog", tags: ["Doc", "Admin"], file: "M_Sotoca/TP01-Guide_Technicien.pdf", description: "Installation AnyDesk" },
+                { title: "Documentation", icon: "fas fa-file-alt", tags: ["Doc"], file: "M_Sotoca/TP_Création%20d'une%20documentation.pdf", description: "Création doc tech" },
+                { title: "TP02 Partitionnement", icon: "fas fa-hdd", tags: ["Disque", "EaseUS"], file: "M_Sotoca/B3_TP02_partitionnement.pdf", description: "Gestion de disques" }
+            ],
             atelier: [
                 { title: "Veille Windows", icon: "fab fa-windows", tags: ["Veille"], file: "Atelier/TP_B3_ch4_TD2_Veille_informationnelle_sur_les_mises_à_jour_Windows.pdf", description: "Veille technologique" },
                 { title: "Audit Sécurité", icon: "fas fa-key", tags: ["Sécurité"], file: "Atelier/TP_B3_TH1_Audit_de_sécurité_des_mots_de_passe.pdf", description: "Audit mots de passe" },
@@ -3689,43 +3701,53 @@
         };
         
         // ================================
-        // GÉNÉRATION DES CARTES COMPACTES
+        // GÉNÉRATION DES CARTES AVEC BOUTONS PDF/ZIP
         // ================================
         
         function generateLibraryDocCard(tp, category) {
             let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
             
-            let actionsHTML = '';
-            if (tp.hasZip || tp.hasOdt) {
-                actionsHTML = `
-                    <div class="library-doc-actions">
-                        <a href="${tp.file}" class="library-doc-btn" download onclick="event.stopPropagation();">
-                            <i class="fas fa-file-pdf"></i>PDF
-                        </a>
-                        ${tp.hasZip ? `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i>ZIP</a>` : ''}
-                        ${tp.hasOdt ? `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i>ODT</a>` : ''}
-                    </div>
+            // Générer les boutons
+            let buttonsHTML = `<div class="library-doc-actions">`;
+            
+            // Bouton PDF toujours présent
+            buttonsHTML += `
+                <a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();">
+                    <i class="fas fa-file-pdf"></i> PDF
+                </a>
+            `;
+            
+            // Bouton ZIP si disponible
+            if (tp.hasZip) {
+                buttonsHTML += `
+                    <a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();">
+                        <i class="fas fa-file-archive"></i> ZIP
+                    </a>
                 `;
-            } else {
-                actionsHTML = '';
             }
+            
+            // Bouton ODT si disponible
+            if (tp.hasOdt) {
+                buttonsHTML += `
+                    <a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();">
+                        <i class="fas fa-file-word"></i> ODT
+                    </a>
+                `;
+            }
+            
+            buttonsHTML += `</div>`;
             
             return `
                 <div class="library-doc-card" data-category="${category}">
-                    <div class="library-doc-header">
-                        <div class="library-doc-icon">
-                            <i class="${tp.icon}"></i>
-                        </div>
-                        <a href="${tp.file}" class="library-doc-arrow" download onclick="event.stopPropagation();">
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+                    <div class="library-doc-icon">
+                        <i class="${tp.icon}"></i>
                     </div>
                     <div class="library-doc-content">
                         <div class="library-doc-title">${tp.title}</div>
                         <div class="library-doc-subtitle">${tp.description}</div>
                         <div class="library-doc-tags">${tagsHTML}</div>
                     </div>
-                    ${actionsHTML}
+                    ${buttonsHTML}
                 </div>
             `;
         }

@@ -992,8 +992,8 @@
         .timeline-item {
             position: relative;
             padding-left: 40px;
-            opacity: 0;
-            animation: timelineSlide 0.8s ease forwards;
+            opacity: 1;
+            animation: timelineSlide 0.8s ease both;
             margin-bottom: 2rem;
         }
 
@@ -1257,14 +1257,13 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: var(--dark-bg);
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.8s ease;
         }
 
-        .loader.hidden { opacity: 0; pointer-events: none; }
+        .loader.hidden { display: none; }
 
         .loader-inner {
             width: 80px; height: 80px;
@@ -1308,12 +1307,9 @@
         }
 
         .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* ================================ */
         /* RESPONSIVE */
@@ -1342,7 +1338,7 @@
 </head>
 <body>
     <!-- Loading Screen -->
-    <div class="loader" id="loader">
+    <div class="loader" id="loader" style="display:none;">
         <div class="loader-inner"></div>
     </div>
 
@@ -1731,7 +1727,7 @@
                     <div class="library-category-header">
                         <i class="fas fa-tools"></i>
                         <span>Atelier Professionnel</span>
-                        <span class="library-category-badge">3 documents</span>
+                        <span class="library-category-badge">4 documents</span>
                     </div>
                     <div class="library-documents-grid" id="atelier-docs"></div>
                 </div>
@@ -1741,7 +1737,7 @@
                     <div class="library-category-header">
                         <i class="fas fa-th-large"></i>
                         <span>Tous les documents</span>
-                        <span class="library-category-badge">49 documents</span>
+                        <span class="library-category-badge">50 documents</span>
                     </div>
                     <div class="library-documents-grid" id="all-docs"></div>
                 </div>
@@ -2269,11 +2265,19 @@
         // ================================
         // LOADING SCREEN
         // ================================
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1200);
-        });
+        // Masquer loader et activer animations
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.pointerEvents = 'none';
+                setTimeout(() => { loader.style.display = 'none'; }, 800);
+            }
+        }
+        // Activer le JS-mode immédiatement (débloque les animations fade-in)
+        document.documentElement.classList.add('js-ready');
+        setTimeout(hideLoader, 800);
+        window.addEventListener('load', hideLoader);
 
         // ================================
         // PARTICLE SYSTEM
@@ -2370,12 +2374,36 @@
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), index * 150);
+                    setTimeout(() => entry.target.classList.add('visible'), index * 100);
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
+        }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        function initFadeIn() {
+            const elements = document.querySelectorAll('.fade-in');
+
+            // Rendre immédiatement visibles les éléments dans le viewport
+            elements.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight + 100) {
+                    setTimeout(() => el.classList.add('visible'), index * 80);
+                } else {
+                    observer.observe(el);
+                }
+            });
+
+            // Failsafe absolu : tout visible après 1s
+            setTimeout(() => {
+                elements.forEach(el => el.classList.add('visible'));
+            }, 1000);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFadeIn);
+        } else {
+            initFadeIn();
+        }
 
         // ================================
         // NAVBAR SCROLL EFFECT
@@ -2477,7 +2505,8 @@
             atelier: [
                 { title: "Atelier 1 Le site vitrine", icon: "fas fa-window-restore", tags: ["Web", "HTML"], file: "Atelier/Atelier_1_Le_site_vitrine.pdf", description: "Création site vitrine", hasZip: true, zipFile: "Atelier/Atelier_1_site_vitrine.zip" },
                 { title: "Atelier 02 L'hébergement du site", icon: "fas fa-server", tags: ["Serveur", "XAMPP", "Apache"], file: "Atelier/Atelier 02_L'hébergement_du_site.pdf", description: "Installation XAMPP et déploiement site GSB" },
-                { title: "Atelier 3 Le transfert du site", icon: "fas fa-upload", tags: ["FTP", "Web", "Transfert", "Hébergement"], file: "M_Sotoca/Atelier_3_Le_transfert_du_sitee.docx.pdf", description: "Transfert et déploiement de site web" }
+                { title: "Atelier 3 Le transfert du site", icon: "fas fa-upload", tags: ["FTP", "Web", "Transfert", "Hébergement"], file: "M_Sotoca/Atelier_3_Le_transfert_du_sitee.docx.pdf", description: "Transfert et déploiement de site web" },
+                { title: "Atelier 4 Gestionnaire de sauvegardes", icon: "fas fa-save", tags: ["JavaScript", "LocalStorage", "SPA", "VM"], file: "Atelier/Atelier_4_Gestionnaire_de_sauvegardes_docx.pdf", description: "Application web de gestion de sauvegardes de machines virtuelles" }
             ]
         };
 
@@ -2657,18 +2686,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadAllLibraryDocs();
             createMatrixEffect();
-        });
-
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach((el, index) => {
-                    setTimeout(() => {
-                        if (el.getBoundingClientRect().top < window.innerHeight) {
-                            el.classList.add('visible');
-                        }
-                    }, index * 200);
-                });
-            }, 1500);
+            initFadeIn();
         });
 
         // ================================

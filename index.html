@@ -72,44 +72,21 @@
         }
 
         @keyframes backgroundShift {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translate(2%, 2%) rotate(0.5deg);
-                opacity: 1;
-            }
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translate(2%, 2%) rotate(0.5deg); opacity: 1; }
         }
 
         /* ================================ */
         /* SCROLLBAR */
         /* ================================ */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--darker-bg);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-gradient);
-            border-radius: 5px;
-            box-shadow: 0 0 10px var(--glow-color);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-light);
-            box-shadow: 0 0 15px var(--glow-strong);
-        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--darker-bg); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-gradient); border-radius: 5px; box-shadow: 0 0 10px var(--glow-color); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-light); box-shadow: 0 0 15px var(--glow-strong); }
 
         /* ================================ */
-        /* BIBLIOTHÈQUE - DESIGN AVEC BOUTONS PDF/ZIP */
+        /* BIBLIOTHÈQUE */
         /* ================================ */
-        
-        /* Titre de la bibliothèque */
         .library-title {
             font-size: 3rem;
             font-weight: 900;
@@ -140,7 +117,6 @@
             margin-top: 25px;
         }
         
-        /* Barre de recherche compacte */
         .library-search-container {
             position: relative;
             background: rgba(15, 30, 50, 0.5);
@@ -181,7 +157,6 @@
             color: rgba(255, 255, 255, 0.35);
         }
         
-        /* Conteneur des filtres */
         .library-filters-container {
             display: flex;
             justify-content: center;
@@ -190,7 +165,6 @@
             margin-bottom: 45px;
         }
         
-        /* Boutons de filtre compacts */
         .library-filter-btn {
             position: relative;
             padding: 12px 28px;
@@ -209,10 +183,8 @@
         .library-filter-btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.12), rgba(70, 180, 255, 0.12));
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -223,9 +195,7 @@
             transform: translateY(-2px);
         }
         
-        .library-filter-btn:hover::before {
-            opacity: 1;
-        }
+        .library-filter-btn:hover::before { opacity: 1; }
         
         .library-filter-btn.active {
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.85), rgba(70, 180, 255, 0.85));
@@ -235,9 +205,7 @@
             box-shadow: 0 4px 18px rgba(100, 200, 255, 0.25);
         }
         
-        .library-filter-btn.active::before {
-            opacity: 0;
-        }
+        .library-filter-btn.active::before { opacity: 0; }
         
         .library-filter-btn i {
             font-size: 0.95rem;
@@ -246,11 +214,8 @@
         }
         
         .library-filter-btn:hover i,
-        .library-filter-btn.active i {
-            transform: scale(1.08);
-        }
+        .library-filter-btn.active i { transform: scale(1.08); }
         
-        /* Message d'instruction */
         .library-instruction {
             text-align: center;
             padding: 50px 20px;
@@ -265,10 +230,7 @@
             margin-right: 8px;
         }
         
-        /* Conteneur de catégorie */
-        .library-category {
-            animation: fadeInUp 0.5s ease-out;
-        }
+        .library-category { animation: fadeInUp 0.5s ease-out; }
         
         .library-category-header {
             display: flex;
@@ -281,17 +243,8 @@
             border: 1px solid rgba(100, 200, 255, 0.15);
         }
         
-        .library-category-header i {
-            font-size: 1.5rem;
-            color: #64c8ff;
-        }
-        
-        .library-category-header span {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #ffffff;
-            flex: 1;
-        }
+        .library-category-header i { font-size: 1.5rem; color: #64c8ff; }
+        .library-category-header span { font-size: 1.3rem; font-weight: 700; color: #ffffff; flex: 1; }
         
         .library-category-badge {
             font-size: 0.85rem !important;
@@ -303,7 +256,6 @@
             border: 1px solid rgba(100, 200, 255, 0.25);
         }
         
-        /* Grille de documents COMPACTE */
         .library-documents-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -311,7 +263,6 @@
             animation: fadeInUp 0.5s ease-out;
         }
         
-        /* Carte de document NOUVEAU DESIGN */
         .library-doc-card {
             position: relative;
             display: flex;
@@ -330,10 +281,8 @@
         .library-doc-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.06), rgba(70, 180, 255, 0.06));
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -345,11 +294,8 @@
             box-shadow: 0 10px 30px rgba(100, 200, 255, 0.18);
         }
         
-        .library-doc-card:hover::before {
-            opacity: 1;
-        }
+        .library-doc-card:hover::before { opacity: 1; }
         
-        /* Icône du document GRANDE */
         .library-doc-icon {
             width: 80px;
             height: 80px;
@@ -365,11 +311,7 @@
             z-index: 1;
         }
         
-        .library-doc-icon i {
-            font-size: 2.2rem;
-            color: #64c8ff;
-            transition: all 0.3s ease;
-        }
+        .library-doc-icon i { font-size: 2.2rem; color: #64c8ff; transition: all 0.3s ease; }
         
         .library-doc-card:hover .library-doc-icon {
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.25), rgba(70, 180, 255, 0.3));
@@ -377,11 +319,8 @@
             transform: scale(1.05) rotate(3deg);
         }
         
-        .library-doc-card:hover .library-doc-icon i {
-            transform: scale(1.1);
-        }
+        .library-doc-card:hover .library-doc-icon i { transform: scale(1.1); }
         
-        /* Contenu du document */
         .library-doc-content {
             flex: 1;
             position: relative;
@@ -398,9 +337,7 @@
             transition: color 0.3s ease;
         }
         
-        .library-doc-card:hover .library-doc-title {
-            color: #64c8ff;
-        }
+        .library-doc-card:hover .library-doc-title { color: #64c8ff; }
         
         .library-doc-subtitle {
             font-size: 0.88rem;
@@ -410,7 +347,6 @@
             margin-bottom: 12px;
         }
         
-        /* Tags du document */
         .library-doc-tags {
             display: flex;
             gap: 6px;
@@ -427,21 +363,22 @@
             font-weight: 600;
         }
         
-        /* Boutons PDF/ZIP EN BAS */
         .library-doc-actions {
             display: flex;
             gap: 10px;
             position: relative;
             z-index: 1;
             margin-top: auto;
+            flex-wrap: wrap;
         }
         
         .library-doc-btn {
             flex: 1;
-            padding: 12px 20px;
+            min-width: 80px;
+            padding: 12px 16px;
             border: none;
             border-radius: 25px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -449,7 +386,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             text-transform: uppercase;
             letter-spacing: 0.3px;
         }
@@ -464,6 +401,18 @@
             transform: scale(1.05) translateY(-2px);
             box-shadow: 0 6px 22px rgba(100, 200, 255, 0.45);
             color: #0a1929;
+        }
+
+        .library-doc-btn.btn-pdf2 {
+            background: linear-gradient(135deg, #46b4ff, #2090ee);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(70, 180, 255, 0.3);
+        }
+
+        .library-doc-btn.btn-pdf2:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 22px rgba(70, 180, 255, 0.45);
+            color: #ffffff;
         }
         
         .library-doc-btn.btn-zip {
@@ -490,14 +439,9 @@
             color: #ffffff;
         }
         
-        .library-doc-btn i {
-            font-size: 0.95rem;
-        }
+        .library-doc-btn i { font-size: 0.95rem; }
         
-        /* Zone de résultats de recherche */
-        .library-results-container {
-            margin-top: 40px;
-        }
+        .library-results-container { margin-top: 40px; }
         
         .library-results-header {
             text-align: center;
@@ -507,90 +451,41 @@
             margin-bottom: 25px;
         }
         
-        /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out;
-        }
+        .fade-in { animation: fadeInUp 0.8s ease-out; }
         
-        /* Responsive */
         @media (max-width: 1200px) {
-            .library-documents-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 18px;
-            }
+            .library-documents-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
         }
         
         @media (max-width: 768px) {
-            .library-title {
-                font-size: 2.2rem;
-            }
-            
-            .library-filters-container {
-                gap: 10px;
-            }
-            
-            .library-filter-btn {
-                padding: 10px 22px;
-                font-size: 0.85rem;
-            }
-            
-            .library-documents-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            
-            .library-doc-card {
-                min-height: 260px;
-                padding: 24px 20px;
-            }
-            
-            .library-doc-icon {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .library-doc-icon i {
-                font-size: 2rem;
-            }
+            .library-title { font-size: 2.2rem; }
+            .library-filters-container { gap: 10px; }
+            .library-filter-btn { padding: 10px 22px; font-size: 0.85rem; }
+            .library-documents-grid { grid-template-columns: 1fr; gap: 16px; }
+            .library-doc-card { min-height: 260px; padding: 24px 20px; }
+            .library-doc-icon { width: 70px; height: 70px; }
+            .library-doc-icon i { font-size: 2rem; }
         }
         
         @media (min-width: 1400px) {
-            .library-documents-grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
+            .library-documents-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
         }
 
-        /* SEARCH INPUT STYLES */
-        #searchTP::placeholder {
-            color: var(--text-muted);
-            opacity: 0.7;
-            font-weight: 400;
-        }
-
-        #searchTP:focus::placeholder {
-            opacity: 0.5;
-        }
+        #searchTP::placeholder { color: var(--text-muted); opacity: 0.7; font-weight: 400; }
+        #searchTP:focus::placeholder { opacity: 0.5; }
 
         /* ================================ */
         /* PARTICLE BACKGROUND */
         /* ================================ */
         #particles-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: -1;
             opacity: 0.8;
@@ -632,23 +527,15 @@
         .navbar-brand::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
+            bottom: -5px; left: 0;
+            width: 0; height: 3px;
             background: var(--accent-gradient);
             transition: width 0.4s ease;
             border-radius: 2px;
         }
 
-        .navbar-brand:hover {
-            transform: scale(1.05);
-            filter: brightness(1.2);
-        }
-
-        .navbar-brand:hover::after {
-            width: 100%;
-        }
+        .navbar-brand:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .navbar-brand:hover::after { width: 100%; }
 
         .nav-link {
             color: var(--text-light) !important;
@@ -662,10 +549,8 @@
         .nav-link::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: var(--accent-gradient);
             transition: left 0.4s ease;
             z-index: -1;
@@ -682,9 +567,7 @@
             padding: 0.5rem 1rem;
         }
 
-        .nav-link:hover::before {
-            left: 0;
-        }
+        .nav-link:hover::before { left: 0; }
 
         /* ================================ */
         /* HERO SECTION */
@@ -701,53 +584,37 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
+            width: 600px; height: 600px;
             background: var(--accent-gradient);
             opacity: 0.08;
             border-radius: 50%;
             animation: heroBlob1 12s infinite ease-in-out;
-            top: -15%;
-            left: -15%;
+            top: -15%; left: -15%;
             filter: blur(40px);
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 500px; height: 500px;
             background: var(--secondary-gradient);
             opacity: 0.06;
             border-radius: 50%;
             animation: heroBlob2 15s infinite ease-in-out;
-            bottom: -15%;
-            right: -15%;
+            bottom: -15%; right: -15%;
             filter: blur(40px);
         }
 
         @keyframes heroBlob1 {
-            0%, 100% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            33% {
-                transform: translate(50px, -80px) scale(1.2) rotate(120deg);
-            }
-            66% {
-                transform: translate(-30px, 40px) scale(0.8) rotate(240deg);
-            }
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(50px, -80px) scale(1.2) rotate(120deg); }
+            66% { transform: translate(-30px, 40px) scale(0.8) rotate(240deg); }
         }
 
         @keyframes heroBlob2 {
-            0%, 100% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            33% {
-                transform: translate(-60px, 30px) scale(1.1) rotate(-120deg);
-            }
-            66% {
-                transform: translate(40px, -50px) scale(0.9) rotate(-240deg);
-            }
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(-60px, 30px) scale(1.1) rotate(-120deg); }
+            66% { transform: translate(40px, -50px) scale(0.9) rotate(-240deg); }
         }
 
         .hero-content {
@@ -771,12 +638,8 @@
         }
 
         @keyframes heroGlow {
-            0%, 100% {
-                filter: brightness(1) drop-shadow(0 0 20px rgba(0, 245, 255, 0.3));
-            }
-            50% {
-                filter: brightness(1.3) drop-shadow(0 0 30px rgba(0, 245, 255, 0.5));
-            }
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 20px rgba(0, 245, 255, 0.3)); }
+            50% { filter: brightness(1.3) drop-shadow(0 0 30px rgba(0, 245, 255, 0.5)); }
         }
 
         .hero .lead {
@@ -802,8 +665,7 @@
         }
 
         .hero-image .avatar {
-            width: 350px;
-            height: 350px;
+            width: 350px; height: 350px;
             background: var(--accent-gradient);
             border-radius: 50%;
             margin: 0 auto;
@@ -811,9 +673,7 @@
             align-items: center;
             justify-content: center;
             font-size: 6rem;
-            box-shadow: 
-                0 0 60px var(--glow-color),
-                0 0 120px rgba(0, 245, 255, 0.3);
+            box-shadow: 0 0 60px var(--glow-color), 0 0 120px rgba(0, 245, 255, 0.3);
             animation: avatarFloat 6s ease-in-out infinite;
             position: relative;
             overflow: hidden;
@@ -822,8 +682,7 @@
         .hero-image .avatar::before {
             content: '';
             position: absolute;
-            width: 120%;
-            height: 120%;
+            width: 120%; height: 120%;
             background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent 50%);
             animation: avatarRotate 8s linear infinite;
             z-index: -1;
@@ -834,8 +693,7 @@
         .hero-image .avatar::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background: var(--accent-gradient);
             border-radius: 50%;
             animation: avatarPulse 3s ease-in-out infinite;
@@ -844,40 +702,22 @@
         }
 
         @keyframes avatarFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg); 
-            }
-            25% { 
-                transform: translateY(-15px) rotate(2deg); 
-            }
-            75% { 
-                transform: translateY(15px) rotate(-2deg); 
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            75% { transform: translateY(15px) rotate(-2deg); }
         }
 
-        @keyframes avatarRotate {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+        @keyframes avatarRotate { 100% { transform: rotate(360deg); } }
 
         @keyframes avatarPulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         /* ================================ */
         /* SECTIONS */
         /* ================================ */
-        .section {
-            padding: 6rem 0;
-            position: relative;
-            z-index: 1;
-        }
+        .section { padding: 6rem 0; position: relative; z-index: 1; }
 
         .section-title {
             font-size: 3rem;
@@ -893,10 +733,8 @@
         .section-title::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100px;
-            height: 100px;
+            top: 50%; left: 50%;
+            width: 100px; height: 100px;
             background: var(--accent-gradient);
             border-radius: 50%;
             transform: translate(-50%, -50%) scale(0);
@@ -908,10 +746,8 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
-            left: 50%;
-            width: 0;
-            height: 4px;
+            bottom: -15px; left: 50%;
+            width: 0; height: 4px;
             background: var(--accent-gradient);
             transform: translateX(-50%);
             border-radius: 2px;
@@ -920,27 +756,12 @@
         }
 
         @keyframes titleReveal {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes titleBg {
-            to {
-                transform: translate(-50%, -50%) scale(2);
-            }
-        }
-
-        @keyframes titleUnderline {
-            to {
-                width: 80px;
-            }
-        }
+        @keyframes titleBg { to { transform: translate(-50%, -50%) scale(2); } }
+        @keyframes titleUnderline { to { width: 80px; } }
 
         /* ================================ */
         /* GLASS CARDS */
@@ -961,10 +782,8 @@
         .modern-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.8s ease;
         }
@@ -972,10 +791,7 @@
         .modern-card::after {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
             background: var(--accent-gradient);
             border-radius: 20px;
             opacity: 0;
@@ -986,20 +802,12 @@
         .modern-card:hover {
             transform: translateY(-15px) scale(1.02);
             border-color: var(--accent-color);
-            box-shadow: 
-                0 25px 50px rgba(0, 245, 255, 0.5),
-                0 0 40px rgba(0, 245, 255, 0.4),
-                inset 0 0 0 1px rgba(0, 245, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 245, 255, 0.5), 0 0 40px rgba(0, 245, 255, 0.4), inset 0 0 0 1px rgba(0, 245, 255, 0.2);
             background: rgba(0, 245, 255, 0.08);
         }
 
-        .modern-card:hover::before {
-            left: 100%;
-        }
-
-        .modern-card:hover::after {
-            opacity: 0.6;
-        }
+        .modern-card:hover::before { left: 100%; }
+        .modern-card:hover::after { opacity: 0.6; }
 
         /* ================================ */
         /* BUTTONS */
@@ -1022,10 +830,8 @@
         .btn-primary::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.5);
             transform: translate(-50%, -50%);
@@ -1036,15 +842,10 @@
         .btn-primary:hover {
             background: var(--accent-light);
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 
-                0 15px 30px rgba(0, 245, 255, 0.6),
-                0 0 25px rgba(0, 245, 255, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.6), 0 0 25px rgba(0, 245, 255, 0.5);
         }
 
-        .btn-primary:hover::before {
-            width: 400px;
-            height: 400px;
-        }
+        .btn-primary:hover::before { width: 400px; height: 400px; }
 
         .btn-outline {
             background: transparent;
@@ -1066,10 +867,8 @@
         .btn-outline::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: var(--accent-gradient);
             transition: left 0.4s ease;
             z-index: -1;
@@ -1078,16 +877,12 @@
         .btn-outline:hover {
             color: white;
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 
-                0 15px 30px rgba(0, 245, 255, 0.6),
-                0 0 25px rgba(0, 245, 255, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.6), 0 0 25px rgba(0, 245, 255, 0.5);
             border-color: transparent;
             background: rgba(0, 245, 255, 0.2);
         }
 
-        .btn-outline:hover::before {
-            left: 0;
-        }
+        .btn-outline:hover::before { left: 0; }
 
         /* ================================ */
         /* SKILLS SECTION */
@@ -1115,10 +910,8 @@
         .skill-item::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
+            top: 0; left: 0;
+            width: 100%; height: 0;
             background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(0, 191, 255, 0.15));
             opacity: 0;
             transition: all 0.6s ease;
@@ -1128,16 +921,10 @@
         .skill-item:hover {
             transform: translateY(-10px) scale(1.08);
             border: 2px solid var(--accent-color);
-            box-shadow: 
-                0 20px 40px rgba(0, 245, 255, 0.6),
-                0 0 30px rgba(0, 245, 255, 0.8),
-                inset 0 0 0 2px rgba(0, 245, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.6), 0 0 30px rgba(0, 245, 255, 0.8), inset 0 0 0 2px rgba(0, 245, 255, 0.2);
         }
 
-        .skill-item:hover::before {
-            height: 100%;
-            opacity: 1;
-        }
+        .skill-item:hover::before { height: 100%; opacity: 1; }
 
         .skill-icon {
             font-size: 3.5rem;
@@ -1159,11 +946,7 @@
             filter: drop-shadow(0 0 15px rgba(0, 245, 255, 1));
         }
 
-        .skill-item h6 {
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
+        .skill-item h6 { font-weight: 600; margin-top: 1rem; transition: all 0.3s ease; }
 
         .skill-item:hover h6 {
             color: #00ffff;
@@ -1171,7 +954,6 @@
             font-weight: 700;
         }
 
-        /* Progress bars */
         .progress {
             height: 10px;
             background: rgba(255, 255, 255, 0.1);
@@ -1184,10 +966,8 @@
         .progress::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             animation: progressShimmer 2s infinite;
         }
@@ -1196,29 +976,14 @@
             background: var(--accent-gradient);
             position: relative;
             animation: progressFill 2.5s ease;
-            box-shadow: 
-                0 0 15px var(--glow-color),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px var(--glow-color), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             border-radius: 15px;
         }
 
-        @keyframes progressFill {
-            from {
-                width: 0;
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
+        @keyframes progressFill { from { width: 0; opacity: 0; } to { opacity: 1; } }
         @keyframes progressShimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         /* ================================ */
@@ -1240,53 +1005,31 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
+            left: 0; top: 0;
+            height: 100%; width: 3px;
             background: var(--accent-gradient);
             border-radius: 2px;
             box-shadow: 0 0 10px var(--glow-color);
         }
 
         .timeline-dot {
-            width: 16px;
-            height: 16px;
+            width: 16px; height: 16px;
             background: var(--accent-gradient);
             border-radius: 50%;
             position: absolute;
-            left: -6px;
-            top: 8px;
-            box-shadow: 
-                0 0 20px var(--glow-color),
-                0 0 40px rgba(0, 245, 255, 0.3);
+            left: -6px; top: 8px;
+            box-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(0, 245, 255, 0.3);
             animation: timelinePulse 3s infinite;
         }
 
         @keyframes timelineSlide {
-            from {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes timelinePulse {
-            0%, 100% {
-                box-shadow: 
-                    0 0 20px var(--glow-color),
-                    0 0 40px rgba(0, 245, 255, 0.3);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 
-                    0 0 30px var(--glow-color),
-                    0 0 60px rgba(0, 245, 255, 0.5);
-                transform: scale(1.2);
-            }
+            0%, 100% { box-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(0, 245, 255, 0.3); transform: scale(1); }
+            50% { box-shadow: 0 0 30px var(--glow-color), 0 0 60px rgba(0, 245, 255, 0.5); transform: scale(1.2); }
         }
 
         /* ================================ */
@@ -1305,13 +1048,10 @@
         .footer::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 50%);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 50%);
             animation: footerGlow 8s ease-in-out infinite alternate;
             z-index: -1;
         }
@@ -1319,20 +1059,16 @@
         .footer::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
+            top: 0; left: -100%;
+            width: 100%; height: 2px;
             background: var(--accent-gradient);
             animation: footerScan 3s ease-in-out infinite;
         }
 
         .footer-matrix {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             overflow: hidden;
             z-index: -1;
             pointer-events: none;
@@ -1351,40 +1087,20 @@
         }
 
         @keyframes matrixFall {
-            0% {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
+            0% { transform: translateY(-20px); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(100vh); opacity: 0; }
         }
 
         @keyframes footerGlow {
-            0% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0.6;
-                transform: scale(1.1);
-            }
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.6; transform: scale(1.1); }
         }
 
         @keyframes footerScan {
-            0%, 100% {
-                left: -100%;
-            }
-            50% {
-                left: 100%;
-            }
+            0%, 100% { left: -100%; }
+            50% { left: 100%; }
         }
 
         .footer p {
@@ -1397,51 +1113,19 @@
             display: inline-block;
         }
 
-        .footer p::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -10px;
-            right: -10px;
-            bottom: -5px;
-            border: 1px solid transparent;
-            border-radius: 5px;
-            background: linear-gradient(45deg, transparent, var(--accent-color), transparent) border-box;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            animation: borderScan 2s infinite;
-        }
-
         .footer p:hover {
             color: var(--accent-color);
             text-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
             transform: scale(1.05);
         }
 
-        .footer p:hover::before {
-            opacity: 0.7;
-        }
-
-        @keyframes borderScan {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .social-links {
-            position: relative;
-        }
+        .social-links { position: relative; }
 
         .social-links::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
+            top: 50%; left: 50%;
+            width: 200px; height: 200px;
             border: 1px solid var(--accent-color);
             border-radius: 50%;
             opacity: 0.1;
@@ -1452,10 +1136,8 @@
         .social-links::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150px;
-            height: 150px;
+            top: 50%; left: 50%;
+            width: 150px; height: 150px;
             border: 1px solid var(--accent-light);
             border-radius: 50%;
             opacity: 0.2;
@@ -1464,25 +1146,16 @@
         }
 
         @keyframes socialRing {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg) scale(1);
-                opacity: 0.1;
-            }
-            50% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg) scale(1.1);
-                opacity: 0.1;
-            }
+            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 0.1; }
+            50% { opacity: 0.3; }
+            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.1); opacity: 0.1; }
         }
 
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             background: var(--glass-bg);
             border: 2px solid var(--glass-border);
             border-radius: 50%;
@@ -1498,15 +1171,12 @@
             cursor: pointer !important;
         }
 
-        .social-links a * {
-            cursor: pointer !important;
-        }
+        .social-links a * { cursor: pointer !important; }
 
         .social-links a::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background: var(--accent-gradient);
             transform: scale(0) rotate(0deg);
             border-radius: 50%;
@@ -1519,12 +1189,10 @@
         .social-links a::after {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 80px;
+            width: 80px; height: 80px;
             border: 2px solid var(--accent-color);
             border-radius: 50%;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0);
             opacity: 0;
             transition: all 0.4s ease;
@@ -1536,37 +1204,21 @@
             color: #000000;
             transform: translateY(-8px) scale(1.1);
             border-color: var(--accent-color);
-            box-shadow: 
-                0 15px 30px rgba(0, 245, 255, 0.8),
-                0 0 40px rgba(0, 245, 255, 0.6),
-                0 0 60px rgba(0, 245, 255, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.8), 0 0 40px rgba(0, 245, 255, 0.6), 0 0 60px rgba(0, 245, 255, 0.4);
             background: rgba(0, 245, 255, 0.1);
         }
 
-        .social-links a:hover::before {
-            transform: scale(1) rotate(360deg);
-        }
-
-        .social-links a:hover::after {
-            transform: translate(-50%, -50%) scale(1.5);
-            opacity: 0.6;
-        }
-
-        .social-links a i {
-            pointer-events: none;
-            position: relative;
-            z-index: 1;
-        }
+        .social-links a:hover::before { transform: scale(1) rotate(360deg); }
+        .social-links a:hover::after { transform: translate(-50%, -50%) scale(1.5); opacity: 0.6; }
+        .social-links a i { pointer-events: none; position: relative; z-index: 1; }
 
         /* ================================ */
         /* BACK TO TOP BUTTON */
         /* ================================ */
         #backToTop {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 60px;
-            height: 60px;
+            bottom: 40px; right: 40px;
+            width: 60px; height: 60px;
             background: var(--accent-gradient);
             color: white;
             border-radius: 50%;
@@ -1582,33 +1234,19 @@
             backdrop-filter: blur(15px);
         }
 
-        #backToTop * {
-            cursor: pointer !important;
-        }
+        #backToTop * { cursor: pointer !important; }
 
         #backToTop:hover {
             transform: translateY(-8px) scale(1.1);
-            box-shadow: 
-                0 15px 35px rgba(0, 245, 255, 0.8),
-                0 0 30px rgba(0, 245, 255, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 245, 255, 0.8), 0 0 30px rgba(0, 245, 255, 0.6);
         }
 
-        #backToTop.show {
-            opacity: 1;
-            visibility: visible;
-            animation: backToTopBounce 0.6s ease;
-        }
+        #backToTop.show { opacity: 1; visibility: visible; animation: backToTopBounce 0.6s ease; }
 
         @keyframes backToTopBounce {
-            0% {
-                transform: scale(0) rotate(0deg);
-            }
-            50% {
-                transform: scale(1.2) rotate(180deg);
-            }
-            100% {
-                transform: scale(1) rotate(360deg);
-            }
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
         }
 
         /* ================================ */
@@ -1616,10 +1254,8 @@
         /* ================================ */
         .loader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: var(--dark-bg);
             display: flex;
             justify-content: center;
@@ -1628,14 +1264,10 @@
             transition: opacity 0.8s ease;
         }
 
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        .loader.hidden { opacity: 0; pointer-events: none; }
 
         .loader-inner {
-            width: 80px;
-            height: 80px;
+            width: 80px; height: 80px;
             border: 4px solid var(--glass-border);
             border-top: 4px solid var(--accent-color);
             border-radius: 50%;
@@ -1646,10 +1278,8 @@
         .loader-inner::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
+            top: 50%; left: 50%;
+            width: 40px; height: 40px;
             border: 3px solid transparent;
             border-top: 3px solid var(--accent-light);
             border-radius: 50%;
@@ -1657,91 +1287,24 @@
             animation: loaderSpin 0.8s linear infinite reverse;
         }
 
-        @keyframes loaderSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes loaderSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* ================================ */
         /* ANIMATIONS */
         /* ================================ */
         @keyframes slideInLeft {
-            from {
-                transform: translateX(-100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes slideInRight {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes fadeInUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* ================================ */
-        /* FLOATING ANIMATIONS */
-        /* ================================ */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-20px) rotate(90deg);
-            }
-            50% {
-                transform: translateY(-40px) rotate(180deg);
-            }
-            75% {
-                transform: translateY(-20px) rotate(270deg);
-            }
-        }
-
-        @keyframes rainbowShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .fade-in {
@@ -1750,82 +1313,30 @@
             transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* ================================ */
         /* RESPONSIVE */
         /* ================================ */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .hero .lead {
-                font-size: 1.3rem;
-            }
-            
-            .section {
-                padding: 4rem 0;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .skill-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .hero-image .avatar {
-                width: 250px;
-                height: 250px;
-                font-size: 4rem;
-            }
-
-            .modern-card {
-                padding: 2rem;
-            }
-
-            .navbar-brand {
-                font-size: 1.5rem;
-            }
-
-            .btn-primary, .btn-outline {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-
-            .matrix-char {
-                font-size: 12px;
-            }
+            .hero h1 { font-size: 3rem; }
+            .hero .lead { font-size: 1.3rem; }
+            .section { padding: 4rem 0; }
+            .section-title { font-size: 2.5rem; }
+            .skill-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1.5rem; }
+            .hero-image .avatar { width: 250px; height: 250px; font-size: 4rem; }
+            .modern-card { padding: 2rem; }
+            .navbar-brand { font-size: 1.5rem; }
+            .btn-primary, .btn-outline { padding: 0.8rem 2rem; font-size: 1rem; }
+            .matrix-char { font-size: 12px; }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .skill-grid {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            }
-
-            .hero-image .avatar {
-                width: 200px;
-                height: 200px;
-                font-size: 3rem;
-            }
-
-            .matrix-char {
-                font-size: 10px;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .skill-grid { grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); }
+            .hero-image .avatar { width: 200px; height: 200px; font-size: 3rem; }
+            .matrix-char { font-size: 10px; }
         }
     </style>
 </head>
@@ -1897,7 +1408,6 @@
                     <div class="modern-card fade-in">
                         <h3 class="mb-4" style="color: #ffffff; font-weight: 700;">Développeur & Technicien Informatique</h3>
                         <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.8;">Actuellement étudiant en BTS Services Informatiques aux Organisations (SIO) depuis septembre 2024, je poursuis ma formation après l'obtention d'un BAC PRO Systèmes Numériques option RISC en juillet 2024. Ma passion pour l'informatique s'est révélée très tôt, alimentée par une fascination pour l'innovation technologique et son impact transformateur sur notre société.</p>
-                        
                         <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.8;">Fort d'une expérience professionnelle concrète acquise à travers diverses missions et stages, j'ai développé une expertise polyvalente couvrant la maintenance hardware, l'installation et configuration de systèmes d'exploitation, la virtualisation avec des technologies comme VirtualBox et Proxmox, ainsi que la sécurisation des données par le biais d'outils de chiffrement avancés.</p>
                         
                         <div class="row mt-5">
@@ -1952,7 +1462,6 @@
                     <div class="modern-card fade-in">
                         <h4 class="mb-4" style="color: #ffffff; font-weight: 700;">Compétences Techniques</h4>
                         
-                        <!-- Installation et Configuration -->
                         <div class="skill-item mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span style="color: #ffffff; font-weight: 600;">Installation et Configuration</span>
@@ -1964,7 +1473,6 @@
                             <small style="color: var(--text-muted);">Installation et configuration de systèmes d'exploitation : Windows, Linux. Clonage de disques durs et migration de données.</small>
                         </div>
                         
-                        <!-- Dépannage et Maintenance -->
                         <div class="skill-item mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span style="color: #ffffff; font-weight: 600;">Dépannage et Maintenance</span>
@@ -1976,7 +1484,6 @@
                             <small style="color: var(--text-muted);">Diagnostic et résolution de pannes matérielles et logicielles. Remplacement de composants.</small>
                         </div>
                         
-                        <!-- Virtualisation -->
                         <div class="skill-item mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span style="color: #ffffff; font-weight: 600;">Virtualisation</span>
@@ -1988,7 +1495,6 @@
                             <small style="color: var(--text-muted);">Utilisation de VirtualBox et Proxmox pour créer et gérer des machines virtuelles.</small>
                         </div>
                         
-                        <!-- Sécurité et Chiffrement -->
                         <div class="skill-item mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span style="color: #ffffff; font-weight: 600;">Sécurité et Chiffrement</span>
@@ -2000,7 +1506,6 @@
                             <small style="color: var(--text-muted);">Utilisation d'outils de chiffrement : Nitrokey, Kleopatra, Thunderbird.</small>
                         </div>
                         
-                        <!-- Relation Client -->
                         <div class="skill-item">
                             <div class="d-flex justify-content-between mb-2">
                                 <span style="color: #ffffff; font-weight: 600;">Relation Client et Vente</span>
@@ -2075,11 +1580,9 @@
                 <div class="col-lg-8 mx-auto">
                     <div class="modern-card fade-in">
                         <div class="row">
-                            <!-- Formation -->
                             <div class="col-md-6">
                                 <h4 class="mb-4" style="color: #ffffff; font-weight: 700;">Formation</h4>
                                 
-                                <!-- BTS SIO -->
                                 <div class="timeline-item mb-4">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">Depuis septembre 2024</small>
@@ -2087,7 +1590,6 @@
                                     <p class="small" style="color: var(--text-muted);">Lycée Dominique Villars Place Verdun, 05000 Gap</p>
                                 </div>
                                 
-                                <!-- BAC PRO -->
                                 <div class="timeline-item mb-4">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">Septembre 2022 - Juillet 2024</small>
@@ -2095,7 +1597,6 @@
                                     <p class="small" style="color: var(--text-muted);">Lycée Professionnel Pierre Mendès France, Veynes</p>
                                 </div>
                                 
-                                <!-- Brevet -->
                                 <div class="timeline-item mb-4">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">2019 - 2022</small>
@@ -2103,7 +1604,6 @@
                                     <p class="small" style="color: var(--text-muted);">Collège Achille Mauzan, Gap</p>
                                 </div>
                                 
-                                <!-- PSC -->
                                 <div class="timeline-item">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">2012 - 2018</small>
@@ -2112,11 +1612,9 @@
                                 </div>
                             </div>
                             
-                            <!-- Expériences Professionnelles -->
                             <div class="col-md-6">
                                 <h4 class="mb-4" style="color: #ffffff; font-weight: 700;">Expériences Professionnelles</h4>
                                 
-                                <!-- O'tacos -->
                                 <div class="timeline-item mb-4">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">2024</small>
@@ -2124,7 +1622,6 @@
                                     <p class="small" style="color: var(--text-muted);">O'tacos Gap</p>
                                 </div>
                                 
-                                <!-- Sun Valley Systems -->
                                 <div class="timeline-item mb-4">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">Janvier - Novembre 2023</small>
@@ -2132,7 +1629,6 @@
                                     <p class="small" style="color: var(--text-muted);">Sun Valley Systems, Porte Colombe - Réparation d'ordinateurs, accueil clients, chiffrement de données</p>
                                 </div>
                                 
-                                <!-- La Petite Ourse -->
                                 <div class="timeline-item mb-4">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">Mai - Juin 2023</small>
@@ -2140,7 +1636,6 @@
                                     <p class="small" style="color: var(--text-muted);">La Petite Ourse Gap - Réparation d'imprimantes, vidéoprojecteurs, installations Windows</p>
                                 </div>
                                 
-                                <!-- Certification -->
                                 <div class="timeline-item">
                                     <div class="timeline-dot"></div>
                                     <small style="color: var(--accent-light); font-weight: 600;">Mars 2023</small>
@@ -2160,7 +1655,6 @@
     <!-- ================================ -->
     <section id="projects" class="section" style="min-height: 100vh; display: flex; align-items: center;">
         <div class="container">
-            <!-- Header avec titre -->
             <div class="text-center mb-5 fade-in">
                 <h2 class="library-title">
                     <i class="fas fa-book-open me-3"></i>
@@ -2171,7 +1665,6 @@
                 </div>
             </div>
 
-            <!-- Barre de recherche élégante -->
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8">
                     <div class="library-search-container">
@@ -2187,7 +1680,6 @@
                 </div>
             </div>
 
-            <!-- Boutons de filtres horizontaux -->
             <div class="library-filters-container fade-in">
                 <button class="library-filter-btn active" data-category="all" onclick="filterLibraryCategory('all')">
                     <i class="fas fa-th-large me-2"></i>Tous
@@ -2203,19 +1695,16 @@
                 </button>
             </div>
 
-            <!-- Message d'instruction -->
             <div class="library-instruction" id="library-instruction">
                 <i class="fas fa-hand-pointer me-2"></i>
                 Sélectionnez une catégorie pour afficher les documents
             </div>
 
-            <!-- Zone de résultats de recherche -->
             <div id="searchResultsContainer" class="library-results-container" style="display: none;">
                 <div class="library-results-header" id="searchResultsHeader"></div>
                 <div id="searchResultsList" class="library-documents-grid"></div>
             </div>
 
-            <!-- Conteneur des documents par catégorie -->
             <div class="library-categories-container">
                 <!-- Mme. Beauvallet -->
                 <div class="library-category" data-category="beauvallet" style="display: none;">
@@ -2232,7 +1721,7 @@
                     <div class="library-category-header">
                         <i class="fas fa-user-tie"></i>
                         <span>M. Sotoca</span>
-                        <span class="library-category-badge">13 documents</span>
+                        <span class="library-category-badge">18 documents</span>
                     </div>
                     <div class="library-documents-grid" id="sotoca-docs"></div>
                 </div>
@@ -2252,7 +1741,7 @@
                     <div class="library-category-header">
                         <i class="fas fa-th-large"></i>
                         <span>Tous les documents</span>
-                        <span class="library-category-badge">40 documents</span>
+                        <span class="library-category-badge">45 documents</span>
                     </div>
                     <div class="library-documents-grid" id="all-docs"></div>
                 </div>
@@ -2267,7 +1756,6 @@
         <div class="container">
             <h2 class="section-title fade-in">Veille Technologique : Intelligence Artificielle 🔍</h2>
             
-            <!-- Introduction -->
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in">
@@ -2339,7 +1827,6 @@
                 </div>
             </div>
 
-            <!-- Méthodologie -->
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in">
@@ -2350,7 +1837,6 @@
                         <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
                             Pour rester à jour, je consulte régulièrement plusieurs sources fiables et je note les informations importantes. Voici comment je procède :
                         </p>
-                        
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 10px;">
@@ -2381,7 +1867,6 @@
                 </div>
             </div>
 
-            <!-- Actualités Récentes - Janvier 2026 -->
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10">
                     <h3 class="mb-4 fade-in" style="color: #ffffff; font-weight: 700; text-align: center;">
@@ -2391,7 +1876,6 @@
                 </div>
             </div>
 
-            <!-- Actualité 1: Classement des modèles -->
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in" style="border-left: 4px solid var(--accent-color);">
@@ -2401,9 +1885,7 @@
                             </div>
                             <div>
                                 <h4 style="color: #ffffff; margin: 0; font-weight: 700;">Gemini 3 Pro domine le classement LMArena</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">
-                                    <i class="fas fa-calendar me-2"></i>Janvier 2026
-                                </p>
+                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Janvier 2026</p>
                             </div>
                         </div>
                         <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
@@ -2439,7 +1921,6 @@
                 </div>
             </div>
 
-            <!-- Actualité 2: Europe leader en adoption IA -->
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in" style="border-left: 4px solid #4CAF50;">
@@ -2449,9 +1930,7 @@
                             </div>
                             <div>
                                 <h4 style="color: #ffffff; margin: 0; font-weight: 700;">L'Europe devance les USA et la Chine en adoption de l'IA</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">
-                                    <i class="fas fa-calendar me-2"></i>Rapport Microsoft - 8 janvier 2026
-                                </p>
+                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Rapport Microsoft - 8 janvier 2026</p>
                             </div>
                         </div>
                         <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
@@ -2485,7 +1964,6 @@
                 </div>
             </div>
 
-            <!-- Actualité 3: IA agentique -->
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in" style="border-left: 4px solid #9C27B0;">
@@ -2495,36 +1973,28 @@
                             </div>
                             <div>
                                 <h4 style="color: #ffffff; margin: 0; font-weight: 700;">2026 : L'année de l'IA agentique</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">
-                                    <i class="fas fa-calendar me-2"></i>Tendance majeure 2026
-                                </p>
+                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Tendance majeure 2026</p>
                             </div>
                         </div>
                         <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            L'IA évolue vers des <strong style="color: #ffffff;">agents autonomes</strong> capables d'exécuter des tâches complexes sans supervision humaine constante. Claude Code, ChatGPT Pulse et Copilot Workspace illustrent cette transformation.
+                            L'IA évolue vers des <strong style="color: #ffffff;">agents autonomes</strong> capables d'exécuter des tâches complexes sans supervision humaine constante.
                         </p>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 8px;">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-check-circle me-2"></i>Prédictions Deloitte 2025
-                                    </h6>
+                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-check-circle me-2"></i>Prédictions Deloitte 2025</h6>
                                     <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
                                         <li><strong style="color: #ffffff;">25%</strong> des entreprises utilisant l'IA déploieront des agents en 2026</li>
                                         <li><strong style="color: #ffffff;">50%</strong> en 2027</li>
-                                        <li>Les flux de travail changeront fondamentalement</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 8px;">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-tasks me-2"></i>Applications concrètes
-                                    </h6>
+                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-tasks me-2"></i>Applications concrètes</h6>
                                     <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
                                         <li>Réponses automatisées aux clients</li>
                                         <li>Génération de code autonome</li>
-                                        <li>Prototypage et design assisté</li>
                                         <li>Gestion administrative automatisée</li>
                                     </ul>
                                 </div>
@@ -2534,7 +2004,6 @@
                 </div>
             </div>
 
-            <!-- Actualité 4: Modèles de raisonnement -->
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in" style="border-left: 4px solid #FF5722;">
@@ -2544,13 +2013,11 @@
                             </div>
                             <div>
                                 <h4 style="color: #ffffff; margin: 0; font-weight: 700;">Les modèles de raisonnement explosent</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">
-                                    <i class="fas fa-calendar me-2"></i>Évolution 2025-2026
-                                </p>
+                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Évolution 2025-2026</p>
                             </div>
                         </div>
                         <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            Les modèles d'IA peuvent désormais <strong style="color: #ffffff;">raisonner étape par étape</strong> comme DeepSeek R1, permettant de suivre leur cheminement logique. Cette transparence améliore la confiance et la précision.
+                            Les modèles d'IA peuvent désormais <strong style="color: #ffffff;">raisonner étape par étape</strong>, permettant de suivre leur cheminement logique.
                         </p>
                         <div class="row g-3 mb-3">
                             <div class="col-md-4">
@@ -2572,61 +2039,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px;">
-                            <p style="color: var(--text-muted); margin: 0;">
-                                <i class="fas fa-trophy me-2" style="color: #FFD700;"></i>
-                                <strong style="color: #ffffff;">Médaille d'or</strong> obtenue par DeepSeek 5 et Gemini Deep Think aux Olympiades Internationales de Mathématiques 2025.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Actualité 5: IA multimodale -->
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in" style="border-left: 4px solid #00BCD4;">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="p-2 me-3" style="background: rgba(0, 188, 212, 0.15); border-radius: 10px;">
-                                <i class="fas fa-layer-group" style="color: #00BCD4; font-size: 1.8rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="color: #ffffff; margin: 0; font-weight: 700;">L'IA multimodale franchit un cap</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">
-                                    <i class="fas fa-calendar me-2"></i>Tendance 2026
-                                </p>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            Les modèles peuvent désormais traiter simultanément du <strong style="color: #ffffff;">texte, des images, de la vidéo et du son</strong> sans changer d'outil. Cette capacité transforme les usages professionnels.
-                        </p>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(0, 188, 212, 0.1); border-radius: 8px;">
-                                    <h6 style="color: #00BCD4; font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-store me-2"></i>Retail
-                                    </h6>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">
-                                        Analyse vidéo de l'agencement magasin + interprétation conversations clients + suggestions d'amélioration en temps réel
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(0, 188, 212, 0.1); border-radius: 8px;">
-                                    <h6 style="color: #00BCD4; font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-heartbeat me-2"></i>Santé
-                                    </h6>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">
-                                        Combinaison imagerie médicale + dossiers patients + littérature scientifique pour affiner les diagnostics
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Actualité 6: Cybersécurité et deepfakes -->
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in" style="border-left: 4px solid #F44336;">
@@ -2636,9 +2052,7 @@
                             </div>
                             <div>
                                 <h4 style="color: #ffffff; margin: 0; font-weight: 700;">Cybersécurité : L'IA arme à double tranchant</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">
-                                    <i class="fas fa-calendar me-2"></i>Alerte 2026
-                                </p>
+                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Alerte 2026</p>
                             </div>
                         </div>
                         <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
@@ -2647,9 +2061,7 @@
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <div class="p-3" style="background: rgba(76, 175, 80, 0.1); border-radius: 8px;">
-                                    <h6 style="color: #4CAF50; font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-check-circle me-2"></i>Avantages défensifs
-                                    </h6>
+                                    <h6 style="color: #4CAF50; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-check-circle me-2"></i>Avantages défensifs</h6>
                                     <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
                                         <li>Détection d'anomalies avancée</li>
                                         <li>Identification de comportements suspects</li>
@@ -2659,9 +2071,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="p-3" style="background: rgba(244, 67, 54, 0.1); border-radius: 8px;">
-                                    <h6 style="color: #F44336; font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-exclamation-triangle me-2"></i>Menaces offensives
-                                    </h6>
+                                    <h6 style="color: #F44336; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-exclamation-triangle me-2"></i>Menaces offensives</h6>
                                     <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
                                         <li>Phishing ultra-personnalisé</li>
                                         <li>Deepfakes audio/vidéo convaincants</li>
@@ -2680,7 +2090,6 @@
                 </div>
             </div>
 
-            <!-- Synthèse et Réflexion personnelle -->
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in" style="background: linear-gradient(135deg, rgba(0, 245, 255, 0.08) 0%, rgba(156, 39, 176, 0.08) 100%); border: 2px solid rgba(0, 245, 255, 0.2);">
@@ -2688,44 +2097,24 @@
                             <i class="fas fa-lightbulb me-2" style="color: var(--accent-color);"></i>
                             Ma Réflexion Personnelle
                         </h3>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            En suivant l'actualité de l'IA depuis plusieurs mois, je constate que <strong style="color: #ffffff;">l'évolution est très rapide</strong>. Les modèles deviennent plus intelligents, plus autonomes et plus accessibles. Ce qui me frappe le plus, c'est :
-                        </p>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="p-3" style="background: rgba(0, 245, 255, 0.1); border-radius: 10px; border-left: 3px solid var(--accent-color);">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-chart-line me-2"></i>Pour ma formation
-                                    </h6>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">
-                                        Je dois absolument <strong style="color: #ffffff;">apprendre à utiliser les outils IA</strong> comme GitHub Copilot, ChatGPT Code et Claude. Ces compétences seront indispensables pour mon futur métier en développement.
-                                    </p>
+                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-chart-line me-2"></i>Pour ma formation</h6>
+                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Je dois absolument <strong style="color: #ffffff;">apprendre à utiliser les outils IA</strong> comme GitHub Copilot, ChatGPT Code et Claude.</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 10px; border-left: 3px solid #9C27B0;">
-                                    <h6 style="color: #9C27B0; font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-shield-alt me-2"></i>Pour la cybersécurité
-                                    </h6>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">
-                                        Les <strong style="color: #ffffff;">menaces liées aux deepfakes</strong> sont très concrètes. En SISR, je dois comprendre comment détecter et prévenir ces attaques pour protéger les entreprises.
-                                    </p>
+                                    <h6 style="color: #9C27B0; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-shield-alt me-2"></i>Pour la cybersécurité</h6>
+                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Les <strong style="color: #ffffff;">menaces liées aux deepfakes</strong> sont très concrètes. En SISR, je dois comprendre comment détecter et prévenir ces attaques.</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="p-4 mt-4" style="background: rgba(255, 193, 7, 0.08); border-radius: 10px; border: 1px solid rgba(255, 193, 7, 0.2);">
-                            <h6 style="color: #FFC107; font-weight: 600; margin-bottom: 1rem;">
-                                <i class="fas fa-graduation-cap me-2"></i>Mon objectif d'apprentissage pour 2026
-                            </h6>
-                            <p style="color: var(--text-muted); margin: 0; line-height: 1.8;">
-                                Je veux <strong style="color: #ffffff;">maîtriser au moins 2-3 outils d'IA</strong> en profondeur : comprendre leurs limites, leurs forces, et comment les intégrer dans un workflow professionnel. Je vais également suivre les évolutions réglementaires de l'AI Act européen qui impacteront notre métier.
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Sources -->
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="modern-card fade-in">
@@ -2825,7 +2214,6 @@
             <h2 class="section-title fade-in">Contact</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <!-- Contact Info Cards -->
                     <div class="row mb-5">
                         <div class="col-md-4 mb-3">
                             <div class="text-center modern-card fade-in">
@@ -2861,7 +2249,7 @@
         <div class="footer-matrix" id="footerMatrix"></div>
         <div class="container">
             <div class="social-links mb-4">
-                <a href="https://github.com/fahadfmo-dev" target="_blank" rel="noopener noreferrer" class="github-link">
+                <a href="https://github.com/fahadfmo-dev" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -2869,7 +2257,6 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <div id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </div>
@@ -2889,7 +2276,7 @@
         });
 
         // ================================
-        // ENHANCED PARTICLE SYSTEM
+        // PARTICLE SYSTEM
         // ================================
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -2914,12 +2301,10 @@
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 this.opacity += this.pulse;
                 if (this.opacity >= this.originalOpacity + 0.3 || this.opacity <= this.originalOpacity - 0.3) {
                     this.pulse *= -1;
                 }
-
                 if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
             }
@@ -2928,8 +2313,6 @@
                 ctx.fillStyle = this.color + this.opacity + ')';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = this.color + '0.5)';
                 ctx.fill();
@@ -2938,25 +2321,17 @@
         }
 
         function initParticles() {
-            for (let i = 0; i < 120; i++) {
-                particles.push(new Particle());
-            }
+            for (let i = 0; i < 120; i++) particles.push(new Particle());
         }
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
+            particles.forEach(p => { p.update(); p.draw(); });
             particles.forEach((p1, i) => {
                 particles.slice(i + 1).forEach(p2 => {
-                    const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
-                    if (distance < 120) {
-                        const opacity = 0.15 * (1 - distance / 120);
-                        ctx.strokeStyle = `rgba(0, 245, 255, ${opacity})`;
+                    const dist = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+                    if (dist < 120) {
+                        ctx.strokeStyle = `rgba(0, 245, 255, ${0.15 * (1 - dist / 120)})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(p1.x, p1.y);
@@ -2965,7 +2340,6 @@
                     }
                 });
             });
-
             requestAnimationFrame(animateParticles);
         }
 
@@ -2983,49 +2357,33 @@
         // SMOOTH SCROLLING
         // ================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
         // ================================
-        // ENHANCED SCROLL ANIMATIONS
+        // SCROLL ANIMATIONS
         // ================================
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 150);
+                    setTimeout(() => entry.target.classList.add('visible'), index * 150);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         // ================================
         // NAVBAR SCROLL EFFECT
         // ================================
-        let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             const backToTop = document.getElementById('backToTop');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
             if (scrollTop > 100) {
                 navbar.classList.add('scrolled');
                 backToTop.classList.add('show');
@@ -3033,18 +2391,10 @@
                 navbar.classList.remove('scrolled');
                 backToTop.classList.remove('show');
             }
-            
-            lastScrollTop = scrollTop;
         });
 
-        // ================================
-        // BACK TO TOP
-        // ================================
         document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // ================================
@@ -3053,9 +2403,7 @@
         function createMatrixEffect() {
             const footerMatrix = document.getElementById('footerMatrix');
             if (!footerMatrix) return;
-            
             const matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()';
-            
             function createMatrixChar() {
                 const char = document.createElement('div');
                 char.className = 'matrix-char';
@@ -3063,23 +2411,15 @@
                 char.style.left = Math.random() * 100 + '%';
                 char.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 char.style.animationDelay = Math.random() * 2 + 's';
-                
                 footerMatrix.appendChild(char);
-                
-                setTimeout(() => {
-                    if (char && char.parentNode) {
-                        char.parentNode.removeChild(char);
-                    }
-                }, 5000);
+                setTimeout(() => { if (char && char.parentNode) char.parentNode.removeChild(char); }, 5000);
             }
-            
             setInterval(createMatrixChar, 300);
         }
 
         // ================================
-        // DONNÉES DES TPs - CORRIGÉ
+        // DONNÉES DES TPs
         // ================================
-        
         const tpsData = {
             beauvallet: [
                 { title: "TP HTML", icon: "fab fa-html5", tags: ["HTML", "Web"], file: "Mme_Beauvallet/TP_HTML.pdf", description: "Initiation HTML5" },
@@ -3105,8 +2445,8 @@
                 { title: "TP AnalyseSI", icon: "fas fa-chart-line", tags: ["Analyse"], file: "Mme_Beauvallet/TP_AnalyseSI.pdf", description: "Analyse systèmes" },
                 { title: "TP PIA2", icon: "fas fa-file-contract", tags: ["RGPD"], file: "Mme_Beauvallet/TP_PIA2.pdf", description: "PIA niveau 2" },
                 { title: "TP ZOO", icon: "fas fa-database", tags: ["SQL", "BDD", "MCD"], file: "Mme_Beauvallet/TP_ZOO.pdf", description: "Base de données ZOO" },
-                { title: "TP B3 ch4 TD2 Veille informationnelle sur les mises à jour Windows", icon: "fab fa-windows", tags: ["Veille", "Windows"], file: "Mme_Beauvallet/TP_B3_ch4_TD2_Veille_informationnelle_sur_les_mises_à_jour_Windows.pdf", description: "Veille technologique Windows" },
-                { title: "TP B3 TH1 Audit de sécurité des mots de passe", icon: "fas fa-key", tags: ["Sécurité", "Audit"], file: "Mme_Beauvallet/TP_B3_TH1_Audit_de_sécurité_des_mots_de_passe.pdf", description: "Audit mots de passe" }
+                { title: "TP B3 ch4 TD2 Veille Windows", icon: "fab fa-windows", tags: ["Veille", "Windows"], file: "Mme_Beauvallet/TP_B3_ch4_TD2_Veille_informationnelle_sur_les_mises_à_jour_Windows.pdf", description: "Veille technologique Windows" },
+                { title: "TP B3 TH1 Audit mots de passe", icon: "fas fa-key", tags: ["Sécurité", "Audit"], file: "Mme_Beauvallet/TP_B3_TH1_Audit_de_sécurité_des_mots_de_passe.pdf", description: "Audit mots de passe" }
             ],
             sotoca: [
                 { title: "TP Reseau", icon: "fas fa-network-wired", tags: ["Réseau"], file: "M_Sotoca/TP_Reseau.pdf", description: "Configuration réseau" },
@@ -3115,38 +2455,51 @@
                 { title: "TP TechCorp", icon: "fas fa-building", tags: ["Réseau"], file: "M_Sotoca/TP_TechCorp.pdf", description: "Projet entreprise", hasOdt: true, odtFile: "M_Sotoca/TP_tech.odt" },
                 { title: "tp serveurNAS", icon: "fas fa-hdd", tags: ["Serveur"], file: "M_Sotoca/tp_serveurNAS.pdf", description: "Configuration NAS" },
                 { title: "TP cyber", icon: "fas fa-shield-alt", tags: ["Sécurité"], file: "M_Sotoca/TP_cyber.pdf", description: "Sécurité avancée" },
-                { title: "B1 TP21 Création d'un scénario Linux", icon: "fab fa-linux", tags: ["Linux"], file: "M_Sotoca/B1_TP21_Création_d'un_scénario_Linux.pdf", description: "Administration système" },
+                { title: "B1 TP21 Scénario Linux", icon: "fab fa-linux", tags: ["Linux"], file: "M_Sotoca/B1_TP21_Création_d'un_scénario_Linux.pdf", description: "Administration système Linux" },
                 { title: "TP01 prise de controle", icon: "fas fa-desktop", tags: ["Remote", "AnyDesk"], file: "M_Sotoca/TP01_prise_de_controle.pdf", description: "Contrôle à distance" },
                 { title: "TP1 Guide Utilisateur", icon: "fas fa-user", tags: ["Doc", "Guide"], file: "M_Sotoca/TP1_Guide_Utilisateur.pdf", description: "Assistance AnyDesk" },
                 { title: "TP01 Guide Technicien", icon: "fas fa-user-cog", tags: ["Doc", "Admin"], file: "M_Sotoca/TP01_Guide_Technicien.pdf", description: "Installation AnyDesk" },
                 { title: "TP Création d'une documentation", icon: "fas fa-file-alt", tags: ["Doc"], file: "M_Sotoca/TP_Création_d'une_documentation.pdf", description: "Création doc tech" },
                 { title: "B3 TP02 partitionnement", icon: "fas fa-hdd", tags: ["Disque", "EaseUS"], file: "M_Sotoca/B3_TP02_partitionnement.pdf", description: "Gestion de disques" },
-                { title: "TP03 CLONAGE AVEC CLONEZILLA", icon: "fas fa-clone", tags: ["Clonezilla", "Sauvegarde", "Clonage"], file: "M_Sotoca/TP03_CLONAGE_AVEC_CLONEZILLA.pdf", description: "Clonage et sauvegarde système" }
+                { title: "TP03 Clonage avec Clonezilla", icon: "fas fa-clone", tags: ["Clonezilla", "Sauvegarde", "Clonage"], file: "M_Sotoca/TP03_CLONAGE_AVEC_CLONEZILLA.pdf", description: "Clonage et sauvegarde système" },
+                // ===== NOUVEAUX TPs AJOUTÉS =====
+                { title: "B2 TP06 Keylogger", icon: "fas fa-keyboard", tags: ["Sécurité", "Keylogger", "Analyse"], file: "M_Sotoca/B2_TP06_Keylogger_Fahad.docx.pdf", description: "Analyse de sécurité - Keylogger" },
+                { title: "TP05 Serveur de fichiers", icon: "fas fa-folder-open", tags: ["Serveur", "Fichiers", "Partage"], file: "M_Sotoca/TP05_Serveur_de_fichiers.pdf", description: "Configuration serveur de fichiers", hasPdf2: true, pdf2File: "M_Sotoca/TP05_Serveur_de_fichiers.docx.pdf" },
+                { title: "B1 S2 TP Active Directory", icon: "fas fa-users-cog", tags: ["Active Directory", "Windows Server", "AD"], file: "M_Sotoca/B1_S2_TP_ActiveDirectory.docx.pdf", description: "Administration Active Directory" },
+                { title: "Atelier 3 Le transfert du site", icon: "fas fa-upload", tags: ["FTP", "Web", "Transfert", "Hébergement"], file: "M_Sotoca/Atelier_3_Le_transfert_du_sitee.docx.pdf", description: "Transfert et déploiement de site web" },
+                { title: "TP07 Kit du technicien", icon: "fas fa-toolbox", tags: ["Maintenance", "Outils", "Technicien"], file: "M_Sotoca/TP07_Kit_du_technicien_informatique.docx.pdf", description: "Outils essentiels du technicien informatique" }
             ],
             atelier: [
                 { title: "Atelier 1 Le site vitrine", icon: "fas fa-window-restore", tags: ["Web", "HTML"], file: "Atelier/Atelier_1_Le_site_vitrine.pdf", description: "Création site vitrine", hasZip: true, zipFile: "Atelier/Atelier_1_site_vitrine.zip" },
                 { title: "Atelier 02 L'hébergement du site", icon: "fas fa-server", tags: ["Serveur", "XAMPP", "Apache"], file: "Atelier/Atelier 02_L'hébergement_du_site.pdf", description: "Installation XAMPP et déploiement site GSB" }
             ]
         };
-        
+
         // ================================
-        // GÉNÉRATION DES CARTES AVEC BOUTONS PDF/ZIP
+        // GÉNÉRATION DES CARTES
         // ================================
-        
         function generateLibraryDocCard(tp, category) {
-            let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
-            
-            // Générer les boutons
+            const tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
+
             let buttonsHTML = `<div class="library-doc-actions">`;
-            
-            // Bouton PDF toujours présent
+
+            // Bouton PDF principal
             buttonsHTML += `
                 <a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();">
                     <i class="fas fa-file-pdf"></i> PDF
                 </a>
             `;
-            
-            // Bouton ZIP si disponible
+
+            // Bouton PDF secondaire (ex: version DOCX exportée en PDF)
+            if (tp.hasPdf2) {
+                buttonsHTML += `
+                    <a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" download onclick="event.stopPropagation();">
+                        <i class="fas fa-file-pdf"></i> DOCX
+                    </a>
+                `;
+            }
+
+            // Bouton ZIP
             if (tp.hasZip) {
                 buttonsHTML += `
                     <a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();">
@@ -3154,8 +2507,8 @@
                     </a>
                 `;
             }
-            
-            // Bouton ODT si disponible
+
+            // Bouton ODT
             if (tp.hasOdt) {
                 buttonsHTML += `
                     <a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();">
@@ -3163,9 +2516,9 @@
                     </a>
                 `;
             }
-            
+
             buttonsHTML += `</div>`;
-            
+
             return `
                 <div class="library-doc-card" data-category="${category}">
                     <div class="library-doc-icon">
@@ -3180,27 +2533,26 @@
                 </div>
             `;
         }
-        
+
+        // ================================
+        // CHARGEMENT DES DOCS
+        // ================================
         function loadAllLibraryDocs() {
-            // Charger docs Beauvallet
             const beauvalletContainer = document.getElementById('beauvallet-docs');
             if (beauvalletContainer) {
                 beauvalletContainer.innerHTML = tpsData.beauvallet.map(tp => generateLibraryDocCard(tp, 'beauvallet')).join('');
             }
-            
-            // Charger docs Sotoca
+
             const sotocaContainer = document.getElementById('sotoca-docs');
             if (sotocaContainer) {
                 sotocaContainer.innerHTML = tpsData.sotoca.map(tp => generateLibraryDocCard(tp, 'sotoca')).join('');
             }
-            
-            // Charger docs Atelier
+
             const atelierContainer = document.getElementById('atelier-docs');
             if (atelierContainer) {
                 atelierContainer.innerHTML = tpsData.atelier.map(tp => generateLibraryDocCard(tp, 'atelier')).join('');
             }
-            
-            // Charger tous les docs
+
             const allContainer = document.getElementById('all-docs');
             if (allContainer) {
                 let allDocs = [];
@@ -3210,60 +2562,37 @@
                 allContainer.innerHTML = allDocs.join('');
             }
         }
-        
+
         // ================================
         // FILTRAGE PAR CATÉGORIE
         // ================================
-        
         function filterLibraryCategory(category) {
-            // Mettre à jour les boutons
             document.querySelectorAll('.library-filter-btn').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.dataset.category === category) {
-                    btn.classList.add('active');
-                }
+                if (btn.dataset.category === category) btn.classList.add('active');
             });
-            
-            // Cacher le message d'instruction
+
             const instruction = document.getElementById('library-instruction');
-            if (instruction) {
-                instruction.style.display = 'none';
-            }
-            
-            // Cacher les résultats de recherche
+            if (instruction) instruction.style.display = 'none';
+
             const searchResults = document.getElementById('searchResultsContainer');
-            if (searchResults) {
-                searchResults.style.display = 'none';
-            }
-            
-            // Réinitialiser la recherche
+            if (searchResults) searchResults.style.display = 'none';
+
             const searchInput = document.getElementById('searchTP');
-            if (searchInput) {
-                searchInput.value = '';
-            }
-            
-            // Afficher la catégorie sélectionnée
+            if (searchInput) searchInput.value = '';
+
             document.querySelectorAll('.library-category').forEach(cat => {
-                if (cat.dataset.category === category) {
-                    cat.style.display = 'block';
-                } else {
-                    cat.style.display = 'none';
-                }
+                cat.style.display = cat.dataset.category === category ? 'block' : 'none';
             });
         }
-        
+
         // ================================
         // RECHERCHE
         // ================================
-        
         function normalizeText(text) {
-            return text
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .trim();
+            return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
         }
-        
+
         function searchTPs() {
             const searchInput = document.getElementById('searchTP');
             const searchTerm = normalizeText(searchInput.value);
@@ -3271,78 +2600,59 @@
             const searchResultsHeader = document.getElementById('searchResultsHeader');
             const searchResultsList = document.getElementById('searchResultsList');
             const instruction = document.getElementById('library-instruction');
-            
-            // Si vide, réinitialiser
+
             if (searchTerm === '') {
                 searchResultsContainer.style.display = 'none';
-                document.querySelectorAll('.library-category').forEach(cat => {
-                    cat.style.display = 'none';
-                });
-                if (instruction) {
-                    instruction.style.display = 'block';
-                }
-                // Réinitialiser les boutons
+                document.querySelectorAll('.library-category').forEach(cat => cat.style.display = 'none');
+                if (instruction) instruction.style.display = 'block';
                 document.querySelectorAll('.library-filter-btn').forEach(btn => {
                     btn.classList.remove('active');
-                    if (btn.dataset.category === 'all') {
-                        btn.classList.add('active');
-                    }
+                    if (btn.dataset.category === 'all') btn.classList.add('active');
                 });
                 return;
             }
-            
-            // Cacher tout le reste
-            if (instruction) {
-                instruction.style.display = 'none';
-            }
-            document.querySelectorAll('.library-category').forEach(cat => {
-                cat.style.display = 'none';
-            });
-            
-            // Rechercher
+
+            if (instruction) instruction.style.display = 'none';
+            document.querySelectorAll('.library-category').forEach(cat => cat.style.display = 'none');
+
             let foundTPs = [];
             Object.keys(tpsData).forEach(category => {
                 tpsData[category].forEach(tp => {
                     const normalizedTitle = normalizeText(tp.title);
                     const normalizedDescription = normalizeText(tp.description);
                     const normalizedTags = tp.tags.map(tag => normalizeText(tag)).join(' ');
-                    
-                    if (normalizedTitle.includes(searchTerm) || 
-                        normalizedDescription.includes(searchTerm) || 
+
+                    if (normalizedTitle.includes(searchTerm) ||
+                        normalizedDescription.includes(searchTerm) ||
                         normalizedTags.includes(searchTerm)) {
                         foundTPs.push({ ...tp, category: category });
                     }
                 });
             });
-            
-            // Afficher résultats
+
             searchResultsList.innerHTML = '';
-            
+
             if (foundTPs.length === 0) {
                 searchResultsHeader.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Aucun document trouvé';
                 searchResultsHeader.style.color = '#ff6b6b';
             } else {
-                searchResultsHeader.innerHTML = '<i class="fas fa-check-circle me-2"></i>' + foundTPs.length + ' document' + (foundTPs.length > 1 ? 's' : '') + ' trouvé' + (foundTPs.length > 1 ? 's' : '');
+                const count = foundTPs.length;
+                searchResultsHeader.innerHTML = `<i class="fas fa-check-circle me-2"></i>${count} document${count > 1 ? 's' : ''} trouvé${count > 1 ? 's' : ''}`;
                 searchResultsHeader.style.color = '#64c8ff';
-                
                 searchResultsList.innerHTML = foundTPs.map(tp => generateLibraryDocCard(tp, tp.category)).join('');
             }
-            
+
             searchResultsContainer.style.display = 'block';
         }
-        
+
         // ================================
         // INITIALISATION
         // ================================
-        
         document.addEventListener('DOMContentLoaded', function() {
             loadAllLibraryDocs();
             createMatrixEffect();
         });
-        
-        // ================================
-        // INITIALIZATION
-        // ================================
+
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.querySelectorAll('.fade-in').forEach((el, index) => {
@@ -3356,28 +2666,12 @@
         });
 
         // ================================
-        // PARALLAX EFFECT
-        // ================================
-        function parallaxEffect() {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero::before, .hero::after');
-            
-            parallaxElements.forEach((element, index) => {
-                const speed = (index + 1) * 0.5;
-                element.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        }
-
-        window.addEventListener('scroll', parallaxEffect);
-
-        // ================================
-        // ENHANCED SKILL ITEMS INTERACTION
+        // SKILL ITEMS INTERACTION
         // ================================
         document.querySelectorAll('.skill-item').forEach(item => {
             item.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.08) rotateY(5deg)';
             });
-            
             item.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
             });

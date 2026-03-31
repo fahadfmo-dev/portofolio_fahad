@@ -942,8 +942,8 @@
         function generateLibraryDocCard(tp, category) {
             let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
             let buttonsHTML = `<div class="library-doc-actions">`;
-            buttonsHTML += `<a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> PDF</a>`;
-            if (tp.hasPdf2) buttonsHTML += `<a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> DOCX</a>`;
+            buttonsHTML += `<a href="${tp.file}" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> PDF</a>`;
+            if (tp.hasPdf2) buttonsHTML += `<a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> DOCX</a>`;
             if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
             if (tp.hasOdt) buttonsHTML += `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>`;
             buttonsHTML += `</div>`;

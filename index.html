@@ -905,7 +905,7 @@
                 { title: "S2 B1 TP 1 PHP", icon: "fab fa-php", tags: ["PHP", "Web", "S2"], file: "Mme_Beauvallet/S2_B1_TP_1_PHP.docx.pdf", description: "Introduction à la programmation PHP" },
                 { title: "S2 B1 TP2 Programme PHP", icon: "fab fa-php", tags: ["PHP", "Programmation", "S2"], file: "Mme_Beauvallet/S2_B1_TP2_Programme_PHP.docx.pdf", description: "Programmation avancée en PHP" },
                 // ── NOUVEAU TP AJOUTÉ ──
-                { title: "S2 B1 TP3 Transmission de données", icon: "fab fa-php", tags: ["PHP", "GET", "POST", "XSS", "S2"], file: "Mme_Beauvallet/S2_B1_TP3_transmission_de_donnees_docx.pdf", description: "Transmission de données entre pages PHP - GET, POST, sécurisation XSS" },
+                { title: "S2 B1 TP3 Transmission de données", icon: "fab fa-php", tags: ["PHP", "GET", "POST", "XSS", "S2"], file: "Mme_Beauvallet/S2_B1_TP3_transmission_de_donnees.pdf", description: "Transmission de données entre pages PHP - GET, POST, sécurisation XSS" },
                 { title: "S2 B3 CH5 TD1 WinServ", icon: "fab fa-windows", tags: ["Windows Server", "Serveur", "S2"], file: "Mme_Beauvallet/S2_B3_CH5_TD1_WinServ.pdf", description: "Administration Windows Server" },
                 { title: "CH5 TH3 Exercices d'applications", icon: "fas fa-laptop-code", tags: ["Exercices", "Applications", "S2"], file: "Mme_Beauvallet/CH5_TH3_Exercices_d'applications.pdf", description: "Exercices d'applications" }
             ],
@@ -937,13 +937,35 @@
         };
 
         // ================================
-        // GÉNÉRATION DES CARTES
+        // IMPRESSION / TELECHARGEMENT PDF
+        // ================================
+        function openPrintDialog(url, event) {
+            event.stopPropagation();
+            const existing = document.getElementById('print-iframe');
+            if (existing) existing.remove();
+            const iframe = document.createElement('iframe');
+            iframe.id = 'print-iframe';
+            iframe.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;border:none;';
+            iframe.src = url;
+            document.body.appendChild(iframe);
+            iframe.onload = function() {
+                try {
+                    iframe.contentWindow.focus();
+                    iframe.contentWindow.print();
+                } catch(e) {
+                    window.open(url, '_blank');
+                }
+            };
+        }
+
+        // ================================
+        // GENERATION DES CARTES
         // ================================
         function generateLibraryDocCard(tp, category) {
             let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
             let buttonsHTML = `<div class="library-doc-actions">`;
-            buttonsHTML += `<a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> PDF</a>`;
-            if (tp.hasPdf2) buttonsHTML += `<a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> DOCX</a>`;
+            buttonsHTML += `<button class="library-doc-btn btn-pdf" onclick="openPrintDialog('${tp.file}', event)"><i class="fas fa-file-pdf"></i> PDF</button>`;
+            if (tp.hasPdf2) buttonsHTML += `<button class="library-doc-btn btn-pdf2" onclick="openPrintDialog('${tp.pdf2File}', event)"><i class="fas fa-file-pdf"></i> DOCX</button>`;
             if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
             if (tp.hasOdt) buttonsHTML += `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>`;
             buttonsHTML += `</div>`;

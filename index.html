@@ -238,7 +238,7 @@
         .nav-link:hover { color: var(--accent-light) !important; transform: translateY(-3px); text-shadow: 0 0 15px var(--glow-color); background: rgba(0, 245, 255, 0.2); border-radius: 25px; padding: 0.5rem 1rem; }
         .nav-link:hover::before { left: 0; }
 
-        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--dark-bg); position: relative; overflow: hidden; }
+        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--dark-bg); position: relative; overflow: hidden; padding-top: 80px; }
         .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: var(--accent-gradient); opacity: 0.08; border-radius: 50%; animation: heroBlob1 12s infinite ease-in-out; top: -15%; left: -15%; filter: blur(40px); }
         .hero::after { content: ''; position: absolute; width: 500px; height: 500px; background: var(--secondary-gradient); opacity: 0.06; border-radius: 50%; animation: heroBlob2 15s infinite ease-in-out; bottom: -15%; right: -15%; filter: blur(40px); }
         @keyframes heroBlob1 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 33% { transform: translate(50px, -80px) scale(1.2) rotate(120deg); } 66% { transform: translate(-30px, 40px) scale(0.8) rotate(240deg); } }

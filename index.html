@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,9 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* ================================ */
-        /* CSS VARIABLES */
-        /* ================================ */
         :root {
             --primary-gradient: linear-gradient(135deg, #00f5ff 0%, #00d4ff 100%);
             --secondary-gradient: linear-gradient(135deg, #00ffff 0%, #0099cc 100%);
@@ -36,14 +34,7 @@
             --glass-border: rgba(0, 245, 255, 0.1);
         }
 
-        /* ================================ */
-        /* RESET & BASE STYLES */
-        /* ================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -59,10 +50,8 @@
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: 
                 radial-gradient(circle at 20% 80%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.12) 0%, transparent 50%),
@@ -76,9 +65,6 @@
             100% { transform: translate(2%, 2%) rotate(0.5deg); opacity: 1; }
         }
 
-        /* ================================ */
-        /* SCROLLBAR */
-        /* ================================ */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--darker-bg); border-radius: 5px; }
         ::-webkit-scrollbar-thumb { background: var(--accent-gradient); border-radius: 5px; box-shadow: 0 0 10px var(--glow-color); }
@@ -88,380 +74,140 @@
         /* BIBLIOTHÈQUE */
         /* ================================ */
         .library-title {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            font-size: 3rem; font-weight: 900; color: #ffffff;
+            letter-spacing: 1px; margin-bottom: 15px;
             text-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
-            position: relative;
-            display: inline-block;
+            position: relative; display: inline-block;
         }
-        
         .library-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #64c8ff, transparent);
-            border-radius: 2px;
+            content: ''; position: absolute; bottom: -8px; left: 50%;
+            transform: translateX(-50%); width: 100px; height: 3px;
+            background: linear-gradient(90deg, transparent, #64c8ff, transparent); border-radius: 2px;
         }
-        
-        .library-subtitle {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 1rem;
-            font-weight: 400;
-            margin-top: 25px;
-        }
-        
+        .library-subtitle { color: rgba(255, 255, 255, 0.5); font-size: 1rem; font-weight: 400; margin-top: 25px; }
+
         .library-search-container {
-            position: relative;
-            background: rgba(15, 30, 50, 0.5);
-            border: 1.5px solid rgba(100, 200, 255, 0.2);
-            border-radius: 50px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            position: relative; background: rgba(15, 30, 50, 0.5);
+            border: 1.5px solid rgba(100, 200, 255, 0.2); border-radius: 50px;
+            overflow: hidden; transition: all 0.3s ease; backdrop-filter: blur(10px);
         }
-        
-        .library-search-container:focus-within {
-            border-color: rgba(100, 200, 255, 0.5);
-            box-shadow: 0 0 25px rgba(100, 200, 255, 0.15);
-        }
-        
-        .library-search-icon {
-            position: absolute;
-            left: 22px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.1rem;
-            color: #64c8ff;
-            z-index: 2;
-        }
-        
-        .library-search-input {
-            width: 100%;
-            padding: 16px 22px 16px 55px;
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            font-size: 0.95rem;
-            font-weight: 400;
-            outline: none;
-        }
-        
-        .library-search-input::placeholder {
-            color: rgba(255, 255, 255, 0.35);
-        }
-        
-        .library-filters-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 45px;
-        }
-        
+        .library-search-container:focus-within { border-color: rgba(100, 200, 255, 0.5); box-shadow: 0 0 25px rgba(100, 200, 255, 0.15); }
+        .library-search-icon { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); font-size: 1.1rem; color: #64c8ff; z-index: 2; }
+        .library-search-input { width: 100%; padding: 16px 22px 16px 55px; background: transparent; border: none; color: #ffffff; font-size: 0.95rem; font-weight: 400; outline: none; }
+        .library-search-input::placeholder { color: rgba(255, 255, 255, 0.35); }
+
+        .library-filters-container { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 45px; }
+
         .library-filter-btn {
-            position: relative;
-            padding: 12px 28px;
-            background: rgba(20, 35, 55, 0.6);
-            border: 1.5px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            overflow: hidden;
+            position: relative; padding: 12px 28px;
+            background: rgba(20, 35, 55, 0.6); border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px; color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; backdrop-filter: blur(10px); overflow: hidden;
         }
-        
         .library-filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.12), rgba(70, 180, 255, 0.12));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            opacity: 0; transition: opacity 0.3s ease;
         }
-        
-        .library-filter-btn:hover {
-            border-color: rgba(100, 200, 255, 0.3);
-            transform: translateY(-2px);
-        }
-        
+        .library-filter-btn:hover { border-color: rgba(100, 200, 255, 0.3); transform: translateY(-2px); }
         .library-filter-btn:hover::before { opacity: 1; }
-        
         .library-filter-btn.active {
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.85), rgba(70, 180, 255, 0.85));
-            border-color: rgba(100, 200, 255, 0.4);
-            color: #0a1929;
-            font-weight: 700;
+            border-color: rgba(100, 200, 255, 0.4); color: #0a1929; font-weight: 700;
             box-shadow: 0 4px 18px rgba(100, 200, 255, 0.25);
         }
-        
         .library-filter-btn.active::before { opacity: 0; }
-        
-        .library-filter-btn i {
-            font-size: 0.95rem;
-            margin-right: 6px;
-            transition: transform 0.3s ease;
-        }
-        
-        .library-filter-btn:hover i,
-        .library-filter-btn.active i { transform: scale(1.08); }
-        
-        .library-instruction {
-            text-align: center;
-            padding: 50px 20px;
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        
-        .library-instruction i {
-            font-size: 1.2rem;
-            color: #64c8ff;
-            margin-right: 8px;
-        }
-        
+        .library-filter-btn i { font-size: 0.95rem; margin-right: 6px; transition: transform 0.3s ease; }
+        .library-filter-btn:hover i, .library-filter-btn.active i { transform: scale(1.08); }
+
+        .library-instruction { text-align: center; padding: 50px 20px; color: rgba(255, 255, 255, 0.45); font-size: 1rem; font-weight: 500; }
+        .library-instruction i { font-size: 1.2rem; color: #64c8ff; margin-right: 8px; }
+
         .library-category { animation: fadeInUp 0.5s ease-out; }
-        
         .library-category-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 25px;
+            display: flex; align-items: center; gap: 12px; margin-bottom: 25px;
             padding: 18px 25px;
             background: linear-gradient(135deg, rgba(20, 40, 65, 0.6), rgba(15, 30, 50, 0.7));
-            border-radius: 15px;
-            border: 1px solid rgba(100, 200, 255, 0.15);
+            border-radius: 15px; border: 1px solid rgba(100, 200, 255, 0.15);
         }
-        
         .library-category-header i { font-size: 1.5rem; color: #64c8ff; }
         .library-category-header span { font-size: 1.3rem; font-weight: 700; color: #ffffff; flex: 1; }
-        
         .library-category-badge {
-            font-size: 0.85rem !important;
-            font-weight: 600 !important;
-            color: #64c8ff !important;
-            background: rgba(100, 200, 255, 0.12);
-            padding: 5px 14px;
-            border-radius: 18px;
-            border: 1px solid rgba(100, 200, 255, 0.25);
+            font-size: 0.85rem !important; font-weight: 600 !important; color: #64c8ff !important;
+            background: rgba(100, 200, 255, 0.12); padding: 5px 14px;
+            border-radius: 18px; border: 1px solid rgba(100, 200, 255, 0.25);
         }
-        
-        .library-documents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            animation: fadeInUp 0.5s ease-out;
-        }
-        
+
+        .library-documents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; animation: fadeInUp 0.5s ease-out; }
+
         .library-doc-card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
+            position: relative; display: flex; flex-direction: column;
             padding: 28px 24px;
             background: linear-gradient(135deg, rgba(20, 40, 65, 0.5), rgba(15, 30, 50, 0.6));
-            border: 1.5px solid rgba(100, 200, 255, 0.12);
-            border-radius: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-            min-height: 280px;
+            border: 1.5px solid rgba(100, 200, 255, 0.12); border-radius: 18px;
+            cursor: pointer; transition: all 0.3s ease; overflow: hidden;
+            backdrop-filter: blur(8px); min-height: 280px;
         }
-        
         .library-doc-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.06), rgba(70, 180, 255, 0.06));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            opacity: 0; transition: opacity 0.3s ease;
         }
-        
-        .library-doc-card:hover {
-            border-color: rgba(100, 200, 255, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(100, 200, 255, 0.18);
-        }
-        
+        .library-doc-card:hover { border-color: rgba(100, 200, 255, 0.4); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(100, 200, 255, 0.18); }
         .library-doc-card:hover::before { opacity: 1; }
-        
+
         .library-doc-icon {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(135deg, rgba(100, 200, 255, 0.15), rgba(70, 180, 255, 0.2));
-            border-radius: 18px;
-            border: 2px solid rgba(100, 200, 255, 0.3);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
+            border-radius: 18px; border: 2px solid rgba(100, 200, 255, 0.3);
+            margin-bottom: 20px; transition: all 0.3s ease; position: relative; z-index: 1;
         }
-        
         .library-doc-icon i { font-size: 2.2rem; color: #64c8ff; transition: all 0.3s ease; }
-        
-        .library-doc-card:hover .library-doc-icon {
-            background: linear-gradient(135deg, rgba(100, 200, 255, 0.25), rgba(70, 180, 255, 0.3));
-            border-color: rgba(100, 200, 255, 0.5);
-            transform: scale(1.05) rotate(3deg);
-        }
-        
+        .library-doc-card:hover .library-doc-icon { background: linear-gradient(135deg, rgba(100, 200, 255, 0.25), rgba(70, 180, 255, 0.3)); border-color: rgba(100, 200, 255, 0.5); transform: scale(1.05) rotate(3deg); }
         .library-doc-card:hover .library-doc-icon i { transform: scale(1.1); }
-        
-        .library-doc-content {
-            flex: 1;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 20px;
-        }
-        
-        .library-doc-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 8px;
-            line-height: 1.3;
-            transition: color 0.3s ease;
-        }
-        
+
+        .library-doc-content { flex: 1; position: relative; z-index: 1; margin-bottom: 20px; }
+        .library-doc-title { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; line-height: 1.3; transition: color 0.3s ease; }
         .library-doc-card:hover .library-doc-title { color: #64c8ff; }
-        
-        .library-doc-subtitle {
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 400;
-            line-height: 1.4;
-            margin-bottom: 12px;
-        }
-        
-        .library-doc-tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        
-        .library-doc-tag {
-            padding: 5px 12px;
-            background: rgba(100, 200, 255, 0.12);
-            border: 1px solid rgba(100, 200, 255, 0.25);
-            border-radius: 14px;
-            font-size: 0.72rem;
-            color: #64c8ff;
-            font-weight: 600;
-        }
-        
-        .library-doc-actions {
-            display: flex;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-            margin-top: auto;
-            flex-wrap: wrap;
-        }
-        
+        .library-doc-subtitle { font-size: 0.88rem; color: rgba(255, 255, 255, 0.5); font-weight: 400; line-height: 1.4; margin-bottom: 12px; }
+
+        .library-doc-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .library-doc-tag { padding: 5px 12px; background: rgba(100, 200, 255, 0.12); border: 1px solid rgba(100, 200, 255, 0.25); border-radius: 14px; font-size: 0.72rem; color: #64c8ff; font-weight: 600; }
+
+        .library-doc-actions { display: flex; gap: 10px; position: relative; z-index: 1; margin-top: auto; flex-wrap: wrap; }
         .library-doc-btn {
-            flex: 1;
-            min-width: 80px;
-            padding: 12px 16px;
-            border: none;
-            border-radius: 25px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+            flex: 1; min-width: 75px; padding: 12px 16px; border: none; border-radius: 25px;
+            font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;
+            text-decoration: none; display: inline-flex; align-items: center;
+            justify-content: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.3px;
         }
-        
-        .library-doc-btn.btn-pdf {
-            background: linear-gradient(135deg, #64c8ff, #46b4ff);
-            color: #0a1929;
-            box-shadow: 0 4px 15px rgba(100, 200, 255, 0.3);
-        }
-        
-        .library-doc-btn.btn-pdf:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 6px 22px rgba(100, 200, 255, 0.45);
-            color: #0a1929;
-        }
-
-        .library-doc-btn.btn-pdf2 {
-            background: linear-gradient(135deg, #46b4ff, #2090ee);
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(70, 180, 255, 0.3);
-        }
-
-        .library-doc-btn.btn-pdf2:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 6px 22px rgba(70, 180, 255, 0.45);
-            color: #ffffff;
-        }
-        
-        .library-doc-btn.btn-zip {
-            background: linear-gradient(135deg, #9b7dff, #8060ff);
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(155, 125, 255, 0.3);
-        }
-        
-        .library-doc-btn.btn-zip:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 6px 22px rgba(155, 125, 255, 0.45);
-            color: #ffffff;
-        }
-        
-        .library-doc-btn.btn-odt {
-            background: linear-gradient(135deg, #ff9d64, #ff8046);
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(255, 157, 100, 0.3);
-        }
-        
-        .library-doc-btn.btn-odt:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 6px 22px rgba(255, 157, 100, 0.45);
-            color: #ffffff;
-        }
-        
+        .library-doc-btn.btn-pdf { background: linear-gradient(135deg, #64c8ff, #46b4ff); color: #0a1929; box-shadow: 0 4px 15px rgba(100, 200, 255, 0.3); }
+        .library-doc-btn.btn-pdf:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 6px 22px rgba(100, 200, 255, 0.45); color: #0a1929; }
+        .library-doc-btn.btn-pdf2 { background: linear-gradient(135deg, #46b4ff, #2090ee); color: #ffffff; box-shadow: 0 4px 15px rgba(70, 180, 255, 0.3); }
+        .library-doc-btn.btn-pdf2:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 6px 22px rgba(70, 180, 255, 0.45); color: #ffffff; }
+        .library-doc-btn.btn-zip { background: linear-gradient(135deg, #9b7dff, #8060ff); color: #ffffff; box-shadow: 0 4px 15px rgba(155, 125, 255, 0.3); }
+        .library-doc-btn.btn-zip:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 6px 22px rgba(155, 125, 255, 0.45); color: #ffffff; }
+        .library-doc-btn.btn-odt { background: linear-gradient(135deg, #ff9d64, #ff8046); color: #ffffff; box-shadow: 0 4px 15px rgba(255, 157, 100, 0.3); }
+        .library-doc-btn.btn-odt:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 6px 22px rgba(255, 157, 100, 0.45); color: #ffffff; }
         .library-doc-btn i { font-size: 0.95rem; }
-        
+
         .library-results-container { margin-top: 40px; }
-        
-        .library-results-header {
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #64c8ff;
-            margin-bottom: 25px;
-        }
-        
+        .library-results-header { text-align: center; font-size: 1.2rem; font-weight: 700; color: #64c8ff; margin-bottom: 25px; }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .fade-in { animation: fadeInUp 0.8s ease-out; }
-        
-        @media (max-width: 1200px) {
-            .library-documents-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+
+        /* FIX: fade-in visible par défaut — le JS ajoute l'animation en bonus */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        
+
+        @media (max-width: 1200px) { .library-documents-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; } }
         @media (max-width: 768px) {
             .library-title { font-size: 2.2rem; }
             .library-filters-container { gap: 10px; }
@@ -471,869 +217,144 @@
             .library-doc-icon { width: 70px; height: 70px; }
             .library-doc-icon i { font-size: 2rem; }
         }
-        
-        @media (min-width: 1400px) {
-            .library-documents-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
-        }
+        @media (min-width: 1400px) { .library-documents-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); } }
 
         #searchTP::placeholder { color: var(--text-muted); opacity: 0.7; font-weight: 400; }
         #searchTP:focus::placeholder { opacity: 0.5; }
 
-        /* ================================ */
-        /* PARTICLE BACKGROUND */
-        /* ================================ */
-        #particles-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.8;
-        }
+        #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.8; }
 
-        /* ================================ */
-        /* NAVIGATION */
-        /* ================================ */
         .navbar {
-            background: rgba(10, 10, 26, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1.2rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            background: rgba(10, 10, 26, 0.9); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border); padding: 1.2rem 0;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
-        .navbar.scrolled {
-            padding: 0.8rem 0;
-            background: rgba(10, 10, 26, 0.95);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid var(--accent-color);
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.8rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .navbar-brand::after {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 0;
-            width: 0; height: 3px;
-            background: var(--accent-gradient);
-            transition: width 0.4s ease;
-            border-radius: 2px;
-        }
-
+        .navbar.scrolled { padding: 0.8rem 0; background: rgba(10, 10, 26, 0.95); box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); border-bottom: 1px solid var(--accent-color); }
+        .navbar-brand { font-weight: 800; font-size: 1.8rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; transition: all 0.4s ease; position: relative; }
+        .navbar-brand::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px; background: var(--accent-gradient); transition: width 0.4s ease; border-radius: 2px; }
         .navbar-brand:hover { transform: scale(1.05); filter: brightness(1.2); }
         .navbar-brand:hover::after { width: 100%; }
-
-        .nav-link {
-            color: var(--text-light) !important;
-            font-weight: 500;
-            margin: 0 0.8rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: var(--accent-gradient);
-            transition: left 0.4s ease;
-            z-index: -1;
-            border-radius: 25px;
-            opacity: 0.4;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-light) !important;
-            transform: translateY(-3px);
-            text-shadow: 0 0 15px var(--glow-color);
-            background: rgba(0, 245, 255, 0.2);
-            border-radius: 25px;
-            padding: 0.5rem 1rem;
-        }
-
+        .nav-link { color: var(--text-light) !important; font-weight: 500; margin: 0 0.8rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; }
+        .nav-link::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--accent-gradient); transition: left 0.4s ease; z-index: -1; border-radius: 25px; opacity: 0.4; }
+        .nav-link:hover { color: var(--accent-light) !important; transform: translateY(-3px); text-shadow: 0 0 15px var(--glow-color); background: rgba(0, 245, 255, 0.2); border-radius: 25px; padding: 0.5rem 1rem; }
         .nav-link:hover::before { left: 0; }
 
-        /* ================================ */
-        /* HERO SECTION */
-        /* ================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: var(--dark-bg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px; height: 600px;
-            background: var(--accent-gradient);
-            opacity: 0.08;
-            border-radius: 50%;
-            animation: heroBlob1 12s infinite ease-in-out;
-            top: -15%; left: -15%;
-            filter: blur(40px);
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 500px; height: 500px;
-            background: var(--secondary-gradient);
-            opacity: 0.06;
-            border-radius: 50%;
-            animation: heroBlob2 15s infinite ease-in-out;
-            bottom: -15%; right: -15%;
-            filter: blur(40px);
-        }
-
-        @keyframes heroBlob1 {
-            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { transform: translate(50px, -80px) scale(1.2) rotate(120deg); }
-            66% { transform: translate(-30px, 40px) scale(0.8) rotate(240deg); }
-        }
-
-        @keyframes heroBlob2 {
-            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { transform: translate(-60px, 30px) scale(1.1) rotate(-120deg); }
-            66% { transform: translate(40px, -50px) scale(0.9) rotate(-240deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 40px rgba(0, 245, 255, 0.4);
-            animation: heroGlow 4s ease-in-out infinite;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        @keyframes heroGlow {
-            0%, 100% { filter: brightness(1) drop-shadow(0 0 20px rgba(0, 245, 255, 0.3)); }
-            50% { filter: brightness(1.3) drop-shadow(0 0 30px rgba(0, 245, 255, 0.5)); }
-        }
-
-        .hero .lead {
-            font-size: 1.6rem;
-            margin-bottom: 2.5rem;
-            color: var(--text-accent);
-            animation: fadeInUp 1.2s ease 0.3s both;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            animation: fadeInUp 1.2s ease 0.6s both;
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-        }
-
-        .hero-image {
-            animation: slideInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-
-        .hero-image .avatar {
-            width: 350px; height: 350px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            box-shadow: 0 0 60px var(--glow-color), 0 0 120px rgba(0, 245, 255, 0.3);
-            animation: avatarFloat 6s ease-in-out infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image .avatar::before {
-            content: '';
-            position: absolute;
-            width: 120%; height: 120%;
-            background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent 50%);
-            animation: avatarRotate 8s linear infinite;
-            z-index: -1;
-            border-radius: 50%;
-            opacity: 0.3;
-        }
-
-        .hero-image .avatar::after {
-            content: '';
-            position: absolute;
-            width: 100%; height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            animation: avatarPulse 3s ease-in-out infinite;
-            z-index: -2;
-            opacity: 0.4;
-        }
-
-        @keyframes avatarFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-15px) rotate(2deg); }
-            75% { transform: translateY(15px) rotate(-2deg); }
-        }
-
+        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--dark-bg); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: var(--accent-gradient); opacity: 0.08; border-radius: 50%; animation: heroBlob1 12s infinite ease-in-out; top: -15%; left: -15%; filter: blur(40px); }
+        .hero::after { content: ''; position: absolute; width: 500px; height: 500px; background: var(--secondary-gradient); opacity: 0.06; border-radius: 50%; animation: heroBlob2 15s infinite ease-in-out; bottom: -15%; right: -15%; filter: blur(40px); }
+        @keyframes heroBlob1 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 33% { transform: translate(50px, -80px) scale(1.2) rotate(120deg); } 66% { transform: translate(-30px, 40px) scale(0.8) rotate(240deg); } }
+        @keyframes heroBlob2 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 33% { transform: translate(-60px, 30px) scale(1.1) rotate(-120deg); } 66% { transform: translate(40px, -50px) scale(0.9) rotate(-240deg); } }
+        .hero-content { position: relative; z-index: 2; animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .hero h1 { font-size: 4.5rem; font-weight: 900; margin-bottom: 1.5rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 40px rgba(0, 245, 255, 0.4); animation: heroGlow 4s ease-in-out infinite; line-height: 1.1; letter-spacing: -0.02em; }
+        @keyframes heroGlow { 0%, 100% { filter: brightness(1) drop-shadow(0 0 20px rgba(0, 245, 255, 0.3)); } 50% { filter: brightness(1.3) drop-shadow(0 0 30px rgba(0, 245, 255, 0.5)); } }
+        .hero .lead { font-size: 1.6rem; margin-bottom: 2.5rem; color: var(--text-accent); animation: fadeInUp 1.2s ease 0.3s both; font-weight: 500; line-height: 1.6; }
+        .hero-description { font-size: 1.1rem; color: var(--text-muted); animation: fadeInUp 1.2s ease 0.6s both; margin-bottom: 2.5rem; line-height: 1.7; }
+        .hero-image { animation: slideInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; }
+        .hero-image .avatar { width: 350px; height: 350px; background: var(--accent-gradient); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 6rem; box-shadow: 0 0 60px var(--glow-color), 0 0 120px rgba(0, 245, 255, 0.3); animation: avatarFloat 6s ease-in-out infinite; position: relative; overflow: hidden; }
+        .hero-image .avatar::before { content: ''; position: absolute; width: 120%; height: 120%; background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent 50%); animation: avatarRotate 8s linear infinite; z-index: -1; border-radius: 50%; opacity: 0.3; }
+        .hero-image .avatar::after { content: ''; position: absolute; width: 100%; height: 100%; background: var(--accent-gradient); border-radius: 50%; animation: avatarPulse 3s ease-in-out infinite; z-index: -2; opacity: 0.4; }
+        @keyframes avatarFloat { 0%, 100% { transform: translateY(0px) rotate(0deg); } 25% { transform: translateY(-15px) rotate(2deg); } 75% { transform: translateY(15px) rotate(-2deg); } }
         @keyframes avatarRotate { 100% { transform: rotate(360deg); } }
+        @keyframes avatarPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        @keyframes avatarPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* ================================ */
-        /* SECTIONS */
-        /* ================================ */
         .section { padding: 6rem 0; position: relative; z-index: 1; }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 4rem;
-            text-align: center;
-            position: relative;
-            color: var(--text-light);
-            animation: titleReveal 1.2s ease;
-            letter-spacing: -0.01em;
-        }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 100px; height: 100px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            animation: titleBg 1.5s ease 0.5s forwards;
-            z-index: -1;
-            opacity: 0.1;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px; left: 50%;
-            width: 0; height: 4px;
-            background: var(--accent-gradient);
-            transform: translateX(-50%);
-            border-radius: 2px;
-            box-shadow: 0 0 25px var(--glow-color);
-            animation: titleUnderline 1s ease 0.8s forwards;
-        }
-
-        @keyframes titleReveal {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        .section-title { font-size: 3rem; font-weight: 800; margin-bottom: 4rem; text-align: center; position: relative; color: var(--text-light); animation: titleReveal 1.2s ease; letter-spacing: -0.01em; }
+        .section-title::before { content: ''; position: absolute; top: 50%; left: 50%; width: 100px; height: 100px; background: var(--accent-gradient); border-radius: 50%; transform: translate(-50%, -50%) scale(0); animation: titleBg 1.5s ease 0.5s forwards; z-index: -1; opacity: 0.1; }
+        .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; width: 0; height: 4px; background: var(--accent-gradient); transform: translateX(-50%); border-radius: 2px; box-shadow: 0 0 25px var(--glow-color); animation: titleUnderline 1s ease 0.8s forwards; }
+        @keyframes titleReveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes titleBg { to { transform: translate(-50%, -50%) scale(2); } }
         @keyframes titleUnderline { to { width: 80px; } }
 
-        /* ================================ */
-        /* GLASS CARDS */
-        /* ================================ */
-        .modern-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            cursor: default;
-        }
-
-        .modern-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.8s ease;
-        }
-
-        .modern-card::after {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: var(--accent-gradient);
-            border-radius: 20px;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            z-index: -1;
-        }
-
-        .modern-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--accent-color);
-            box-shadow: 0 25px 50px rgba(0, 245, 255, 0.5), 0 0 40px rgba(0, 245, 255, 0.4), inset 0 0 0 1px rgba(0, 245, 255, 0.2);
-            background: rgba(0, 245, 255, 0.08);
-        }
-
+        .modern-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); height: 100%; position: relative; overflow: hidden; backdrop-filter: blur(20px); cursor: default; }
+        .modern-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: left 0.8s ease; }
+        .modern-card::after { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; background: var(--accent-gradient); border-radius: 20px; opacity: 0; transition: opacity 0.6s ease; z-index: -1; }
+        .modern-card:hover { transform: translateY(-15px) scale(1.02); border-color: var(--accent-color); box-shadow: 0 25px 50px rgba(0, 245, 255, 0.5), 0 0 40px rgba(0, 245, 255, 0.4), inset 0 0 0 1px rgba(0, 245, 255, 0.2); background: rgba(0, 245, 255, 0.08); }
         .modern-card:hover::before { left: 100%; }
         .modern-card:hover::after { opacity: 0.6; }
 
-        /* ================================ */
-        /* BUTTONS */
-        /* ================================ */
-        .btn-primary {
-            background: var(--accent-gradient);
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 0; height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            transform: translate(-50%, -50%);
-            transition: width 0.8s, height 0.8s;
-            z-index: -1;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-light);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.6), 0 0 25px rgba(0, 245, 255, 0.5);
-        }
-
+        .btn-primary { background: var(--accent-gradient); border: none; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; z-index: 1; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-primary::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.5); transform: translate(-50%, -50%); transition: width 0.8s, height 0.8s; z-index: -1; }
+        .btn-primary:hover { background: var(--accent-light); transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0, 245, 255, 0.6), 0 0 25px rgba(0, 245, 255, 0.5); }
         .btn-primary:hover::before { width: 400px; height: 400px; }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-outline::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: var(--accent-gradient);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .btn-outline:hover {
-            color: white;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.6), 0 0 25px rgba(0, 245, 255, 0.5);
-            border-color: transparent;
-            background: rgba(0, 245, 255, 0.2);
-        }
-
+        .btn-outline { background: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); text-decoration: none; display: inline-block; position: relative; overflow: hidden; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-outline::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--accent-gradient); transition: left 0.4s ease; z-index: -1; }
+        .btn-outline:hover { color: white; transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0, 245, 255, 0.6), 0 0 25px rgba(0, 245, 255, 0.5); border-color: transparent; background: rgba(0, 245, 255, 0.2); }
         .btn-outline:hover::before { left: 0; }
 
-        /* ================================ */
-        /* SKILLS SECTION */
-        /* ================================ */
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(15px);
-            cursor: default;
-        }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 0;
-            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(0, 191, 255, 0.15));
-            opacity: 0;
-            transition: all 0.6s ease;
-            border-radius: 20px;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-10px) scale(1.08);
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.6), 0 0 30px rgba(0, 245, 255, 0.8), inset 0 0 0 2px rgba(0, 245, 255, 0.2);
-        }
-
+        .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .skill-item { text-align: center; padding: 2rem 1rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; backdrop-filter: blur(15px); cursor: default; }
+        .skill-item::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 0; background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(0, 191, 255, 0.15)); opacity: 0; transition: all 0.6s ease; border-radius: 20px; }
+        .skill-item:hover { transform: translateY(-10px) scale(1.08); border: 2px solid var(--accent-color); box-shadow: 0 20px 40px rgba(0, 245, 255, 0.6), 0 0 30px rgba(0, 245, 255, 0.8), inset 0 0 0 2px rgba(0, 245, 255, 0.2); }
         .skill-item:hover::before { height: 100%; opacity: 1; }
-
-        .skill-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.4s ease;
-            filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.3));
-        }
-
-        .skill-item:hover .skill-icon {
-            transform: scale(1.3) rotateY(360deg);
-            background: linear-gradient(135deg, #00ffff, #00f5ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 15px rgba(0, 245, 255, 1));
-        }
-
+        .skill-icon { font-size: 3.5rem; margin-bottom: 1.5rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; transition: all 0.4s ease; filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.3)); }
+        .skill-item:hover .skill-icon { transform: scale(1.3) rotateY(360deg); background: linear-gradient(135deg, #00ffff, #00f5ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 15px rgba(0, 245, 255, 1)); }
         .skill-item h6 { font-weight: 600; margin-top: 1rem; transition: all 0.3s ease; }
+        .skill-item:hover h6 { color: #00ffff; text-shadow: 0 0 10px rgba(0, 245, 255, 1); font-weight: 700; }
 
-        .skill-item:hover h6 {
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 245, 255, 1);
-            font-weight: 700;
-        }
-
-        .progress {
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 1rem;
-        }
-
-        .progress::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            animation: progressShimmer 2s infinite;
-        }
-
-        .progress-bar {
-            background: var(--accent-gradient);
-            position: relative;
-            animation: progressFill 2.5s ease;
-            box-shadow: 0 0 15px var(--glow-color), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-        }
-
+        .progress { height: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 15px; overflow: hidden; position: relative; margin-bottom: 1rem; }
+        .progress::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); animation: progressShimmer 2s infinite; }
+        .progress-bar { background: var(--accent-gradient); position: relative; animation: progressFill 2.5s ease; box-shadow: 0 0 15px var(--glow-color), inset 0 1px 0 rgba(255, 255, 255, 0.3); border-radius: 15px; }
         @keyframes progressFill { from { width: 0; opacity: 0; } to { opacity: 1; } }
-        @keyframes progressShimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
+        @keyframes progressShimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-        /* ================================ */
-        /* TIMELINE */
-        /* ================================ */
-        .timeline-item {
-            position: relative;
-            padding-left: 40px;
-            opacity: 0;
-            animation: timelineSlide 0.8s ease forwards;
-            margin-bottom: 2rem;
-        }
-
+        /* FIX timeline: opacity:1 + animation both */
+        .timeline-item { position: relative; padding-left: 40px; opacity: 1; animation: timelineSlide 0.8s ease both; margin-bottom: 2rem; }
         .timeline-item:nth-child(1) { animation-delay: 0.1s; }
         .timeline-item:nth-child(2) { animation-delay: 0.2s; }
         .timeline-item:nth-child(3) { animation-delay: 0.3s; }
         .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 3px; background: var(--accent-gradient); border-radius: 2px; box-shadow: 0 0 10px var(--glow-color); }
+        .timeline-dot { width: 16px; height: 16px; background: var(--accent-gradient); border-radius: 50%; position: absolute; left: -6px; top: 8px; box-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(0, 245, 255, 0.3); animation: timelinePulse 3s infinite; }
+        @keyframes timelineSlide { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes timelinePulse { 0%, 100% { box-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(0, 245, 255, 0.3); transform: scale(1); } 50% { box-shadow: 0 0 30px var(--glow-color), 0 0 60px rgba(0, 245, 255, 0.5); transform: scale(1.2); } }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0;
-            height: 100%; width: 3px;
-            background: var(--accent-gradient);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--glow-color);
-        }
-
-        .timeline-dot {
-            width: 16px; height: 16px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            position: absolute;
-            left: -6px; top: 8px;
-            box-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(0, 245, 255, 0.3);
-            animation: timelinePulse 3s infinite;
-        }
-
-        @keyframes timelineSlide {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes timelinePulse {
-            0%, 100% { box-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(0, 245, 255, 0.3); transform: scale(1); }
-            50% { box-shadow: 0 0 30px var(--glow-color), 0 0 60px rgba(0, 245, 255, 0.5); transform: scale(1.2); }
-        }
-
-        /* ================================ */
-        /* FOOTER */
-        /* ================================ */
-        .footer {
-            background: var(--darker-bg);
-            border-top: 2px solid var(--accent-color);
-            padding: 4rem 0 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 100;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 50%);
-            animation: footerGlow 8s ease-in-out infinite alternate;
-            z-index: -1;
-        }
-
-        .footer::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 2px;
-            background: var(--accent-gradient);
-            animation: footerScan 3s ease-in-out infinite;
-        }
-
-        .footer-matrix {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .matrix-char {
-            position: absolute;
-            color: var(--accent-color);
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            font-weight: bold;
-            opacity: 0.7;
-            animation: matrixFall linear forwards;
-            text-shadow: 0 0 5px currentColor;
-            pointer-events: none;
-        }
-
-        @keyframes matrixFall {
-            0% { transform: translateY(-20px); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
-
-        @keyframes footerGlow {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 0.6; transform: scale(1.1); }
-        }
-
-        @keyframes footerScan {
-            0%, 100% { left: -100%; }
-            50% { left: 100%; }
-        }
-
-        .footer p {
-            color: var(--text-muted);
-            margin-top: 2rem;
-            font-size: 1rem;
-            text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer p:hover {
-            color: var(--accent-color);
-            text-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
-            transform: scale(1.05);
-        }
-
+        .footer { background: var(--darker-bg); border-top: 2px solid var(--accent-color); padding: 4rem 0 2rem; text-align: center; position: relative; z-index: 100; overflow: hidden; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 30% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 50%); animation: footerGlow 8s ease-in-out infinite alternate; z-index: -1; }
+        .footer::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 2px; background: var(--accent-gradient); animation: footerScan 3s ease-in-out infinite; }
+        .footer-matrix { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
+        .matrix-char { position: absolute; color: var(--accent-color); font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; opacity: 0.7; animation: matrixFall linear forwards; text-shadow: 0 0 5px currentColor; pointer-events: none; }
+        @keyframes matrixFall { 0% { transform: translateY(-20px); opacity: 0; } 10% { opacity: 0.7; } 90% { opacity: 0.7; } 100% { transform: translateY(100vh); opacity: 0; } }
+        @keyframes footerGlow { 0% { opacity: 0.3; transform: scale(1); } 100% { opacity: 0.6; transform: scale(1.1); } }
+        @keyframes footerScan { 0%, 100% { left: -100%; } 50% { left: 100%; } }
+        .footer p { color: var(--text-muted); margin-top: 2rem; font-size: 1rem; text-shadow: 0 0 10px rgba(0, 245, 255, 0.3); transition: all 0.3s ease; position: relative; display: inline-block; }
+        .footer p:hover { color: var(--accent-color); text-shadow: 0 0 15px rgba(0, 245, 255, 0.8); transform: scale(1.05); }
         .social-links { position: relative; }
-
-        .social-links::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 200px; height: 200px;
-            border: 1px solid var(--accent-color);
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: socialRing 4s linear infinite;
-            transform: translate(-50%, -50%);
-        }
-
-        .social-links::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 150px; height: 150px;
-            border: 1px solid var(--accent-light);
-            border-radius: 50%;
-            opacity: 0.2;
-            animation: socialRing 3s linear infinite reverse;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes socialRing {
-            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 0.1; }
-            50% { opacity: 0.3; }
-            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.1); opacity: 0.1; }
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px; height: 60px;
-            background: var(--glass-bg);
-            border: 2px solid var(--glass-border);
-            border-radius: 50%;
-            color: var(--text-light);
-            margin: 0 0.8rem;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-decoration: none;
-            position: relative;
-            overflow: visible;
-            font-size: 1.5rem;
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            cursor: pointer !important;
-        }
-
+        .social-links::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200px; height: 200px; border: 1px solid var(--accent-color); border-radius: 50%; opacity: 0.1; animation: socialRing 4s linear infinite; transform: translate(-50%, -50%); }
+        .social-links::after { content: ''; position: absolute; top: 50%; left: 50%; width: 150px; height: 150px; border: 1px solid var(--accent-light); border-radius: 50%; opacity: 0.2; animation: socialRing 3s linear infinite reverse; transform: translate(-50%, -50%); }
+        @keyframes socialRing { 0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 0.1; } 50% { opacity: 0.3; } 100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.1); opacity: 0.1; } }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--glass-bg); border: 2px solid var(--glass-border); border-radius: 50%; color: var(--text-light); margin: 0 0.8rem; transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); text-decoration: none; position: relative; overflow: visible; font-size: 1.5rem; backdrop-filter: blur(15px); z-index: 1000; cursor: pointer !important; }
         .social-links a * { cursor: pointer !important; }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            width: 100%; height: 100%;
-            background: var(--accent-gradient);
-            transform: scale(0) rotate(0deg);
-            border-radius: 50%;
-            transition: all 0.6s ease;
-            z-index: -1;
-            opacity: 0.9;
-            pointer-events: none;
-        }
-
-        .social-links a::after {
-            content: '';
-            position: absolute;
-            width: 80px; height: 80px;
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-            transition: all 0.4s ease;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .social-links a:hover {
-            color: #000000;
-            transform: translateY(-8px) scale(1.1);
-            border-color: var(--accent-color);
-            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.8), 0 0 40px rgba(0, 245, 255, 0.6), 0 0 60px rgba(0, 245, 255, 0.4);
-            background: rgba(0, 245, 255, 0.1);
-        }
-
+        .social-links a::before { content: ''; position: absolute; width: 100%; height: 100%; background: var(--accent-gradient); transform: scale(0) rotate(0deg); border-radius: 50%; transition: all 0.6s ease; z-index: -1; opacity: 0.9; pointer-events: none; }
+        .social-links a::after { content: ''; position: absolute; width: 80px; height: 80px; border: 2px solid var(--accent-color); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: -1; }
+        .social-links a:hover { color: #000000; transform: translateY(-8px) scale(1.1); border-color: var(--accent-color); box-shadow: 0 15px 30px rgba(0, 245, 255, 0.8), 0 0 40px rgba(0, 245, 255, 0.6), 0 0 60px rgba(0, 245, 255, 0.4); background: rgba(0, 245, 255, 0.1); }
         .social-links a:hover::before { transform: scale(1) rotate(360deg); }
         .social-links a:hover::after { transform: translate(-50%, -50%) scale(1.5); opacity: 0.6; }
         .social-links a i { pointer-events: none; position: relative; z-index: 1; }
 
-        /* ================================ */
-        /* BACK TO TOP BUTTON */
-        /* ================================ */
-        #backToTop {
-            position: fixed;
-            bottom: 40px; right: 40px;
-            width: 60px; height: 60px;
-            background: var(--accent-gradient);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer !important;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 1000;
-            box-shadow: 0 8px 25px rgba(0, 245, 255, 0.4);
-            backdrop-filter: blur(15px);
-        }
-
+        #backToTop { position: fixed; bottom: 40px; right: 40px; width: 60px; height: 60px; background: var(--accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer !important; opacity: 0; visibility: hidden; transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1000; box-shadow: 0 8px 25px rgba(0, 245, 255, 0.4); backdrop-filter: blur(15px); }
         #backToTop * { cursor: pointer !important; }
-
-        #backToTop:hover {
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 15px 35px rgba(0, 245, 255, 0.8), 0 0 30px rgba(0, 245, 255, 0.6);
-        }
-
+        #backToTop:hover { transform: translateY(-8px) scale(1.1); box-shadow: 0 15px 35px rgba(0, 245, 255, 0.8), 0 0 30px rgba(0, 245, 255, 0.6); }
         #backToTop.show { opacity: 1; visibility: visible; animation: backToTopBounce 0.6s ease; }
+        @keyframes backToTopBounce { 0% { transform: scale(0) rotate(0deg); } 50% { transform: scale(1.2) rotate(180deg); } 100% { transform: scale(1) rotate(360deg); } }
 
-        @keyframes backToTopBounce {
-            0% { transform: scale(0) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(180deg); }
-            100% { transform: scale(1) rotate(360deg); }
-        }
+        /* FIX loader: display:none — plus jamais de spinner bloquant */
+        .loader { display: none; }
 
-        /* ================================ */
-        /* LOADING ANIMATION */
-        /* ================================ */
-        .loader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--dark-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease;
-        }
+        @keyframes slideInLeft { from { transform: translateX(-100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInRight { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 25% { transform: translateY(-20px) rotate(90deg); } 50% { transform: translateY(-40px) rotate(180deg); } 75% { transform: translateY(-20px) rotate(270deg); } }
 
-        .loader.hidden { opacity: 0; pointer-events: none; }
-
-        .loader-inner {
-            width: 80px; height: 80px;
-            border: 4px solid var(--glass-border);
-            border-top: 4px solid var(--accent-color);
-            border-radius: 50%;
-            animation: loaderSpin 1.5s linear infinite;
-            position: relative;
-        }
-
-        .loader-inner::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 40px; height: 40px;
-            border: 3px solid transparent;
-            border-top: 3px solid var(--accent-light);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: loaderSpin 0.8s linear infinite reverse;
-        }
-
-        @keyframes loaderSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* ================================ */
-        /* ANIMATIONS */
-        /* ================================ */
-        @keyframes slideInLeft {
-            from { transform: translateX(-100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* ================================ */
-        /* RESPONSIVE */
-        /* ================================ */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .hero .lead { font-size: 1.3rem; }
-            .section { padding: 4rem 0; }
-            .section-title { font-size: 2.5rem; }
+            .hero h1 { font-size: 3rem; } .hero .lead { font-size: 1.3rem; } .section { padding: 4rem 0; } .section-title { font-size: 2.5rem; }
             .skill-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1.5rem; }
             .hero-image .avatar { width: 250px; height: 250px; font-size: 4rem; }
-            .modern-card { padding: 2rem; }
-            .navbar-brand { font-size: 1.5rem; }
+            .modern-card { padding: 2rem; } .navbar-brand { font-size: 1.5rem; }
             .btn-primary, .btn-outline { padding: 0.8rem 2rem; font-size: 1rem; }
             .matrix-char { font-size: 12px; }
         }
-
         @media (max-width: 576px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; }
             .skill-grid { grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); }
             .hero-image .avatar { width: 200px; height: 200px; font-size: 3rem; }
             .matrix-char { font-size: 10px; }
@@ -1341,17 +362,13 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- Loading Screen — display:none, ne bloque plus jamais -->
     <div class="loader" id="loader">
         <div class="loader-inner"></div>
     </div>
 
-    <!-- Particle Background Canvas -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- ================================ -->
-    <!-- NAVIGATION -->
-    <!-- ================================ -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#home">Mohammed Fahad</a>
@@ -1373,9 +390,6 @@
         </div>
     </nav>
 
-    <!-- ================================ -->
-    <!-- HERO SECTION -->
-    <!-- ================================ -->
     <section id="home" class="hero">
         <div class="container">
             <div class="row align-items-center">
@@ -1397,9 +411,6 @@
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- ABOUT SECTION -->
-    <!-- ================================ -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title fade-in">À Propos 🗨️</h2>
@@ -1409,14 +420,13 @@
                         <h3 class="mb-4" style="color: #ffffff; font-weight: 700;">Développeur & Technicien Informatique</h3>
                         <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.8;">Actuellement étudiant en BTS Services Informatiques aux Organisations (SIO) depuis septembre 2024, je poursuis ma formation après l'obtention d'un BAC PRO Systèmes Numériques option RISC en juillet 2024. Ma passion pour l'informatique s'est révélée très tôt, alimentée par une fascination pour l'innovation technologique et son impact transformateur sur notre société.</p>
                         <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.8;">Fort d'une expérience professionnelle concrète acquise à travers diverses missions et stages, j'ai développé une expertise polyvalente couvrant la maintenance hardware, l'installation et configuration de systèmes d'exploitation, la virtualisation avec des technologies comme VirtualBox et Proxmox, ainsi que la sécurisation des données par le biais d'outils de chiffrement avancés.</p>
-                        
                         <div class="row mt-5">
                             <div class="col-md-12">
                                 <h5 style="color: #ffffff; font-weight: 600; margin-bottom: 2rem;">Informations de Contact & Profil</h5>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="contact-info-item mb-3" style="padding: 1rem; background: rgba(0,245,255,0.05); border-radius: 10px; border-left: 4px solid var(--accent-color);">
-                                            <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Email :</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfd2d0d7ded2d2dadb91d9ded7dedb91d9d2d0ffd8d2ded6d391dcd0d2">[email&#160;protected]</a></p>
+                                            <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Email :</strong> mohammed.fahad.fmo@gmail.com</p>
                                         </div>
                                         <div class="contact-info-item mb-3" style="padding: 1rem; background: rgba(0,245,255,0.05); border-radius: 10px; border-left: 4px solid var(--accent-color);">
                                             <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Téléphone :</strong> (+33) 06 04 45 99 34</p>
@@ -1439,7 +449,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="mt-4 p-4" style="background: rgba(0, 245, 255, 0.1); border-radius: 15px; border: 1px solid rgba(0, 245, 255, 0.2);">
                             <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;">Ma Vision Professionnelle</h6>
                             <p style="color: #ffffff; margin: 0; font-style: italic;">"Dans un monde en constante évolution technologique, je m'engage à être un acteur du changement, combinant expertise technique, créativité et sens du service pour concevoir des solutions informatiques innovantes et durables."</p>
@@ -1450,119 +459,54 @@
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- SKILLS SECTION -->
-    <!-- ================================ -->
     <section id="skills" class="section">
         <div class="container">
             <h2 class="section-title fade-in">Mes compétences 💻</h2>
-            
             <div class="row mb-5">
                 <div class="col-lg-6 mb-4">
                     <div class="modern-card fade-in">
                         <h4 class="mb-4" style="color: #ffffff; font-weight: 700;">Compétences Techniques</h4>
-                        
                         <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span style="color: #ffffff; font-weight: 600;">Installation et Configuration</span>
-                                <span style="color: var(--accent-light); font-weight: 600;">90%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%;"></div>
-                            </div>
+                            <div class="d-flex justify-content-between mb-2"><span style="color: #ffffff; font-weight: 600;">Installation et Configuration</span><span style="color: var(--accent-light); font-weight: 600;">90%</span></div>
+                            <div class="progress"><div class="progress-bar" role="progressbar" style="width: 90%;"></div></div>
                             <small style="color: var(--text-muted);">Installation et configuration de systèmes d'exploitation : Windows, Linux. Clonage de disques durs et migration de données.</small>
                         </div>
-                        
                         <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span style="color: #ffffff; font-weight: 600;">Dépannage et Maintenance</span>
-                                <span style="color: var(--accent-light); font-weight: 600;">90%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%;"></div>
-                            </div>
+                            <div class="d-flex justify-content-between mb-2"><span style="color: #ffffff; font-weight: 600;">Dépannage et Maintenance</span><span style="color: var(--accent-light); font-weight: 600;">90%</span></div>
+                            <div class="progress"><div class="progress-bar" role="progressbar" style="width: 90%;"></div></div>
                             <small style="color: var(--text-muted);">Diagnostic et résolution de pannes matérielles et logicielles. Remplacement de composants.</small>
                         </div>
-                        
                         <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span style="color: #ffffff; font-weight: 600;">Virtualisation</span>
-                                <span style="color: var(--accent-light); font-weight: 600;">85%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 85%;"></div>
-                            </div>
+                            <div class="d-flex justify-content-between mb-2"><span style="color: #ffffff; font-weight: 600;">Virtualisation</span><span style="color: var(--accent-light); font-weight: 600;">85%</span></div>
+                            <div class="progress"><div class="progress-bar" role="progressbar" style="width: 85%;"></div></div>
                             <small style="color: var(--text-muted);">Utilisation de VirtualBox et Proxmox pour créer et gérer des machines virtuelles.</small>
                         </div>
-                        
                         <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span style="color: #ffffff; font-weight: 600;">Sécurité et Chiffrement</span>
-                                <span style="color: var(--accent-light); font-weight: 600;">75%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 75%;"></div>
-                            </div>
+                            <div class="d-flex justify-content-between mb-2"><span style="color: #ffffff; font-weight: 600;">Sécurité et Chiffrement</span><span style="color: var(--accent-light); font-weight: 600;">75%</span></div>
+                            <div class="progress"><div class="progress-bar" role="progressbar" style="width: 75%;"></div></div>
                             <small style="color: var(--text-muted);">Utilisation d'outils de chiffrement : Nitrokey, Kleopatra, Thunderbird.</small>
                         </div>
-                        
                         <div class="skill-item">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span style="color: #ffffff; font-weight: 600;">Relation Client et Vente</span>
-                                <span style="color: var(--accent-light); font-weight: 600;">85%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 85%;"></div>
-                            </div>
+                            <div class="d-flex justify-content-between mb-2"><span style="color: #ffffff; font-weight: 600;">Relation Client et Vente</span><span style="color: var(--accent-light); font-weight: 600;">85%</span></div>
+                            <div class="progress"><div class="progress-bar" role="progressbar" style="width: 85%;"></div></div>
                             <small style="color: var(--text-muted);">Accueil, conseil et orientation des clients. Vente de produits et services informatiques.</small>
                         </div>
                     </div>
                 </div>
-                
                 <div class="col-lg-6 mb-4">
                     <div class="modern-card fade-in">
                         <h4 class="mb-4" style="color: #ffffff; font-weight: 700;">Technologies & Outils</h4>
                         <div class="skill-grid">
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                                <h6 style="color: #ffffff;">HTML</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                                <h6 style="color: #ffffff;">CSS</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fab fa-js-square"></i></div>
-                                <h6 style="color: #ffffff;">JavaScript</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fab fa-java"></i></div>
-                                <h6 style="color: #ffffff;">Java</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fab fa-windows"></i></div>
-                                <h6 style="color: #ffffff;">Windows</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fab fa-linux"></i></div>
-                                <h6 style="color: #ffffff;">Linux</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
-                                <h6 style="color: #ffffff;">Cisco</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fas fa-server"></i></div>
-                                <h6 style="color: #ffffff;">Switch</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fas fa-cube"></i></div>
-                                <h6 style="color: #ffffff;">Proxmox</h6>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon"><i class="fab fa-apple"></i></div>
-                                <h6 style="color: #ffffff;">Apple</h6>
-                            </div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fab fa-html5"></i></div><h6 style="color: #ffffff;">HTML</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><h6 style="color: #ffffff;">CSS</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fab fa-js-square"></i></div><h6 style="color: #ffffff;">JavaScript</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fab fa-java"></i></div><h6 style="color: #ffffff;">Java</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fab fa-windows"></i></div><h6 style="color: #ffffff;">Windows</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fab fa-linux"></i></div><h6 style="color: #ffffff;">Linux</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fas fa-network-wired"></i></div><h6 style="color: #ffffff;">Cisco</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fas fa-server"></i></div><h6 style="color: #ffffff;">Switch</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fas fa-cube"></i></div><h6 style="color: #ffffff;">Proxmox</h6></div>
+                            <div class="skill-item"><div class="skill-icon"><i class="fab fa-apple"></i></div><h6 style="color: #ffffff;">Apple</h6></div>
                         </div>
                     </div>
                 </div>
@@ -1570,9 +514,6 @@
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- EXPERIENCE SECTION -->
-    <!-- ================================ -->
     <section id="experience" class="section">
         <div class="container">
             <h2 class="section-title fade-in">Expérience & Formation 🎓</h2>
@@ -1582,66 +523,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h4 class="mb-4" style="color: #ffffff; font-weight: 700;">Formation</h4>
-                                
-                                <div class="timeline-item mb-4">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">Depuis septembre 2024</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">BTS SIO</h6>
-                                    <p class="small" style="color: var(--text-muted);">Lycée Dominique Villars Place Verdun, 05000 Gap</p>
-                                </div>
-                                
-                                <div class="timeline-item mb-4">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">Septembre 2022 - Juillet 2024</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">BAC PRO Systèmes Numériques option RISC</h6>
-                                    <p class="small" style="color: var(--text-muted);">Lycée Professionnel Pierre Mendès France, Veynes</p>
-                                </div>
-                                
-                                <div class="timeline-item mb-4">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">2019 - 2022</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Brevet</h6>
-                                    <p class="small" style="color: var(--text-muted);">Collège Achille Mauzan, Gap</p>
-                                </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">2012 - 2018</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Primary School Certificate (PSC)</h6>
-                                    <p class="small" style="color: var(--text-muted);">Bangladesh International School and College</p>
-                                </div>
+                                <div class="timeline-item mb-4"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">Depuis septembre 2024</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">BTS SIO</h6><p class="small" style="color: var(--text-muted);">Lycée Dominique Villars Place Verdun, 05000 Gap</p></div>
+                                <div class="timeline-item mb-4"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">Septembre 2022 - Juillet 2024</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">BAC PRO Systèmes Numériques option RISC</h6><p class="small" style="color: var(--text-muted);">Lycée Professionnel Pierre Mendès France, Veynes</p></div>
+                                <div class="timeline-item mb-4"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">2019 - 2022</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Brevet</h6><p class="small" style="color: var(--text-muted);">Collège Achille Mauzan, Gap</p></div>
+                                <div class="timeline-item"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">2012 - 2018</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Primary School Certificate (PSC)</h6><p class="small" style="color: var(--text-muted);">Bangladesh International School and College</p></div>
                             </div>
-                            
                             <div class="col-md-6">
                                 <h4 class="mb-4" style="color: #ffffff; font-weight: 700;">Expériences Professionnelles</h4>
-                                
-                                <div class="timeline-item mb-4">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">2024</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Travailleur Étudiant - Restauration</h6>
-                                    <p class="small" style="color: var(--text-muted);">O'tacos Gap</p>
-                                </div>
-                                
-                                <div class="timeline-item mb-4">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">Janvier - Novembre 2023</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Stage Informatique</h6>
-                                    <p class="small" style="color: var(--text-muted);">Sun Valley Systems, Porte Colombe - Réparation d'ordinateurs, accueil clients, chiffrement de données</p>
-                                </div>
-                                
-                                <div class="timeline-item mb-4">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">Mai - Juin 2023</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Stage Électronique et Informatique</h6>
-                                    <p class="small" style="color: var(--text-muted);">La Petite Ourse Gap - Réparation d'imprimantes, vidéoprojecteurs, installations Windows</p>
-                                </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="timeline-dot"></div>
-                                    <small style="color: var(--accent-light); font-weight: 600;">Mars 2023</small>
-                                    <h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Certification Digital Marketing</h6>
-                                    <p class="small" style="color: var(--text-muted);">acesads Malta - Réparation robot, Digital marketing</p>
-                                </div>
+                                <div class="timeline-item mb-4"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">2024</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Travailleur Étudiant - Restauration</h6><p class="small" style="color: var(--text-muted);">O'tacos Gap</p></div>
+                                <div class="timeline-item mb-4"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">Janvier - Novembre 2023</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Stage Informatique</h6><p class="small" style="color: var(--text-muted);">Sun Valley Systems, Porte Colombe - Réparation d'ordinateurs, accueil clients, chiffrement de données</p></div>
+                                <div class="timeline-item mb-4"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">Mai - Juin 2023</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Stage Électronique et Informatique</h6><p class="small" style="color: var(--text-muted);">La Petite Ourse Gap - Réparation d'imprimantes, vidéoprojecteurs, installations Windows</p></div>
+                                <div class="timeline-item"><div class="timeline-dot"></div><small style="color: var(--accent-light); font-weight: 600;">Mars 2023</small><h6 style="color: #ffffff; font-weight: 600; margin-top: 0.5rem;">Certification Digital Marketing</h6><p class="small" style="color: var(--text-muted);">acesads Malta - Réparation robot, Digital marketing</p></div>
                             </div>
                         </div>
                     </div>
@@ -1650,73 +542,42 @@
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- PROJECTS SECTION (Bibliothèque) -->
-    <!-- ================================ -->
     <section id="projects" class="section" style="min-height: 100vh; display: flex; align-items: center;">
         <div class="container">
             <div class="text-center mb-5 fade-in">
-                <h2 class="library-title">
-                    <i class="fas fa-book-open me-3"></i>
-                    Bibliothèque de TPs
-                </h2>
-                <div class="library-subtitle">
-                    Tous mes travaux pratiques et projets
-                </div>
+                <h2 class="library-title"><i class="fas fa-book-open me-3"></i>Bibliothèque de TPs</h2>
+                <div class="library-subtitle">Tous mes travaux pratiques et projets</div>
             </div>
-
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8">
                     <div class="library-search-container">
                         <i class="fas fa-search library-search-icon"></i>
-                        <input 
-                            type="text" 
-                            id="searchTP" 
-                            class="library-search-input"
-                            placeholder="Rechercher un document..."
-                            onkeyup="searchTPs()"
-                        />
+                        <input type="text" id="searchTP" class="library-search-input" placeholder="Rechercher un document..." onkeyup="searchTPs()"/>
                     </div>
                 </div>
             </div>
-
             <div class="library-filters-container fade-in">
-                <button class="library-filter-btn active" data-category="all" onclick="filterLibraryCategory('all')">
-                    <i class="fas fa-th-large me-2"></i>Tous
-                </button>
-                <button class="library-filter-btn" data-category="beauvallet" onclick="filterLibraryCategory('beauvallet')">
-                    <i class="fas fa-code me-2"></i>Mme Beauvallet
-                </button>
-                <button class="library-filter-btn" data-category="sotoca" onclick="filterLibraryCategory('sotoca')">
-                    <i class="fas fa-network-wired me-2"></i>M. Sotoca
-                </button>
-                <button class="library-filter-btn" data-category="atelier" onclick="filterLibraryCategory('atelier')">
-                    <i class="fas fa-tools me-2"></i>Atelier
-                </button>
+                <button class="library-filter-btn active" data-category="all" onclick="filterLibraryCategory('all')"><i class="fas fa-th-large me-2"></i>Tous</button>
+                <button class="library-filter-btn" data-category="beauvallet" onclick="filterLibraryCategory('beauvallet')"><i class="fas fa-code me-2"></i>Mme Beauvallet</button>
+                <button class="library-filter-btn" data-category="sotoca" onclick="filterLibraryCategory('sotoca')"><i class="fas fa-network-wired me-2"></i>M. Sotoca</button>
+                <button class="library-filter-btn" data-category="atelier" onclick="filterLibraryCategory('atelier')"><i class="fas fa-tools me-2"></i>Atelier</button>
             </div>
-
             <div class="library-instruction" id="library-instruction">
-                <i class="fas fa-hand-pointer me-2"></i>
-                Sélectionnez une catégorie pour afficher les documents
+                <i class="fas fa-hand-pointer me-2"></i>Sélectionnez une catégorie pour afficher les documents
             </div>
-
             <div id="searchResultsContainer" class="library-results-container" style="display: none;">
                 <div class="library-results-header" id="searchResultsHeader"></div>
                 <div id="searchResultsList" class="library-documents-grid"></div>
             </div>
-
             <div class="library-categories-container">
-                <!-- Mme. Beauvallet -->
                 <div class="library-category" data-category="beauvallet" style="display: none;">
                     <div class="library-category-header">
                         <i class="fas fa-chalkboard-teacher"></i>
                         <span>Mme. Beauvallet</span>
-                        <span class="library-category-badge">29 documents</span>
+                        <span class="library-category-badge">30 documents</span>
                     </div>
                     <div class="library-documents-grid" id="beauvallet-docs"></div>
                 </div>
-
-                <!-- M. Sotoca -->
                 <div class="library-category" data-category="sotoca" style="display: none;">
                     <div class="library-category-header">
                         <i class="fas fa-user-tie"></i>
@@ -1725,23 +586,19 @@
                     </div>
                     <div class="library-documents-grid" id="sotoca-docs"></div>
                 </div>
-
-                <!-- Atelier -->
                 <div class="library-category" data-category="atelier" style="display: none;">
                     <div class="library-category-header">
                         <i class="fas fa-tools"></i>
                         <span>Atelier Professionnel</span>
-                        <span class="library-category-badge">3 documents</span>
+                        <span class="library-category-badge">4 documents</span>
                     </div>
                     <div class="library-documents-grid" id="atelier-docs"></div>
                 </div>
-
-                <!-- Tous les documents -->
                 <div class="library-category" data-category="all" style="display: none;">
                     <div class="library-category-header">
                         <i class="fas fa-th-large"></i>
                         <span>Tous les documents</span>
-                        <span class="library-category-badge">49 documents</span>
+                        <span class="library-category-badge">51 documents</span>
                     </div>
                     <div class="library-documents-grid" id="all-docs"></div>
                 </div>
@@ -1749,502 +606,141 @@
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- VEILLE SECTION -->
-    <!-- ================================ -->
     <section id="veille" class="section">
         <div class="container">
             <h2 class="section-title fade-in">Veille Technologique : Intelligence Artificielle 🔍</h2>
-            
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in">
-                        <h3 class="mb-4" style="color: #ffffff; font-weight: 700;">
-                            <i class="fas fa-brain me-2" style="color: var(--accent-color);"></i>
-                            Ma Veille sur l'Intelligence Artificielle
-                        </h3>
-                        <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.8;">
-                            En tant qu'étudiant en BTS SIO, j'ai choisi de suivre l'actualité de l'Intelligence Artificielle car c'est une technologie qui change complètement notre métier. L'IA impacte le développement, la cybersécurité, l'infrastructure et même le support utilisateur.
-                        </p>
-                        
-                        <div class="row mt-4 mb-4">
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 12px; border-left: 4px solid var(--accent-color);">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-question-circle me-2"></i>Ma problématique
-                                    </h6>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">
-                                        Comment l'IA transforme les métiers de l'informatique et quels outils vont devenir indispensables ?
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 12px; border-left: 4px solid var(--accent-color);">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;">
-                                        <i class="fas fa-bullseye me-2"></i>Mes objectifs
-                                    </h6>
-                                    <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-                                        <li>Rester informé des nouveautés IA</li>
-                                        <li>Comprendre les impacts sur mon futur métier</li>
-                                        <li>Identifier les compétences à développer</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-4" style="background: rgba(0, 245, 255, 0.05); border-radius: 12px;">
-                            <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1.5rem;">
-                                <i class="fas fa-lightbulb me-2"></i>Pourquoi l'IA est importante pour moi ?
-                            </h6>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <p style="color: var(--text-muted); margin: 0;">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>
-                                        <strong style="color: #ffffff;">Coder plus vite</strong> avec des outils comme ChatGPT ou GitHub Copilot
-                                    </p>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <p style="color: var(--text-muted); margin: 0;">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>
-                                        <strong style="color: #ffffff;">Automatiser les tâches</strong> répétitives et gagner du temps
-                                    </p>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <p style="color: var(--text-muted); margin: 0;">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>
-                                        <strong style="color: #ffffff;">Mieux protéger</strong> les systèmes contre les cyberattaques
-                                    </p>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <p style="color: var(--text-muted); margin: 0;">
-                                        <i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i>
-                                        <strong style="color: #ffffff;">Comprendre les enjeux</strong> RGPD et éthique de l'IA
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center mb-5"><div class="col-lg-10"><div class="modern-card fade-in">
+                <h3 class="mb-4" style="color: #ffffff; font-weight: 700;"><i class="fas fa-brain me-2" style="color: var(--accent-color);"></i>Ma Veille sur l'Intelligence Artificielle</h3>
+                <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.8;">En tant qu'étudiant en BTS SIO, j'ai choisi de suivre l'actualité de l'Intelligence Artificielle car c'est une technologie qui change complètement notre métier. L'IA impacte le développement, la cybersécurité, l'infrastructure et même le support utilisateur.</p>
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 12px; border-left: 4px solid var(--accent-color);"><h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-question-circle me-2"></i>Ma problématique</h6><p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Comment l'IA transforme les métiers de l'informatique et quels outils vont devenir indispensables ?</p></div></div>
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 12px; border-left: 4px solid var(--accent-color);"><h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-bullseye me-2"></i>Mes objectifs</h6><ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;"><li>Rester informé des nouveautés IA</li><li>Comprendre les impacts sur mon futur métier</li><li>Identifier les compétences à développer</li></ul></div></div>
                 </div>
-            </div>
+                <div class="p-4" style="background: rgba(0, 245, 255, 0.05); border-radius: 12px;"><h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1.5rem;"><i class="fas fa-lightbulb me-2"></i>Pourquoi l'IA est importante pour moi ?</h6><div class="row"><div class="col-md-6 mb-3"><p style="color: var(--text-muted); margin: 0;"><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i><strong style="color: #ffffff;">Coder plus vite</strong> avec des outils comme ChatGPT ou GitHub Copilot</p></div><div class="col-md-6 mb-3"><p style="color: var(--text-muted); margin: 0;"><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i><strong style="color: #ffffff;">Automatiser les tâches</strong> répétitives et gagner du temps</p></div><div class="col-md-6 mb-3"><p style="color: var(--text-muted); margin: 0;"><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i><strong style="color: #ffffff;">Mieux protéger</strong> les systèmes contre les cyberattaques</p></div><div class="col-md-6 mb-3"><p style="color: var(--text-muted); margin: 0;"><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i><strong style="color: #ffffff;">Comprendre les enjeux</strong> RGPD et éthique de l'IA</p></div></div></div>
+            </div></div></div>
 
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in">
-                        <h3 class="mb-4" style="color: #ffffff; font-weight: 700;">
-                            <i class="fas fa-chart-line me-2" style="color: var(--accent-color);"></i>
-                            Ma Méthode de Veille
-                        </h3>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            Pour rester à jour, je consulte régulièrement plusieurs sources fiables et je note les informations importantes. Voici comment je procède :
-                        </p>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 10px;">
-                                    <h6 style="color: var(--accent-light); font-weight: 600;">
-                                        <i class="fas fa-rss me-2"></i>Sources consultées
-                                    </h6>
-                                    <ul style="color: var(--text-muted); margin-bottom: 0; padding-left: 1.2rem;">
-                                        <li>ActuIA.com</li>
-                                        <li>Le Monde Informatique</li>
-                                        <li>Informatique News</li>
-                                        <li>Blog du Modérateur</li>
-                                        <li>LMArena (benchmarks)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 10px;">
-                                    <h6 style="color: var(--accent-light); font-weight: 600;">
-                                        <i class="fas fa-calendar-alt me-2"></i>Fréquence
-                                    </h6>
-                                    <p style="color: var(--text-muted); margin: 0;">
-                                        Je fais ma veille <strong style="color: #ffffff;">2-3 fois par semaine</strong> pour suivre l'évolution rapide du secteur et noter les tendances importantes.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center mb-5"><div class="col-lg-10"><div class="modern-card fade-in">
+                <h3 class="mb-4" style="color: #ffffff; font-weight: 700;"><i class="fas fa-chart-line me-2" style="color: var(--accent-color);"></i>Ma Méthode de Veille</h3>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">Pour rester à jour, je consulte régulièrement plusieurs sources fiables et je note les informations importantes. Voici comment je procède :</p>
+                <div class="row g-3">
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 10px;"><h6 style="color: var(--accent-light); font-weight: 600;"><i class="fas fa-rss me-2"></i>Sources consultées</h6><ul style="color: var(--text-muted); margin-bottom: 0; padding-left: 1.2rem;"><li>ActuIA.com</li><li>Le Monde Informatique</li><li>Informatique News</li><li>Blog du Modérateur</li><li>LMArena (benchmarks)</li></ul></div></div>
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 10px;"><h6 style="color: var(--accent-light); font-weight: 600;"><i class="fas fa-calendar-alt me-2"></i>Fréquence</h6><p style="color: var(--text-muted); margin: 0;">Je fais ma veille <strong style="color: #ffffff;">2-3 fois par semaine</strong> pour suivre l'évolution rapide du secteur et noter les tendances importantes.</p></div></div>
                 </div>
-            </div>
+            </div></div></div>
 
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <h3 class="mb-4 fade-in" style="color: #ffffff; font-weight: 700; text-align: center;">
-                        <i class="fas fa-newspaper me-2" style="color: var(--accent-color);"></i>
-                        Actualités Récentes (Janvier 2026)
-                    </h3>
-                </div>
-            </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><h3 class="mb-4 fade-in" style="color: #ffffff; font-weight: 700; text-align: center;"><i class="fas fa-newspaper me-2" style="color: var(--accent-color);"></i>Actualités Récentes (Janvier 2026)</h3></div></div>
 
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in" style="border-left: 4px solid var(--accent-color);">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="p-2 me-3" style="background: rgba(0, 245, 255, 0.15); border-radius: 10px;">
-                                <i class="fas fa-trophy" style="color: var(--accent-color); font-size: 1.8rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="color: #ffffff; margin: 0; font-weight: 700;">Gemini 3 Pro domine le classement LMArena</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Janvier 2026</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            Le modèle <strong style="color: #ffffff;">Gemini 3 Pro de Google</strong> conserve la première place du classement général avec un score Elo de ~1500. Ses points forts incluent une fenêtre contextuelle d'<strong style="color: var(--accent-light);">1 million de tokens</strong> et des capacités multimodales natives (texte, image, vidéo, audio).
-                        </p>
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 8px; text-align: center;">
-                                    <i class="fas fa-medal" style="color: #FFD700; font-size: 1.5rem;"></i>
-                                    <p style="color: #ffffff; margin: 0.5rem 0 0 0; font-weight: 600;">1er - Gemini 3 Pro</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 8px; text-align: center;">
-                                    <i class="fas fa-medal" style="color: #C0C0C0; font-size: 1.5rem;"></i>
-                                    <p style="color: #ffffff; margin: 0.5rem 0 0 0; font-weight: 600;">2e - Grok 4.1</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 8px; text-align: center;">
-                                    <i class="fas fa-medal" style="color: #CD7F32; font-size: 1.5rem;"></i>
-                                    <p style="color: #ffffff; margin: 0.5rem 0 0 0; font-weight: 600;">3e - Claude Opus 4.5</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alert mt-3 p-3" style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
-                            <p style="color: var(--text-muted); margin: 0;">
-                                <i class="fas fa-exclamation-circle me-2" style="color: #ffc107;"></i>
-                                <strong style="color: #ffffff;">GPT-5.1 d'OpenAI</strong> chute à la 9e place, marquant une contre-performance historique pour OpenAI.
-                            </p>
-                        </div>
-                    </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><div class="modern-card fade-in" style="border-left: 4px solid var(--accent-color);">
+                <div class="d-flex align-items-center mb-3"><div class="p-2 me-3" style="background: rgba(0, 245, 255, 0.15); border-radius: 10px;"><i class="fas fa-trophy" style="color: var(--accent-color); font-size: 1.8rem;"></i></div><div><h4 style="color: #ffffff; margin: 0; font-weight: 700;">Gemini 3 Pro domine le classement LMArena</h4><p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Janvier 2026</p></div></div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">Le modèle <strong style="color: #ffffff;">Gemini 3 Pro de Google</strong> conserve la première place du classement général avec un score Elo de ~1500. Ses points forts incluent une fenêtre contextuelle d'<strong style="color: var(--accent-light);">1 million de tokens</strong> et des capacités multimodales natives (texte, image, vidéo, audio).</p>
+                <div class="row g-3">
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 8px; text-align: center;"><i class="fas fa-medal" style="color: #FFD700; font-size: 1.5rem;"></i><p style="color: #ffffff; margin: 0.5rem 0 0 0; font-weight: 600;">1er - Gemini 3 Pro</p></div></div>
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 8px; text-align: center;"><i class="fas fa-medal" style="color: #C0C0C0; font-size: 1.5rem;"></i><p style="color: #ffffff; margin: 0.5rem 0 0 0; font-weight: 600;">2e - Grok 4.1</p></div></div>
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(0, 245, 255, 0.08); border-radius: 8px; text-align: center;"><i class="fas fa-medal" style="color: #CD7F32; font-size: 1.5rem;"></i><p style="color: #ffffff; margin: 0.5rem 0 0 0; font-weight: 600;">3e - Claude Opus 4.5</p></div></div>
                 </div>
-            </div>
+                <div class="alert mt-3 p-3" style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;"><p style="color: var(--text-muted); margin: 0;"><i class="fas fa-exclamation-circle me-2" style="color: #ffc107;"></i><strong style="color: #ffffff;">GPT-5.1 d'OpenAI</strong> chute à la 9e place, marquant une contre-performance historique pour OpenAI.</p></div>
+            </div></div></div>
 
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in" style="border-left: 4px solid #4CAF50;">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="p-2 me-3" style="background: rgba(76, 175, 80, 0.15); border-radius: 10px;">
-                                <i class="fas fa-globe-europe" style="color: #4CAF50; font-size: 1.8rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="color: #ffffff; margin: 0; font-weight: 700;">L'Europe devance les USA et la Chine en adoption de l'IA</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Rapport Microsoft - 8 janvier 2026</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            Selon Microsoft, l'Europe est le continent où l'IA générative est la plus utilisée, malgré les investissements massifs des États-Unis et de la Chine dans les infrastructures IA.
-                        </p>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(76, 175, 80, 0.1); border-radius: 8px; text-align: center;">
-                                    <h2 style="color: #4CAF50; margin: 0; font-weight: 700;">40%+</h2>
-                                    <p style="color: var(--text-muted); margin: 0.5rem 0 0 0;">France, Espagne, Irlande</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(255, 152, 0, 0.1); border-radius: 8px; text-align: center;">
-                                    <h2 style="color: #FF9800; margin: 0; font-weight: 700;">30%</h2>
-                                    <p style="color: var(--text-muted); margin: 0.5rem 0 0 0;">États-Unis</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(244, 67, 54, 0.1); border-radius: 8px; text-align: center;">
-                                    <h2 style="color: #F44336; margin: 0; font-weight: 700;">16%</h2>
-                                    <p style="color: var(--text-muted); margin: 0.5rem 0 0 0;">Chine</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); line-height: 1.8;">
-                            <i class="fas fa-chart-line me-2" style="color: #4CAF50;"></i>
-                            La France affiche la <strong style="color: #ffffff;">plus forte progression</strong> avec +3,1 points d'adoption sur l'année 2025.
-                        </p>
-                    </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><div class="modern-card fade-in" style="border-left: 4px solid #4CAF50;">
+                <div class="d-flex align-items-center mb-3"><div class="p-2 me-3" style="background: rgba(76, 175, 80, 0.15); border-radius: 10px;"><i class="fas fa-globe-europe" style="color: #4CAF50; font-size: 1.8rem;"></i></div><div><h4 style="color: #ffffff; margin: 0; font-weight: 700;">L'Europe devance les USA et la Chine en adoption de l'IA</h4><p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Rapport Microsoft - 8 janvier 2026</p></div></div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">Selon Microsoft, l'Europe est le continent où l'IA générative est la plus utilisée, malgré les investissements massifs des États-Unis et de la Chine dans les infrastructures IA.</p>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(76, 175, 80, 0.1); border-radius: 8px; text-align: center;"><h2 style="color: #4CAF50; margin: 0; font-weight: 700;">40%+</h2><p style="color: var(--text-muted); margin: 0.5rem 0 0 0;">France, Espagne, Irlande</p></div></div>
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(255, 152, 0, 0.1); border-radius: 8px; text-align: center;"><h2 style="color: #FF9800; margin: 0; font-weight: 700;">30%</h2><p style="color: var(--text-muted); margin: 0.5rem 0 0 0;">États-Unis</p></div></div>
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(244, 67, 54, 0.1); border-radius: 8px; text-align: center;"><h2 style="color: #F44336; margin: 0; font-weight: 700;">16%</h2><p style="color: var(--text-muted); margin: 0.5rem 0 0 0;">Chine</p></div></div>
                 </div>
-            </div>
+                <p style="color: var(--text-muted); line-height: 1.8;"><i class="fas fa-chart-line me-2" style="color: #4CAF50;"></i>La France affiche la <strong style="color: #ffffff;">plus forte progression</strong> avec +3,1 points d'adoption sur l'année 2025.</p>
+            </div></div></div>
 
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in" style="border-left: 4px solid #9C27B0;">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="p-2 me-3" style="background: rgba(156, 39, 176, 0.15); border-radius: 10px;">
-                                <i class="fas fa-robot" style="color: #9C27B0; font-size: 1.8rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="color: #ffffff; margin: 0; font-weight: 700;">2026 : L'année de l'IA agentique</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Tendance majeure 2026</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            L'IA évolue vers des <strong style="color: #ffffff;">agents autonomes</strong> capables d'exécuter des tâches complexes sans supervision humaine constante.
-                        </p>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 8px;">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-check-circle me-2"></i>Prédictions Deloitte 2025</h6>
-                                    <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-                                        <li><strong style="color: #ffffff;">25%</strong> des entreprises utilisant l'IA déploieront des agents en 2026</li>
-                                        <li><strong style="color: #ffffff;">50%</strong> en 2027</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 8px;">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-tasks me-2"></i>Applications concrètes</h6>
-                                    <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-                                        <li>Réponses automatisées aux clients</li>
-                                        <li>Génération de code autonome</li>
-                                        <li>Gestion administrative automatisée</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><div class="modern-card fade-in" style="border-left: 4px solid #9C27B0;">
+                <div class="d-flex align-items-center mb-3"><div class="p-2 me-3" style="background: rgba(156, 39, 176, 0.15); border-radius: 10px;"><i class="fas fa-robot" style="color: #9C27B0; font-size: 1.8rem;"></i></div><div><h4 style="color: #ffffff; margin: 0; font-weight: 700;">2026 : L'année de l'IA agentique</h4><p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Tendance majeure 2026</p></div></div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">L'IA évolue vers des <strong style="color: #ffffff;">agents autonomes</strong> capables d'exécuter des tâches complexes sans supervision humaine constante. Claude Code, ChatGPT Pulse et Copilot Workspace illustrent cette transformation.</p>
+                <div class="row g-3">
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 8px;"><h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-check-circle me-2"></i>Prédictions Deloitte 2025</h6><ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;"><li><strong style="color: #ffffff;">25%</strong> des entreprises utilisant l'IA déploieront des agents en 2026</li><li><strong style="color: #ffffff;">50%</strong> en 2027</li><li>Les flux de travail changeront fondamentalement</li></ul></div></div>
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 8px;"><h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-tasks me-2"></i>Applications concrètes</h6><ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;"><li>Réponses automatisées aux clients</li><li>Génération de code autonome</li><li>Prototypage et design assisté</li><li>Gestion administrative automatisée</li></ul></div></div>
                 </div>
-            </div>
+            </div></div></div>
 
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in" style="border-left: 4px solid #FF5722;">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="p-2 me-3" style="background: rgba(255, 87, 34, 0.15); border-radius: 10px;">
-                                <i class="fas fa-brain" style="color: #FF5722; font-size: 1.8rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="color: #ffffff; margin: 0; font-weight: 700;">Les modèles de raisonnement explosent</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Évolution 2025-2026</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            Les modèles d'IA peuvent désormais <strong style="color: #ffffff;">raisonner étape par étape</strong>, permettant de suivre leur cheminement logique.
-                        </p>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px; text-align: center;">
-                                    <h3 style="color: #FF5722; margin: 0; font-weight: 700;">0% → 60%</h3>
-                                    <p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem;">Tokens de raisonnement en 2025</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px; text-align: center;">
-                                    <h3 style="color: #FF5722; margin: 0; font-weight: 700;">390x</h3>
-                                    <p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem;">Plus efficace sur ARC-AGI-1</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px; text-align: center;">
-                                    <h3 style="color: #FF5722; margin: 0; font-weight: 700;">100%</h3>
-                                    <p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem;">Score aux Olympiades Maths</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><div class="modern-card fade-in" style="border-left: 4px solid #FF5722;">
+                <div class="d-flex align-items-center mb-3"><div class="p-2 me-3" style="background: rgba(255, 87, 34, 0.15); border-radius: 10px;"><i class="fas fa-brain" style="color: #FF5722; font-size: 1.8rem;"></i></div><div><h4 style="color: #ffffff; margin: 0; font-weight: 700;">Les modèles de raisonnement explosent</h4><p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Évolution 2025-2026</p></div></div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">Les modèles d'IA peuvent désormais <strong style="color: #ffffff;">raisonner étape par étape</strong> comme DeepSeek R1, permettant de suivre leur cheminement logique. Cette transparence améliore la confiance et la précision.</p>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px; text-align: center;"><h3 style="color: #FF5722; margin: 0; font-weight: 700;">0% → 60%</h3><p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem;">Tokens de raisonnement en 2025</p></div></div>
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px; text-align: center;"><h3 style="color: #FF5722; margin: 0; font-weight: 700;">390x</h3><p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem;">Plus efficace sur ARC-AGI-1</p></div></div>
+                    <div class="col-md-4"><div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px; text-align: center;"><h3 style="color: #FF5722; margin: 0; font-weight: 700;">100%</h3><p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem;">Score aux Olympiades Maths</p></div></div>
                 </div>
-            </div>
+                <div class="p-3" style="background: rgba(255, 87, 34, 0.1); border-radius: 8px;"><p style="color: var(--text-muted); margin: 0;"><i class="fas fa-trophy me-2" style="color: #FFD700;"></i><strong style="color: #ffffff;">Médaille d'or</strong> obtenue par DeepSeek 5 et Gemini Deep Think aux Olympiades Internationales de Mathématiques 2025.</p></div>
+            </div></div></div>
 
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in" style="border-left: 4px solid #F44336;">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="p-2 me-3" style="background: rgba(244, 67, 54, 0.15); border-radius: 10px;">
-                                <i class="fas fa-shield-alt" style="color: #F44336; font-size: 1.8rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="color: #ffffff; margin: 0; font-weight: 700;">Cybersécurité : L'IA arme à double tranchant</h4>
-                                <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Alerte 2026</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                            Plus de <strong style="color: #ffffff;">50% des professionnels européens</strong> de la cybersécurité craignent que les deepfakes et attaques IA soient à l'origine de la majorité des incidents en 2026.
-                        </p>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(76, 175, 80, 0.1); border-radius: 8px;">
-                                    <h6 style="color: #4CAF50; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-check-circle me-2"></i>Avantages défensifs</h6>
-                                    <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-                                        <li>Détection d'anomalies avancée</li>
-                                        <li>Identification de comportements suspects</li>
-                                        <li>Réponse automatisée aux incidents</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(244, 67, 54, 0.1); border-radius: 8px;">
-                                    <h6 style="color: #F44336; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-exclamation-triangle me-2"></i>Menaces offensives</h6>
-                                    <ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-                                        <li>Phishing ultra-personnalisé</li>
-                                        <li>Deepfakes audio/vidéo convaincants</li>
-                                        <li>Automatisation des attaques</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alert p-3" style="background: rgba(244, 67, 54, 0.1); border: 1px solid rgba(244, 67, 54, 0.3); border-radius: 8px;">
-                            <p style="color: var(--text-muted); margin: 0;">
-                                <i class="fas fa-exclamation-triangle me-2" style="color: #F44336;"></i>
-                                <strong style="color: #ffffff;">Cas réel 2024 :</strong> Un employé britannique a validé un virement de 25 millions $ après une visioconférence avec des deepfakes de son directeur financier et collègues.
-                            </p>
-                        </div>
-                    </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><div class="modern-card fade-in" style="border-left: 4px solid #00BCD4;">
+                <div class="d-flex align-items-center mb-3"><div class="p-2 me-3" style="background: rgba(0, 188, 212, 0.15); border-radius: 10px;"><i class="fas fa-layer-group" style="color: #00BCD4; font-size: 1.8rem;"></i></div><div><h4 style="color: #ffffff; margin: 0; font-weight: 700;">L'IA multimodale franchit un cap</h4><p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Tendance 2026</p></div></div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">Les modèles peuvent désormais traiter simultanément du <strong style="color: #ffffff;">texte, des images, de la vidéo et du son</strong> sans changer d'outil. Cette capacité transforme les usages professionnels.</p>
+                <div class="row g-3">
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(0, 188, 212, 0.1); border-radius: 8px;"><h6 style="color: #00BCD4; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-store me-2"></i>Retail</h6><p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Analyse vidéo de l'agencement magasin + interprétation conversations clients + suggestions d'amélioration en temps réel</p></div></div>
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(0, 188, 212, 0.1); border-radius: 8px;"><h6 style="color: #00BCD4; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-heartbeat me-2"></i>Santé</h6><p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Combinaison imagerie médicale + dossiers patients + littérature scientifique pour affiner les diagnostics</p></div></div>
                 </div>
-            </div>
+            </div></div></div>
 
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in" style="background: linear-gradient(135deg, rgba(0, 245, 255, 0.08) 0%, rgba(156, 39, 176, 0.08) 100%); border: 2px solid rgba(0, 245, 255, 0.2);">
-                        <h3 class="mb-4" style="color: #ffffff; font-weight: 700;">
-                            <i class="fas fa-lightbulb me-2" style="color: var(--accent-color);"></i>
-                            Ma Réflexion Personnelle
-                        </h3>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(0, 245, 255, 0.1); border-radius: 10px; border-left: 3px solid var(--accent-color);">
-                                    <h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-chart-line me-2"></i>Pour ma formation</h6>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Je dois absolument <strong style="color: #ffffff;">apprendre à utiliser les outils IA</strong> comme GitHub Copilot, ChatGPT Code et Claude.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 10px; border-left: 3px solid #9C27B0;">
-                                    <h6 style="color: #9C27B0; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-shield-alt me-2"></i>Pour la cybersécurité</h6>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Les <strong style="color: #ffffff;">menaces liées aux deepfakes</strong> sont très concrètes. En SISR, je dois comprendre comment détecter et prévenir ces attaques.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><div class="modern-card fade-in" style="border-left: 4px solid #F44336;">
+                <div class="d-flex align-items-center mb-3"><div class="p-2 me-3" style="background: rgba(244, 67, 54, 0.15); border-radius: 10px;"><i class="fas fa-shield-alt" style="color: #F44336; font-size: 1.8rem;"></i></div><div><h4 style="color: #ffffff; margin: 0; font-weight: 700;">Cybersécurité : L'IA arme à double tranchant</h4><p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;"><i class="fas fa-calendar me-2"></i>Alerte 2026</p></div></div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">Plus de <strong style="color: #ffffff;">50% des professionnels européens</strong> de la cybersécurité craignent que les deepfakes et attaques IA soient à l'origine de la majorité des incidents en 2026.</p>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(76, 175, 80, 0.1); border-radius: 8px;"><h6 style="color: #4CAF50; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-check-circle me-2"></i>Avantages défensifs</h6><ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;"><li>Détection d'anomalies avancée</li><li>Identification de comportements suspects</li><li>Réponse automatisée aux incidents</li></ul></div></div>
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(244, 67, 54, 0.1); border-radius: 8px;"><h6 style="color: #F44336; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-exclamation-triangle me-2"></i>Menaces offensives</h6><ul style="color: var(--text-muted); margin: 0; padding-left: 1.2rem; line-height: 1.7;"><li>Phishing ultra-personnalisé</li><li>Deepfakes audio/vidéo convaincants</li><li>Automatisation des attaques</li></ul></div></div>
                 </div>
-            </div>
+                <div class="alert p-3" style="background: rgba(244, 67, 54, 0.1); border: 1px solid rgba(244, 67, 54, 0.3); border-radius: 8px;"><p style="color: var(--text-muted); margin: 0;"><i class="fas fa-exclamation-triangle me-2" style="color: #F44336;"></i><strong style="color: #ffffff;">Cas réel 2024 :</strong> Un employé britannique a validé un virement de 25 millions $ après une visioconférence avec des deepfakes de son directeur financier et collègues.</p></div>
+            </div></div></div>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="modern-card fade-in">
-                        <h5 class="mb-3" style="color: #ffffff; font-weight: 600;">
-                            <i class="fas fa-link me-2" style="color: var(--accent-color);"></i>
-                            Sources consultées
-                        </h5>
-                        <div class="row g-2">
-                            <div class="col-md-6">
-                                <a href="https://www.blogdumoderateur.com" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;">
-                                    <i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>Blog du Modérateur
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="https://www.actuia.com" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;">
-                                    <i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>ActuIA
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="https://www.lemondeinformatique.fr" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;">
-                                    <i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>Le Monde Informatique
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="https://www.informatiquenews.fr" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;">
-                                    <i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>Informatique News
-                                </a>
-                            </div>
-                        </div>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; margin-bottom: 0;">
-                            <i class="fas fa-info-circle me-2"></i>Dernière mise à jour : Janvier 2026
-                        </p>
-                    </div>
+            <div class="row justify-content-center mb-4"><div class="col-lg-10"><div class="modern-card fade-in" style="background: linear-gradient(135deg, rgba(0, 245, 255, 0.08) 0%, rgba(156, 39, 176, 0.08) 100%); border: 2px solid rgba(0, 245, 255, 0.2);">
+                <h3 class="mb-4" style="color: #ffffff; font-weight: 700;"><i class="fas fa-lightbulb me-2" style="color: var(--accent-color);"></i>Ma Réflexion Personnelle</h3>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">En suivant l'actualité de l'IA depuis plusieurs mois, je constate que <strong style="color: #ffffff;">l'évolution est très rapide</strong>. Les modèles deviennent plus intelligents, plus autonomes et plus accessibles. Ce qui me frappe le plus, c'est :</p>
+                <div class="row g-3">
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(0, 245, 255, 0.1); border-radius: 10px; border-left: 3px solid var(--accent-color);"><h6 style="color: var(--accent-light); font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-chart-line me-2"></i>Pour ma formation</h6><p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Je dois absolument <strong style="color: #ffffff;">apprendre à utiliser les outils IA</strong> comme GitHub Copilot, ChatGPT Code et Claude. Ces compétences seront indispensables pour mon futur métier en développement.</p></div></div>
+                    <div class="col-md-6"><div class="p-3" style="background: rgba(156, 39, 176, 0.1); border-radius: 10px; border-left: 3px solid #9C27B0;"><h6 style="color: #9C27B0; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-shield-alt me-2"></i>Pour la cybersécurité</h6><p style="color: var(--text-muted); margin: 0; line-height: 1.7;">Les <strong style="color: #ffffff;">menaces liées aux deepfakes</strong> sont très concrètes. En SISR, je dois comprendre comment détecter et prévenir ces attaques pour protéger les entreprises.</p></div></div>
                 </div>
-            </div>
+                <div class="p-4 mt-4" style="background: rgba(255, 193, 7, 0.08); border-radius: 10px; border: 1px solid rgba(255, 193, 7, 0.2);"><h6 style="color: #FFC107; font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-graduation-cap me-2"></i>Mon objectif d'apprentissage pour 2026</h6><p style="color: var(--text-muted); margin: 0; line-height: 1.8;">Je veux <strong style="color: #ffffff;">maîtriser au moins 2-3 outils d'IA</strong> en profondeur : comprendre leurs limites, leurs forces, et comment les intégrer dans un workflow professionnel. Je vais également suivre les évolutions réglementaires de l'AI Act européen qui impacteront notre métier.</p></div>
+            </div></div></div>
+
+            <div class="row justify-content-center"><div class="col-lg-10"><div class="modern-card fade-in">
+                <h5 class="mb-3" style="color: #ffffff; font-weight: 600;"><i class="fas fa-link me-2" style="color: var(--accent-color);"></i>Sources consultées</h5>
+                <div class="row g-2">
+                    <div class="col-md-6"><a href="https://www.blogdumoderateur.com" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;"><i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>Blog du Modérateur</a></div>
+                    <div class="col-md-6"><a href="https://www.actuia.com" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;"><i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>ActuIA</a></div>
+                    <div class="col-md-6"><a href="https://www.lemondeinformatique.fr" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;"><i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>Le Monde Informatique</a></div>
+                    <div class="col-md-6"><a href="https://www.informatiquenews.fr" target="_blank" style="color: var(--text-muted); text-decoration: none; display: block; padding: 0.5rem; border-radius: 6px; transition: all 0.3s;"><i class="fas fa-external-link-alt me-2" style="color: var(--accent-color);"></i>Informatique News</a></div>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; margin-bottom: 0;"><i class="fas fa-info-circle me-2"></i>Dernière mise à jour : Janvier 2026</p>
+            </div></div></div>
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- LANGUAGES SECTION -->
-    <!-- ================================ -->
     <section id="languages" class="section">
         <div class="container">
             <h2 class="section-title fade-in">Langues</h2>
             <div class="row justify-content-center">
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="modern-card text-center fade-in">
-                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
-                        <h6 style="color: #ffffff; font-weight: 600;">Bengali/Bangla</h6>
-                        <p style="color: var(--text-muted); font-size: 0.8rem;">Langue maternelle</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="modern-card text-center fade-in">
-                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
-                        <h6 style="color: #ffffff; font-weight: 600;">Français</h6>
-                        <p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="modern-card text-center fade-in">
-                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
-                        <h6 style="color: #ffffff; font-weight: 600;">Anglais</h6>
-                        <p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="modern-card text-center fade-in">
-                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
-                        <h6 style="color: #ffffff; font-weight: 600;">Hindi</h6>
-                        <p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="modern-card text-center fade-in">
-                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
-                        <h6 style="color: #ffffff; font-weight: 600;">Ourdou</h6>
-                        <p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                    <div class="modern-card text-center fade-in">
-                        <i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i>
-                        <h6 style="color: #ffffff; font-weight: 600;">Arabe</h6>
-                        <p style="color: var(--text-muted); font-size: 0.8rem;">Niveau intermédiaire</p>
-                    </div>
-                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4"><div class="modern-card text-center fade-in"><i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i><h6 style="color: #ffffff; font-weight: 600;">Bengali/Bangla</h6><p style="color: var(--text-muted); font-size: 0.8rem;">Langue maternelle</p></div></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4"><div class="modern-card text-center fade-in"><i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i><h6 style="color: #ffffff; font-weight: 600;">Français</h6><p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p></div></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4"><div class="modern-card text-center fade-in"><i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i><h6 style="color: #ffffff; font-weight: 600;">Anglais</h6><p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p></div></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4"><div class="modern-card text-center fade-in"><i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i><h6 style="color: #ffffff; font-weight: 600;">Hindi</h6><p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p></div></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4"><div class="modern-card text-center fade-in"><i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i><h6 style="color: #ffffff; font-weight: 600;">Ourdou</h6><p style="color: var(--text-muted); font-size: 0.8rem;">Couramment</p></div></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4"><div class="modern-card text-center fade-in"><i class="fas fa-flag fa-2x mb-3" style="color: var(--accent-color);"></i><h6 style="color: #ffffff; font-weight: 600;">Arabe</h6><p style="color: var(--text-muted); font-size: 0.8rem;">Niveau intermédiaire</p></div></div>
             </div>
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- CONTACT SECTION -->
-    <!-- ================================ -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title fade-in">Contact</h2>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="row mb-5">
-                        <div class="col-md-4 mb-3">
-                            <div class="text-center modern-card fade-in">
-                                <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--accent-color);"></i>
-                                <h5 style="color: #ffffff; font-weight: 600;">Localisation</h5>
-                                <p style="color: var(--text-muted);">Gap, France</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="text-center modern-card fade-in" style="padding: 2rem 1rem;">
-                                <i class="fas fa-envelope fa-2x mb-3" style="color: var(--accent-color);"></i>
-                                <h5 style="color: #ffffff; margin-bottom: 1rem; font-weight: 600;">Email</h5>
-                                <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e4898b8c8589898180ca82858c8580ca82898ba48389858d88ca878b89">[email&#160;protected]</a></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="text-center modern-card fade-in">
-                                <i class="fas fa-phone fa-2x mb-3" style="color: var(--accent-color);"></i>
-                                <h5 style="color: #ffffff; font-weight: 600;">Téléphone</h5>
-                                <p style="color: var(--text-muted);">(+33) 06 04 45 99 34</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row"><div class="col-lg-8 mx-auto">
+                <div class="row mb-5">
+                    <div class="col-md-4 mb-3"><div class="text-center modern-card fade-in"><i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--accent-color);"></i><h5 style="color: #ffffff; font-weight: 600;">Localisation</h5><p style="color: var(--text-muted);">Gap, France</p></div></div>
+                    <div class="col-md-4 mb-3"><div class="text-center modern-card fade-in" style="padding: 2rem 1rem;"><i class="fas fa-envelope fa-2x mb-3" style="color: var(--accent-color);"></i><h5 style="color: #ffffff; margin-bottom: 1rem; font-weight: 600;">Email</h5><p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">mohammed.fahad.fmo@gmail.com</p></div></div>
+                    <div class="col-md-4 mb-3"><div class="text-center modern-card fade-in"><i class="fas fa-phone fa-2x mb-3" style="color: var(--accent-color);"></i><h5 style="color: #ffffff; font-weight: 600;">Téléphone</h5><p style="color: var(--text-muted);">(+33) 06 04 45 99 34</p></div></div>
                 </div>
-            </div>
+            </div></div>
         </div>
     </section>
 
-    <!-- ================================ -->
-    <!-- FOOTER -->
-    <!-- ================================ -->
     <footer class="footer">
         <div class="footer-matrix" id="footerMatrix"></div>
         <div class="container">
@@ -2257,31 +753,16 @@
         </div>
     </footer>
 
-    <div id="backToTop">
-        <i class="fas fa-chevron-up"></i>
-    </div>
+    <div id="backToTop"><i class="fas fa-chevron-up"></i></div>
 
-    <!-- ================================ -->
-    <!-- SCRIPTS -->
-    <!-- ================================ -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ================================
-        // LOADING SCREEN
-        // ================================
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1200);
-        });
-
         // ================================
         // PARTICLE SYSTEM
         // ================================
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
@@ -2297,22 +778,19 @@
                 this.pulse = Math.random() * 0.02 + 0.005;
                 this.originalOpacity = this.opacity;
             }
-
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
                 this.opacity += this.pulse;
-                if (this.opacity >= this.originalOpacity + 0.3 || this.opacity <= this.originalOpacity - 0.3) {
-                    this.pulse *= -1;
-                }
+                if (this.opacity >= this.originalOpacity + 0.3 || this.opacity <= this.originalOpacity - 0.3) this.pulse *= -1;
                 if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
             }
-
             draw() {
                 ctx.fillStyle = this.color + this.opacity + ')';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = this.color + '0.5)';
                 ctx.fill();
@@ -2320,18 +798,15 @@
             }
         }
 
-        function initParticles() {
-            for (let i = 0; i < 120; i++) particles.push(new Particle());
-        }
-
+        function initParticles() { for (let i = 0; i < 120; i++) particles.push(new Particle()); }
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => { p.update(); p.draw(); });
             particles.forEach((p1, i) => {
                 particles.slice(i + 1).forEach(p2 => {
-                    const dist = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
-                    if (dist < 120) {
-                        ctx.strokeStyle = `rgba(0, 245, 255, ${0.15 * (1 - dist / 120)})`;
+                    const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+                    if (distance < 120) {
+                        ctx.strokeStyle = `rgba(0, 245, 255, ${0.15 * (1 - distance / 120)})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(p1.x, p1.y);
@@ -2342,14 +817,7 @@
             });
             requestAnimationFrame(animateParticles);
         }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            initParticles();
-        });
-
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; particles = []; initParticles(); });
         initParticles();
         animateParticles();
 
@@ -2367,38 +835,31 @@
         // ================================
         // SCROLL ANIMATIONS
         // ================================
+        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -100px 0px' };
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), index * 150);
-                }
+                if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), index * 150);
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
-
+        }, observerOptions);
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         // ================================
-        // NAVBAR SCROLL EFFECT
+        // NAVBAR SCROLL
         // ================================
+        let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             const backToTop = document.getElementById('backToTop');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > 100) {
-                navbar.classList.add('scrolled');
-                backToTop.classList.add('show');
-            } else {
-                navbar.classList.remove('scrolled');
-                backToTop.classList.remove('show');
-            }
+            if (scrollTop > 100) { navbar.classList.add('scrolled'); backToTop.classList.add('show'); }
+            else { navbar.classList.remove('scrolled'); backToTop.classList.remove('show'); }
+            lastScrollTop = scrollTop;
         });
 
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
         // ================================
-        // FOOTER MATRIX EFFECT
+        // FOOTER MATRIX
         // ================================
         function createMatrixEffect() {
             const footerMatrix = document.getElementById('footerMatrix');
@@ -2418,7 +879,7 @@
         }
 
         // ================================
-        // DONNÉES DES TPs
+        // DONNÉES TPs
         // ================================
         const tpsData = {
             beauvallet: [
@@ -2447,11 +908,11 @@
                 { title: "TP ZOO", icon: "fas fa-database", tags: ["SQL", "BDD", "MCD"], file: "Mme_Beauvallet/TP_ZOO.pdf", description: "Base de données ZOO" },
                 { title: "TP B3 ch4 TD2 Veille Windows", icon: "fab fa-windows", tags: ["Veille", "Windows"], file: "Mme_Beauvallet/TP_B3_ch4_TD2_Veille_informationnelle_sur_les_mises_à_jour_Windows.pdf", description: "Veille technologique Windows" },
                 { title: "TP B3 TH1 Audit mots de passe", icon: "fas fa-key", tags: ["Sécurité", "Audit"], file: "Mme_Beauvallet/TP_B3_TH1_Audit_de_sécurité_des_mots_de_passe.pdf", description: "Audit mots de passe" },
-                // ===== NOUVEAUX TPs AJOUTÉS =====
-                { title: "S1 B1 TP BDD TD3 LECLERC", icon: "fas fa-database", tags: ["SQL", "BDD", "Merise"], file: "Mme_Beauvallet/S1_B1_TP_BDD_TD3_LECLERC.pdf", description: "Travaux dirigés base de données - Cas LECLERC" },
+                { title: "S1 B1 TP BDD TD3 LECLERC", icon: "fas fa-database", tags: ["SQL", "BDD", "Merise"], file: "Mme_Beauvallet/S1_B1_TP_BDD_TD3_LECLERC.pdf", description: "Travaux dirigés BDD - Cas LECLERC" },
                 { title: "S2 B1 TP 1 PHP", icon: "fab fa-php", tags: ["PHP", "Web", "S2"], file: "Mme_Beauvallet/S2_B1_TP_1_PHP.docx.pdf", description: "Introduction à la programmation PHP" },
                 { title: "S2 B1 TP2 Programme PHP", icon: "fab fa-php", tags: ["PHP", "Programmation", "S2"], file: "Mme_Beauvallet/S2_B1_TP2_Programme_PHP.docx.pdf", description: "Programmation avancée en PHP" },
-                { title: "S2 B3 CH5 TD1 WinServ", icon: "fab fa-windows", tags: ["Windows Server", "Serveur", "S2"], file: "Mme_Beauvallet/S2_B3_CH5_TD1_WinServ.pdf", description: "Administration Windows Server" }
+                { title: "S2 B3 CH5 TD1 WinServ", icon: "fab fa-windows", tags: ["Windows Server", "Serveur", "S2"], file: "Mme_Beauvallet/S2_B3_CH5_TD1_WinServ.pdf", description: "Administration Windows Server" },
+                { title: "CH5 TH3 Exercices d'applications", icon: "fas fa-laptop-code", tags: ["Exercices", "Applications", "S2"], file: "Mme_Beauvallet/CH5_TH3_Exercices_d'applications.pdf", description: "Exercices d'applications" }
             ],
             sotoca: [
                 { title: "TP Reseau", icon: "fas fa-network-wired", tags: ["Réseau"], file: "M_Sotoca/TP_Reseau.pdf", description: "Configuration réseau" },
@@ -2467,17 +928,16 @@
                 { title: "TP Création d'une documentation", icon: "fas fa-file-alt", tags: ["Doc"], file: "M_Sotoca/TP_Création_d'une_documentation.pdf", description: "Création doc tech" },
                 { title: "B3 TP02 partitionnement", icon: "fas fa-hdd", tags: ["Disque", "EaseUS"], file: "M_Sotoca/B3_TP02_partitionnement.pdf", description: "Gestion de disques" },
                 { title: "TP03 Clonage avec Clonezilla", icon: "fas fa-clone", tags: ["Clonezilla", "Sauvegarde", "Clonage"], file: "M_Sotoca/TP03_CLONAGE_AVEC_CLONEZILLA.pdf", description: "Clonage et sauvegarde système" },
-                // ===== NOUVEAUX TPs AJOUTÉS =====
                 { title: "B2 TP06 Keylogger", icon: "fas fa-keyboard", tags: ["Sécurité", "Keylogger", "Analyse"], file: "M_Sotoca/B2_TP06_Keylogger_Fahad.docx.pdf", description: "Analyse de sécurité - Keylogger" },
                 { title: "TP05 Serveur de fichiers", icon: "fas fa-folder-open", tags: ["Serveur", "Fichiers", "Partage"], file: "M_Sotoca/TP05_Serveur_de_fichiers.pdf", description: "Configuration serveur de fichiers", hasPdf2: true, pdf2File: "M_Sotoca/TP05_Serveur_de_fichiers.docx.pdf" },
                 { title: "B1 S2 TP Active Directory", icon: "fas fa-users-cog", tags: ["Active Directory", "Windows Server", "AD"], file: "M_Sotoca/B1_S2_TP_ActiveDirectory.docx.pdf", description: "Administration Active Directory" },
-
                 { title: "TP07 Kit du technicien", icon: "fas fa-toolbox", tags: ["Maintenance", "Outils", "Technicien"], file: "M_Sotoca/TP07_Kit_du_technicien_informatique.docx.pdf", description: "Outils essentiels du technicien informatique" }
             ],
             atelier: [
                 { title: "Atelier 1 Le site vitrine", icon: "fas fa-window-restore", tags: ["Web", "HTML"], file: "Atelier/Atelier_1_Le_site_vitrine.pdf", description: "Création site vitrine", hasZip: true, zipFile: "Atelier/Atelier_1_site_vitrine.zip" },
                 { title: "Atelier 02 L'hébergement du site", icon: "fas fa-server", tags: ["Serveur", "XAMPP", "Apache"], file: "Atelier/Atelier 02_L'hébergement_du_site.pdf", description: "Installation XAMPP et déploiement site GSB" },
-                { title: "Atelier 3 Le transfert du site", icon: "fas fa-upload", tags: ["FTP", "Web", "Transfert", "Hébergement"], file: "M_Sotoca/Atelier_3_Le_transfert_du_sitee.docx.pdf", description: "Transfert et déploiement de site web" }
+                { title: "Atelier 3 Le transfert du site", icon: "fas fa-upload", tags: ["FTP", "Web", "Transfert", "Hébergement"], file: "Atelier/Atelier_3_Le_transfert_du_sitee.docx.pdf", description: "Transfert et déploiement de site web" },
+                { title: "Atelier 4 Gestionnaire de sauvegardes", icon: "fas fa-save", tags: ["JavaScript", "LocalStorage", "SPA", "VM"], file: "Atelier/Atelier_4_Gestionnaire_de_sauvegardes_docx.pdf", description: "Application web de gestion de sauvegardes de machines virtuelles" }
             ]
         };
 
@@ -2485,116 +945,46 @@
         // GÉNÉRATION DES CARTES
         // ================================
         function generateLibraryDocCard(tp, category) {
-            const tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
-
+            let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
             let buttonsHTML = `<div class="library-doc-actions">`;
-
-            // Bouton PDF principal
-            buttonsHTML += `
-                <a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();">
-                    <i class="fas fa-file-pdf"></i> PDF
-                </a>
-            `;
-
-            // Bouton PDF secondaire (ex: version DOCX exportée en PDF)
-            if (tp.hasPdf2) {
-                buttonsHTML += `
-                    <a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" download onclick="event.stopPropagation();">
-                        <i class="fas fa-file-pdf"></i> DOCX
-                    </a>
-                `;
-            }
-
-            // Bouton ZIP
-            if (tp.hasZip) {
-                buttonsHTML += `
-                    <a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();">
-                        <i class="fas fa-file-archive"></i> ZIP
-                    </a>
-                `;
-            }
-
-            // Bouton ODT
-            if (tp.hasOdt) {
-                buttonsHTML += `
-                    <a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();">
-                        <i class="fas fa-file-word"></i> ODT
-                    </a>
-                `;
-            }
-
+            buttonsHTML += `<a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> PDF</a>`;
+            if (tp.hasPdf2) buttonsHTML += `<a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> DOCX</a>`;
+            if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
+            if (tp.hasOdt) buttonsHTML += `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>`;
             buttonsHTML += `</div>`;
-
-            return `
-                <div class="library-doc-card" data-category="${category}">
-                    <div class="library-doc-icon">
-                        <i class="${tp.icon}"></i>
-                    </div>
-                    <div class="library-doc-content">
-                        <div class="library-doc-title">${tp.title}</div>
-                        <div class="library-doc-subtitle">${tp.description}</div>
-                        <div class="library-doc-tags">${tagsHTML}</div>
-                    </div>
-                    ${buttonsHTML}
-                </div>
-            `;
+            return `<div class="library-doc-card" data-category="${category}"><div class="library-doc-icon"><i class="${tp.icon}"></i></div><div class="library-doc-content"><div class="library-doc-title">${tp.title}</div><div class="library-doc-subtitle">${tp.description}</div><div class="library-doc-tags">${tagsHTML}</div></div>${buttonsHTML}</div>`;
         }
 
-        // ================================
-        // CHARGEMENT DES DOCS
-        // ================================
         function loadAllLibraryDocs() {
-            const beauvalletContainer = document.getElementById('beauvallet-docs');
-            if (beauvalletContainer) {
-                beauvalletContainer.innerHTML = tpsData.beauvallet.map(tp => generateLibraryDocCard(tp, 'beauvallet')).join('');
-            }
-
-            const sotocaContainer = document.getElementById('sotoca-docs');
-            if (sotocaContainer) {
-                sotocaContainer.innerHTML = tpsData.sotoca.map(tp => generateLibraryDocCard(tp, 'sotoca')).join('');
-            }
-
-            const atelierContainer = document.getElementById('atelier-docs');
-            if (atelierContainer) {
-                atelierContainer.innerHTML = tpsData.atelier.map(tp => generateLibraryDocCard(tp, 'atelier')).join('');
-            }
-
+            const containers = { 'beauvallet-docs': 'beauvallet', 'sotoca-docs': 'sotoca', 'atelier-docs': 'atelier' };
+            Object.entries(containers).forEach(([id, cat]) => {
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = tpsData[cat].map(tp => generateLibraryDocCard(tp, cat)).join('');
+            });
             const allContainer = document.getElementById('all-docs');
             if (allContainer) {
                 let allDocs = [];
-                Object.keys(tpsData).forEach(category => {
-                    allDocs = allDocs.concat(tpsData[category].map(tp => generateLibraryDocCard(tp, category)));
-                });
+                Object.keys(tpsData).forEach(cat => { allDocs = allDocs.concat(tpsData[cat].map(tp => generateLibraryDocCard(tp, cat))); });
                 allContainer.innerHTML = allDocs.join('');
             }
         }
 
-        // ================================
-        // FILTRAGE PAR CATÉGORIE
-        // ================================
         function filterLibraryCategory(category) {
             document.querySelectorAll('.library-filter-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.category === category) btn.classList.add('active');
             });
-
             const instruction = document.getElementById('library-instruction');
             if (instruction) instruction.style.display = 'none';
-
             const searchResults = document.getElementById('searchResultsContainer');
             if (searchResults) searchResults.style.display = 'none';
-
             const searchInput = document.getElementById('searchTP');
             if (searchInput) searchInput.value = '';
-
             document.querySelectorAll('.library-category').forEach(cat => {
                 cat.style.display = cat.dataset.category === category ? 'block' : 'none';
             });
         }
 
-        // ================================
-        // RECHERCHE
-        // ================================
         function normalizeText(text) {
             return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
         }
@@ -2606,53 +996,37 @@
             const searchResultsHeader = document.getElementById('searchResultsHeader');
             const searchResultsList = document.getElementById('searchResultsList');
             const instruction = document.getElementById('library-instruction');
-
             if (searchTerm === '') {
                 searchResultsContainer.style.display = 'none';
                 document.querySelectorAll('.library-category').forEach(cat => cat.style.display = 'none');
                 if (instruction) instruction.style.display = 'block';
-                document.querySelectorAll('.library-filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.dataset.category === 'all') btn.classList.add('active');
-                });
+                document.querySelectorAll('.library-filter-btn').forEach(btn => { btn.classList.remove('active'); if (btn.dataset.category === 'all') btn.classList.add('active'); });
                 return;
             }
-
             if (instruction) instruction.style.display = 'none';
             document.querySelectorAll('.library-category').forEach(cat => cat.style.display = 'none');
-
             let foundTPs = [];
             Object.keys(tpsData).forEach(category => {
                 tpsData[category].forEach(tp => {
-                    const normalizedTitle = normalizeText(tp.title);
-                    const normalizedDescription = normalizeText(tp.description);
-                    const normalizedTags = tp.tags.map(tag => normalizeText(tag)).join(' ');
-
-                    if (normalizedTitle.includes(searchTerm) ||
-                        normalizedDescription.includes(searchTerm) ||
-                        normalizedTags.includes(searchTerm)) {
-                        foundTPs.push({ ...tp, category: category });
+                    if (normalizeText(tp.title).includes(searchTerm) || normalizeText(tp.description).includes(searchTerm) || tp.tags.map(t => normalizeText(t)).join(' ').includes(searchTerm)) {
+                        foundTPs.push({ ...tp, category });
                     }
                 });
             });
-
             searchResultsList.innerHTML = '';
-
             if (foundTPs.length === 0) {
                 searchResultsHeader.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Aucun document trouvé';
                 searchResultsHeader.style.color = '#ff6b6b';
             } else {
-                const count = foundTPs.length;
-                searchResultsHeader.innerHTML = `<i class="fas fa-check-circle me-2"></i>${count} document${count > 1 ? 's' : ''} trouvé${count > 1 ? 's' : ''}`;
+                searchResultsHeader.innerHTML = `<i class="fas fa-check-circle me-2"></i>${foundTPs.length} document${foundTPs.length > 1 ? 's' : ''} trouvé${foundTPs.length > 1 ? 's' : ''}`;
                 searchResultsHeader.style.color = '#64c8ff';
                 searchResultsList.innerHTML = foundTPs.map(tp => generateLibraryDocCard(tp, tp.category)).join('');
             }
-
             searchResultsContainer.style.display = 'block';
         }
 
         // ================================
-        // INITIALISATION
+        // INIT
         // ================================
         document.addEventListener('DOMContentLoaded', function() {
             loadAllLibraryDocs();
@@ -2663,15 +1037,16 @@
             setTimeout(() => {
                 document.querySelectorAll('.fade-in').forEach((el, index) => {
                     setTimeout(() => {
-                        if (el.getBoundingClientRect().top < window.innerHeight) {
-                            el.classList.add('visible');
-                        }
+                        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
                     }, index * 200);
                 });
             }, 1500);
         });
 
-        // ================================
-        // SKILL ITEMS INTERACTION
-        // ================================
-        document.querySelectorAll('.skill-item').forEach(i
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-10px) scale(1.08) rotateY(5deg)'; });
+            item.addEventListener('mouseleave', function() { this.style.transform = 'translateY(0) scale(1) rotateY(0deg)'; });
+        });
+    </script>
+</body>
+</html>

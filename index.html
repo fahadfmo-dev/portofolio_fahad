@@ -937,35 +937,13 @@
         };
 
         // ================================
-        // IMPRESSION / TELECHARGEMENT PDF
-        // ================================
-        function openPrintDialog(url, event) {
-            event.stopPropagation();
-            const existing = document.getElementById('print-iframe');
-            if (existing) existing.remove();
-            const iframe = document.createElement('iframe');
-            iframe.id = 'print-iframe';
-            iframe.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;border:none;';
-            iframe.src = url;
-            document.body.appendChild(iframe);
-            iframe.onload = function() {
-                try {
-                    iframe.contentWindow.focus();
-                    iframe.contentWindow.print();
-                } catch(e) {
-                    window.open(url, '_blank');
-                }
-            };
-        }
-
-        // ================================
         // GENERATION DES CARTES
         // ================================
         function generateLibraryDocCard(tp, category) {
             let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
             let buttonsHTML = `<div class="library-doc-actions">`;
-            buttonsHTML += `<button class="library-doc-btn btn-pdf" onclick="openPrintDialog('${tp.file}', event)"><i class="fas fa-file-pdf"></i> PDF</button>`;
-            if (tp.hasPdf2) buttonsHTML += `<button class="library-doc-btn btn-pdf2" onclick="openPrintDialog('${tp.pdf2File}', event)"><i class="fas fa-file-pdf"></i> DOCX</button>`;
+            buttonsHTML += `<a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> PDF</a>`;
+            if (tp.hasPdf2) buttonsHTML += `<a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> DOCX</a>`;
             if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
             if (tp.hasOdt) buttonsHTML += `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>`;
             buttonsHTML += `</div>`;

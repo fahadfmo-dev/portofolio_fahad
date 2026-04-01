@@ -942,11 +942,15 @@
         // ================================
         function openPDF(filePath, event) {
             event.stopPropagation();
-            // Construit l'URL absolue du fichier
-            const base = window.location.href.replace(/\/[^\/]*$/, '');
-            const fullUrl = base + '/' + filePath;
-            // Ouvre via Google Docs Viewer (affiche le PDF sans téléchargement)
-            const viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(fullUrl) + '&embedded=false';
+            // Construit l'URL absolue de façon robuste (trailing slash, index.html, etc.)
+            let basePath = window.location.href.split('?')[0].split('#')[0];
+            if (/\.(html|htm)$/i.test(basePath)) {
+                basePath = basePath.replace(/\/[^\/]+$/, '/');
+            } else if (!basePath.endsWith('/')) {
+                basePath += '/';
+            }
+            const fullUrl = basePath + filePath;
+            const viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(fullUrl);
             window.open(viewerUrl, '_blank');
         }
 

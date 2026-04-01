@@ -199,6 +199,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* FIX: fade-in visible par défaut — le JS ajoute l'animation en bonus */
         .fade-in {
             opacity: 1;
             transform: translateY(0);
@@ -222,45 +223,23 @@
 
         #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.8; }
 
-        /* ================================ */
-        /* NAVBAR FIXE - sans dépendance Bootstrap JS */
-        /* ================================ */
         .navbar {
             background: rgba(10, 10, 26, 0.9); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border); padding: 1.2rem 0;
             position: fixed; width: 100%; top: 0; z-index: 1000;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .navbar .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap; }
         .navbar.scrolled { padding: 0.8rem 0; background: rgba(10, 10, 26, 0.95); box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); border-bottom: 1px solid var(--accent-color); }
-        .navbar-brand { font-weight: 800; font-size: 1.8rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; transition: all 0.4s ease; position: relative; text-decoration: none; white-space: nowrap; }
+        .navbar-brand { font-weight: 800; font-size: 1.8rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; transition: all 0.4s ease; position: relative; }
         .navbar-brand::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px; background: var(--accent-gradient); transition: width 0.4s ease; border-radius: 2px; }
         .navbar-brand:hover { transform: scale(1.05); filter: brightness(1.2); }
         .navbar-brand:hover::after { width: 100%; }
-
-        /* Menu toujours visible sur desktop */
-        .navbar-collapse { display: flex !important; align-items: center; }
-        .navbar-nav { display: flex; flex-direction: row; list-style: none; margin: 0; padding: 0; }
-        .nav-link { color: var(--text-light) !important; font-weight: 500; margin: 0 0.8rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; text-decoration: none; white-space: nowrap; }
+        .nav-link { color: var(--text-light) !important; font-weight: 500; margin: 0 0.8rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; }
         .nav-link::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--accent-gradient); transition: left 0.4s ease; z-index: -1; border-radius: 25px; opacity: 0.4; }
         .nav-link:hover { color: var(--accent-light) !important; transform: translateY(-3px); text-shadow: 0 0 15px var(--glow-color); background: rgba(0, 245, 255, 0.2); border-radius: 25px; padding: 0.5rem 1rem; }
         .nav-link:hover::before { left: 0; }
 
-        /* Burger masqué sur desktop */
-        .navbar-toggler { display: none; background: transparent; border: 1px solid rgba(0,245,255,0.4); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
-        .navbar-toggler i { color: #ffffff; font-size: 1.2rem; }
-
-        /* Mobile */
-        @media (max-width: 991px) {
-            .navbar-toggler { display: block; }
-            .navbar-collapse { display: none !important; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(10,10,26,0.98); padding: 1rem; border-bottom: 1px solid var(--accent-color); flex-direction: column; align-items: flex-start; }
-            .navbar-collapse.open { display: flex !important; }
-            .navbar-nav { flex-direction: column; width: 100%; }
-            .nav-link { margin: 0.4rem 0; padding: 0.5rem 1rem !important; }
-            .navbar-brand { font-size: 1.4rem; }
-        }
-
-        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--dark-bg); position: relative; overflow: hidden; padding-top: 80px; }
+        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--dark-bg); position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: var(--accent-gradient); opacity: 0.08; border-radius: 50%; animation: heroBlob1 12s infinite ease-in-out; top: -15%; left: -15%; filter: blur(40px); }
         .hero::after { content: ''; position: absolute; width: 500px; height: 500px; background: var(--secondary-gradient); opacity: 0.06; border-radius: 50%; animation: heroBlob2 15s infinite ease-in-out; bottom: -15%; right: -15%; filter: blur(40px); }
         @keyframes heroBlob1 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 33% { transform: translate(50px, -80px) scale(1.2) rotate(120deg); } 66% { transform: translate(-30px, 40px) scale(0.8) rotate(240deg); } }
@@ -318,6 +297,7 @@
         @keyframes progressFill { from { width: 0; opacity: 0; } to { opacity: 1; } }
         @keyframes progressShimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
+        /* FIX timeline: opacity:1 + animation both */
         .timeline-item { position: relative; padding-left: 40px; opacity: 1; animation: timelineSlide 0.8s ease both; margin-bottom: 2rem; }
         .timeline-item:nth-child(1) { animation-delay: 0.1s; }
         .timeline-item:nth-child(2) { animation-delay: 0.2s; }
@@ -357,6 +337,7 @@
         #backToTop.show { opacity: 1; visibility: visible; animation: backToTopBounce 0.6s ease; }
         @keyframes backToTopBounce { 0% { transform: scale(0) rotate(0deg); } 50% { transform: scale(1.2) rotate(180deg); } 100% { transform: scale(1) rotate(360deg); } }
 
+        /* FIX loader: display:none — plus jamais de spinner bloquant */
         .loader { display: none; }
 
         @keyframes slideInLeft { from { transform: translateX(-100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -380,26 +361,29 @@
     </style>
 </head>
 <body>
-    <div class="loader" id="loader"></div>
+    <!-- Loading Screen — display:none, ne bloque plus jamais -->
+    <div class="loader" id="loader">
+        <div class="loader-inner"></div>
+    </div>
 
     <canvas id="particles-canvas"></canvas>
 
-    <nav class="navbar">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#home">Mohammed Fahad</a>
-            <button class="navbar-toggler" onclick="toggleMenu()" aria-label="Menu">
-                <i class="fas fa-bars"></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
             </button>
-            <div class="navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home" onclick="closeMenu()">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about" onclick="closeMenu()">À Propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills" onclick="closeMenu()">Compétences</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience" onclick="closeMenu()">Expérience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects" onclick="closeMenu()">Comptes Rendus</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#veille" onclick="closeMenu()">Veille</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#languages" onclick="closeMenu()">Langues</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact" onclick="closeMenu()">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Comptes Rendus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#veille">Veille</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#languages">Langues</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -441,7 +425,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="contact-info-item mb-3" style="padding: 1rem; background: rgba(0,245,255,0.05); border-radius: 10px; border-left: 4px solid var(--accent-color);">
-                                            <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Email :</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f3230373e32323a3b71393e373e3b713932301f38323e3633713c3032">[email&#160;protected]</a></p>
+                                            <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Email :</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="137e7c7b727e7e76773d75727b72773d757e7c53747e727a7f3d707c7e">[email&#160;protected]</a></p>
                                         </div>
                                         <div class="contact-info-item mb-3" style="padding: 1rem; background: rgba(0,245,255,0.05); border-radius: 10px; border-left: 4px solid var(--accent-color);">
                                             <p style="color: #ffffff; margin: 0;"><strong style="color: var(--accent-light);">Téléphone :</strong> (+33) 06 04 45 99 34</p>
@@ -605,7 +589,7 @@
                     <div class="library-category-header">
                         <i class="fas fa-tools"></i>
                         <span>Atelier Professionnel</span>
-                        <span class="library-category-badge">5 documents</span>
+                        <span class="library-category-badge">4 documents</span>
                     </div>
                     <div class="library-documents-grid" id="atelier-docs"></div>
                 </div>
@@ -613,7 +597,7 @@
                     <div class="library-category-header">
                         <i class="fas fa-th-large"></i>
                         <span>Tous les documents</span>
-                        <span class="library-category-badge">53 documents</span>
+                        <span class="library-category-badge">52 documents</span>
                     </div>
                     <div class="library-documents-grid" id="all-docs"></div>
                 </div>
@@ -749,7 +733,7 @@
             <div class="row"><div class="col-lg-8 mx-auto">
                 <div class="row mb-5">
                     <div class="col-md-4 mb-3"><div class="text-center modern-card fade-in"><i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--accent-color);"></i><h5 style="color: #ffffff; font-weight: 600;">Localisation</h5><p style="color: var(--text-muted);">Gap, France</p></div></div>
-                    <div class="col-md-4 mb-3"><div class="text-center modern-card fade-in" style="padding: 2rem 1rem;"><i class="fas fa-envelope fa-2x mb-3" style="color: var(--accent-color);"></i><h5 style="color: #ffffff; margin-bottom: 1rem; font-weight: 600;">Email</h5><p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cba6a4a3aaa6a6aeafe5adaaa3aaafe5ada6a48baca6aaa2a7e5a8a4a6">[email&#160;protected]</a></p></div></div>
+                    <div class="col-md-4 mb-3"><div class="text-center modern-card fade-in" style="padding: 2rem 1rem;"><i class="fas fa-envelope fa-2x mb-3" style="color: var(--accent-color);"></i><h5 style="color: #ffffff; margin-bottom: 1rem; font-weight: 600;">Email</h5><p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7dad8dfd6dadad2d399d1d6dfd6d399d1dad8f7d0dad6dedb99d4d8da">[email&#160;protected]</a></p></div></div>
                     <div class="col-md-4 mb-3"><div class="text-center modern-card fade-in"><i class="fas fa-phone fa-2x mb-3" style="color: var(--accent-color);"></i><h5 style="color: #ffffff; font-weight: 600;">Téléphone</h5><p style="color: var(--text-muted);">(+33) 06 04 45 99 34</p></div></div>
                 </div>
             </div></div>
@@ -835,18 +819,6 @@
         window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; particles = []; initParticles(); });
         initParticles();
         animateParticles();
-
-        // ================================
-        // MENU MOBILE
-        // ================================
-        function toggleMenu() {
-            const nav = document.getElementById('navbarNav');
-            nav.classList.toggle('open');
-        }
-        function closeMenu() {
-            const nav = document.getElementById('navbarNav');
-            nav.classList.remove('open');
-        }
 
         // ================================
         // SMOOTH SCROLLING
@@ -938,10 +910,9 @@
                 { title: "S1 B1 TP BDD TD3 LECLERC", icon: "fas fa-database", tags: ["SQL", "BDD", "Merise"], file: "Mme_Beauvallet/S1_B1_TP_BDD_TD3_LECLERC.pdf", description: "Travaux dirigés BDD - Cas LECLERC" },
                 { title: "S2 B1 TP 1 PHP", icon: "fab fa-php", tags: ["PHP", "Web", "S2"], file: "Mme_Beauvallet/S2_B1_TP_1_PHP.docx.pdf", description: "Introduction à la programmation PHP" },
                 { title: "S2 B1 TP2 Programme PHP", icon: "fab fa-php", tags: ["PHP", "Programmation", "S2"], file: "Mme_Beauvallet/S2_B1_TP2_Programme_PHP.docx.pdf", description: "Programmation avancée en PHP" },
-                // ── NOUVEAU TP AJOUTÉ ──
-                { title: "S2 B1 TP3 Transmission de données", icon: "fab fa-php", tags: ["PHP", "GET", "POST", "XSS", "S2"], file: "Mme_Beauvallet/S2_B1_TP3_transmission_de_donnees.pdf", description: "Transmission de données entre pages PHP - GET, POST, sécurisation XSS" },
                 { title: "S2 B3 CH5 TD1 WinServ", icon: "fab fa-windows", tags: ["Windows Server", "Serveur", "S2"], file: "Mme_Beauvallet/S2_B3_CH5_TD1_WinServ.pdf", description: "Administration Windows Server" },
-                { title: "CH5 TH3 Exercices d'applications", icon: "fas fa-laptop-code", tags: ["Exercices", "Applications", "S2"], file: "Mme_Beauvallet/CH5_TH3_Exercices_d'applications.pdf", description: "Exercices d'applications" }
+                { title: "CH5 TH3 Exercices d'applications", icon: "fas fa-laptop-code", tags: ["Exercices", "Applications", "S2"], file: "Mme_Beauvallet/CH5_TH3_Exercices_d'applications.pdf", description: "Exercices d'applications" },
+                { title: "S2 B1 TP3 Transmission de données", icon: "fab fa-php", tags: ["PHP", "GET", "POST", "S2"], file: "Mme_Beauvallet/S2_B1_TP3_transmission_de_donnees_docx.pdf", description: "Transmission de données entre pages PHP (GET, POST, XSS)" }
             ],
             sotoca: [
                 { title: "TP Reseau", icon: "fas fa-network-wired", tags: ["Réseau"], file: "M_Sotoca/TP_Reseau.pdf", description: "Configuration réseau" },
@@ -966,57 +937,23 @@
                 { title: "Atelier 1 Le site vitrine", icon: "fas fa-window-restore", tags: ["Web", "HTML"], file: "Atelier/Atelier_1_Le_site_vitrine.pdf", description: "Création site vitrine", hasZip: true, zipFile: "Atelier/Atelier_1_site_vitrine.zip" },
                 { title: "Atelier 02 L'hébergement du site", icon: "fas fa-server", tags: ["Serveur", "XAMPP", "Apache"], file: "Atelier/Atelier 02_L'hébergement_du_site.pdf", description: "Installation XAMPP et déploiement site GSB" },
                 { title: "Atelier 3 Le transfert du site", icon: "fas fa-upload", tags: ["FTP", "Web", "Transfert", "Hébergement"], file: "Atelier/Atelier_3_Le_transfert_du_sitee.docx.pdf", description: "Transfert et déploiement de site web" },
-                { title: "Atelier 4 Gestionnaire de sauvegardes", icon: "fas fa-save", tags: ["JavaScript", "LocalStorage", "SPA", "VM"], file: "Atelier/Atelier_4_Gestionnaire_de_sauvegardes_docx.pdf", description: "Application web de gestion de sauvegardes de machines virtuelles" },
-                { title: "Atelier 5 Protection du serveur web", icon: "fas fa-shield-alt", tags: ["Sécurité", "VirtualBox", "FTP", "Réseau", "XAMPP"], file: "Atelier/Atelier_5_Protection_du_serveur_web.pdf", description: "Isolation réseau et serveur de fichiers - Entreprise GSB" }
+                { title: "Atelier 4 Gestionnaire de sauvegardes", icon: "fas fa-save", tags: ["JavaScript", "LocalStorage", "SPA", "VM"], file: "Atelier/Atelier_4_Gestionnaire_de_sauvegardes_docx.pdf", description: "Application web de gestion de sauvegardes de machines virtuelles" }
             ]
         };
 
         // ================================
-        // OUVERTURE PDF VIA GOOGLE DOCS VIEWER
-        // ================================
-        // ================================
-        // REGISTRE GLOBAL DES FICHIERS
-        // ================================
-        const fileRegistry = [];
-
-        function registerFile(path) {
-            fileRegistry.push(path);
-            return fileRegistry.length - 1;
-        }
-
-        function openPDF(idx, event) {
-            if (event) event.stopPropagation();
-            var filePath = fileRegistry[idx];
-            if (!filePath) return;
-            var basePath = window.location.href.split('?')[0].split('#')[0];
-            if (/\.(html|htm)$/i.test(basePath)) {
-                basePath = basePath.replace(/\/[^\/]+$/, '/');
-            } else if (basePath.charAt(basePath.length - 1) !== '/') {
-                basePath += '/';
-            }
-            var fullUrl = basePath + filePath;
-            var viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(fullUrl);
-            window.open(viewerUrl, '_blank');
-        }
-
-        // ================================
-        // GENERATION DES CARTES
+        // GÉNÉRATION DES CARTES
         // ================================
         function generateLibraryDocCard(tp, category) {
-            var tagsHTML = tp.tags.map(function(tag) { return '<span class="library-doc-tag">' + tag + '</span>'; }).join('');
-            var idx = registerFile(tp.file);
-            var buttonsHTML = '<div class="library-doc-actions">';
-            buttonsHTML += '<button class="library-doc-btn btn-pdf" onclick="openPDF(' + idx + ', event)"><i class="fas fa-file-pdf"></i> PDF</button>';
-            if (tp.hasPdf2) {
-                var idx2 = registerFile(tp.pdf2File);
-                buttonsHTML += '<button class="library-doc-btn btn-pdf2" onclick="openPDF(' + idx2 + ', event)"><i class="fas fa-file-pdf"></i> DOCX</button>';
-            }
-            if (tp.hasZip) buttonsHTML += '<a href="' + tp.zipFile + '" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>';
-            if (tp.hasOdt) buttonsHTML += '<a href="' + tp.odtFile + '" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>';
-            buttonsHTML += '</div>';
-            return '<div class="library-doc-card" data-category="' + category + '"><div class="library-doc-icon"><i class="' + tp.icon + '"></i></div><div class="library-doc-content"><div class="library-doc-title">' + tp.title + '</div><div class="library-doc-subtitle">' + tp.description + '</div><div class="library-doc-tags">' + tagsHTML + '</div></div>' + buttonsHTML + '</div>';
+            let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
+            let buttonsHTML = `<div class="library-doc-actions">`;
+            buttonsHTML += `<a href="${tp.file}" class="library-doc-btn btn-pdf" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> PDF</a>`;
+            if (tp.hasPdf2) buttonsHTML += `<a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" download onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> DOCX</a>`;
+            if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
+            if (tp.hasOdt) buttonsHTML += `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>`;
+            buttonsHTML += `</div>`;
+            return `<div class="library-doc-card" data-category="${category}"><div class="library-doc-icon"><i class="${tp.icon}"></i></div><div class="library-doc-content"><div class="library-doc-title">${tp.title}</div><div class="library-doc-subtitle">${tp.description}</div><div class="library-doc-tags">${tagsHTML}</div></div>${buttonsHTML}</div>`;
         }
-
 
         function loadAllLibraryDocs() {
             const containers = { 'beauvallet-docs': 'beauvallet', 'sotoca-docs': 'sotoca', 'atelier-docs': 'atelier' };
@@ -1063,10 +1000,7 @@
                 searchResultsContainer.style.display = 'none';
                 document.querySelectorAll('.library-category').forEach(cat => cat.style.display = 'none');
                 if (instruction) instruction.style.display = 'block';
-                document.querySelectorAll('.library-filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.dataset.category === 'all') btn.classList.add('active');
-                });
+                document.querySelectorAll('.library-filter-btn').forEach(btn => { btn.classList.remove('active'); if (btn.dataset.category === 'all') btn.classList.add('active'); });
                 return;
             }
             if (instruction) instruction.style.display = 'none';

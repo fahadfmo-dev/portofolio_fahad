@@ -975,8 +975,7 @@
         // OUVERTURE PDF VIA GOOGLE DOCS VIEWER
         // ================================
         function openPDF(filePath, event) {
-            event.stopPropagation();
-            // Construit l'URL absolue de façon robuste (trailing slash, index.html, etc.)
+            if (event) event.stopPropagation();
             let basePath = window.location.href.split('?')[0].split('#')[0];
             if (/\.(html|htm)$/i.test(basePath)) {
                 basePath = basePath.replace(/\/[^\/]+$/, '/');
@@ -988,14 +987,25 @@
             window.open(viewerUrl, '_blank');
         }
 
+        function openPDFb64(btn, event) {
+            event.stopPropagation();
+            const filePath = decodeURIComponent(escape(atob(btn.dataset.file)));
+            openPDF(filePath, null);
+        }
+
         // ================================
         // GENERATION DES CARTES
         // ================================
         function generateLibraryDocCard(tp, category) {
             let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
+            // Encode file paths en base64 pour éviter les problèmes d'apostrophes/guillemets dans les onclick
+            const fileB64 = btoa(unescape(encodeURIComponent(tp.file)));
             let buttonsHTML = `<div class="library-doc-actions">`;
-            buttonsHTML += `<button class="library-doc-btn btn-pdf" onclick="openPDF('${tp.file}', event)"><i class="fas fa-file-pdf"></i> PDF</button>`;
-            if (tp.hasPdf2) buttonsHTML += `<button class="library-doc-btn btn-pdf2" onclick="openPDF('${tp.pdf2File}', event)"><i class="fas fa-file-pdf"></i> DOCX</button>`;
+            buttonsHTML += `<button class="library-doc-btn btn-pdf" data-file="${fileB64}" onclick="openPDFb64(this, event)"><i class="fas fa-file-pdf"></i> PDF</button>`;
+            if (tp.hasPdf2) {
+                const pdf2B64 = btoa(unescape(encodeURIComponent(tp.pdf2File)));
+                buttonsHTML += `<button class="library-doc-btn btn-pdf2" data-file="${pdf2B64}" onclick="openPDFb64(this, event)"><i class="fas fa-file-pdf"></i> DOCX</button>`;
+            }
             if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
             if (tp.hasOdt) buttonsHTML += `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>`;
             buttonsHTML += `</div>`;

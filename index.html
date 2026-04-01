@@ -246,8 +246,6 @@
         .nav-link:hover { color: var(--accent-light) !important; transform: translateY(-3px); text-shadow: 0 0 15px var(--glow-color); background: rgba(0, 245, 255, 0.2); border-radius: 25px; padding: 0.5rem 1rem; }
         .nav-link:hover::before { left: 0; }
 
-<<<<<<< HEAD
-=======
         /* Burger masqué sur desktop */
         .navbar-toggler { display: none; background: transparent; border: 1px solid rgba(0,245,255,0.4); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
         .navbar-toggler i { color: #ffffff; font-size: 1.2rem; }
@@ -262,7 +260,6 @@
             .navbar-brand { font-size: 1.4rem; }
         }
 
->>>>>>> ea348a1a2bfac787bbc4c4c4e65fa426f39a6737
         .hero { min-height: 100vh; display: flex; align-items: center; background: var(--dark-bg); position: relative; overflow: hidden; padding-top: 80px; }
         .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: var(--accent-gradient); opacity: 0.08; border-radius: 50%; animation: heroBlob1 12s infinite ease-in-out; top: -15%; left: -15%; filter: blur(40px); }
         .hero::after { content: ''; position: absolute; width: 500px; height: 500px; background: var(--secondary-gradient); opacity: 0.06; border-radius: 50%; animation: heroBlob2 15s infinite ease-in-out; bottom: -15%; right: -15%; filter: blur(40px); }
@@ -978,12 +975,7 @@
         // OUVERTURE PDF VIA GOOGLE DOCS VIEWER
         // ================================
         function openPDF(filePath, event) {
-<<<<<<< HEAD
-            event.stopPropagation();
-            // Construit l'URL absolue de façon robuste (trailing slash, index.html, etc.)
-=======
             if (event) event.stopPropagation();
->>>>>>> ea348a1a2bfac787bbc4c4c4e65fa426f39a6737
             let basePath = window.location.href.split('?')[0].split('#')[0];
             if (/\.(html|htm)$/i.test(basePath)) {
                 basePath = basePath.replace(/\/[^\/]+$/, '/');
@@ -995,15 +987,12 @@
             window.open(viewerUrl, '_blank');
         }
 
-<<<<<<< HEAD
-=======
         function openPDFb64(btn, event) {
             event.stopPropagation();
             const filePath = decodeURIComponent(escape(atob(btn.dataset.file)));
             openPDF(filePath, null);
         }
 
->>>>>>> ea348a1a2bfac787bbc4c4c4e65fa426f39a6737
         // ================================
         // GENERATION DES CARTES
         // ================================
@@ -1012,16 +1001,11 @@
             // Encode file paths en base64 pour éviter les problèmes d'apostrophes/guillemets dans les onclick
             const fileB64 = btoa(unescape(encodeURIComponent(tp.file)));
             let buttonsHTML = `<div class="library-doc-actions">`;
-<<<<<<< HEAD
-            buttonsHTML += `<button class="library-doc-btn btn-pdf" onclick="openPDF('${tp.file}', event)"><i class="fas fa-file-pdf"></i> PDF</button>`;
-            if (tp.hasPdf2) buttonsHTML += `<button class="library-doc-btn btn-pdf2" onclick="openPDF('${tp.pdf2File}', event)"><i class="fas fa-file-pdf"></i> DOCX</button>`;
-=======
             buttonsHTML += `<button class="library-doc-btn btn-pdf" data-file="${fileB64}" onclick="openPDFb64(this, event)"><i class="fas fa-file-pdf"></i> PDF</button>`;
             if (tp.hasPdf2) {
                 const pdf2B64 = btoa(unescape(encodeURIComponent(tp.pdf2File)));
                 buttonsHTML += `<button class="library-doc-btn btn-pdf2" data-file="${pdf2B64}" onclick="openPDFb64(this, event)"><i class="fas fa-file-pdf"></i> DOCX</button>`;
             }
->>>>>>> ea348a1a2bfac787bbc4c4c4e65fa426f39a6737
             if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
             if (tp.hasOdt) buttonsHTML += `<a href="${tp.odtFile}" class="library-doc-btn btn-odt" download onclick="event.stopPropagation();"><i class="fas fa-file-word"></i> ODT</a>`;
             buttonsHTML += `</div>`;
@@ -1117,8 +1101,6 @@
                     }, index * 200);
                 });
             }, 1500);
-<<<<<<< HEAD
         });
-=======
-        });
->>>>>>> ea348a1a2bfac787bbc4c4c4e65fa426f39a6737
+
+  

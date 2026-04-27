@@ -1,3 +1,5 @@
+html
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -695,7 +697,8 @@
                 { title: "B2 TP06 Keylogger", icon: "fas fa-keyboard", tags: ["Sécurité", "Keylogger", "Analyse"], file: "M_Sotoca/B2_TP06_Keylogger_Fahad.docx.pdf", description: "Analyse de sécurité - Keylogger" },
                 { title: "TP05 Serveur de fichiers", icon: "fas fa-folder-open", tags: ["Serveur", "Fichiers", "Partage"], file: "M_Sotoca/TP05_Serveur_de_fichiers.pdf", description: "Configuration serveur de fichiers", hasPdf2: true, pdf2File: "M_Sotoca/TP05_Serveur_de_fichiers.docx.pdf" },
                 { title: "B1 S2 TP Active Directory", icon: "fas fa-users-cog", tags: ["Active Directory", "Windows Server", "AD"], file: "M_Sotoca/B1_S2_TP_ActiveDirectory.docx.pdf", description: "Administration Active Directory" },
-                { title: "TP07 Kit du technicien", icon: "fas fa-toolbox", tags: ["Maintenance", "Outils", "Technicien"], file: "M_Sotoca/TP07_Kit_du_technicien_informatique.docx.pdf", description: "Outils essentiels du technicien informatique" }
+                { title: "TP07 Kit du technicien", icon: "fas fa-toolbox", tags: ["Maintenance", "Outils", "Technicien"], file: "M_Sotoca/TP07_Kit_du_technicien_informatique.docx.pdf", description: "Outils essentiels du technicien informatique" },
+                { title: "TP16 Deep Freeze", icon: "fas fa-snowflake", tags: ["Sécurité", "Deep Freeze", "Protection"], file: "M_Sotoca/TP16_Deep_Freeze.pdf", description: "Protection système avec Deep Freeze" }
             ],
             atelier: [
                 { title: "Atelier 1 Le site vitrine", icon: "fas fa-window-restore", tags: ["Web", "HTML"], file: "Atelier/Atelier_1_Le_site_vitrine.pdf", description: "Création site vitrine", hasZip: true, zipFile: "Atelier/Atelier_1_site_vitrine.zip" },
@@ -711,7 +714,6 @@
         function generateLibraryDocCard(tp, category) {
             let tagsHTML = tp.tags.map(tag => `<span class="library-doc-tag">${tag}</span>`).join('');
             let buttonsHTML = `<div class="library-doc-actions">`;
-            // FIX: target="_blank" au lieu de download pour les PDFs
             buttonsHTML += `<a href="${tp.file}" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> PDF</a>`;
             if (tp.hasPdf2) buttonsHTML += `<a href="${tp.pdf2File}" class="library-doc-btn btn-pdf2" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i> DOCX</a>`;
             if (tp.hasZip) buttonsHTML += `<a href="${tp.zipFile}" class="library-doc-btn btn-zip" download onclick="event.stopPropagation();"><i class="fas fa-file-archive"></i> ZIP</a>`;
@@ -808,7 +810,7 @@
         // ================================
         document.addEventListener('DOMContentLoaded', function() {
             loadAllLibraryDocs();
-            filterLibraryCategory('all'); // Afficher tous les TPs dès le chargement
+            filterLibraryCategory('all');
             createMatrixEffect();
         });
 

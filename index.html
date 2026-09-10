@@ -447,7 +447,7 @@
                 </div>
             </div>
 
-            <div id="yearbox2-content" class="year-panel fade-in" style="display:none;margin-top:1rem;text-align:center;">
+            <div id="yearbox2-content" class="year-panel fade-in" style="display:none;margin-top:1rem;">
                 <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap" style="gap:1rem;">
                     <h3 style="color:#ffffff;font-weight:700;margin:0;"><i class="fas fa-calendar-plus me-2" style="color:var(--accent-color);"></i>2ème année</h3>
                     <div class="d-flex align-items-center" style="gap:0.6rem;">
@@ -455,52 +455,30 @@
                         <button onclick="toggleYearBox('yearbox2')" class="library-filter-btn" style="padding:10px 22px;"><i class="fas fa-times me-2"></i>Fermer</button>
                     </div>
                 </div>
-                <div class="library-category-header" style="text-align:left;"><i class="fas fa-chalkboard-teacher"></i><span>M. Sotoca</span><span class="library-category-badge">3 documents</span></div>
-                <div class="library-documents-grid" style="text-align:left;">
-                    <div class="library-doc-card">
-                        <div class="library-doc-icon"><i class="fas fa-network-wired"></i></div>
-                        <div class="library-doc-content">
-                            <div class="library-doc-title">B1 TP01 Patrimoine informatique</div>
-                            <div class="library-doc-subtitle">Découverte et gestion du patrimoine informatique</div>
-                            <div class="library-doc-tags"><span class="library-doc-tag">Patrimoine</span><span class="library-doc-tag">B1</span><span class="library-doc-tag">2ème année</span></div>
-                        </div>
-                        <div class="library-doc-actions"><a href="2eme-annee/M_Sotoca/B1_TP01_Patrimoine_informatique.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a></div>
-                    </div>
-                    <div class="library-doc-card">
-                        <div class="library-doc-icon"><i class="fas fa-server"></i></div>
-                        <div class="library-doc-content">
-                            <div class="library-doc-title">B2 TP01 PowerEdge R730</div>
-                            <div class="library-doc-subtitle">Serveur de virtualisation Dell PowerEdge R730</div>
-                            <div class="library-doc-tags"><span class="library-doc-tag">Serveur</span><span class="library-doc-tag">Virtualisation</span><span class="library-doc-tag">B2</span></div>
-                        </div>
-                        <div class="library-doc-actions"><a href="2eme-annee/M_Sotoca/B2_TP01_PowerEdge_R730.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a></div>
-                    </div>
-                    <div class="library-doc-card">
-                        <div class="library-doc-icon"><i class="fas fa-network-wired"></i></div>
-                        <div class="library-doc-content">
-                            <div class="library-doc-title">B2 TP02 Switches virtuels personnalisés</div>
-                            <div class="library-doc-subtitle">Création et configuration de switches virtuels personnalisés</div>
-                            <div class="library-doc-tags"><span class="library-doc-tag">Virtualisation</span><span class="library-doc-tag">Switch virtuel</span><span class="library-doc-tag">Réseau</span><span class="library-doc-tag">B2</span></div>
-                        </div>
-                        <div class="library-doc-actions"><a href="2eme-annee/M_Sotoca/B2_TP02_Switches_virtuels.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a></div>
+                <div class="row justify-content-center mb-4">
+                    <div class="col-lg-8"><div class="library-search-container"><i class="fas fa-search library-search-icon"></i><input type="text" id="searchTP2" class="library-search-input" placeholder="Rechercher un document..." oninput="searchSecondYear()"/></div></div>
+                </div>
+                <div class="library-filters-container fade-in">
+                    <button class="library-filter-btn second-year-filter active" data-second-category="all" onclick="filterSecondYear('all')"><i class="fas fa-th-large me-2"></i>Tous</button>
+                    <button class="library-filter-btn second-year-filter" data-second-category="beauvallet" onclick="filterSecondYear('beauvallet')"><i class="fas fa-code me-2"></i>Mme Beauvallet</button>
+                    <button class="library-filter-btn second-year-filter" data-second-category="sotoca" onclick="filterSecondYear('sotoca')"><i class="fas fa-network-wired me-2"></i>M. Sotoca</button>
+                </div>
+                <div class="library-category-header" style="margin-top:2rem;"><i class="fas fa-th-large"></i><span id="second-year-result-title">Tous les documents</span><span class="library-category-badge" id="second-year-count">4 documents</span></div>
+                <div class="second-year-group" data-second-group="sotoca">
+                    <div class="library-category-header" style="text-align:left;margin-top:1.5rem;"><i class="fas fa-network-wired"></i><span>M. Sotoca</span><span class="library-category-badge">3 documents</span></div>
+                    <div class="library-documents-grid" style="text-align:left;">
+                        <div class="library-doc-card" data-second-card="sotoca"><div class="library-doc-icon"><i class="fas fa-network-wired"></i></div><div class="library-doc-content"><div class="library-doc-title">B1 TP01 Patrimoine informatique</div><div class="library-doc-subtitle">Découverte et gestion du patrimoine informatique</div><div class="library-doc-tags"><span class="library-doc-tag">Patrimoine</span><span class="library-doc-tag">B1</span><span class="library-doc-tag">2ème année</span></div></div><div class="library-doc-actions"><a href="2eme-annee/M_Sotoca/B1_TP01_Patrimoine_informatique.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a></div></div>
+                        <div class="library-doc-card" data-second-card="sotoca"><div class="library-doc-icon"><i class="fas fa-server"></i></div><div class="library-doc-content"><div class="library-doc-title">B2 TP01 PowerEdge R730</div><div class="library-doc-subtitle">Serveur de virtualisation Dell PowerEdge R730</div><div class="library-doc-tags"><span class="library-doc-tag">Serveur</span><span class="library-doc-tag">Virtualisation</span><span class="library-doc-tag">B2</span></div></div><div class="library-doc-actions"><a href="2eme-annee/M_Sotoca/B2_TP01_PowerEdge_R730.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a></div></div>
+                        <div class="library-doc-card" data-second-card="sotoca"><div class="library-doc-icon"><i class="fas fa-network-wired"></i></div><div class="library-doc-content"><div class="library-doc-title">B2 TP02 Switches virtuels personnalisés</div><div class="library-doc-subtitle">Création et configuration de switches virtuels personnalisés</div><div class="library-doc-tags"><span class="library-doc-tag">Virtualisation</span><span class="library-doc-tag">Switch virtuel</span><span class="library-doc-tag">Réseau</span><span class="library-doc-tag">B2</span></div></div><div class="library-doc-actions"><a href="2eme-annee/M_Sotoca/B2_TP02_Switches_virtuels.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a></div></div>
                     </div>
                 </div>
-
-                <div class="library-category-header" style="text-align:left;margin-top:2rem;"><i class="fas fa-chalkboard-teacher"></i><span>Mme Beauvallet</span><span class="library-category-badge">1 document</span></div>
-                <div class="library-documents-grid" style="text-align:left;">
-                    <div class="library-doc-card">
-                        <div class="library-doc-icon"><i class="fas fa-chart-column"></i></div>
-                        <div class="library-doc-content">
-                            <div class="library-doc-title">B1 TP1 — PGI</div>
-                            <div class="library-doc-subtitle">Travail dirigé sur le progiciel de gestion intégré et exercices réalisés avec LibreOffice Calc</div>
-                            <div class="library-doc-tags"><span class="library-doc-tag">PGI</span><span class="library-doc-tag">LibreOffice</span><span class="library-doc-tag">Tableur</span><span class="library-doc-tag">B1</span><span class="library-doc-tag">2ème année</span></div>
-                        </div>
-                        <div class="library-doc-actions">
-                            <a href="2eme-annee/Mme_Beauvallet/TD1_B1_fahad_td-pgi.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="2eme-annee/Mme_Beauvallet/TP1_B1_exo_fahad_pgi.ods" class="library-doc-btn btn-odt" download><i class="fas fa-file-excel"></i> LibreOffice</a>
-                        </div>
+                <div class="second-year-group" data-second-group="beauvallet">
+                    <div class="library-category-header" style="text-align:left;margin-top:2rem;"><i class="fas fa-code"></i><span>Mme Beauvallet</span><span class="library-category-badge">1 document</span></div>
+                    <div class="library-documents-grid" style="text-align:left;">
+                        <div class="library-doc-card" data-second-card="beauvallet"><div class="library-doc-icon"><i class="fas fa-chart-column"></i></div><div class="library-doc-content"><div class="library-doc-title">B1 TP1 — PGI</div><div class="library-doc-subtitle">Travail dirigé sur le progiciel de gestion intégré et exercices réalisés avec LibreOffice Calc</div><div class="library-doc-tags"><span class="library-doc-tag">PGI</span><span class="library-doc-tag">LibreOffice</span><span class="library-doc-tag">Tableur</span><span class="library-doc-tag">B1</span><span class="library-doc-tag">2ème année</span></div></div><div class="library-doc-actions"><a href="2eme-annee/Mme_Beauvallet/TD1_B1_fahad_td-pgi.pdf" class="library-doc-btn btn-pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a><a href="2eme-annee/Mme_Beauvallet/TP1_B1_exo_fahad_pgi.ods" class="library-doc-btn btn-odt" download><i class="fas fa-file-excel"></i> LibreOffice</a></div></div>
                     </div>
                 </div>
+                <div id="second-year-empty" class="library-results-header" style="display:none;margin-top:2rem;">Aucun document trouvé.</div>
             </div>
 
             <div id="yearbox3-content" class="year-panel fade-in" style="display:none;margin-top:1rem;">
@@ -1136,6 +1114,36 @@
             item.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-10px) scale(1.08)'; });
             item.addEventListener('mouseleave', function() { this.style.transform = ''; });
         });
-    </script>
+    
+        let activeSecondYearCategory = 'all';
+        function filterSecondYear(category) {
+            activeSecondYearCategory = category;
+            document.querySelectorAll('#yearbox2-content .second-year-filter').forEach(btn => btn.classList.toggle('active', btn.dataset.secondCategory === category));
+            applySecondYearFilters();
+        }
+        function searchSecondYear() { applySecondYearFilters(); }
+        function applySecondYearFilters() {
+            const input = document.getElementById('searchTP2');
+            const query = normalizeText(input ? input.value : '');
+            let visibleCount = 0;
+            document.querySelectorAll('#yearbox2-content [data-second-card]').forEach(card => {
+                const matchesCategory = activeSecondYearCategory === 'all' || card.dataset.secondCard === activeSecondYearCategory;
+                const matchesSearch = !query || normalizeText(card.textContent).includes(query);
+                const visible = matchesCategory && matchesSearch;
+                card.style.display = visible ? '' : 'none';
+                if (visible) visibleCount++;
+            });
+            document.querySelectorAll('#yearbox2-content [data-second-group]').forEach(group => {
+                const hasVisibleCard = Array.from(group.querySelectorAll('[data-second-card]')).some(card => card.style.display !== 'none');
+                group.style.display = hasVisibleCard ? '' : 'none';
+            });
+            const count = document.getElementById('second-year-count');
+            if (count) count.textContent = visibleCount + (visibleCount > 1 ? ' documents' : ' document');
+            const title = document.getElementById('second-year-result-title');
+            if (title) title.textContent = activeSecondYearCategory === 'beauvallet' ? 'Mme Beauvallet' : activeSecondYearCategory === 'sotoca' ? 'M. Sotoca' : 'Tous les documents';
+            const empty = document.getElementById('second-year-empty');
+            if (empty) empty.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+</script>
 </body>
 </html>

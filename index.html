@@ -213,7 +213,42 @@
         @keyframes slideInRight { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @media (max-width: 768px) { .hero h1 { font-size: 3rem; } .hero .lead { font-size: 1.3rem; } .section { padding: 4rem 0; } .section-title { font-size: 2.5rem; } .skill-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1.5rem; } .hero-image .avatar { width: 250px; height: 250px; font-size: 4rem; } .modern-card { padding: 2rem; } .navbar-brand { font-size: 1.5rem; } .btn-primary, .btn-outline { padding: 0.8rem 2rem; font-size: 1rem; } .matrix-char { font-size: 12px; } }
         @media (max-width: 576px) { .hero h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; } .skill-grid { grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); } .hero-image .avatar { width: 200px; height: 200px; font-size: 3rem; } .matrix-char { font-size: 10px; } }
-    </style>
+    
+        /* Dossiers accordéon des comptes rendus */
+        .report-folder-home { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin:1.5rem 0 2rem; }
+        .report-folder-card { width:100%; min-height:150px; padding:1.5rem; border:1px solid rgba(0,245,255,.24); border-radius:22px; background:linear-gradient(145deg,rgba(10,31,48,.94),rgba(3,17,27,.96)); color:#fff; text-align:left; display:flex; align-items:center; gap:1rem; transition:transform .2s ease,border-color .2s ease,background .2s ease; cursor:pointer; }
+        .report-folder-card:hover { transform:translateY(-3px); border-color:var(--accent-color); background:linear-gradient(145deg,rgba(12,45,62,.98),rgba(4,24,35,.98)); }
+        .report-folder-icon { width:62px; height:62px; flex:0 0 62px; border-radius:17px; display:grid; place-items:center; color:var(--accent-color); background:rgba(0,245,255,.09); border:1px solid rgba(0,245,255,.22); font-size:1.55rem; }
+        .report-folder-info { min-width:0; flex:1; }
+        .report-folder-name { display:block; font-size:1.08rem; font-weight:800; margin-bottom:.28rem; }
+        .report-folder-count { color:var(--text-muted); font-size:.88rem; }
+        .report-folder-arrow { color:var(--accent-color); font-size:1rem; }
+        .report-folder-back { display:none; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 1.1rem; padding:.85rem 1rem; border-radius:16px; background:rgba(0,245,255,.055); border:1px solid rgba(0,245,255,.15); }
+        .report-folder-back button { border:0; background:transparent; color:var(--accent-color); font-weight:750; }
+        #yearbox1-content > .row.justify-content-center,
+        #yearbox1-content > .library-filters-container,
+        #yearbox1-content > .library-instruction,
+        #yearbox1-content > .library-results-container,
+        #yearbox2-content > .row.justify-content-center,
+        #yearbox2-content > .library-filters-container,
+        #second-year-summary { display:none !important; }
+        .report-folder-active .library-documents-grid { grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:.85rem; }
+        .report-folder-active .library-doc-card { min-height:0; padding:1rem; border-radius:17px; gap:.7rem; }
+        .report-folder-active .library-doc-icon { width:48px; height:48px; min-width:48px; font-size:1.15rem; border-radius:13px; margin-bottom:.15rem; }
+        .report-folder-active .library-doc-title { font-size:.96rem; line-height:1.35; }
+        .report-folder-active .library-doc-subtitle { font-size:.78rem; line-height:1.45; margin-top:.25rem; }
+        .report-folder-active .library-doc-tags { gap:.3rem; margin-top:.55rem; }
+        .report-folder-active .library-doc-tag { font-size:.67rem; padding:.22rem .5rem; }
+        .report-folder-active .library-doc-actions { margin-top:.7rem; }
+        .report-folder-active .library-doc-btn { min-height:38px; padding:.55rem .75rem; font-size:.78rem; border-radius:11px; }
+        @media (max-width:600px) {
+            .report-folder-home { grid-template-columns:1fr; }
+            .report-folder-card { min-height:112px; padding:1rem; }
+            .report-folder-active .library-documents-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+            .report-folder-active .library-doc-card { padding:.8rem; }
+            .report-folder-active .library-doc-subtitle,.report-folder-active .library-doc-tags { display:none; }
+        }
+</style>
 </head>
 <body>
     <div class="loader" id="loader"></div>
@@ -406,7 +441,14 @@
                         <button onclick="toggleYearBox('yearbox1')" class="library-filter-btn" style="padding:10px 22px;"><i class="fas fa-times me-2"></i>Fermer</button>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-4">
+                
+                <div class="report-folder-home" id="yearbox1-folders">
+                    <button class="report-folder-card" onclick="openReportFolder('yearbox1','beauvallet')"><span class="report-folder-icon"><i class="fas fa-folder"></i></span><span class="report-folder-info"><span class="report-folder-name">Mme Beauvallet</span><span class="report-folder-count" id="folder-count-1-beauvallet">Documents</span></span><i class="fas fa-chevron-right report-folder-arrow"></i></button>
+                    <button class="report-folder-card" onclick="openReportFolder('yearbox1','sotoca')"><span class="report-folder-icon"><i class="fas fa-folder"></i></span><span class="report-folder-info"><span class="report-folder-name">M. Sotoca</span><span class="report-folder-count" id="folder-count-1-sotoca">Documents</span></span><i class="fas fa-chevron-right report-folder-arrow"></i></button>
+                    <button class="report-folder-card" onclick="openReportFolder('yearbox1','atelier')"><span class="report-folder-icon"><i class="fas fa-folder"></i></span><span class="report-folder-info"><span class="report-folder-name">Atelier</span><span class="report-folder-count" id="folder-count-1-atelier">Documents</span></span><i class="fas fa-chevron-right report-folder-arrow"></i></button>
+                </div>
+                <div class="report-folder-back" id="yearbox1-folder-back"><button onclick="resetReportFolders('yearbox1')"><i class="fas fa-arrow-left me-2"></i>Retour aux dossiers</button><span id="yearbox1-folder-title"></span></div>
+<div class="row justify-content-center mb-4">
                     <div class="col-lg-8">
                         <div class="library-search-container">
                             <i class="fas fa-search library-search-icon"></i>
@@ -455,7 +497,13 @@
                         <button onclick="toggleYearBox('yearbox2')" class="library-filter-btn" style="padding:10px 22px;"><i class="fas fa-times me-2"></i>Fermer</button>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-4">
+                
+                <div class="report-folder-home" id="yearbox2-folders">
+                    <button class="report-folder-card" onclick="openReportFolder('yearbox2','beauvallet')"><span class="report-folder-icon"><i class="fas fa-folder"></i></span><span class="report-folder-info"><span class="report-folder-name">Mme Beauvallet</span><span class="report-folder-count" id="folder-count-2-beauvallet">1 document</span></span><i class="fas fa-chevron-right report-folder-arrow"></i></button>
+                    <button class="report-folder-card" onclick="openReportFolder('yearbox2','sotoca')"><span class="report-folder-icon"><i class="fas fa-folder"></i></span><span class="report-folder-info"><span class="report-folder-name">M. Sotoca</span><span class="report-folder-count" id="folder-count-2-sotoca">4 documents</span></span><i class="fas fa-chevron-right report-folder-arrow"></i></button>
+                </div>
+                <div class="report-folder-back" id="yearbox2-folder-back"><button onclick="resetReportFolders('yearbox2')"><i class="fas fa-arrow-left me-2"></i>Retour aux dossiers</button><span id="yearbox2-folder-title"></span></div>
+<div class="row justify-content-center mb-4">
                     <div class="col-lg-8"><div class="library-search-container"><i class="fas fa-search library-search-icon"></i><input type="text" id="searchTP2" class="library-search-input" placeholder="Rechercher un document..." oninput="searchSecondYear()"/></div></div>
                 </div>
                 <div class="library-filters-container fade-in">
@@ -463,7 +511,7 @@
                     <button class="library-filter-btn second-year-filter" data-second-category="beauvallet" onclick="filterSecondYear('beauvallet')"><i class="fas fa-code me-2"></i>Mme Beauvallet</button>
                     <button class="library-filter-btn second-year-filter" data-second-category="sotoca" onclick="filterSecondYear('sotoca')"><i class="fas fa-network-wired me-2"></i>M. Sotoca</button>
                 </div>
-                <div class="library-category-header" style="margin-top:2rem;"><i class="fas fa-th-large"></i><span id="second-year-result-title">Tous les documents</span><span class="library-category-badge" id="second-year-count">5 documents</span></div>
+                <div class="library-category-header" id="second-year-summary" style="margin-top:2rem;"><i class="fas fa-th-large"></i><span id="second-year-result-title">Tous les documents</span><span class="library-category-badge" id="second-year-count">5 documents</span></div>
                 <div class="second-year-group" data-second-group="sotoca">
                     <div class="library-category-header" style="text-align:left;margin-top:1.5rem;"><i class="fas fa-network-wired"></i><span>M. Sotoca</span><span class="library-category-badge">4 documents</span></div>
                     <div class="library-documents-grid" style="text-align:left;">
@@ -1048,6 +1096,7 @@
                 }
             });
             if (willOpen) {
+                if (id === 'yearbox1' || id === 'yearbox2') resetReportFolders(id);
                 setTimeout(() => content.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
             }
         }
@@ -1097,7 +1146,9 @@
         // ================================
         document.addEventListener('DOMContentLoaded', function() {
             loadAllLibraryDocs();
-            filterLibraryCategory('all');
+            updateReportFolderCounts();
+            resetReportFolders('yearbox1');
+            resetReportFolders('yearbox2');
             createMatrixEffect();
         });
 
@@ -1145,6 +1196,62 @@
             const empty = document.getElementById('second-year-empty');
             if (empty) empty.style.display = visibleCount === 0 ? 'block' : 'none';
         }
+
+        function reportFolderLabel(category) {
+            return category === 'beauvallet' ? 'Mme Beauvallet' : category === 'sotoca' ? 'M. Sotoca' : 'Atelier';
+        }
+
+        function updateReportFolderCounts() {
+            ['beauvallet','sotoca','atelier'].forEach(category => {
+                const count = tpsData[category] ? tpsData[category].length : 0;
+                const label = document.getElementById('folder-count-1-' + category);
+                if (label) label.textContent = count + (count > 1 ? ' documents' : ' document');
+            });
+            ['beauvallet','sotoca'].forEach(category => {
+                const count = document.querySelectorAll('#yearbox2-content [data-second-card="' + category + '"]').length;
+                const label = document.getElementById('folder-count-2-' + category);
+                if (label) label.textContent = count + (count > 1 ? ' documents' : ' document');
+            });
+        }
+
+        function resetReportFolders(yearbox) {
+            const panel = document.getElementById(yearbox + '-content');
+            const home = document.getElementById(yearbox + '-folders');
+            const back = document.getElementById(yearbox + '-folder-back');
+            if (!panel || !home || !back) return;
+            panel.classList.remove('report-folder-active');
+            home.style.display = 'grid';
+            back.style.display = 'none';
+            if (yearbox === 'yearbox1') {
+                document.querySelectorAll('#yearbox1-content .library-category').forEach(category => category.style.display = 'none');
+            } else {
+                document.querySelectorAll('#yearbox2-content [data-second-group]').forEach(group => group.style.display = 'none');
+                const empty = document.getElementById('second-year-empty');
+                if (empty) empty.style.display = 'none';
+            }
+        }
+
+        function openReportFolder(yearbox, category) {
+            const panel = document.getElementById(yearbox + '-content');
+            const home = document.getElementById(yearbox + '-folders');
+            const back = document.getElementById(yearbox + '-folder-back');
+            const title = document.getElementById(yearbox + '-folder-title');
+            if (!panel || !home || !back) return;
+            home.style.display = 'none';
+            back.style.display = 'flex';
+            panel.classList.add('report-folder-active');
+            if (title) title.textContent = reportFolderLabel(category);
+            if (yearbox === 'yearbox1') {
+                filterLibraryCategory(category);
+            } else {
+                const input = document.getElementById('searchTP2');
+                if (input) input.value = '';
+                activeSecondYearCategory = category;
+                applySecondYearFilters();
+            }
+            setTimeout(() => back.scrollIntoView({ behavior:'smooth', block:'start' }), 80);
+        }
+
 </script>
 </body>
 </html>

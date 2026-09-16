@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Veille technologique de Mohammed Fahad sur l'intelligence artificielle, la cybersécurité et la réglementation.">
+  <title>Veille technologique | Mohammed Fahad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--bg:#03070c;--surface:#08121d;--surface-2:#0d1a28;--line:#17354a;--blue:#55b8ff;--green:#54e6b1;--text:#f5f8fb;--muted:#9fb0be;--orange:#ffbc66}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 90% 0,rgba(85,184,255,.09),transparent 30%),var(--bg);color:var(--text);line-height:1.65}
+    a{color:inherit}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(3,7,12,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1180px;margin:auto;min-height:72px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{text-decoration:none;font-weight:800;font-size:1.05rem;letter-spacing:.01em}
+    .brand span{color:var(--green)}
+    .nav-links{display:flex;align-items:center;gap:10px}
+    .nav-links a{text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:650;padding:10px 13px;border-radius:10px}
+    .nav-links a:hover,.nav-links .active{color:#fff;background:var(--surface-2)}
+    .wrap{max-width:1180px;margin:auto;padding:0 24px}
+    .hero{padding:86px 0 60px;border-bottom:1px solid rgba(23,53,74,.6)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.13em;margin-bottom:20px}
+    h1{max-width:850px;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.02;letter-spacing:-.055em;margin-bottom:22px}
+    h1 span{color:var(--blue)}
+    .intro{max-width:820px;color:var(--muted);font-size:1.08rem}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(8,18,29,.75);font-size:.82rem;color:#c7d3dc}
+    .section{padding:70px 0}
+    .section + .section{border-top:1px solid rgba(23,53,74,.55)}
+    .section-head{display:grid;grid-template-columns:1fr minmax(250px,480px);gap:30px;align-items:end;margin-bottom:32px}
+    .kicker{color:var(--blue);text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;font-weight:800;margin-bottom:8px}
+    h2{font-size:clamp(1.7rem,4vw,2.65rem);letter-spacing:-.035em;line-height:1.15}
+    .section-copy{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:linear-gradient(145deg,rgba(13,26,40,.96),rgba(6,15,24,.96));border:1px solid var(--line);border-radius:18px;padding:22px}
+    .card-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:rgba(85,184,255,.1);color:var(--blue);margin-bottom:18px}
+    .card h3{font-size:1.02rem;margin-bottom:8px}
+    .card p{font-size:.9rem;color:var(--muted)}
+    .question{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:24px;border-radius:18px;background:rgba(84,230,177,.065);border:1px solid rgba(84,230,177,.28);margin-top:22px}
+    .question i{color:var(--green);font-size:1.4rem;margin-top:3px}
+    .question strong{display:block;margin-bottom:6px}
+    .question p{color:#bdd0c9}
+    .method{counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .method-item{counter-increment:step;padding:20px;border-left:2px solid var(--blue);background:rgba(8,18,29,.72);border-radius:0 14px 14px 0}
+    .method-item:before{content:"0" counter(step);display:block;color:var(--blue);font-weight:800;font-size:.76rem;margin-bottom:14px}
+    .method-item strong{display:block;font-size:.93rem;margin-bottom:5px}
+    .method-item p{color:var(--muted);font-size:.82rem}
+    .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .tool{display:flex;gap:16px;align-items:flex-start;padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(8,18,29,.76)}
+    .tool-logo{flex:0 0 42px;width:42px;height:42px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;color:var(--green)}
+    .tool h3{font-size:.98rem;margin-bottom:4px}
+    .tool p{color:var(--muted);font-size:.86rem}
+    .tool .use{display:inline-block;margin-top:8px;color:var(--blue);font-size:.74rem;font-weight:750}
+    .history{display:grid;gap:12px}
+    .history-item{display:grid;grid-template-columns:120px 1.1fr 1fr 115px;gap:20px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(8,18,29,.72)}
+    .history-date{font-weight:800;color:var(--green);font-size:.8rem}
+    .history-query{font-weight:700;font-size:.92rem}
+    .history-result{color:var(--muted);font-size:.83rem}
+    .source-link{text-align:center;text-decoration:none;color:#06111a;background:var(--blue);padding:9px 12px;border-radius:10px;font-size:.78rem;font-weight:800}
+    .source-link:hover{filter:brightness(1.12)}
+    .news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .news{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--surface)}
+    .news-top{display:flex;justify-content:space-between;gap:16px;margin-bottom:16px}
+    .news-tag{color:var(--green);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .news-date{color:var(--muted);font-size:.74rem;white-space:nowrap}
+    .news h3{font-size:1.12rem;line-height:1.35;margin-bottom:10px}
+    .news p{color:var(--muted);font-size:.88rem}
+    .news footer{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .news footer span{font-size:.75rem;color:#c9d4dc}
+    .news footer a{font-size:.78rem;color:var(--blue);font-weight:750;text-decoration:none}
+    .analysis{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .takeaway{padding:22px;border-radius:18px;border:1px solid rgba(84,230,177,.24);background:rgba(84,230,177,.055)}
+    .takeaway h3{font-size:1rem;margin-bottom:9px;color:var(--green)}
+    .takeaway p{color:#b7c9c2;font-size:.88rem}
+    .sources{display:flex;flex-wrap:wrap;gap:10px}
+    .sources a{text-decoration:none;color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:10px 13px;border-radius:11px;font-size:.8rem}
+    .sources a:hover{color:#fff;border-color:var(--blue)}
+    .back{display:inline-flex;align-items:center;gap:9px;margin-top:32px;color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:.85rem;font-weight:750}
+    .footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.78rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:900px){.grid,.method{grid-template-columns:repeat(2,1fr)}.section-head{grid-template-columns:1fr}.history-item{grid-template-columns:100px 1fr}.history-result{grid-column:2}.source-link{grid-column:2;width:max-content}.news-grid{grid-template-columns:1fr}}
+    @media(max-width:650px){.nav-inner{min-height:64px}.nav-links a:not(.active){display:none}.hero{padding:62px 0 42px}.section{padding:48px 0}.grid,.method,.tool-grid,.analysis{grid-template-columns:1fr}.history-item{grid-template-columns:1fr;gap:8px}.history-result,.source-link{grid-column:auto}.footer-inner{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><span>MF</span> / Portfolio</a>
+      <div class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#projects">Comptes rendus</a>
+        <a class="active" href="veille.html">Veille</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><i class="fas fa-radar"></i> Veille technologique 2026</div>
+      <h1>Intelligence artificielle, <span>cybersécurité</span> et réglementation</h1>
+      <p class="intro">Je suis l’évolution de l’intelligence artificielle pour comprendre son impact sur les métiers de l’informatique, la sécurité des systèmes et les obligations des organisations.</p>
+      <div class="hero-meta">
+        <span class="pill"><i class="fas fa-user-shield"></i> BTS SIO option SISR</span>
+        <span class="pill"><i class="fas fa-rotate"></i> Mise à jour : 16 septembre 2026</span>
+        <span class="pill"><i class="fas fa-check-circle"></i> Sources vérifiées</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">01 — Sujet</div><h2>Pourquoi cette veille ?</h2></div>
+          <p class="section-copy">L’IA est déjà utilisée pour automatiser des tâches, analyser des journaux, assister le support et détecter des menaces. Elle apporte aussi des risques liés aux données, aux erreurs et aux cyberattaques.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="card-icon"><i class="fas fa-server"></i></div><h3>Infrastructure</h3><p>Observer comment l’IA aide à superviser les serveurs, les réseaux et les incidents.</p></article>
+          <article class="card"><div class="card-icon"><i class="fas fa-shield-halved"></i></div><h3>Cybersécurité</h3><p>Suivre les usages défensifs, mais aussi les attaques facilitées par l’IA générative.</p></article>
+          <article class="card"><div class="card-icon"><i class="fas fa-scale-balanced"></i></div><h3>Réglementation</h3><p>Comprendre l’AI Act, le RGPD et les règles de transparence applicables.</p></article>
+        </div>
+        <div class="question"><i class="fas fa-circle-question"></i><div><strong>Problématique</strong><p>Comment l’intelligence artificielle transforme-t-elle les métiers de l’informatique et quels sont les enjeux de sécurité et de réglementation pour un technicien SISR ?</p></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="methode">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">02 — Méthode</div><h2>Une méthode simple et vérifiable</h2></div>
+          <p class="section-copy">Chaque information est reliée à une source. ChatGPT peut aider à résumer, mais la validation se fait toujours sur le document ou le site d’origine.</p>
+        </div>
+        <div class="method">
+          <div class="method-item"><strong>Définir les mots-clés</strong><p>IA, cybersécurité, AI Act, données personnelles, métier SISR.</p></div>
+          <div class="method-item"><strong>Rechercher</strong><p>Utiliser Google avec des recherches ciblées sur les organismes officiels.</p></div>
+          <div class="method-item"><strong>Vérifier</strong><p>Comparer la date, l’auteur, le domaine et la source primaire.</p></div>
+          <div class="method-item"><strong>Conserver</strong><p>Noter la recherche, le résultat retenu, le lien et une synthèse courte.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outils">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">03 — Outils utilisés</div><h2>Des outils concrets</h2></div>
+          <p class="section-copy">Cette sélection correspond aux outils réellement utiles pour rechercher, vérifier, résumer et publier la veille.</p>
+        </div>
+        <div class="tool-grid">
+          <article class="tool"><div class="tool-logo"><i class="fab fa-google"></i></div><div><h3>Google Search</h3><p>Recherche manuelle avec des mots-clés précis et l’opérateur <code>site:</code> pour cibler la CNIL, l’ANSSI ou l’Union européenne.</p><span class="use">UTILISÉ POUR TROUVER LES SOURCES</span></div></article>
+          <article class="tool"><div class="tool-logo"><i class="fas fa-building-columns"></i></div><div><h3>Sites officiels</h3><p>CNIL, ANSSI, Commission européenne et Conseil de l’UE pour confirmer les informations juridiques et cyber.</p><span class="use">UTILISÉS POUR LA VÉRIFICATION</span></div></article>
+          <article class="tool"><div class="tool-logo"><i class="fas fa-wand-magic-sparkles"></i></div><div><h3>ChatGPT</h3><p>Aide à simplifier le vocabulaire, comparer des informations et produire une première synthèse. Ce n’est pas la source finale.</p><span class="use">UTILISÉ POUR LA SYNTHÈSE</span></div></article>
+          <article class="tool"><div class="tool-logo"><i class="fab fa-github"></i></div><div><h3>GitHub</h3><p>Archivage de la page, historique des modifications et publication de la veille dans le portfolio.</p><span class="use">UTILISÉ POUR CONSERVER ET PUBLIER</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="historique">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">04 — Historique</div><h2>Journal des recherches</h2></div>
+          <p class="section-copy">Voici les recherches retenues. Le journal permet de montrer le chemin suivi, et pas seulement le résultat final.</p>
+        </div>
+        <div class="history">
+          <article class="history-item"><div class="history-date">SEPT. 2026</div><div class="history-query">« AI Act calendrier application 2026 »</div><div class="history-result">Vérification du calendrier et des obligations de transparence auprès de l’Union européenne.</div><a class="source-link" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">Voir la source</a></article>
+          <article class="history-item"><div class="history-date">AOÛT 2026</div><div class="history-query">« intelligence artificielle données personnelles CNIL »</div><div class="history-result">Étude des bonnes pratiques concernant les données d’entraînement, le RGPD et les droits des personnes.</div><a class="source-link" href="https://www.cnil.fr/fr/intelligence-artificielle" target="_blank" rel="noopener">Voir la source</a></article>
+          <article class="history-item"><div class="history-date">JUIL. 2026</div><div class="history-query">« risques systèmes IA autonomes ONU »</div><div class="history-result">Recherche sur les risques de perte de contrôle, la gouvernance et la responsabilité humaine.</div><a class="source-link" href="https://www.reuters.com/business/unchecked-ai-progress-may-pose-catastrophic-risks-un-panel-warns-2026-07-01/" target="_blank" rel="noopener">Voir la source</a></article>
+          <article class="history-item"><div class="history-date">MAI 2026</div><div class="history-query">« IA attaques cybersécurité fuite de données »</div><div class="history-result">Analyse de l’accélération des attaques et de la place de l’IA dans les incidents de sécurité.</div><a class="source-link" href="https://www.reuters.com/world/ai-related-data-breaches-surpass-stolen-credentials-cyber-incidents-verizon-2026-05-19/" target="_blank" rel="noopener">Voir la source</a></article>
+          <article class="history-item"><div class="history-date">AVRIL 2026</div><div class="history-query">« AI Index 2026 adoption intelligence artificielle »</div><div class="history-result">Collecte d’indicateurs sur l’adoption de l’IA, l’investissement et l’évolution des modèles.</div><a class="source-link" href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener">Voir la source</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="actualites">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">05 — Résultats</div><h2>Informations retenues</h2></div>
+          <p class="section-copy">Les sujets sont classés par impact pour mon futur métier : conformité, protection des données, sécurité opérationnelle et évolution des compétences.</p>
+        </div>
+        <div class="news-grid">
+          <article class="news"><div class="news-top"><span class="news-tag">Réglementation</span><span class="news-date">2026</span></div><h3>L’AI Act entre progressivement en application</h3><p>L’Union européenne classe les systèmes d’IA selon leur niveau de risque. Pour les organisations, cela implique davantage de documentation, de transparence et de contrôle humain.</p><footer><span>Commission européenne</span><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">Consulter <i class="fas fa-arrow-up-right-from-square"></i></a></footer></article>
+          <article class="news"><div class="news-top"><span class="news-tag">Données</span><span class="news-date">Suivi permanent</span></div><h3>Le RGPD reste central dans les projets IA</h3><p>Une organisation doit connaître les données utilisées, limiter la collecte et informer les personnes. Un outil d’IA ne supprime pas les responsabilités du responsable de traitement.</p><footer><span>CNIL</span><a href="https://www.cnil.fr/fr/intelligence-artificielle" target="_blank" rel="noopener">Consulter <i class="fas fa-arrow-up-right-from-square"></i></a></footer></article>
+          <article class="news"><div class="news-top"><span class="news-tag">Cybersécurité</span><span class="news-date">Mai 2026</span></div><h3>Les attaquants utilisent aussi l’IA</h3><p>L’IA permet d’accélérer la création de messages de phishing, la recherche de vulnérabilités et l’adaptation des attaques. La vérification humaine reste indispensable.</p><footer><span>Reuters / Verizon</span><a href="https://www.reuters.com/world/ai-related-data-breaches-surpass-stolen-credentials-cyber-incidents-verizon-2026-05-19/" target="_blank" rel="noopener">Consulter <i class="fas fa-arrow-up-right-from-square"></i></a></footer></article>
+          <article class="news"><div class="news-top"><span class="news-tag">Marché</span><span class="news-date">AI Index 2026</span></div><h3>L’adoption de l’IA continue de progresser</h3><p>Les entreprises intègrent davantage d’IA dans leurs activités. Les professionnels informatiques doivent donc savoir intégrer, surveiller et sécuriser ces nouveaux services.</p><footer><span>Stanford HAI</span><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener">Consulter <i class="fas fa-arrow-up-right-from-square"></i></a></footer></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bilan">
+      <div class="wrap">
+        <div class="section-head"><div><div class="kicker">06 — Bilan</div><h2>Ce que j’en retiens pour le SISR</h2></div><p class="section-copy">L’IA ne remplace pas les bases du métier. Elle augmente surtout le besoin de supervision, de sécurité et de vérification.</p></div>
+        <div class="analysis">
+          <div class="takeaway"><h3><i class="fas fa-user-check"></i> Garder un contrôle humain</h3><p>Une réponse générée doit être testée avant d’être appliquée à un serveur, un réseau ou une politique de sécurité.</p></div>
+          <div class="takeaway"><h3><i class="fas fa-lock"></i> Protéger les données</h3><p>Il ne faut pas envoyer de mots de passe, de données personnelles ou de configurations sensibles dans un service d’IA public.</p></div>
+          <div class="takeaway"><h3><i class="fas fa-file-lines"></i> Documenter les usages</h3><p>L’entreprise doit savoir quel outil est utilisé, pour quelle tâche, avec quelles données et sous la responsabilité de qui.</p></div>
+          <div class="takeaway"><h3><i class="fas fa-graduation-cap"></i> Développer de nouvelles compétences</h3><p>Un technicien SISR doit comprendre l’IA, mais aussi maîtriser les réseaux, Linux, la virtualisation, les sauvegardes et la cybersécurité.</p></div>
+        </div>
+        <a class="back" href="index.html"><i class="fas fa-arrow-left"></i> Retourner au portfolio</a>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="wrap">
+        <div class="section-head"><div><div class="kicker">Sources</div><h2>Références principales</h2></div><p class="section-copy">Liens consultables utilisés pour vérifier la veille.</p></div>
+        <div class="sources">
+          <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">Commission européenne — AI Act</a>
+          <a href="https://www.consilium.europa.eu/en/policies/artificial-intelligence-act/" target="_blank" rel="noopener">Conseil de l’UE — AI Act</a>
+          <a href="https://www.cnil.fr/fr/intelligence-artificielle" target="_blank" rel="noopener">CNIL — Intelligence artificielle</a>
+          <a href="https://www.ssi.gouv.fr/" target="_blank" rel="noopener">ANSSI — Cybersécurité</a>
+          <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener">Stanford HAI — AI Index 2026</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 Mohammed Fahad</span><span>Veille technologique — BTS SIO SISR</span></div></footer>
+</body>
+</html>

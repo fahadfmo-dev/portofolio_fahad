@@ -1197,7 +1197,7 @@
  function scrollToSection(anchor){
   if(anchor==='competences')root.mfSelectWorkTab?.('skills',false);
   const el=document.getElementById(anchor);if(!el||!root.contains(el))return;
-  el.scrollIntoView({behavior:motion()?'smooth':'auto',block:'start'});arrive(el);
+  el.scrollIntoView({behavior:motion()?'smooth':'auto',block:'start'});
   $$('.mf-navlinks [data-home]').forEach(a=>{if(a.dataset.home===anchor)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
  }
  async function navigate(page,anchor='',id='',push=true){
@@ -1396,10 +1396,10 @@
  root.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!welcome.hidden)finishIntro(true);release()}});
  if(root.dataset.page==='home'&&!window.location.hash)startIntro();
  else {welcome.hidden=true;root.classList.add('mf-entered');started=true;engine.reset(false);paint();if(root.dataset.page==='home')type()}
- // Entries repeat when returning to a section, just as in the reference.
+ // Reveal once: scrolling past an edge must not hide visible content again.
  const revealTargets=$$('.mf-section-title,.mf-about-grid,.mf-skill,.mf-timeline-entry,.mf-career-entry,.mf-study-entry,.mf-language-card,.mf-contact .mf-wrap,.mf-watch-content .section');
  if(typeof IntersectionObserver==='function'){
-  const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{e.target.classList.toggle('mf-revealed',e.isIntersecting)})},{threshold:.08});
+  const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('mf-revealed');observer.unobserve(e.target)})},{threshold:.08});
   revealTargets.forEach((el,i)=>{el.classList.add('mf-reveal-ready');el.style.setProperty('--reveal-delay',`${Math.min(i%3,2)*75}ms`);observer.observe(el)});
   const badgeObserver=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){measure();wake()}else {release();stopFrame()}},{rootMargin:'100px'});badgeObserver.observe(stage);
  }
@@ -1458,8 +1458,9 @@
  if(typeof IntersectionObserver==='function'){
   const observer=new IntersectionObserver(entries=>{
    entries.forEach(({target,isIntersecting})=>{
-    target.classList.toggle('mf-effect-visible',isIntersecting);
-    if(target.classList.contains('mf-profile-stats')&&isIntersecting)counters.forEach(count);
+    if(!isIntersecting)return;
+    target.classList.add('mf-effect-visible');observer.unobserve(target);
+    if(target.classList.contains('mf-profile-stats'))counters.forEach(count);
    });
   },{threshold:.12});
   effectsTargets.filter(Boolean).forEach(el=>{el.classList.add('mf-effect-ready');observer.observe(el)});

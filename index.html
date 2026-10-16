@@ -981,7 +981,7 @@
   root.querySelector('#mf-language-status').textContent=next==='en'?'English selected':'Français activé';
   if(persist)try{localStorage.setItem('mf-language',next)}catch{}
  }
- button.addEventListener('click',()=>{if(menu.hidden){menu.hidden=false;button.setAttribute('aria-expanded','true');choices.find(c=>c.dataset.language===language).focus()}else closeMenu()});
+ button.addEventListener('click',event=>{if(menu.hidden){menu.hidden=false;button.setAttribute('aria-expanded','true');if(event.detail===0)choices.find(c=>c.dataset.language===language).focus({preventScroll:true})}else closeMenu()});
  button.addEventListener('keydown',event=>{if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();menu.hidden=false;button.setAttribute('aria-expanded','true');choices[event.key==='ArrowDown'?0:choices.length-1].focus()}});
  choices.forEach((choice,index)=>{
   choice.addEventListener('click',()=>{setLanguage(choice.dataset.language);closeMenu(true)});
@@ -989,7 +989,7 @@
  });
  root.addEventListener('keydown',event=>{if(event.key==='Escape'&&!menu.hidden){event.preventDefault();closeMenu(true)}});
  document.addEventListener('click',event=>{if(!event.target.closest('.mf-language'))closeMenu()});
- root.querySelector('.mf-language').addEventListener('focusout',event=>{if(!event.currentTarget.contains(event.relatedTarget))closeMenu()});
+ root.querySelector('.mf-language').addEventListener('focusout',event=>{if(event.relatedTarget&&!event.currentTarget.contains(event.relatedTarget))closeMenu()});
  root.mfT=t;root.mfTranslate=translate;root.mfSetLanguage=setLanguage;
  root.mfInitLanguage=()=>{let preferred='fr';try{if(localStorage.getItem('mf-language')==='en')preferred='en'}catch{}setLanguage(preferred,false)};
 })();

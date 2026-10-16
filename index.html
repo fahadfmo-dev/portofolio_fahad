@@ -648,7 +648,7 @@
 <body>
 <div id="mf-portfolio" data-page="home">
  <div class="mf-cursor-light" aria-hidden="true"></div>
- <section id="mf-welcome" class="mf-welcome" aria-labelledby="mf-welcome-title" hidden>
+ <section id="mf-welcome" class="mf-welcome" aria-labelledby="mf-welcome-title">
   <div class="mf-welcome-orbit" aria-hidden="true"></div>
   <div class="mf-welcome-content">
    <div class="mf-welcome-symbols" aria-hidden="true"><span>&lt;/&gt;</span><span class="mf-welcome-id">MF</span><span>&gt;_</span></div>
@@ -1377,7 +1377,7 @@
  $('#mf-replay-intro').addEventListener('click',()=>startIntro(true));
  root.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!welcome.hidden)finishIntro(true);release()}});
  if(root.dataset.page==='home'&&!window.location.hash)startIntro();
- else {root.classList.add('mf-entered');started=true;engine.reset(false);paint();if(root.dataset.page==='home')type()}
+ else {welcome.hidden=true;root.classList.add('mf-entered');started=true;engine.reset(false);paint();if(root.dataset.page==='home')type()}
  // Entries repeat when returning to a section, just as in the reference.
  const revealTargets=$$('.mf-section-title,.mf-about-grid,.mf-skill,.mf-timeline-entry,.mf-career-entry,.mf-study-entry,.mf-language-card,.mf-contact .mf-wrap,.mf-watch-content .section');
  if(typeof IntersectionObserver==='function'){

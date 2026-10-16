@@ -11,6 +11,17 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;550;600;650;700;750&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>html{scroll-behavior:smooth}body{margin:0;background:#090a0b}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}/* Vector icons render consistently on Android, iOS and desktop. */
 #mf-portfolio .mf-ui-icon{display:inline-block;width:1em;height:1em;min-width:1em;flex-shrink:0;vertical-align:-.125em;overflow:visible;pointer-events:none}
+/* Internship photo gallery */
+#mf-portfolio .mf-stage-photos{margin-top:18px;padding:8px 12px;min-height:40px;font-size:11px;gap:9px}
+#mf-portfolio .mf-photo-dialog{width:min(1050px,calc(100% - 32px));max-height:90dvh;margin:auto;padding:24px;border:1px solid #ffffff25;border-radius:16px;background:#13171b;color:#eef0f2;box-shadow:0 24px 90px #0009;overflow:auto;overscroll-behavior:contain}
+#mf-portfolio .mf-photo-dialog::backdrop{background:#050709d9;backdrop-filter:blur(6px)}
+#mf-portfolio .mf-photo-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
+#mf-portfolio .mf-photo-header h2{font-size:20px;line-height:1.4}
+#mf-portfolio .mf-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#mf-portfolio .mf-photo-grid figure{margin:0;min-width:0}
+#mf-portfolio .mf-photo-grid img{display:block;width:100%;height:360px;object-fit:contain;border-radius:8px;background:#090b0d}
+#mf-portfolio .mf-photo-grid figcaption{color:#a8b1bd;font-size:12px;line-height:1.6;margin-top:10px}
+@media(max-width:650px){#mf-portfolio .mf-photo-dialog{padding:18px}#mf-portfolio .mf-photo-grid{grid-template-columns:1fr}#mf-portfolio .mf-photo-grid img{height:auto;max-height:65dvh}#mf-portfolio .mf-photo-header h2{font-size:17px}}
 </style>
 <style>#mf-portfolio{--mf-bg:#090a0b;--mf-surface:#111315;--mf-line:#292c30;--mf-text:#f2f2ef;--mf-muted:#a8aaae;--mf-soft:#d8d8d3;box-sizing:border-box;background:var(--mf-bg);color:var(--mf-text);font-family:Inter,Arial,sans-serif;font-size:15px;line-height:1.65;isolation:isolate;position:relative;overflow:clip;color-scheme:dark}
 #mf-portfolio *,#mf-portfolio *:before,#mf-portfolio *:after{box-sizing:border-box}
@@ -924,6 +935,8 @@
  }
  Object.assign(dictionary,{"Étudiant en deuxième année de BTS SIO, option SISR, à Gap. Je recherche un stage en systèmes et réseaux du 4 janvier au 12 février 2027.":"Second-year BTS SIO student specialising in SISR in Gap. I am looking for a systems and networking internship from 4 January to 12 February 2027.","Je configure des serveurs et des réseaux.":"I configure servers and networks.","Je suis en deuxième année de BTS SIO, option SISR, au lycée Dominique Villars à Gap. Après un bac pro Systèmes numériques (option RISC), j’ai choisi de me spécialiser dans l’administration des systèmes et des réseaux.":"I am a second-year BTS SIO student specialising in SISR at Lycée Dominique Villars in Gap. After a vocational baccalaureate in Digital Systems (RISC option), I chose to specialise in systems and network administration.","En formation et en stage, j’ai installé et configuré des serveurs Linux et Windows, mis en place des VLAN et un accès Wi-Fi sous Cisco, et utilisé la virtualisation (VMware ESXi, Proxmox, VirtualBox). J’ai aussi déployé des services comme Apache, MariaDB et Nextcloud. Parmi mes réalisations, un serveur de fichiers Nextcloud sur Raspberry Pi 5 pour une entreprise, validé au préalable sur une machine virtuelle Debian.":"During training and internships, I installed and configured Linux and Windows servers, set up VLANs and Cisco Wi-Fi access, and used virtualisation (VMware ESXi, Proxmox, VirtualBox). I also deployed services such as Apache, MariaDB and Nextcloud. My work includes a Nextcloud file server on a Raspberry Pi 5 for a company, first validated on a Debian virtual machine.","Mes stages en maintenance informatique, en assistance aux utilisateurs et en installation de serveur (Ubuntu Server et LAMP chez Pièces Auto Gap) m’ont appris à diagnostiquer une panne, à tester plusieurs solutions, à expliquer clairement et à documenter mon travail dans des comptes rendus.":"My internships in IT maintenance, user support and server installation (Ubuntu Server and LAMP at Pièces Auto Gap) taught me to diagnose faults, test different solutions, explain clearly and document my work in technical reports.","Je recherche un stage en systèmes et réseaux du 4 janvier au 12 février 2027. En dehors de l’informatique, je m’intéresse à la mécanique automobile, aux jeux vidéo et aux voyages.":"I am looking for a systems and networking internship from 4 January to 12 February 2027. Outside IT, I am interested in car mechanics, video games and travel."});
  Object.assign(dictionary,{"Obtenu avec mention assez bien":"Awarded with honours (mention assez bien)"});
+ Object.assign(dictionary,{"Voir les photos":"View photos","Fermer":"Close","Photos du stage · AcesAds Agency":"Internship photos · AcesAds Agency","Robot scripteur sur le poste de travail":"Pen plotter on the workbench","Câblage et ventilation du robot":"Robot wiring and cooling","Détail de la carte électronique":"Close-up of the electronics board"});
+ Object.assign(dictionary,{"Photos du stage · Sun Valley Systems":"Internship photos · Sun Valley Systems","Préparation du Raspberry Pi et du stockage":"Preparing the Raspberry Pi and storage","Montage du refroidissement et de la base NVMe":"Fitting the cooling system and NVMe base","Préparation du SSD et du boîtier USB":"Preparing the SSD and USB enclosure","Interface Nextcloud après installation":"Nextcloud interface after installation"});
  const reverse=new Map(Object.entries(dictionary).map(([fr,en])=>[en,fr]));
  const textSources=new WeakMap(),attributeSources=new WeakMap();let language='fr';
  const button=root.querySelector('#mf-language-toggle'),menu=root.querySelector('#mf-language-menu'),choices=[...menu.querySelectorAll('[data-language]')];
@@ -1104,7 +1117,7 @@
   $('#mf-clear').hidden=!query;
   if(year==='stages'){
    status.textContent='STAGES EN ENTREPRISE';
-   folders.innerHTML='<div class="mf-stage-grid">'+stages.map((stage,i)=>`<article class="mf-stage-card" style="--item:${i}"><div class="mf-company-logo mf-company-logo--${escape(stage.key)}"><img src="${escape(stage.image)}" alt="Logo ${escape(stage.name)}" loading="lazy"></div><div class="mf-stage-info"><span class="mf-stage-date">${escape(t(stage.date))}</span><h3>${escape(stage.name)}</h3>${stage.note?`<span class="mf-stage-note">${escape(t(stage.note))}</span>`:''}<ul class="mf-stage-missions">${(stage.missions||[]).map(mission=>`<li>${escape(t(mission))}</li>`).join('')}</ul></div></article>`).join('')+'</div>';
+   folders.innerHTML='<div class="mf-stage-grid">'+stages.map((stage,i)=>`<article class="mf-stage-card" style="--item:${i}"><div class="mf-company-logo mf-company-logo--${escape(stage.key)}"><img src="${escape(stage.image)}" alt="Logo ${escape(stage.name)}" loading="lazy"></div><div class="mf-stage-info"><span class="mf-stage-date">${escape(t(stage.date))}</span><h3>${escape(stage.name)}</h3>${stage.note?`<span class="mf-stage-note">${escape(t(stage.note))}</span>`:''}<ul class="mf-stage-missions">${(stage.missions||[]).map(mission=>`<li>${escape(t(mission))}</li>`).join('')}</ul>${/acesads|sun valley/i.test(stage.name)?`<button type="button" class="mf-button mf-stage-photos" data-stage-gallery="${/acesads/i.test(stage.name)?'acesads':'sunvalley'}" aria-haspopup="dialog">${escape(t('Voir les photos'))} <span aria-hidden="true">(${/acesads/i.test(stage.name)?3:4})</span></button>`:''}</div></article>`).join('')+'</div>';
    root.mfTranslate?.(folders);root.mfTranslate?.(status);return;
   }
   const all=docs.filter(d=>String(d.year)===year);
@@ -1508,5 +1521,40 @@
 </script>
  <script>document.getElementById("mf-portfolio").mfInitLanguage();</script>
 </div>
+
+ <script>(()=>{
+ 'use strict';
+ const root=document.getElementById('mf-portfolio');
+ const dialog=document.createElement('dialog');dialog.className='mf-photo-dialog';dialog.setAttribute('aria-labelledby','mf-photo-title');
+ dialog.innerHTML='<div class="mf-photo-header"><h2 id="mf-photo-title">Photos du stage · AcesAds Agency</h2><button type="button" class="mf-button" data-close-photos>Fermer</button></div><div class="mf-photo-grid"></div>';
+ root.append(dialog);
+ const galleries={
+ acesads:{title:'Photos du stage · AcesAds Agency',folder:'acesads',captions:['Robot scripteur sur le poste de travail','Câblage et ventilation du robot','Détail de la carte électronique']},
+ sunvalley:{title:'Photos du stage · Sun Valley Systems',folder:'sunvalley',captions:['Préparation du Raspberry Pi et du stockage','Montage du refroidissement et de la base NVMe','Préparation du SSD et du boîtier USB','Interface Nextcloud après installation']}
+ };
+ let loadedKey='',scrollBefore='';
+ root.addEventListener('click',event=>{
+  const trigger=event.target.closest('[data-stage-gallery]');if(!trigger)return;
+  const key=trigger.dataset.stageGallery,gallery=galleries[key];if(!gallery)return;
+  if(loadedKey!==key){
+   const grid=dialog.querySelector('.mf-photo-grid');grid.replaceChildren();
+   dialog.querySelector('h2').textContent=gallery.title;
+   gallery.captions.forEach((caption,i)=>{
+    const figure=document.createElement('figure'),image=document.createElement('img'),label=document.createElement('figcaption');
+    image.src='assets/stages/'+gallery.folder+'/photo-'+(i+1)+'.webp';image.alt=caption;image.decoding='async';
+    label.textContent=caption;figure.append(image,label);grid.append(figure);
+   });loadedKey=key;
+  }
+  root.mfTranslate?.(dialog);scrollBefore=document.documentElement.style.overflow;document.documentElement.style.overflow='hidden';dialog.showModal();
+ });
+ dialog.querySelector('[data-close-photos]').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()});
+ dialog.addEventListener('close',()=>{document.documentElement.style.overflow=scrollBefore});
+ })();</script>
 </body>
 </html>
+
+
+
+
+
